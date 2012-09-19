@@ -1,0 +1,347 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* board
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 5.0.14\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2012-02-08 00:36+0000\n"
+"PO-Revision-Date: 2012-05-24 09:38+0000\n"
+"Last-Translator: Anders Wallenquist <anders.wallenquist@vertel.se>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-08-28 09:37+0000\n"
+"X-Generator: Launchpad (build 15864)\n"
+
+#. module: board
+#: view:res.log.report:0
+msgid "  Year  "
+msgstr "  År  "
+
+#. module: board
+#: model:ir.model,name:board.model_board_menu_create
+msgid "Menu Create"
+msgstr "Skapa meny"
+
+#. module: board
+#: view:board.menu.create:0
+msgid "Menu Information"
+msgstr "Menu Information"
+
+#. module: board
+#: view:res.users:0
+msgid "Latest Connections"
+msgstr "Senaste anslutningarna"
+
+#. module: board
+#: view:res.log.report:0
+msgid "Log created in last month"
+msgstr "Loggar från senaste månaden"
+
+#. module: board
+#: view:board.board:0
+#: model:ir.actions.act_window,name:board.open_board_administration_form
+msgid "Administration Dashboard"
+msgstr "Administrera infopanel"
+
+#. module: board
+#: view:res.log.report:0
+msgid "Group By..."
+msgstr "Gruppera på..."
+
+#. module: board
+#: view:res.log.report:0
+msgid "Log created in current year"
+msgstr "Loggar från innevarande år"
+
+#. module: board
+#: model:ir.model,name:board.model_board_board
+msgid "Board"
+msgstr "Bräde"
+
+#. module: board
+#: field:board.menu.create,menu_name:0
+msgid "Menu Name"
+msgstr "Menu Name"
+
+#. module: board
+#: model:ir.actions.act_window,name:board.board_weekly_res_log_report_action
+#: view:res.log.report:0
+msgid "Weekly Global Activity"
+msgstr "Global aktivitet veckovis"
+
+#. module: board
+#: field:board.board.line,name:0
+msgid "Title"
+msgstr "Title"
+
+#. module: board
+#: field:res.log.report,nbr:0
+msgid "# of Entries"
+msgstr "# av transaktioner"
+
+#. module: board
+#: view:res.log.report:0
+#: field:res.log.report,month:0
+msgid "Month"
+msgstr "Månad"
+
+#. module: board
+#: view:res.log.report:0
+msgid "Log created in current month"
+msgstr "Loggar skapade i innevarande månad"
+
+#. module: board
+#: model:ir.actions.act_window,name:board.board_monthly_res_log_report_action
+#: view:res.log.report:0
+msgid "Monthly Activity per Document"
+msgstr "Månatlig aktivitet per dokument"
+
+#. module: board
+#: view:board.board:0
+msgid "Configuration Overview"
+msgstr "Konfigurationsöversikt"
+
+#. module: board
+#: model:ir.actions.act_window,name:board.action_view_board_list_form
+#: model:ir.ui.menu,name:board.menu_view_board_form
+msgid "Dashboard Definition"
+msgstr "Instrumentpanelsdefinition"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "March"
+msgstr "Mars"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "August"
+msgstr "Augusti"
+
+#. module: board
+#: model:ir.actions.act_window,name:board.action_user_connection_tree
+msgid "User Connections"
+msgstr "Användarens anslutningar"
+
+#. module: board
+#: field:res.log.report,creation_date:0
+msgid "Creation Date"
+msgstr "Skapad datum"
+
+#. module: board
+#: view:res.log.report:0
+msgid "Log Analysis"
+msgstr "Logganalys"
+
+#. module: board
+#: field:res.log.report,res_model:0
+msgid "Object"
+msgstr "Objekt"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "June"
+msgstr "Juni"
+
+#. module: board
+#: field:board.board,line_ids:0
+msgid "Action Views"
+msgstr "Action Views"
+
+#. module: board
+#: model:ir.model,name:board.model_res_log_report
+msgid "Log Report"
+msgstr "Logg rapport"
+
+#. module: board
+#: code:addons/board/wizard/board_menu_create.py:46
+#, python-format
+msgid "Please Insert Dashboard View(s) !"
+msgstr "Var vänlig lägg in instrumentpanelsvy(er)!"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "July"
+msgstr "Juli"
+
+#. module: board
+#: view:res.log.report:0
+#: field:res.log.report,day:0
+msgid "Day"
+msgstr "Dag"
+
+#. module: board
+#: view:board.menu.create:0
+msgid "Create Menu For Dashboard"
+msgstr "Skapa meny för instrumentpanel"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "February"
+msgstr "Februari"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "October"
+msgstr "Oktober"
+
+#. module: board
+#: model:ir.model,name:board.model_board_board_line
+msgid "Board Line"
+msgstr "Panelrad"
+
+#. module: board
+#: field:board.menu.create,menu_parent_id:0
+msgid "Parent Menu"
+msgstr "Parent Menu"
+
+#. module: board
+#: view:res.log.report:0
+msgid "    Month-1    "
+msgstr "    Månad-1    "
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "January"
+msgstr "Januari"
+
+#. module: board
+#: view:board.board:0
+msgid "Users"
+msgstr "Användare"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "November"
+msgstr "November"
+
+#. module: board
+#: help:board.board.line,sequence:0
+msgid ""
+"Gives the sequence order                         when displaying a list of "
+"board lines."
+msgstr "Ger ordningsföljden när panelraderna visas"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "April"
+msgstr "April"
+
+#. module: board
+#: view:board.board:0
+#: field:board.board,name:0
+#: field:board.board.line,board_id:0
+#: model:ir.ui.menu,name:board.menu_dasboard
+msgid "Dashboard"
+msgstr "Instrumentpanel"
+
+#. module: board
+#: code:addons/board/wizard/board_menu_create.py:45
+#, python-format
+msgid "User Error!"
+msgstr "User Error!"
+
+#. module: board
+#: field:board.board.line,action_id:0
+msgid "Action"
+msgstr "Åtgärd"
+
+#. module: board
+#: field:board.board.line,position:0
+msgid "Position"
+msgstr "Position"
+
+#. module: board
+#: view:res.log.report:0
+msgid "Model"
+msgstr "Modell"
+
+#. module: board
+#: model:ir.actions.act_window,name:board.board_homepage_action
+msgid "Home Page"
+msgstr "Webbplats"
+
+#. module: board
+#: model:ir.actions.act_window,name:board.action_latest_activities_tree
+msgid "Latest Activities"
+msgstr "Senaste aktiviteterna"
+
+#. module: board
+#: selection:board.board.line,position:0
+msgid "Left"
+msgstr "Left"
+
+#. module: board
+#: field:board.board,view_id:0
+msgid "Board View"
+msgstr "Board View"
+
+#. module: board
+#: selection:board.board.line,position:0
+msgid "Right"
+msgstr "Right"
+
+#. module: board
+#: field:board.board.line,width:0
+msgid "Width"
+msgstr "Width"
+
+#. module: board
+#: view:res.log.report:0
+msgid "   Month   "
+msgstr "   Månad   "
+
+#. module: board
+#: field:board.board.line,sequence:0
+msgid "Sequence"
+msgstr "Sequence"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "September"
+msgstr "September"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "December"
+msgstr "December"
+
+#. module: board
+#: view:board.board:0
+#: view:board.menu.create:0
+msgid "Create Menu"
+msgstr "Create Menu"
+
+#. module: board
+#: field:board.board.line,height:0
+msgid "Height"
+msgstr "Height"
+
+#. module: board
+#: model:ir.actions.act_window,name:board.action_board_menu_create
+msgid "Create Board Menu"
+msgstr "Create Board Menu"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "May"
+msgstr "Maj"
+
+#. module: board
+#: view:res.log.report:0
+#: field:res.log.report,name:0
+msgid "Year"
+msgstr "År"
+
+#. module: board
+#: view:board.menu.create:0
+msgid "Cancel"
+msgstr "Cancel"
+
+#. module: board
+#: view:board.board:0
+msgid "Dashboard View"
+msgstr "Instrumentpanelsvy"

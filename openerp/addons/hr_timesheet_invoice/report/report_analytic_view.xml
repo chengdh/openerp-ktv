@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Analytic accounts to close -->
+        <record id="view_analytic_account_close_form" model="ir.ui.view">
+            <field name="name">report.analytic.account.close.form</field>
+            <field name="model">report.analytic.account.close</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Expired analytic accounts">
+                    <field name="name" select="1" groups="analytic.group_analytic_accounting"/>
+                    <field name="partner_id" select="1"/>
+                    <field name="quantity" select="1"/>
+                    <field name="state" select="1"/>
+                    <field name="quantity_max"/>
+                    <field name="date_deadline" select="1"/>
+                    <field name="balance" select="1"/>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="view_analytic_account_close_tree" model="ir.ui.view">
+            <field name="name">report.analytic.account.close.tree</field>
+            <field name="model">report.analytic.account.close</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Expired analytic accounts">
+                    <field name="name" groups="analytic.group_analytic_accounting"/>
+                    <field name="partner_id"/>
+                    <field name="state"/>
+                    <field name="quantity"/>
+                    <field name="quantity_max"/>
+                    <field name="date_deadline"/>
+                    <field name="balance"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_analytic_account_graph" model="ir.ui.view">
+            <field name="name">report.analytic.account.close.graph</field>
+            <field name="model">report.analytic.account.close</field>
+            <field name="type">graph</field>
+            <field name="arch" type="xml">
+                <graph string="Expired analytic accounts" type="bar">
+                    <field name="partner_id"/>
+                    <field name="quantity" operator="+"/>
+                    <field name="quantity_max" operator="+"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="action_analytic_account_tree" model="ir.actions.act_window">
+            <field name="name">Expired analytic accounts</field>
+            <field name="res_model">report.analytic.account.close</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,graph</field>
+            <field name="domain">[('state','=','open')]</field>
+        </record>
+
+        <record id="account_analytic_line_to_invoice_view_form" model="ir.ui.view">
+            <field name="name">report.account.analytic.line.to.invoice</field>
+            <field name="model">report.account.analytic.line.to.invoice</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Analytic Lines to Invoice">
+                    <field name="name" select="1"/>
+                    <field name="month" select="1"/>
+                    <field name="account_id" select="1" groups="analytic.group_analytic_accounting"/>
+                    <newline/>
+                    <field name="product_id" select="1"/>
+                    <field name="product_uom_id"/>
+                    <newline/>
+                    <field colspan="1" name="amount"/>
+                    <field colspan="1" name="unit_amount"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="account_analytic_line_to_invoice_view_tree" model="ir.ui.view">
+            <field name="name">report.account.analytic.line.to.invoice</field>
+            <field name="model">report.account.analytic.line.to.invoice</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Analytic Lines to Invoice">
+                    <field name="name"/>
+                    <field name="month"/>
+                    <field name="product_id"/>
+                    <field name="account_id" groups="analytic.group_analytic_accounting"/>
+                    <field name="amount"/>
+                    <field name="sale_price"/>
+                    <field name="unit_amount"/>
+                    <field name="product_uom_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="account_analytic_line_to_invoice_view_graph" model="ir.ui.view">
+            <field name="name">report.account.analytic.line.to.invoice.graph</field>
+            <field name="model">report.account.analytic.line.to.invoice</field>
+            <field name="type">graph</field>
+            <field name="arch" type="xml">
+                <graph string="Analytic Lines to Invoice" type="bar">
+                    <field name="name"/>
+                    <field name="sale_price" operator="+"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="account_analytic_line_to_invoice_view_filter" model="ir.ui.view">
+            <field name="name">report.account.analytic.line.to.invoice.select</field>
+            <field name="model">report.account.analytic.line.to.invoice</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Analytic Lines to Invoice">
+                   <group>
+                        <filter string="This Year" icon="terp-go-year" domain="[('name','=',time.localtime()[0])]"/>
+                        <filter string="This Month" icon="terp-go-month" domain="[('month','=',time.localtime()[1])]"/>
+                        <separator orientation="vertical"/>
+                        <field name="name"/>
+                        <field name="month"/>
+                        <field name="product_id"/>
+                        <field name="account_id" groups="analytic.group_analytic_accounting"/>
+                   </group>
+               </search>
+            </field>
+        </record>
+
+        <record id="action_account_analytic_line_to_invoice" model="ir.actions.act_window">
+            <field name="name">Analytic Lines to Invoice</field>
+            <field name="res_model">report.account.analytic.line.to.invoice</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,graph</field>
+            <field name="search_view_id" ref="account_analytic_line_to_invoice_view_filter"/>
+        </record>
+
+        <act_window
+        domain="[('invoice_id','=',False),('to_invoice','&lt;&gt;',False)]"
+        context="{'search_default_account_id': [active_id], 'default_account_id': active_id}"
+        id="act_acc_analytic_acc_2_report_acc_analytic_line_to_invoice"
+        name="Lines to Invoice"
+        res_model="account.analytic.line"
+        src_model="account.analytic.account"/>
+
+    </data>
+</openerp>

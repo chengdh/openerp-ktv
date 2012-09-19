@@ -1,0 +1,1283 @@
+# Finnish translation for openobject-addons
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the openobject-addons package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openobject-addons\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-02-08 00:36+0000\n"
+"PO-Revision-Date: 2012-03-30 07:35+0000\n"
+"Last-Translator: Juha Kotamäki <Unknown>\n"
+"Language-Team: Finnish <fi@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-08-28 09:42+0000\n"
+"X-Generator: Launchpad (build 15864)\n"
+
+#. module: event
+#: view:event.event:0
+msgid "Invoice Information"
+msgstr "Laskutus tiedot"
+
+#. module: event
+#: view:partner.event.registration:0
+msgid "Event Details"
+msgstr "Tapahtuman yksityiskohdat"
+
+#. module: event
+#: field:event.event,main_speaker_id:0
+msgid "Main Speaker"
+msgstr "Pääpuhuja"
+
+#. module: event
+#: view:event.event:0
+#: view:event.registration:0
+#: view:report.event.registration:0
+msgid "Group By..."
+msgstr "Ryhmittele"
+
+#. module: event
+#: field:event.event,register_min:0
+msgid "Minimum Registrations"
+msgstr "Pienin rekisteröintimäärä"
+
+#. module: event
+#: model:ir.model,name:event.model_event_confirm_registration
+msgid "Confirmation for Event Registration"
+msgstr "Vahvistus tapahtumaan ilmottautumisesta"
+
+#. module: event
+#: field:event.registration.badge,title:0
+msgid "Title"
+msgstr "Otsikko"
+
+#. module: event
+#: field:event.event,mail_registr:0
+msgid "Registration Email"
+msgstr "Rekisteröinti sähköposti"
+
+#. module: event
+#: model:ir.actions.act_window,name:event.action_event_confirm_registration
+msgid "Make Invoices"
+msgstr "Luo Laskuja"
+
+#. module: event
+#: view:event.event:0
+#: view:event.registration:0
+msgid "Registration Date"
+msgstr "Ilmottautumispäivä"
+
+#. module: event
+#: view:partner.event.registration:0
+msgid "_Close"
+msgstr "_Sulje"
+
+#. module: event
+#: model:event.event,name:event.event_0
+msgid "Concert of Bon Jovi"
+msgstr "Bon Jovin konsertti"
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Invoiced Registrations only"
+msgstr "Vain laskutetut ilmoittautumiset"
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "March"
+msgstr "Maaliskuu"
+
+#. module: event
+#: field:event.event,mail_confirm:0
+msgid "Confirmation Email"
+msgstr "Vahvistus sähköposti"
+
+#. module: event
+#: field:event.registration,nb_register:0
+msgid "Quantity"
+msgstr "Määrä"
+
+#. module: event
+#: code:addons/event/wizard/event_make_invoice.py:63
+#, python-format
+msgid "Registration doesn't have any partner to invoice."
+msgstr "Rekisteröinnillä ei ole laskutuskumppania"
+
+#. module: event
+#: field:event.event,company_id:0
+#: field:event.registration,company_id:0
+#: view:report.event.registration:0
+#: field:report.event.registration,company_id:0
+msgid "Company"
+msgstr "Yritys"
+
+#. module: event
+#: field:event.make.invoice,invoice_date:0
+msgid "Invoice Date"
+msgstr "Laskutuspäivä"
+
+#. module: event
+#: help:event.event,pricelist_id:0
+msgid "Pricelist version for current event."
+msgstr "Hintalistan versio nykyiselle tapahtumalle"
+
+#. module: event
+#: code:addons/event/wizard/partner_event_registration.py:88
+#: view:event.registration:0
+#: model:ir.actions.act_window,name:event.action_partner_event_registration
+#: model:ir.model,name:event.model_event_registration
+#: view:partner.event.registration:0
+#, python-format
+msgid "Event Registration"
+msgstr "Tapahtuman rekisteröinti"
+
+#. module: event
+#: field:event.event,parent_id:0
+msgid "Parent Event"
+msgstr "Ylätason tapahtuma"
+
+#. module: event
+#: model:ir.actions.act_window,name:event.action_make_invoices
+msgid "Make Invoice"
+msgstr "Luo lasku"
+
+#. module: event
+#: field:event.registration,price_subtotal:0
+msgid "Subtotal"
+msgstr "Välisumma"
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Event on Registration"
+msgstr "Rekisteröinnin tapahtuma"
+
+#. module: event
+#: help:event.event,reply_to:0
+msgid "The email address put in the 'Reply-To' of all emails sent by OpenERP"
+msgstr ""
+"Sähköpostin vastausosoite (reply-to) joka laitetaan kaikkiin OpenERP:in "
+"lähettämiin sähköposteihin"
+
+#. module: event
+#: view:event.registration:0
+msgid "Add Internal Note"
+msgstr "Lisää sisäinen huomautus"
+
+#. module: event
+#: view:event.event:0
+msgid "Confirmed events"
+msgstr "Vahvistetut tapahtumat"
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Event Beginning Date"
+msgstr "Tapahtuman alkupäivä"
+
+#. module: event
+#: model:ir.actions.act_window,name:event.action_report_event_registration
+#: model:ir.model,name:event.model_report_event_registration
+#: model:ir.ui.menu,name:event.menu_report_event_registration
+#: view:report.event.registration:0
+msgid "Events Analysis"
+msgstr "Tapahtumien analyysi"
+
+#. module: event
+#: field:event.registration,message_ids:0
+msgid "Messages"
+msgstr "Viestit"
+
+#. module: event
+#: model:ir.model,name:event.model_event_registration_badge
+msgid "event.registration.badge"
+msgstr ""
+
+#. module: event
+#: field:event.event,mail_auto_confirm:0
+msgid "Mail Auto Confirm"
+msgstr "Postita automaattinen vahvistus"
+
+#. module: event
+#: model:product.template,name:event.event_product_1_product_template
+msgid "Ticket for Opera"
+msgstr "Pääsylippu Oopperaan"
+
+#. module: event
+#: code:addons/event/event.py:125
+#: view:event.event:0
+#, python-format
+msgid "Confirm Event"
+msgstr "Vahvista tapahtuma"
+
+#. module: event
+#: selection:event.event,state:0
+#: selection:event.registration,state:0
+#: selection:report.event.registration,state:0
+msgid "Cancelled"
+msgstr "Peruttu"
+
+#. module: event
+#: field:event.event,reply_to:0
+msgid "Reply-To"
+msgstr "Vastausosoite"
+
+#. module: event
+#: model:ir.actions.act_window,name:event.open_board_associations_manager
+#: model:ir.ui.menu,name:event.menu_board_associations_manager
+msgid "Event Dashboard"
+msgstr "Tapahtumien työpöytä"
+
+#. module: event
+#: model:event.event,name:event.event_1
+msgid "Opera of Verdi"
+msgstr "Verdin ooppera"
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "July"
+msgstr "Heinäkuu"
+
+#. module: event
+#: help:event.event,register_prospect:0
+msgid "Total of Prospect Registrations"
+msgstr "Mahdollisten osallistujien kokonaismäärä"
+
+#. module: event
+#: help:event.event,mail_auto_confirm:0
+msgid ""
+"Check this box if you want to use automatic confirmation emailing or "
+"reminder."
+msgstr ""
+"Valitse tämä jos haluat käyttää automaattista vahvistus tai "
+"muistutussähköpostia"
+
+#. module: event
+#: field:event.registration,ref:0
+msgid "Reference"
+msgstr "Viite"
+
+#. module: event
+#: help:event.event,date_end:0
+#: help:partner.event.registration,end_date:0
+msgid "Closing Date of Event"
+msgstr "Tapahtuman päättymispäivä"
+
+#. module: event
+#: view:event.registration:0
+msgid "Emails"
+msgstr "Sähköpostit"
+
+#. module: event
+#: view:event.registration:0
+msgid "Extra Info"
+msgstr "Lisätiedot"
+
+#. module: event
+#: code:addons/event/wizard/event_make_invoice.py:83
+#, python-format
+msgid "Customer Invoices"
+msgstr "Asiakkaan laskut"
+
+#. module: event
+#: selection:event.event,state:0
+#: selection:report.event.registration,state:0
+msgid "Draft"
+msgstr "Luonnos"
+
+#. module: event
+#: field:event.type,name:0
+msgid "Event type"
+msgstr "Tapahtumatyyppi"
+
+#. module: event
+#: model:ir.model,name:event.model_event_type
+msgid " Event Type "
+msgstr " Tapahtuman tyyppi "
+
+#. module: event
+#: view:event.event:0
+#: view:event.registration:0
+#: field:event.registration,event_id:0
+#: model:ir.model,name:event.model_event_event
+#: field:partner.event.registration,event_id:0
+#: view:report.event.registration:0
+#: field:report.event.registration,event_id:0
+#: view:res.partner:0
+msgid "Event"
+msgstr "Tapahtuma"
+
+#. module: event
+#: view:event.registration:0
+#: field:event.registration,badge_ids:0
+msgid "Badges"
+msgstr "Nimilaput"
+
+#. module: event
+#: view:event.event:0
+#: selection:event.event,state:0
+#: view:event.registration:0
+#: selection:event.registration,state:0
+#: selection:report.event.registration,state:0
+msgid "Confirmed"
+msgstr "Vahvistettu"
+
+#. module: event
+#: view:event.confirm.registration:0
+msgid "Registration Confirmation"
+msgstr "Rekisteröinnin vahvistus"
+
+#. module: event
+#: view:event.event:0
+msgid "Events in New state"
+msgstr "Tapahtumat jotka ovat 'uusi' tilassa"
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Confirm"
+msgstr "Hyväksy"
+
+#. module: event
+#: view:event.event:0
+#: field:event.event,speaker_ids:0
+msgid "Other Speakers"
+msgstr "Muut puhujat"
+
+#. module: event
+#: model:ir.model,name:event.model_event_make_invoice
+msgid "Event Make Invoice"
+msgstr "Tee tapahtumasta lasku"
+
+#. module: event
+#: help:event.registration,nb_register:0
+msgid "Number of Registrations or Tickets"
+msgstr "Osallistujien tai lippujen määrä"
+
+#. module: event
+#: code:addons/event/wizard/event_make_invoice.py:50
+#: code:addons/event/wizard/event_make_invoice.py:54
+#: code:addons/event/wizard/event_make_invoice.py:58
+#: code:addons/event/wizard/event_make_invoice.py:62
+#, python-format
+msgid "Warning !"
+msgstr "Varoitus !"
+
+#. module: event
+#: view:event.registration:0
+msgid "Send New Email"
+msgstr "Lähetä uusi sähköposti"
+
+#. module: event
+#: help:event.event,register_min:0
+msgid "Provide Minimum Number of Registrations"
+msgstr "Määrittele ilmoittautumisten minimimäärä"
+
+#. module: event
+#: view:event.event:0
+msgid "Location"
+msgstr "Sijainti"
+
+#. module: event
+#: view:event.event:0
+#: view:event.registration:0
+#: view:report.event.registration:0
+msgid "New"
+msgstr "Uusi"
+
+#. module: event
+#: field:event.event,register_current:0
+#: view:report.event.registration:0
+msgid "Confirmed Registrations"
+msgstr "Vahvistetut rekisteröinnit"
+
+#. module: event
+#: field:event.event,mail_auto_registr:0
+msgid "Mail Auto Register"
+msgstr "Postita automaattinen rekisteröinti"
+
+#. module: event
+#: field:event.event,type:0
+#: field:partner.event.registration,event_type:0
+msgid "Type"
+msgstr "Tyyppi"
+
+#. module: event
+#: field:event.registration,email_from:0
+msgid "Email"
+msgstr "Sähköposti"
+
+#. module: event
+#: help:event.event,mail_confirm:0
+msgid ""
+"This email will be sent when the event gets confirmed or when someone "
+"subscribes to a confirmed event. This is also the email sent to remind "
+"someone about the event."
+msgstr ""
+"Tämä sähköposti lähetetään kun tilaisuus vahvistetaan tai joku ilmoittautuu "
+"vahvistettuun tapahtumaan. Tämä viesti on myös tapahtuman muistutusviesti."
+
+#. module: event
+#: field:event.registration,tobe_invoiced:0
+msgid "To be Invoiced"
+msgstr "Valmis laskutettavaksi"
+
+#. module: event
+#: view:event.event:0
+msgid "My Sales Team(s)"
+msgstr "Oma myyntitiimi"
+
+#. module: event
+#: code:addons/event/event.py:398
+#, python-format
+msgid "Error !"
+msgstr "Virhe !"
+
+#. module: event
+#: field:event.event,name:0
+#: field:event.registration,name:0
+msgid "Summary"
+msgstr "Yhteenveto"
+
+#. module: event
+#: field:event.registration,create_date:0
+msgid "Creation Date"
+msgstr "Luontipäivämäärä"
+
+#. module: event
+#: view:event.event:0
+#: view:event.registration:0
+#: view:res.partner:0
+msgid "Cancel Registration"
+msgstr "Peruuta rekisteröinti"
+
+#. module: event
+#: code:addons/event/event.py:399
+#, python-format
+msgid "Registered partner doesn't have an address to make the invoice."
+msgstr "Rekisteröidylla kumppanilla ei ole laskutusosoitetta"
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Events created in last month"
+msgstr "Viime kuussa luodut tapahtumat"
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Events created in current year"
+msgstr "Tänä vuonna luodut tapahtumat"
+
+#. module: event
+#: help:event.event,type:0
+msgid "Type of Event like Seminar, Exhibition, Conference, Training."
+msgstr "Tapahtuman tyyppi kuten seminaari, näyttely, konferenssi, koulutus."
+
+#. module: event
+#: view:event.registration:0
+msgid "Confirmed registrations"
+msgstr "Vahvistetut ilmoittautumiset"
+
+#. module: event
+#: view:event.event:0
+msgid "Event Organization"
+msgstr "Tapahtumien organisointi"
+
+#. module: event
+#: view:event.registration:0
+msgid "History Information"
+msgstr "Historiatiedot"
+
+#. module: event
+#: view:event.registration:0
+msgid "Dates"
+msgstr "Päivämäärät"
+
+#. module: event
+#: view:event.confirm:0
+#: view:event.confirm.registration:0
+msgid "Confirm Anyway"
+msgstr "Vahvista jokatapauksessa"
+
+#. module: event
+#: code:addons/event/wizard/event_confirm_registration.py:54
+#, python-format
+msgid "Warning: The Event '%s' has reached its Maximum Limit (%s)."
+msgstr "Varoitus: Tapahtuma '%s' on saavuttanut maksimimäärän (%s)."
+
+#. module: event
+#: view:report.event.registration:0
+msgid "    Month-1    "
+msgstr "    Edellinen kk    "
+
+#. module: event
+#: view:event.event:0
+#: view:event.registration:0
+#: field:event.registration.badge,registration_id:0
+#: model:ir.actions.act_window,name:event.act_event_list_register_event
+msgid "Registration"
+msgstr "Rekisteröinti"
+
+#. module: event
+#: field:report.event.registration,nbevent:0
+msgid "Number Of Events"
+msgstr "Tapahtumien lukumäärä"
+
+#. module: event
+#: help:event.event,main_speaker_id:0
+msgid "Speaker who will be giving speech at the event."
+msgstr "Tilaisuuden puhuja"
+
+#. module: event
+#: help:event.event,state:0
+msgid ""
+"If event is created, the state is 'Draft'.If event is confirmed for the "
+"particular dates the state is set to 'Confirmed'. If the event is over, the "
+"state is set to 'Done'.If event is cancelled the state is set to 'Cancelled'."
+msgstr ""
+"Jos tapahtuma luodaan, sen tila on 'luonnos'. Jos tapahtuma vahvistetaan "
+"näille päiville, tila muuttuu 'vahvistettu'. Jos tapahtuma on jo ohi, tila "
+"on 'valmis', jos tapahtuma perutaan, tila on 'peruttu'"
+
+#. module: event
+#: view:event.event:0
+msgid "Cancel Event"
+msgstr "Peruuta tapahtuma"
+
+#. module: event
+#: view:event.event:0
+#: view:event.registration:0
+msgid "Contact"
+msgstr "Yhteyshenkilö"
+
+#. module: event
+#: view:event.event:0
+#: view:event.registration:0
+#: field:event.registration,partner_id:0
+#: model:ir.model,name:event.model_res_partner
+msgid "Partner"
+msgstr "Kumppani"
+
+#. module: event
+#: view:board.board:0
+#: model:ir.actions.act_window,name:event.act_event_reg
+#: view:report.event.registration:0
+msgid "Events Filling Status"
+msgstr "Tapahtuman täyttöaste"
+
+#. module: event
+#: field:event.make.invoice,grouped:0
+msgid "Group the invoices"
+msgstr "Yhdistä laskut"
+
+#. module: event
+#: view:event.event:0
+msgid "Mailing"
+msgstr "Postitus"
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Events States"
+msgstr "Tapahtumien tilat"
+
+#. module: event
+#: view:board.board:0
+#: field:event.event,register_prospect:0
+msgid "Unconfirmed Registrations"
+msgstr "Vahvistamattomat rekisteröinnit"
+
+#. module: event
+#: field:event.registration,partner_invoice_id:0
+msgid "Partner Invoiced"
+msgstr "Kumppani laskutettu"
+
+#. module: event
+#: help:event.event,register_max:0
+msgid "Provide Maximum Number of Registrations"
+msgstr "Määrittele ilmoittautumisten maksimimäärä"
+
+#. module: event
+#: field:event.registration,log_ids:0
+msgid "Logs"
+msgstr "Logit"
+
+#. module: event
+#: view:event.event:0
+#: field:event.event,state:0
+#: view:event.registration:0
+#: field:event.registration,state:0
+#: view:report.event.registration:0
+#: field:report.event.registration,state:0
+msgid "State"
+msgstr "Tila"
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "September"
+msgstr "Syyskuu"
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "December"
+msgstr "Joulukuu"
+
+#. module: event
+#: field:event.registration,event_product:0
+msgid "Invoice Name"
+msgstr "Laskun nimi"
+
+#. module: event
+#: field:report.event.registration,draft_state:0
+msgid " # No of Draft Registrations"
+msgstr " Luonnosilmoittautumisten määrä"
+
+#. module: event
+#: view:report.event.registration:0
+#: field:report.event.registration,month:0
+msgid "Month"
+msgstr "Kuukausi"
+
+#. module: event
+#: view:event.event:0
+msgid "Event Done"
+msgstr "Tapahtuma valmis"
+
+#. module: event
+#: view:event.registration:0
+msgid "Registrations in unconfirmed state"
+msgstr "Ei-vahvistetut ilmoittautumiset"
+
+#. module: event
+#: help:event.event,register_current:0
+msgid "Total of Open and Done Registrations"
+msgstr "Avointen ja valmiiden ilmoittautumisten kokonaismäärä"
+
+#. module: event
+#: field:event.confirm.registration,msg:0
+msgid "Message"
+msgstr "Viesti"
+
+#. module: event
+#: constraint:event.event:0
+msgid "Error ! You cannot create recursive event."
+msgstr "Virhe ! et voi luoda rekursiivisia tapahtumia."
+
+#. module: event
+#: field:event.registration,ref2:0
+msgid "Reference 2"
+msgstr "Viittaus 2"
+
+#. module: event
+#: code:addons/event/event.py:361
+#: view:report.event.registration:0
+#, python-format
+msgid "Invoiced"
+msgstr "Laskutettu"
+
+#. module: event
+#: view:event.event:0
+#: view:report.event.registration:0
+msgid "My Events"
+msgstr "Omat tapahtumat"
+
+#. module: event
+#: view:event.event:0
+msgid "Speakers"
+msgstr "Puhujat"
+
+#. module: event
+#: view:event.make.invoice:0
+msgid "Create invoices"
+msgstr "Muodosta laskut"
+
+#. module: event
+#: help:event.registration,email_cc:0
+msgid ""
+"These email addresses will be added to the CC field of all inbound and "
+"outbound emails for this record before being sent. Separate multiple email "
+"addresses with a comma"
+msgstr ""
+"Nämä sähköpostiosoitteet lisätään cc (kopio viestistä) kenttään tähän "
+"tietueeseen liittyvien sähköpostien osalta. Erota useammat osoitteet "
+"pilkulla."
+
+#. module: event
+#: view:event.make.invoice:0
+msgid "Do you really want to create the invoice(s) ?"
+msgstr "Oletko varma, että haluat muodostaa laskun?"
+
+#. module: event
+#: view:event.event:0
+msgid "Beginning Date"
+msgstr "Alkupäivä"
+
+#. module: event
+#: field:event.registration,date_closed:0
+msgid "Closed"
+msgstr "Suljettu"
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Events which are in New state"
+msgstr "Tapahtumat jotka ovat 'üusi' tilassa"
+
+#. module: event
+#: view:event.event:0
+#: model:ir.actions.act_window,name:event.action_event_view
+#: model:ir.ui.menu,name:event.menu_event_event
+#: model:ir.ui.menu,name:event.menu_event_event_assiciation
+#: view:res.partner:0
+msgid "Events"
+msgstr "Tapahtumat"
+
+#. module: event
+#: field:partner.event.registration,nb_register:0
+msgid "Number of Registration"
+msgstr "Rekisteröintien määrä"
+
+#. module: event
+#: field:event.event,child_ids:0
+msgid "Child Events"
+msgstr "Alatason tapahtumat"
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "August"
+msgstr "Elokuu"
+
+#. module: event
+#: field:res.partner,event_ids:0
+#: field:res.partner,event_registration_ids:0
+msgid "unknown"
+msgstr "Tuntematon"
+
+#. module: event
+#: help:event.event,product_id:0
+msgid ""
+"The invoices of this event registration will be created with this Product. "
+"Thus it allows you to set the default label and the accounting info you want "
+"by default on these invoices."
+msgstr ""
+"Tähän tapahtumaan liittyvät laskut luodaan tälle tuotteelle. Näin se "
+"mahdollistaa oletusnimen ja kirjanpitotiedot jotka haluat näille laskuille."
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "June"
+msgstr "Kesäkuu"
+
+#. module: event
+#: model:product.template,name:event.event_product_0_product_template
+msgid "Ticket for Concert"
+msgstr "Pääsylippu konserttiin"
+
+#. module: event
+#: field:event.registration,write_date:0
+msgid "Write Date"
+msgstr "Kirjoita päiväys"
+
+#. module: event
+#: view:event.registration:0
+msgid "My Registrations"
+msgstr "Omat osallistumiset"
+
+#. module: event
+#: view:event.confirm:0
+msgid ""
+"Warning: This Event has not reached its Minimum Registration Limit. Are you "
+"sure you want to confirm it?"
+msgstr ""
+"Varoitus: Tapahtuma ei ole saavuttanut osallistujien minimimäärää. Oletko "
+"varma että haluat vahvistaa sen?"
+
+#. module: event
+#: field:event.registration,active:0
+msgid "Active"
+msgstr "Aktiivinen"
+
+#. module: event
+#: field:event.registration,date:0
+msgid "Start Date"
+msgstr "Aloituspvm"
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "November"
+msgstr "Marraskuu"
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Extended Filters..."
+msgstr "Laajennetut Suotimet..."
+
+#. module: event
+#: field:partner.event.registration,start_date:0
+msgid "Start date"
+msgstr "Aloituspäivä"
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "October"
+msgstr "Lokakuu"
+
+#. module: event
+#: field:event.event,language:0
+msgid "Language"
+msgstr "Kieli"
+
+#. module: event
+#: view:event.registration:0
+#: field:event.registration,email_cc:0
+msgid "CC"
+msgstr "Kopio"
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "January"
+msgstr "Tammikuu"
+
+#. module: event
+#: help:event.registration,email_from:0
+msgid "These people will receive email."
+msgstr "Nämä henkilöt vastaanottavat sähköpostin."
+
+#. module: event
+#: view:event.event:0
+msgid "Set To Draft"
+msgstr "Aseta luonnokseksi"
+
+#. module: event
+#: code:addons/event/event.py:499
+#: view:event.event:0
+#: view:event.registration:0
+#: view:res.partner:0
+#, python-format
+msgid "Confirm Registration"
+msgstr "Vahvista rekisteröinti"
+
+#. module: event
+#: view:event.event:0
+#: view:report.event.registration:0
+#: view:res.partner:0
+msgid "Date"
+msgstr "Päiväys"
+
+#. module: event
+#: view:event.event:0
+msgid "Registration Email Body"
+msgstr "Ilmoittautumissähköpostin runko"
+
+#. module: event
+#: view:event.event:0
+msgid "Confirmation Email Body"
+msgstr "Vahvistusviestin runko"
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Registrations in confirmed or done state"
+msgstr "Ilmoittautumiset jotka ovat vahvistettu tai valmis tilassa"
+
+#. module: event
+#: view:event.registration:0
+#: view:res.partner:0
+msgid "History"
+msgstr "Historia"
+
+#. module: event
+#: field:event.event,address_id:0
+msgid "Location Address"
+msgstr "Paikan osoite"
+
+#. module: event
+#: model:ir.actions.act_window,name:event.action_event_type
+#: model:ir.ui.menu,name:event.menu_event_type
+msgid "Types of Events"
+msgstr "Tapahtumien tyypit"
+
+#. module: event
+#: field:event.registration,contact_id:0
+msgid "Partner Contact"
+msgstr "Kumppanin Yhteystiedot"
+
+#. module: event
+#: field:event.event,pricelist_id:0
+msgid "Pricelist"
+msgstr "Hinnasto"
+
+#. module: event
+#: code:addons/event/wizard/event_make_invoice.py:59
+#, python-format
+msgid "Event related doesn't have any product defined"
+msgstr "Liittyvälle tapahtumalle ei ole määritelty tuotteita"
+
+#. module: event
+#: view:event.event:0
+msgid "Auto Confirmation Email"
+msgstr "Automaattisen vahvistuksen sähköpostitus"
+
+#. module: event
+#: view:event.registration:0
+msgid "Misc"
+msgstr "Sekalaiset"
+
+#. module: event
+#: constraint:event.event:0
+msgid "Error ! Closing Date cannot be set before Beginning Date."
+msgstr "Virhe ! Päättymispäivä ei voi olla aikaisempi kuin alkupäivä"
+
+#. module: event
+#: code:addons/event/event.py:446
+#: selection:event.event,state:0
+#: view:event.make.invoice:0
+#: selection:event.registration,state:0
+#: selection:report.event.registration,state:0
+#, python-format
+msgid "Done"
+msgstr "Valmis"
+
+#. module: event
+#: field:event.event,date_begin:0
+msgid "Beginning date"
+msgstr "Aloituspäivämäärä"
+
+#. module: event
+#: view:event.registration:0
+#: field:event.registration,invoice_id:0
+msgid "Invoice"
+msgstr "Lasku"
+
+#. module: event
+#: view:report.event.registration:0
+#: field:report.event.registration,year:0
+msgid "Year"
+msgstr "Vuosi"
+
+#. module: event
+#: code:addons/event/event.py:465
+#, python-format
+msgid "Cancel"
+msgstr "Peruuta"
+
+#. module: event
+#: view:event.confirm:0
+#: view:event.confirm.registration:0
+#: view:event.make.invoice:0
+msgid "Close"
+msgstr "Sulje"
+
+#. module: event
+#: view:event.event:0
+msgid "Event by Registration"
+msgstr "Tapahtumat ilmoittautumisten mukaan"
+
+#. module: event
+#: code:addons/event/event.py:436
+#, python-format
+msgid "Open"
+msgstr "Avaa"
+
+#. module: event
+#: field:event.event,user_id:0
+msgid "Responsible User"
+msgstr "Vastuukäyttäjä"
+
+#. module: event
+#: code:addons/event/event.py:561
+#: code:addons/event/event.py:568
+#, python-format
+msgid "Auto Confirmation: [%s] %s"
+msgstr "Automaattivahvistus: [%s] %s"
+
+#. module: event
+#: view:event.event:0
+#: view:event.registration:0
+#: field:event.registration,user_id:0
+#: view:report.event.registration:0
+#: field:report.event.registration,user_id:0
+msgid "Responsible"
+msgstr "Vastuuhenkilö"
+
+#. module: event
+#: field:event.event,unit_price:0
+#: view:event.registration:0
+#: field:partner.event.registration,unit_price:0
+msgid "Registration Cost"
+msgstr "Rekisteröintikustannus"
+
+#. module: event
+#: field:event.registration,unit_price:0
+msgid "Unit Price"
+msgstr "Yksikköhinta"
+
+#. module: event
+#: view:report.event.registration:0
+#: field:report.event.registration,speaker_id:0
+#: field:res.partner,speaker:0
+msgid "Speaker"
+msgstr "Puhuja"
+
+#. module: event
+#: model:event.event,name:event.event_2
+msgid "Conference on ERP Buisness"
+msgstr "ERP -liiketoiminnan konferenssi"
+
+#. module: event
+#: view:event.registration:0
+msgid "Reply"
+msgstr "Vastaa"
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Events created in current month"
+msgstr "Tapahtumat jotka on luotu kuluvan kuukauden aikana"
+
+#. module: event
+#: help:event.event,mail_auto_registr:0
+msgid ""
+"Check this box if you want to use automatic emailing for new registration."
+msgstr ""
+"Valitse tämä jos haluat käyttää uuden ilmoittautumisen automaattista "
+"sähköpostia"
+
+#. module: event
+#: field:event.event,date_end:0
+#: field:partner.event.registration,end_date:0
+msgid "Closing date"
+msgstr "Päättymispäivä"
+
+#. module: event
+#: field:event.event,product_id:0
+#: view:report.event.registration:0
+#: field:report.event.registration,product_id:0
+msgid "Product"
+msgstr "Tuote"
+
+#. module: event
+#: view:event.event:0
+#: field:event.event,note:0
+#: view:event.registration:0
+#: field:event.registration,description:0
+msgid "Description"
+msgstr "Kuvaus"
+
+#. module: event
+#: field:report.event.registration,confirm_state:0
+msgid " # No of Confirmed Registrations"
+msgstr " Vahvistettujen ilmoittautumisten määrä"
+
+#. module: event
+#: model:ir.actions.act_window,name:event.act_register_event_partner
+msgid "Subscribe"
+msgstr "Tilaa"
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "May"
+msgstr "Toukokuu"
+
+#. module: event
+#: view:res.partner:0
+msgid "Events Registration"
+msgstr "Tapahtumiin ilmoittautuminen"
+
+#. module: event
+#: help:event.event,mail_registr:0
+msgid "This email will be sent when someone subscribes to the event."
+msgstr "Tämä sähköposti lähetetään kun joku ilmoittautuu tapahtumaan."
+
+#. module: event
+#: model:product.template,name:event.event_product_2_product_template
+msgid "Ticket for Conference"
+msgstr "Pääsylippu konferenssiin"
+
+#. module: event
+#: model:ir.ui.menu,name:event.menu_event_type_association
+msgid "Events Type"
+msgstr "Tapahtuman tyyppi"
+
+#. module: event
+#: field:event.registration.badge,address_id:0
+msgid "Address"
+msgstr "Osoite"
+
+#. module: event
+#: view:board.board:0
+#: model:ir.actions.act_window,name:event.act_event_view
+msgid "Next Events"
+msgstr "Seuraavat tapahtumat"
+
+#. module: event
+#: view:partner.event.registration:0
+msgid "_Subcribe"
+msgstr "_Tilaa"
+
+#. module: event
+#: model:ir.model,name:event.model_partner_event_registration
+msgid "  event Registration "
+msgstr "  tapahtumaan ilmoittautumine "
+
+#. module: event
+#: help:event.event,date_begin:0
+#: help:partner.event.registration,start_date:0
+msgid "Beginning Date of Event"
+msgstr "Tapahtuman alkupäivä"
+
+#. module: event
+#: selection:event.registration,state:0
+msgid "Unconfirmed"
+msgstr "Vahvistamaton"
+
+#. module: event
+#: code:addons/event/event.py:565
+#, python-format
+msgid "Auto Registration: [%s] %s"
+msgstr "Automaattinen ilmoittautuminen: [%s] %s"
+
+#. module: event
+#: field:event.registration,date_deadline:0
+msgid "End Date"
+msgstr "Loppupvm"
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "February"
+msgstr "Helmikuu"
+
+#. module: event
+#: view:board.board:0
+msgid "Association Dashboard"
+msgstr "Yhdistysten työpöytä"
+
+#. module: event
+#: view:event.event:0
+#: field:event.registration.badge,name:0
+msgid "Name"
+msgstr "Nimi"
+
+#. module: event
+#: field:event.event,section_id:0
+#: field:event.registration,section_id:0
+#: view:report.event.registration:0
+#: field:report.event.registration,section_id:0
+msgid "Sale Team"
+msgstr "Myyntitiimi"
+
+#. module: event
+#: field:event.event,country_id:0
+msgid "Country"
+msgstr "Maa"
+
+#. module: event
+#: code:addons/event/wizard/event_make_invoice.py:55
+#, python-format
+msgid "Registration is set as Cannot be invoiced"
+msgstr "Ilmoittautuminen on merkitty ei-laskutettavissa"
+
+#. module: event
+#: code:addons/event/event.py:527
+#: view:event.event:0
+#: view:event.registration:0
+#: view:res.partner:0
+#, python-format
+msgid "Close Registration"
+msgstr "Sulje rekisteröinti"
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "April"
+msgstr "Huhtikuu"
+
+#. module: event
+#: help:event.event,unit_price:0
+msgid ""
+"This will be the default price used as registration cost when invoicing this "
+"event. Note that you can specify a specific amount for each registration."
+msgstr ""
+"Tämä on tilaisuuden oletushinta. Huomaa että voit määritellä tietyn hinnan "
+"jokaiselle ilmoittautumiselle"
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Events which are in confirm state"
+msgstr "Tapahtumat jotka ovat vahvistettu tilassa"
+
+#. module: event
+#: view:event.event:0
+#: view:event.type:0
+#: view:report.event.registration:0
+#: field:report.event.registration,type:0
+msgid "Event Type"
+msgstr "Tapahtuman tyyppi"
+
+#. module: event
+#: view:event.event:0
+#: field:event.event,registration_ids:0
+#: model:ir.actions.act_window,name:event.action_registration
+#: model:ir.ui.menu,name:event.menu_action_registration
+#: model:ir.ui.menu,name:event.menu_action_registration_association
+msgid "Registrations"
+msgstr "Rekisteröinnit"
+
+#. module: event
+#: field:event.registration,id:0
+msgid "ID"
+msgstr "TUNNISTE (ID)"
+
+#. module: event
+#: field:event.event,register_max:0
+#: field:report.event.registration,register_max:0
+msgid "Maximum Registrations"
+msgstr "Suurin rekisteröintien määrä"
+
+#. module: event
+#: constraint:res.partner:0
+msgid "Error ! You cannot create recursive associated members."
+msgstr "Virhe! Rekursiivisen kumppanin luonti ei ole sallittu."
+
+#. module: event
+#: field:report.event.registration,date:0
+msgid "Event Start Date"
+msgstr "Tapahtuman aloituspvm"
+
+#. module: event
+#: view:partner.event.registration:0
+msgid "Event For Registration"
+msgstr "Tapahtuma johon ilmoittaudutaan"
+
+#. module: event
+#: code:addons/event/wizard/event_make_invoice.py:51
+#, python-format
+msgid "Invoice cannot be created if the registration is in %s state."
+msgstr "Laskua ei voida luoda, jos ilmoittautuminen on %s tilassa."
+
+#. module: event
+#: view:event.confirm:0
+#: model:ir.actions.act_window,name:event.action_event_confirm
+#: model:ir.model,name:event.model_event_confirm
+msgid "Event Confirmation"
+msgstr "Tapahtuman vahvistaminen"
+
+#. module: event
+#: view:event.event:0
+msgid "Auto Registration Email"
+msgstr "Automaattinen rekisteröintisähköposti"
+
+#. module: event
+#: view:event.registration:0
+#: view:report.event.registration:0
+#: field:report.event.registration,total:0
+msgid "Total"
+msgstr "Kokonaismäärä"
+
+#. module: event
+#: field:event.event,speaker_confirmed:0
+msgid "Speaker Confirmed"
+msgstr "Puhuja vahvistettu"
+
+#. module: event
+#: model:ir.actions.act_window,help:event.action_event_view
+msgid ""
+"Event is the low level object used by meeting and others documents that "
+"should be synchronized with mobile devices or calendar applications through "
+"caldav. Most of the users should work in the Calendar menu, and not in the "
+"list of events."
+msgstr ""

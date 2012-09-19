@@ -1,0 +1,976 @@
+# Turkish translation for openobject-addons
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openobject-addons package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openobject-addons\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-02-08 00:36+0000\n"
+"PO-Revision-Date: 2012-09-08 14:41+0000\n"
+"Last-Translator: Ayhan KIZILTAN <Unknown>\n"
+"Language-Team: Turkish <tr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-09-09 05:07+0000\n"
+"X-Generator: Launchpad (build 15914)\n"
+
+#. module: caldav
+#: view:basic.calendar:0
+msgid "Value Mapping"
+msgstr "Değer Eşleme"
+
+#. module: caldav
+#: help:caldav.browse,url:0
+msgid "Url of the caldav server, use for synchronization"
+msgstr "Caldav sunucusu url'si, senkronize etmek için kullanın"
+
+#. module: caldav
+#: code:addons/caldav/wizard/caldav_browse.py:99
+#, python-format
+msgid ""
+"\n"
+"Prerequire\n"
+"----------\n"
+"There is no buit-in way to synchronize calendar with caldav.\n"
+"So you need to install a third part software : Calendar (CalDav)\n"
+"for now it's the only one\n"
+"\n"
+"configuration\n"
+"-------------\n"
+"\n"
+"1. Open Calendar Sync\n"
+"   I'll get an interface with 2 tabs\n"
+"   Stay on the first one\n"
+"\n"
+"2. CaDAV Calendar URL : put the URL given above (ie : "
+"http://host.com:8069/webdav/db/calendars/users/demo/c/Meetings)\n"
+"\n"
+"3. Put your openerp username and password\n"
+"\n"
+"4. If your server don't use SSL, you'll get a warnign, say \"Yes\"\n"
+"\n"
+"5. Then you can synchronize manually or custom the settings to synchronize "
+"every x minutes.\n"
+"\n"
+"    "
+msgstr ""
+"\n"
+"Öncelikgerektiren\n"
+"----------\n"
+"Burada caldav ile senkronize edilmiş yerleşik bir takvimi yoktur.\n"
+"Bu yüzden üçüncü parti bir yazılım yüklemeiz gerekir : Calendar (CalDav)\n"
+"sadece bir tanedir\n"
+"\n"
+"Ayarlar\n"
+"-------------\n"
+"\n"
+"1.Calendar Sync ' yi açın\n"
+"   Ben iki sekme ile bir arayüz alacağım.\n"
+"   İlk seferde bekleyin\n"
+"\n"
+"2. CaDAV Calendar URL: yukarıda verilen URL'yi yerleştirin (ie : "
+"http://host.com:8069/webdav/db/calendars/users/demo/c/Meetings)\n"
+"\n"
+"3. Kullanıcı adınızı ve parolayınızı yazınız.\n"
+"\n"
+"4. Eğer sunucu SSL kullanmıyorsa, bir uyarı alacaksınız, \"Evet\" deyin.\n"
+"\n"
+"5. Daha sonra manuel olarak senkronize edebilir veya özel ayarlarınızı "
+"istediğiniz her x dakikada değiştirebilirsiniz.\n"
+"\n"
+"    "
+
+#. module: caldav
+#: field:basic.calendar.alias,name:0
+msgid "Filename"
+msgstr "Dosya ismi"
+
+#. module: caldav
+#: model:ir.model,name:caldav.model_calendar_event_export
+msgid "Event Export"
+msgstr "Olay Dışaaktarımı"
+
+#. module: caldav
+#: view:calendar.event.subscribe:0
+msgid "Provide path for Remote Calendar"
+msgstr "Uzaktan Takvim yolunu belirt"
+
+#. module: caldav
+#: model:ir.actions.act_window,name:caldav.action_calendar_event_import_values
+msgid "Import .ics File"
+msgstr ".ics Dosyası İçe aktar"
+
+#. module: caldav
+#: view:caldav.browse:0
+#: view:calendar.event.export:0
+msgid "_Close"
+msgstr "_Kapat"
+
+#. module: caldav
+#: selection:basic.calendar.attributes,type:0
+#: selection:basic.calendar.lines,name:0
+msgid "Attendee"
+msgstr "Katılımcı"
+
+#. module: caldav
+#: sql_constraint:basic.calendar.fields:0
+msgid "Can not map a field more than once"
+msgstr "Birden çok alan eşleştirilemiyor"
+
+#. module: caldav
+#: model:ir.actions.act_window,help:caldav.action_caldav_form
+msgid ""
+"\"Calendars\" allow you to Customize calendar event and todo attribute with "
+"any of OpenERP model.Caledars provide iCal Import/Export "
+"functionality.Webdav server that provides remote access to calendar.Help You "
+"to synchronize Meeting with Calendars client.You can access Calendars using "
+"CalDAV clients, like sunbird, Calendar Evaluation, Mobile."
+msgstr ""
+"\"Takvimler\" takvim olaylarını ve yapılacakların davranışlarını herhangi "
+"bir OpenERP modeli Özelleştirmenize izin verir. Takvimler iCal "
+"İçeaktar/Dışaaktar işlevini sağlar. Webdav sunucusu takvime uzaktan erişimi "
+"sağlar. Takvim istemcileri ile Toplantıların eşleşmesine yardım eder. "
+"Takvimlere, Sunbird, Calendar Evaluation, Mobile gibi CalDAV istemcisi "
+"kullanarak erişirsiniz."
+
+#. module: caldav
+#: code:addons/caldav/calendar.py:789
+#: code:addons/caldav/calendar.py:879
+#: code:addons/caldav/wizard/calendar_event_import.py:63
+#, python-format
+msgid "Warning !"
+msgstr "Uyarı!"
+
+#. module: caldav
+#: field:basic.calendar.lines,object_id:0
+msgid "Object"
+msgstr "Nesne"
+
+#. module: caldav
+#: view:basic.calendar:0
+msgid "Todo"
+msgstr "Yapılacaklar"
+
+#. module: caldav
+#: model:ir.model,name:caldav.model_user_preference
+msgid "User preference Form"
+msgstr "Kullanıcı tercih Formu"
+
+#. module: caldav
+#: field:user.preference,service:0
+msgid "Services"
+msgstr "Hizmetler"
+
+#. module: caldav
+#: selection:basic.calendar.fields,fn:0
+msgid "Expression as constant"
+msgstr "Sabit İfade"
+
+#. module: caldav
+#: selection:user.preference,device:0
+msgid "Evolution"
+msgstr "Evrim"
+
+#. module: caldav
+#: view:calendar.event.import:0
+#: view:calendar.event.subscribe:0
+msgid "Ok"
+msgstr "Tamam"
+
+#. module: caldav
+#: code:addons/caldav/wizard/caldav_browse.py:123
+#, python-format
+msgid ""
+"\n"
+"    1. Go to Calendar View\n"
+"\n"
+"    2. File -> New -> Calendar\n"
+"\n"
+"    3. Fill the form\n"
+"        - type : CalDav\n"
+"        - name : Whaterver you want (ie : Meeting)\n"
+"        - url : "
+"http://HOST:PORT/webdav/DB_NAME/calendars/users/USER/c/Meetings (ie : "
+"http://localhost:8069/webdav/db_1/calendars/users/demo/c/Meetings) the one "
+"given on the top of this window\n"
+"        - uncheck \"User SSL\"\n"
+"        - Username : Your username (ie : Demo)\n"
+"        - Refresh : everytime you want that evolution synchronize the data "
+"with the server\n"
+"\n"
+"    4. Click ok and give your openerp password\n"
+"\n"
+"    5. A new calendar named with the name you gave should appear on the left "
+"side.\n"
+"     "
+msgstr ""
+"\n"
+"    1. Takvim Görünümüne Git\n"
+"    2. Dosya -> Yeni -> Takvim\n"
+"\n"
+"    3. Formu doldur\n"
+"        - türü : CalDav\n"
+"        - adı : Ne isterseniz (örn : Toplantı)\n"
+"        - url : "
+"http://HOST:PORT/webdav/DB_NAME/calendars/users/USER/c/Meetings (ie : "
+"http://localhost:8069/webdav/db_1/calendars/users/demo/c/Meetings) bu "
+"pencerenin enüstünde verilen\n"
+"        - işareti kaldır \"User SSL\"\n"
+"        - Kullanıcı adı : Kullanıcı adınız (örn : Demo)\n"
+"        - Yenile : oluşumun her seferinde veriyi sunucu ile senkronize "
+"etmesini isterseniz\n"
+"    4. Tamam'ı tıklayın ve openerp parolanızı girin\n"
+"    5. Verdiğiniz isimle yeni bir takvim adı sol tarafta görünmelidir.\n"
+"     "
+
+#. module: caldav
+#: code:addons/caldav/calendar.py:879
+#, python-format
+msgid "Please provide proper configuration of \"%s\" in Calendar Lines"
+msgstr "Lütfen Kalender Öğelerinde '%s' için doğru yapılandırma yapın"
+
+#. module: caldav
+#: view:user.preference:0
+msgid "Caldav's host name configuration"
+msgstr "Caldav sunucu adı yapılandırması"
+
+#. module: caldav
+#: field:caldav.browse,url:0
+msgid "Caldav Server"
+msgstr "Caldav Sunucusu"
+
+#. module: caldav
+#: selection:basic.calendar.fields,fn:0
+msgid "Datetime In UTC"
+msgstr "UTC Tarihzamanı"
+
+#. module: caldav
+#: selection:user.preference,device:0
+msgid "iPhone"
+msgstr "iPhone"
+
+#. module: caldav
+#: selection:basic.calendar,type:0
+#: selection:basic.calendar.attributes,type:0
+#: selection:basic.calendar.lines,name:0
+msgid "TODO"
+msgstr "YAPILACAK"
+
+#. module: caldav
+#: view:calendar.event.export:0
+msgid "Export ICS"
+msgstr "ICS Dışaaktar"
+
+#. module: caldav
+#: selection:basic.calendar.fields,fn:0
+msgid "Use the field"
+msgstr "Alanı Kullan"
+
+#. module: caldav
+#: code:addons/caldav/calendar.py:789
+#, python-format
+msgid "Can not create line \"%s\" more than once"
+msgstr "\"%s\" Satırı birden çok oluşturulamıyor"
+
+#. module: caldav
+#: view:basic.calendar:0
+msgid "Webcal Calendar"
+msgstr "Webcal Takvimi"
+
+#. module: caldav
+#: view:basic.calendar:0
+#: field:basic.calendar,line_ids:0
+#: model:ir.model,name:caldav.model_basic_calendar_lines
+msgid "Calendar Lines"
+msgstr "Takvim Satırları"
+
+#. module: caldav
+#: model:ir.model,name:caldav.model_calendar_event_subscribe
+msgid "Event subscribe"
+msgstr "Olay aboneliği"
+
+#. module: caldav
+#: view:calendar.event.import:0
+msgid "Import ICS"
+msgstr "ICS içeaktar"
+
+#. module: caldav
+#: view:calendar.event.import:0
+#: view:calendar.event.subscribe:0
+#: view:user.preference:0
+msgid "_Cancel"
+msgstr "_Vazgeç"
+
+#. module: caldav
+#: model:ir.model,name:caldav.model_basic_calendar_event
+msgid "basic.calendar.event"
+msgstr "temel.Etkinlik.olay"
+
+#. module: caldav
+#: view:basic.calendar:0
+#: selection:basic.calendar,type:0
+#: selection:basic.calendar.attributes,type:0
+#: selection:basic.calendar.lines,name:0
+msgid "Event"
+msgstr "Etkinlik"
+
+#. module: caldav
+#: field:document.directory,calendar_collection:0
+#: field:user.preference,collection:0
+msgid "Calendar Collection"
+msgstr "Takvim Bilgi Toplaması"
+
+#. module: caldav
+#: constraint:document.directory:0
+msgid "Error! You can not create recursive Directories."
+msgstr "Hata! Yinelenen Dizinler oluşturamazsınız."
+
+#. module: caldav
+#: view:user.preference:0
+msgid "_Open"
+msgstr "_Aç"
+
+#. module: caldav
+#: view:user.preference:0
+msgid "Next"
+msgstr "Sonraki"
+
+#. module: caldav
+#: field:basic.calendar,type:0
+#: field:basic.calendar.attributes,type:0
+#: field:basic.calendar.fields,type_id:0
+#: field:basic.calendar.lines,name:0
+msgid "Type"
+msgstr "Tür"
+
+#. module: caldav
+#: help:calendar.event.export,name:0
+msgid "Save in .ics format"
+msgstr ".ics biçiminde Saklayın"
+
+#. module: caldav
+#: code:addons/caldav/calendar.py:1293
+#, python-format
+msgid "Error !"
+msgstr "Hata !"
+
+#. module: caldav
+#: model:ir.model,name:caldav.model_basic_calendar_attributes
+msgid "Calendar attributes"
+msgstr "Takvim öznitelikleri"
+
+#. module: caldav
+#: model:ir.model,name:caldav.model_caldav_browse
+msgid "Caldav Browse"
+msgstr "Caldav Tarama"
+
+#. module: caldav
+#: selection:user.preference,device:0
+msgid "Android based device"
+msgstr "Android temelli aygıt"
+
+#. module: caldav
+#: view:user.preference:0
+msgid "Configure your openerp hostname. For example : "
+msgstr "Openerp sunucu adını yapılandırın. Örnek olarak: "
+
+#. module: caldav
+#: field:basic.calendar,create_date:0
+msgid "Created Date"
+msgstr "Oluşturulma Tarihi"
+
+#. module: caldav
+#: view:basic.calendar:0
+msgid "Attributes Mapping"
+msgstr "Öznitelik Eşleştirmesi"
+
+#. module: caldav
+#: model:ir.model,name:caldav.model_document_directory
+msgid "Directory"
+msgstr "Dizin"
+
+#. module: caldav
+#: field:calendar.event.subscribe,url_path:0
+msgid "Provide path for remote calendar"
+msgstr "Uzak takvim için yol belirtin."
+
+#. module: caldav
+#: field:basic.calendar.lines,domain:0
+msgid "Domain"
+msgstr "Alan Adı"
+
+#. module: caldav
+#: view:calendar.event.subscribe:0
+msgid "_Subscribe"
+msgstr "_Abone Ol"
+
+#. module: caldav
+#: field:basic.calendar,user_id:0
+msgid "Owner"
+msgstr "Sahibi"
+
+#. module: caldav
+#: view:basic.calendar:0
+#: field:basic.calendar.alias,cal_line_id:0
+#: field:basic.calendar.lines,calendar_id:0
+#: model:ir.ui.menu,name:caldav.menu_calendar
+#: field:user.preference,calendar:0
+msgid "Calendar"
+msgstr "Takvim"
+
+#. module: caldav
+#: code:addons/caldav/calendar.py:41
+#, python-format
+msgid ""
+"Please install python-vobject from http://vobject.skyhouseconsulting.com/"
+msgstr ""
+"Lütfen http://vobject.skyhouseconsulting.com/ dan python-vobject'i kurun"
+
+#. module: caldav
+#: code:addons/caldav/wizard/calendar_event_import.py:63
+#, python-format
+msgid "Invalid format of the ics, file can not be imported"
+msgstr "Geçersiz ics biçimi, dosya içeaktarılamıyor"
+
+#. module: caldav
+#: selection:user.preference,service:0
+msgid "CalDAV"
+msgstr "CalDAV"
+
+#. module: caldav
+#: field:basic.calendar.fields,field_id:0
+msgid "OpenObject Field"
+msgstr "OpenObject Alanı"
+
+#. module: caldav
+#: field:basic.calendar.alias,res_id:0
+msgid "Res. ID"
+msgstr "Res. ID"
+
+#. module: caldav
+#: view:calendar.event.subscribe:0
+msgid "Message..."
+msgstr "Mesaj..."
+
+#. module: caldav
+#: view:basic.calendar:0
+#: field:basic.calendar,has_webcal:0
+msgid "WebCal"
+msgstr "WebCal"
+
+#. module: caldav
+#: view:document.directory:0
+#: model:ir.actions.act_window,name:caldav.action_calendar_collection_form
+#: model:ir.ui.menu,name:caldav.menu_calendar_collection
+msgid "Calendar Collections"
+msgstr "Takvim Bilgi Toplaması"
+
+#. module: caldav
+#: code:addons/caldav/calendar.py:815
+#: sql_constraint:basic.calendar.alias:0
+#, python-format
+msgid "The same filename cannot apply to two records!"
+msgstr "Aynı dosya iki kayıta uygulanamaz!"
+
+#. module: caldav
+#: sql_constraint:document.directory:0
+msgid "Directory cannot be parent of itself!"
+msgstr "Dizin kendisinin üstü olamaz!"
+
+#. module: caldav
+#: view:basic.calendar:0
+#: field:document.directory,calendar_ids:0
+#: model:ir.actions.act_window,name:caldav.action_caldav_form
+#: model:ir.ui.menu,name:caldav.menu_caldav_directories
+msgid "Calendars"
+msgstr "Takvimler"
+
+#. module: caldav
+#: field:basic.calendar,collection_id:0
+msgid "Collection"
+msgstr "Bilgi Toplama"
+
+#. module: caldav
+#: field:basic.calendar,write_date:0
+msgid "Write Date"
+msgstr "Yazım Tarihi"
+
+#. module: caldav
+#: code:addons/caldav/wizard/caldav_browse.py:32
+#, python-format
+msgid ""
+"\n"
+"  * Webdav server that provides remote access to calendar\n"
+"  * Synchronisation of calendar using WebDAV\n"
+"  * Customize calendar event and todo attribute with any of OpenERP model\n"
+"  * Provides iCal Import/Export functionality\n"
+"\n"
+"    To access Calendars using CalDAV clients, point them to:\n"
+"        "
+"http://HOSTNAME:PORT/webdav/DATABASE_NAME/calendars/users/USERNAME/c\n"
+"\n"
+"    To access OpenERP Calendar using WebCal to remote site use the URL "
+"like:\n"
+"        "
+"http://HOSTNAME:PORT/webdav/DATABASE_NAME/Calendars/CALENDAR_NAME.ics\n"
+"\n"
+"      Where,\n"
+"        HOSTNAME: Host on which OpenERP server(With webdav) is running\n"
+"        PORT : Port on which OpenERP server is running (By Default : 8069)\n"
+"        DATABASE_NAME: Name of database on which OpenERP Calendar is "
+"created\n"
+"     "
+msgstr ""
+"\n"
+"  * Webdav sunucusu takvime uzaktan erişimi sağlar\n"
+"  * WebDAV kullanarak takvimin eşleştirlmesi\n"
+"  * Takvim olaylarının ve yapılacakların davranışlarının herhangi bir "
+"OpenERP modeli kullanılarak özelleştirilmesi\n"
+"  * iCal İçeaktar/Dışaaktar işlevi\n"
+"\n"
+"    CalDAV istemcisi kullanarak Takvimlere erişim için buraya yönlendirin:\n"
+"        "
+"http://HOSTNAME:PORT/webdav/DATABASE_NAME/calendars/users/USERNAME/c\n"
+"\n"
+"    OpenERP Takvimi uzak siteden WebCal istemcileri kullanarak erişimi için "
+"aşağıdaki gibi URL kullanın:\n"
+"        "
+"http://HOSTNAME:PORT/webdav/DATABASE_NAME/Calendars/CALENDAR_NAME.ics\n"
+"\n"
+"      Tanımlar,\n"
+"        HOSTNAME: OpenERP sunucusunun (webdav ile) çalıştığı barındırıcı\n"
+"        PORT : OpenERP sunucusunun çalıştığı Port (Varsayılan: 8069)\n"
+"        DATABASE_NAME: OpenERP Takviminin oluşturulduğu veritabanı adı\n"
+"     "
+
+#. module: caldav
+#: sql_constraint:document.directory:0
+msgid "The directory name must be unique !"
+msgstr "Dizin adı benzersiz olmalı"
+
+#. module: caldav
+#: view:user.preference:0
+msgid "User Preference"
+msgstr "Kullanıcı Yeğlemesi"
+
+#. module: caldav
+#: code:addons/caldav/wizard/calendar_event_subscribe.py:59
+#, python-format
+msgid "Please provide Proper URL !"
+msgstr "Lütfen doğru URL girin!"
+
+#. module: caldav
+#: model:ir.model,name:caldav.model_basic_calendar_timezone
+msgid "basic.calendar.timezone"
+msgstr "temel.takvim.zamandilimi"
+
+#. module: caldav
+#: field:basic.calendar.fields,expr:0
+msgid "Expression"
+msgstr "Deyim"
+
+#. module: caldav
+#: model:ir.model,name:caldav.model_basic_calendar_attendee
+msgid "basic.calendar.attendee"
+msgstr "temel.takvim.katılımcı"
+
+#. module: caldav
+#: model:ir.model,name:caldav.model_basic_calendar_alias
+msgid "basic.calendar.alias"
+msgstr "temel.takvim.ad"
+
+#. module: caldav
+#: view:calendar.event.import:0
+#: field:calendar.event.import,file_path:0
+msgid "Select ICS file"
+msgstr "ICS dosyası seç"
+
+#. module: caldav
+#: field:user.preference,device:0
+msgid "Software/Devices"
+msgstr "Yazılım/Aygıtlar"
+
+#. module: caldav
+#: field:basic.calendar.lines,mapping_ids:0
+msgid "Fields Mapping"
+msgstr "Alan Eşleşmeleri"
+
+#. module: caldav
+#: code:addons/caldav/wizard/caldav_browse.py:141
+#, python-format
+msgid ""
+"\n"
+"Prerequire\n"
+"----------\n"
+"If you are using thunderbird, first you need to install the lightning "
+"module\n"
+"http://www.mozilla.org/projects/calendar/lightning/\n"
+"\n"
+"configuration\n"
+"-------------\n"
+"\n"
+"1. Go to Calendar View\n"
+"\n"
+"2. File -> New Calendar\n"
+"\n"
+"3. Chosse \"On the Network\"\n"
+"\n"
+"4. for format choose CalDav\n"
+"   and as location the url given above (ie : "
+"http://host.com:8069/webdav/db/calendars/users/demo/c/Meetings)\n"
+"\n"
+"5. Choose a name and a color for the Calendar, and we advice you to uncheck "
+"\"alarm\"\n"
+"\n"
+"6. Then put your openerp login and password (to give the password only check "
+"the box \"Use password Manager to remember this password\"\n"
+"\n"
+"7. Then Finish, your meetings should appear now in your calendar view\n"
+msgstr ""
+"\n"
+"Önkoşul\n"
+"----------\n"
+"Thunderbird kullanıyorsanız, önce lightning modülünü kurmanız gerekir\n"
+"http://www.mozilla.org/projects/calendar/lightning/\n"
+"\n"
+"yapılandırma\n"
+"-------------\n"
+"\n"
+"1. Takvim Görünümüne Git\n"
+"\n"
+"2. Dosya -> Yeni Takvim\n"
+"\n"
+"3. \"İletişim Ağında\" yı Seç\n"
+"\n"
+"4. Biçim için CalDAV'ı Seç\n"
+"   ve konum olarak yukarıda verilen url'yi seç (ör : "
+"http://host.com:8069/webdav/db/takvimler/kullanıcılar/demo/c/Toplantılar)\n"
+"\n"
+"5. Takvim için bir ad ve renk Seç ve size \"uyarı\" işaretini kaldırmanızı "
+"öneririz\n"
+"\n"
+"6. Sonra openerp kullanıcı adınızı ve parolanızı verin (parola vermek için "
+"yalnızca \"Bu parolanın anımsanması için parola yöneticisini Kullan\" "
+"kutusunu işaretleyin)\n"
+"\n"
+"7. Sonra bitirin, şimdi toplantılarınız takvim görünümünde belirmelidir\n"
+
+#. module: caldav
+#: view:caldav.browse:0
+msgid "Browse caldav"
+msgstr "Caldav'ı tara"
+
+#. module: caldav
+#: field:user.preference,host_name:0
+msgid "Host Name"
+msgstr "Barındırıcı Adı"
+
+#. module: caldav
+#: model:ir.model,name:caldav.model_basic_calendar
+msgid "basic.calendar"
+msgstr "temel.takvim"
+
+#. module: caldav
+#: view:basic.calendar:0
+msgid "Other Info"
+msgstr "Diğer Bilgi"
+
+#. module: caldav
+#: selection:user.preference,device:0
+msgid "Other"
+msgstr "Diğer"
+
+#. module: caldav
+#: view:basic.calendar:0
+msgid "My Calendar(s)"
+msgstr "Takvim(lerim)im"
+
+#. module: caldav
+#: help:basic.calendar,has_webcal:0
+msgid ""
+"Also export a <name>.ics entry next to the calendar folder, with WebCal "
+"content."
+msgstr ""
+"Ayrıca takvim klasörü yanındaki bir <ad>.ics dışaaktar, WebCal içeriği ile "
+"birlikte."
+
+#. module: caldav
+#: field:basic.calendar.fields,fn:0
+msgid "Function"
+msgstr "İşlev"
+
+#. module: caldav
+#: view:user.preference:0
+msgid "database.my.openerp.com  or companyserver.com"
+msgstr "veritabanı.benim.openerp.com  ya da firmasunucusu.com"
+
+#. module: caldav
+#: view:basic.calendar:0
+#: field:basic.calendar,description:0
+#: view:caldav.browse:0
+#: field:caldav.browse,description:0
+msgid "Description"
+msgstr "Açıklama"
+
+#. module: caldav
+#: help:basic.calendar.alias,cal_line_id:0
+msgid "The calendar/line this mapping applies to"
+msgstr "Bu takvim/öğe eşleşmesini buna uygula"
+
+#. module: caldav
+#: field:basic.calendar.fields,mapping:0
+msgid "Mapping"
+msgstr "Eşleştirme"
+
+#. module: caldav
+#: code:addons/caldav/wizard/calendar_event_import.py:86
+#, python-format
+msgid "Import Sucessful"
+msgstr "İçeaktarma Başarılı"
+
+#. module: caldav
+#: view:calendar.event.import:0
+msgid "_Import"
+msgstr "_İçeaktar"
+
+#. module: caldav
+#: model:ir.model,name:caldav.model_calendar_event_import
+msgid "Event Import"
+msgstr "Olay İçeaktar"
+
+#. module: caldav
+#: selection:basic.calendar.fields,fn:0
+msgid "Interval in hours"
+msgstr "Saat olara aralık"
+
+#. module: caldav
+#: field:calendar.event.export,name:0
+msgid "File name"
+msgstr "Dosya adı"
+
+#. module: caldav
+#: view:calendar.event.subscribe:0
+msgid "Subscribe to Remote Calendar"
+msgstr "Uzak Takvime Üye ol"
+
+#. module: caldav
+#: help:basic.calendar,calendar_color:0
+msgid "For supporting clients, the color of the calendar entries"
+msgstr "Müşterileri desteklemek için, takvim giriş renkleri"
+
+#. module: caldav
+#: field:basic.calendar,name:0
+#: field:basic.calendar.attributes,name:0
+#: field:basic.calendar.fields,name:0
+msgid "Name"
+msgstr "Adı"
+
+#. module: caldav
+#: selection:basic.calendar.attributes,type:0
+#: selection:basic.calendar.lines,name:0
+msgid "Alarm"
+msgstr "Uyarı"
+
+#. module: caldav
+#: model:ir.model,name:caldav.model_basic_calendar_alarm
+msgid "basic.calendar.alarm"
+msgstr "temel.takvim.uyarı"
+
+#. module: caldav
+#: code:addons/caldav/calendar.py:1293
+#, python-format
+msgid "Attendee must have an Email Id"
+msgstr "Katılımcının bir Eposta Id'i olmalı"
+
+#. module: caldav
+#: model:ir.actions.act_window,name:caldav.action_calendar_event_export_values
+msgid "Export .ics File"
+msgstr ".ics Dosyası Dışaaktar"
+
+#. module: caldav
+#: code:addons/caldav/calendar.py:41
+#, python-format
+msgid "vobject Import Error!"
+msgstr "vobject İçeaktarım Hatası!"
+
+#. module: caldav
+#: field:calendar.event.export,file_path:0
+msgid "Save ICS file"
+msgstr "ICS dosyası sakla"
+
+#. module: caldav
+#: code:addons/caldav/wizard/caldav_browse.py:50
+#, python-format
+msgid ""
+"\n"
+"    For SSL specific configuration see the documentation below\n"
+"\n"
+"Now, to setup the calendars, you need to:\n"
+"\n"
+"1. Click on the \"Settings\" and go to the \"Mail, Contacts, Calendars\" "
+"page.\n"
+"2. Go to \"Add account...\"\n"
+"3. Click on \"Other\"\n"
+"4. From the \"Calendars\" group, select \"Add CalDAV Account\"\n"
+"\n"
+"5. Enter the host's name\n"
+"   (ie : if the url is http://openerp.com:8069/webdav/db_1/calendars/ , "
+"openerp.com is the host)\n"
+"\n"
+"6. Fill Username and password with your openerp login and password\n"
+"\n"
+"7. As a description, you can either leave the server's name or\n"
+"   something like \"OpenERP calendars\".\n"
+"\n"
+"9. If you are not using a SSL server, you'll get an error, do not worry and "
+"push \"Continue\"\n"
+"\n"
+"10. Then click to \"Advanced Settings\" to specify the right\n"
+"    ports and paths.\n"
+"\n"
+"11. Specify the port for the OpenERP server: 8071 for SSL, 8069 without.\n"
+"\n"
+"12. Set the \"Account URL\" to the right path of the OpenERP webdav:\n"
+"    the url given by the wizard (ie : "
+"http://my.server.ip:8069/webdav/dbname/calendars/ )\n"
+"\n"
+"11. Click on Done. The phone will hopefully connect to the OpenERP server\n"
+"    and verify it can use the account.\n"
+"\n"
+"12. Go to the main menu of the iPhone and enter the Calendar application.\n"
+"    Your OpenERP calendars will be visible inside the selection of the\n"
+"    \"Calendars\" button.\n"
+"    Note that when creating a new calendar entry, you will have to specify\n"
+"    which calendar it should be saved at.\n"
+"\n"
+"IF you need SSL (and your certificate is not a verified one, as usual),\n"
+"then you first will need to let the iPhone trust that. Follow these\n"
+"steps:\n"
+"\n"
+"    s1. Open Safari and enter the https location of the OpenERP server:\n"
+"      https://my.server.ip:8071/\n"
+"      (assuming you have the server at \"my.server.ip\" and the HTTPS port\n"
+"      is the default 8071)\n"
+"    s2. Safari will try to connect and issue a warning about the "
+"certificate\n"
+"      used. Inspect the certificate and click \"Accept\" so that iPhone\n"
+"      now trusts it.\n"
+"    "
+msgstr ""
+"\n"
+"    SSL özel yapılandırması için aşağıdaki bilgilere bakın\n"
+"\n"
+"Şimdi, takvimleri kurmak için size gerekenler:\n"
+"\n"
+"1. \"Ayarlar\"a tıkla ve \"Posta, Kişiler, Takvimler\" sayfasına git.\n"
+"2. \"Hesap ekle...\" ye Git\n"
+"3. \"Diğer\"e Tıkla\n"
+"4. \"Takvimler\" grubundan \"CalDAV Hesabı Ekle\"yi Seç\n"
+"\n"
+"5. Barındırıcı adını Gir\n"
+"   (ör : eğer url http://openerp.com:8069/webdav/db_1/calendars/ ise, "
+"openerp.com barındırıcıdır)\n"
+"\n"
+"6. Kullanıcı adını ve parolayı openerp kullanıcıadı ve parolası ile "
+"doldurun\n"
+"\n"
+"7. Açıklama olarak, sunucu adını bırakabilir ya da\n"
+"   \"OpenERP takvimler\" gibi yazabilirsiniz.\n"
+"\n"
+"9. SSL sunucu kullanmıyorsanız, hata alabilirsiniz, endişelenmeyin ve "
+"\"Devam\"a basın\n"
+"\n"
+"10. Sonra \"Gelişmiş Ayarlara\" tıklayarak doğru port ve \n"
+"    yolları belirleyin.\n"
+"\n"
+"11. OpenERP sunucusu için portu belirleyin: 8071 SSL için, 8069 olmadan.\n"
+"\n"
+"12. \"Hesap URL\"sinin OpenERP webdav'ının doğru yoluna ayarlayın:\n"
+"    sihirbaz tarafından verilen url (ör : "
+"http://my.server.ip:8069/webdav/dbname/calendars/ )\n"
+"\n"
+"11. Bitti'ye tıkla. Telefonun OpenERP sunucusuna bağlanması beklenir\n"
+"    ve hesabı kullanması için doğrulayın.\n"
+"\n"
+"12. iPhone ana menüsüne gidin ve Takvim uygulamasını girin.\n"
+"    OpenERP takvimleriniz, \"Takvimler\" düğmesinin seçiminin içerisinde\n"
+"    görünecektir.\n"
+"    Yeni bir takvim girişi oluştururken, hangi takvime saklanacağını\n"
+"    belirtmeyi unutmayın.\n"
+"\n"
+"Eğer SSL gereksiniminiz varsa (ve sertifikanız doğrulanmamış ise, normal "
+"olarak),\n"
+"bu drurumda iPhone'nun buna güvenmesine izin verin. Bu adımları\n"
+"izleyin:\n"
+"\n"
+"    s1. Safari'yi açın ve OpenERP sunucusunun konumunu girin:\n"
+"      https://my.server.ip:8071/\n"
+"      (\"my.server.ip\" de sunucunuz olduğunu ve HTTPS portu\n"
+"      öntanımlısının 8071 olduğunu varsayarak)\n"
+"    s2. Safari bağlanmaya çalışacaktır ve kullanılan sertifika ile ilgili "
+"uyarı\n"
+"      verecektir. Sertifikayı inceleyin ve \"Kabul et\"e tıklayın ki iPhone "
+"şimdi\n"
+"      güvensin.\n"
+"    "
+
+#. module: caldav
+#: selection:user.preference,device:0
+msgid "Sunbird/Thunderbird"
+msgstr "Sunbird/Thunderbird"
+
+#. module: caldav
+#: field:basic.calendar,calendar_order:0
+msgid "Order"
+msgstr "Sırala"
+
+#. module: caldav
+#: code:addons/caldav/wizard/calendar_event_subscribe.py:59
+#, python-format
+msgid "Error!"
+msgstr "Hata!"
+
+#. module: caldav
+#: field:basic.calendar,calendar_color:0
+msgid "Color"
+msgstr "Renk"
+
+#. module: caldav
+#: view:basic.calendar:0
+msgid "MY"
+msgstr "BENİM"
+
+#. module: caldav
+#: model:ir.model,name:caldav.model_basic_calendar_fields
+msgid "Calendar fields"
+msgstr "Takvim alanları"
+
+#. module: caldav
+#: view:calendar.event.import:0
+msgid "Import Message"
+msgstr "İleti İçeaktar"
+
+#. module: caldav
+#: model:ir.actions.act_window,name:caldav.action_calendar_event_subscribe
+#: model:ir.actions.act_window,name:caldav.action_calendar_event_subscribe_values
+msgid "Subscribe"
+msgstr "Üye Ol"
+
+#. module: caldav
+#: sql_constraint:document.directory:0
+msgid "Directory must have a parent or a storage"
+msgstr "Dizinin bir üst dizini ya da depolaması olmalıdır"
+
+#. module: caldav
+#: model:ir.model,name:caldav.model_basic_calendar_todo
+msgid "basic.calendar.todo"
+msgstr "temel.takvim.yapılacak"
+
+#. module: caldav
+#: help:basic.calendar,calendar_order:0
+msgid "For supporting clients, the order of this folder among the calendars"
+msgstr ""
+"Müşterileri desteklemek için, bu klasörün takvimler arasındaki sırası"

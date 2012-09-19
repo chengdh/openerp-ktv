@@ -1,0 +1,270 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#    * hr_contract
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.0dev\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2012-02-08 00:36+0000\n"
+"PO-Revision-Date: 2012-02-17 09:10+0000\n"
+"Last-Translator: NOVOTRADE RENDSZERHÁZ ( novotrade.hu ) "
+"<openerp@novotrade.hu>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-08-28 09:44+0000\n"
+"X-Generator: Launchpad (build 15864)\n"
+
+#. module: hr_contract
+#: field:hr.contract,wage:0
+msgid "Wage"
+msgstr "Bér"
+
+#. module: hr_contract
+#: view:hr.contract:0
+msgid "Information"
+msgstr ""
+
+#. module: hr_contract
+#: view:hr.contract:0
+msgid "Trial Period"
+msgstr "Próbaidőszak"
+
+#. module: hr_contract
+#: field:hr.contract,trial_date_start:0
+msgid "Trial Start Date"
+msgstr "Próbaidő kezdete"
+
+#. module: hr_contract
+#: view:hr.employee:0
+msgid "Medical Examination"
+msgstr "Orvosi vizsgálat"
+
+#. module: hr_contract
+#: field:hr.employee,vehicle:0
+msgid "Company Vehicle"
+msgstr "Cégautó"
+
+#. module: hr_contract
+#: view:hr.employee:0
+msgid "Miscellaneous"
+msgstr "Vegyes"
+
+#. module: hr_contract
+#: view:hr.contract:0
+msgid "Current"
+msgstr "Jelenleg"
+
+#. module: hr_contract
+#: view:hr.contract:0
+msgid "Group By..."
+msgstr "Csoportosítás..."
+
+#. module: hr_contract
+#: field:hr.contract,department_id:0
+msgid "Department"
+msgstr "Osztály, részleg"
+
+#. module: hr_contract
+#: view:hr.contract:0
+msgid "Overpassed"
+msgstr ""
+
+#. module: hr_contract
+#: view:hr.contract:0
+#: field:hr.contract,employee_id:0
+#: model:ir.model,name:hr_contract.model_hr_employee
+msgid "Employee"
+msgstr "Alkalmazott"
+
+#. module: hr_contract
+#: view:hr.contract:0
+msgid "Search Contract"
+msgstr "Szerződés keresése"
+
+#. module: hr_contract
+#: view:hr.contract:0
+msgid "Contracts in progress"
+msgstr ""
+
+#. module: hr_contract
+#: field:hr.employee,vehicle_distance:0
+msgid "Home-Work Distance"
+msgstr "Lakóhely és munkahely közötti távolság"
+
+#. module: hr_contract
+#: view:hr.contract:0
+#: field:hr.employee,contract_ids:0
+#: model:ir.actions.act_window,name:hr_contract.act_hr_employee_2_hr_contract
+#: model:ir.actions.act_window,name:hr_contract.action_hr_contract
+#: model:ir.ui.menu,name:hr_contract.hr_menu_contract
+msgid "Contracts"
+msgstr "Szerződések"
+
+#. module: hr_contract
+#: view:hr.employee:0
+msgid "Personal Info"
+msgstr "Személyes információ"
+
+#. module: hr_contract
+#: view:hr.contract:0
+msgid "Contracts whose end date already passed"
+msgstr ""
+
+#. module: hr_contract
+#: help:hr.employee,contract_id:0
+msgid "Latest contract of the employee"
+msgstr "Legutolsó szerződés az alkalmazottal"
+
+#. module: hr_contract
+#: view:hr.contract:0
+msgid "Job"
+msgstr "Munka"
+
+#. module: hr_contract
+#: view:hr.contract:0
+#: field:hr.contract,advantages:0
+msgid "Advantages"
+msgstr "Előnyök"
+
+#. module: hr_contract
+#: view:hr.contract:0
+msgid "Valid for"
+msgstr "Érvényes"
+
+#. module: hr_contract
+#: view:hr.contract:0
+msgid "Work Permit"
+msgstr "Munkavállalási engedély"
+
+#. module: hr_contract
+#: field:hr.employee,children:0
+msgid "Number of Children"
+msgstr "Gyerekek száma"
+
+#. module: hr_contract
+#: model:ir.actions.act_window,name:hr_contract.action_hr_contract_type
+#: model:ir.ui.menu,name:hr_contract.hr_menu_contract_type
+msgid "Contract Types"
+msgstr "Szerződéstípusok"
+
+#. module: hr_contract
+#: constraint:hr.employee:0
+msgid "Error ! You cannot create recursive Hierarchy of Employees."
+msgstr "Hiba! Nem hozhat létre rekurzív alkalmazotti hierarchiát."
+
+#. module: hr_contract
+#: field:hr.contract,date_end:0
+msgid "End Date"
+msgstr "Befejezés dátuma"
+
+#. module: hr_contract
+#: help:hr.contract,wage:0
+msgid "Basic Salary of the employee"
+msgstr ""
+
+#. module: hr_contract
+#: field:hr.contract,name:0
+msgid "Contract Reference"
+msgstr "Szerződés hivatkozás"
+
+#. module: hr_contract
+#: help:hr.employee,vehicle_distance:0
+msgid "In kilometers"
+msgstr "Kilométerben"
+
+#. module: hr_contract
+#: view:hr.contract:0
+#: field:hr.contract,notes:0
+msgid "Notes"
+msgstr "Megjegyzések"
+
+#. module: hr_contract
+#: field:hr.contract,permit_no:0
+msgid "Work Permit No"
+msgstr ""
+
+#. module: hr_contract
+#: view:hr.contract:0
+#: field:hr.employee,contract_id:0
+#: model:ir.model,name:hr_contract.model_hr_contract
+#: model:ir.ui.menu,name:hr_contract.next_id_56
+msgid "Contract"
+msgstr "Szerződés"
+
+#. module: hr_contract
+#: view:hr.contract:0
+#: field:hr.contract,type_id:0
+#: view:hr.contract.type:0
+#: field:hr.contract.type,name:0
+#: model:ir.model,name:hr_contract.model_hr_contract_type
+msgid "Contract Type"
+msgstr "Szerződés típusa"
+
+#. module: hr_contract
+#: view:hr.contract:0
+#: field:hr.contract,working_hours:0
+msgid "Working Schedule"
+msgstr "Munkabeosztás"
+
+#. module: hr_contract
+#: view:hr.employee:0
+msgid "Job Info"
+msgstr "Munka információ"
+
+#. module: hr_contract
+#: field:hr.contract,visa_expire:0
+msgid "Visa Expire Date"
+msgstr ""
+
+#. module: hr_contract
+#: field:hr.contract,job_id:0
+msgid "Job Title"
+msgstr "Beosztás"
+
+#. module: hr_contract
+#: field:hr.employee,manager:0
+msgid "Is a Manager"
+msgstr "Vezető?"
+
+#. module: hr_contract
+#: field:hr.contract,date_start:0
+msgid "Start Date"
+msgstr "Kezdő dátum"
+
+#. module: hr_contract
+#: constraint:hr.contract:0
+msgid "Error! contract start-date must be lower then contract end-date."
+msgstr "Hiba! A szerződés kezdetének előbb kell lennie mint a végének."
+
+#. module: hr_contract
+#: field:hr.contract,visa_no:0
+msgid "Visa No"
+msgstr ""
+
+#. module: hr_contract
+#: field:hr.employee,place_of_birth:0
+msgid "Place of Birth"
+msgstr "Születés helye"
+
+#. module: hr_contract
+#: view:hr.contract:0
+msgid "Duration"
+msgstr "Időtartam"
+
+#. module: hr_contract
+#: field:hr.employee,medic_exam:0
+msgid "Medical Examination Date"
+msgstr "Orvosi vizsgálat időpontja"
+
+#. module: hr_contract
+#: field:hr.contract,trial_date_end:0
+msgid "Trial End Date"
+msgstr "Próbaidő vége"
+
+#. module: hr_contract
+#: view:hr.contract.type:0
+msgid "Search Contract Type"
+msgstr "Szerződéstípusok keresése"

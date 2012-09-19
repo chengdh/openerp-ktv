@@ -1,0 +1,350 @@
+# translation of board-es.po to Galego
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* board
+#
+# Frco. Javier Rial Rodríguez <fjrial@cesga.es>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: board-es\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2012-02-08 00:36+0000\n"
+"PO-Revision-Date: 2012-02-17 09:10+0000\n"
+"Last-Translator: Alberto Luengo Cabanillas (Pexego) <alberto@pexego.es>\n"
+"Language-Team: Galego <g11n@mancomun.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-08-28 09:37+0000\n"
+"X-Generator: Launchpad (build 15864)\n"
+
+#. module: board
+#: view:res.log.report:0
+msgid "  Year  "
+msgstr "  Ano  "
+
+#. module: board
+#: model:ir.model,name:board.model_board_menu_create
+msgid "Menu Create"
+msgstr "Crear Menú"
+
+#. module: board
+#: view:board.menu.create:0
+msgid "Menu Information"
+msgstr "Información do menú"
+
+#. module: board
+#: view:res.users:0
+msgid "Latest Connections"
+msgstr "Últimas conexións"
+
+#. module: board
+#: view:res.log.report:0
+msgid "Log created in last month"
+msgstr ""
+
+#. module: board
+#: view:board.board:0
+#: model:ir.actions.act_window,name:board.open_board_administration_form
+msgid "Administration Dashboard"
+msgstr "Panel de control de Administración"
+
+#. module: board
+#: view:res.log.report:0
+msgid "Group By..."
+msgstr "Agrupar por ..."
+
+#. module: board
+#: view:res.log.report:0
+msgid "Log created in current year"
+msgstr ""
+
+#. module: board
+#: model:ir.model,name:board.model_board_board
+msgid "Board"
+msgstr "Taboleiro"
+
+#. module: board
+#: field:board.menu.create,menu_name:0
+msgid "Menu Name"
+msgstr "Nome do menú"
+
+#. module: board
+#: model:ir.actions.act_window,name:board.board_weekly_res_log_report_action
+#: view:res.log.report:0
+msgid "Weekly Global Activity"
+msgstr "Actividade Global Semanal"
+
+#. module: board
+#: field:board.board.line,name:0
+msgid "Title"
+msgstr "Título"
+
+#. module: board
+#: field:res.log.report,nbr:0
+msgid "# of Entries"
+msgstr "# de Entradas"
+
+#. module: board
+#: view:res.log.report:0
+#: field:res.log.report,month:0
+msgid "Month"
+msgstr "Mes"
+
+#. module: board
+#: view:res.log.report:0
+msgid "Log created in current month"
+msgstr ""
+
+#. module: board
+#: model:ir.actions.act_window,name:board.board_monthly_res_log_report_action
+#: view:res.log.report:0
+msgid "Monthly Activity per Document"
+msgstr "Actividade Mensual por Documento"
+
+#. module: board
+#: view:board.board:0
+msgid "Configuration Overview"
+msgstr ""
+
+#. module: board
+#: model:ir.actions.act_window,name:board.action_view_board_list_form
+#: model:ir.ui.menu,name:board.menu_view_board_form
+msgid "Dashboard Definition"
+msgstr "Definición taboleiro"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "March"
+msgstr "Marzo"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "August"
+msgstr "Agosto"
+
+#. module: board
+#: model:ir.actions.act_window,name:board.action_user_connection_tree
+msgid "User Connections"
+msgstr "Conexións do Usuario"
+
+#. module: board
+#: field:res.log.report,creation_date:0
+msgid "Creation Date"
+msgstr "Data de Creación"
+
+#. module: board
+#: view:res.log.report:0
+msgid "Log Analysis"
+msgstr "Análise do Log"
+
+#. module: board
+#: field:res.log.report,res_model:0
+msgid "Object"
+msgstr "Obxecto"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "June"
+msgstr "Xuño"
+
+#. module: board
+#: field:board.board,line_ids:0
+msgid "Action Views"
+msgstr "Vistas de accións"
+
+#. module: board
+#: model:ir.model,name:board.model_res_log_report
+msgid "Log Report"
+msgstr "Informe de Log"
+
+#. module: board
+#: code:addons/board/wizard/board_menu_create.py:46
+#, python-format
+msgid "Please Insert Dashboard View(s) !"
+msgstr "¡Por favor inserte vista(s) de taboleiro!"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "July"
+msgstr "Xullo"
+
+#. module: board
+#: view:res.log.report:0
+#: field:res.log.report,day:0
+msgid "Day"
+msgstr "Día"
+
+#. module: board
+#: view:board.menu.create:0
+msgid "Create Menu For Dashboard"
+msgstr "Crear menú para taboleiro"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "February"
+msgstr "Febreiro"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "October"
+msgstr "Outubro"
+
+#. module: board
+#: model:ir.model,name:board.model_board_board_line
+msgid "Board Line"
+msgstr "Liña do Taboleiro"
+
+#. module: board
+#: field:board.menu.create,menu_parent_id:0
+msgid "Parent Menu"
+msgstr "Menú pai"
+
+#. module: board
+#: view:res.log.report:0
+msgid "    Month-1    "
+msgstr "    Mes-1    "
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "January"
+msgstr "Xaneiro"
+
+#. module: board
+#: view:board.board:0
+msgid "Users"
+msgstr ""
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "November"
+msgstr "Novembro"
+
+#. module: board
+#: help:board.board.line,sequence:0
+msgid ""
+"Gives the sequence order                         when displaying a list of "
+"board lines."
+msgstr ""
+"Da a orde de secuencia cando mostra unha lista de liñas de taboleiro."
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "April"
+msgstr "Abril"
+
+#. module: board
+#: view:board.board:0
+#: field:board.board,name:0
+#: field:board.board.line,board_id:0
+#: model:ir.ui.menu,name:board.menu_dasboard
+msgid "Dashboard"
+msgstr "Taboleiro"
+
+#. module: board
+#: code:addons/board/wizard/board_menu_create.py:45
+#, python-format
+msgid "User Error!"
+msgstr "¡Erro de usuario!"
+
+#. module: board
+#: field:board.board.line,action_id:0
+msgid "Action"
+msgstr "Acción"
+
+#. module: board
+#: field:board.board.line,position:0
+msgid "Position"
+msgstr "Posición"
+
+#. module: board
+#: view:res.log.report:0
+msgid "Model"
+msgstr "Modelo"
+
+#. module: board
+#: model:ir.actions.act_window,name:board.board_homepage_action
+msgid "Home Page"
+msgstr ""
+
+#. module: board
+#: model:ir.actions.act_window,name:board.action_latest_activities_tree
+msgid "Latest Activities"
+msgstr "Actividades Recentes"
+
+#. module: board
+#: selection:board.board.line,position:0
+msgid "Left"
+msgstr "Esquerda"
+
+#. module: board
+#: field:board.board,view_id:0
+msgid "Board View"
+msgstr "Vista taboleiro"
+
+#. module: board
+#: selection:board.board.line,position:0
+msgid "Right"
+msgstr "Dereita"
+
+#. module: board
+#: field:board.board.line,width:0
+msgid "Width"
+msgstr "Largura"
+
+#. module: board
+#: view:res.log.report:0
+msgid "   Month   "
+msgstr "   Mes   "
+
+#. module: board
+#: field:board.board.line,sequence:0
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "September"
+msgstr "Setembro"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "December"
+msgstr "Decembro"
+
+#. module: board
+#: view:board.board:0
+#: view:board.menu.create:0
+msgid "Create Menu"
+msgstr "Crear menú"
+
+#. module: board
+#: field:board.board.line,height:0
+msgid "Height"
+msgstr "Alto"
+
+#. module: board
+#: model:ir.actions.act_window,name:board.action_board_menu_create
+msgid "Create Board Menu"
+msgstr "Crear menú do taboleiro"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "May"
+msgstr "Maio"
+
+#. module: board
+#: view:res.log.report:0
+#: field:res.log.report,name:0
+msgid "Year"
+msgstr "Ano"
+
+#. module: board
+#: view:board.menu.create:0
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: board
+#: view:board.board:0
+msgid "Dashboard View"
+msgstr "Vista taboleiro"

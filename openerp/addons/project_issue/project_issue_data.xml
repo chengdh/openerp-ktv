@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="1">
+
+        <!-- Case Categories -->
+        <!--    For Bugs    -->
+
+        <record model="crm.case.categ" id="bug_categ">
+            <field name="name">Maintenance</field>
+            <field name="section_id" ref="crm.section_sales_department"/>
+            <field name="object_id" search="[('model','=','project.issue')]" model="ir.model"/>         
+        </record>    
+
+        <record model="crm.case.categ" id="feature_request_categ">
+            <field name="name">Feature Requests</field>
+            <field name="section_id" ref="crm.section_sales_department"/>
+            <field name="object_id" search="[('model','=','project.issue')]" model="ir.model"/>        
+        </record>
+
+        <!-- Case type_id -->
+        <!--    For Bugs    -->
+        <record model="project.issue.version" id="type1">
+            <field name="name">v1.0</field>
+        </record>
+
+        <record model="project.issue.version" id="type2">
+            <field name="name">v2.0</field>
+        </record>
+
+        <record model="project.issue.version" id="type3">
+            <field name="name">v3.0</field>
+        </record>
+
+    </data>
+</openerp>

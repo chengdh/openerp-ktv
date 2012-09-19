@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Modules Categories -->
+
+        <record id="view_module_category_form" model="ir.ui.view">
+            <field name="name">ir.module.category.form</field>
+            <field name="model">ir.module.category</field>
+            <field name="type">form</field>
+            <field name="field_parent">child_ids</field>
+            <field name="arch" type="xml">
+                <form string="Module Category">
+                    <field name="name"/>
+                    <field name="parent_id"/>
+                    <field name="sequence"/>
+                    <field name="description" colspan="4"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_module_category_tree" model="ir.ui.view">
+            <field name="name">ir.module.category.tree</field>
+            <field name="model">ir.module.category</field>
+            <field name="type">tree</field>
+            <field name="field_parent">child_ids</field>
+            <field name="arch" type="xml">
+                <tree string="Module Category">
+                    <field name="name"/>
+                    <field name="module_nr"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Click on a category -->
+
+        <record id="view_module_filter" model="ir.ui.view">
+            <field name="name">ir.module.module.list.select</field>
+            <field name="model">ir.module.module</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Search modules">
+                    <group col='10' colspan='4'>
+                        <filter name="app" icon="terp-check" string="Apps" domain="[('application', '=', 1)]"/>
+                        <filter name="extra" icon="terp-check" string="Extra" domain="[('application', '=', 0)]"/>
+
+                        <separator orientation="vertical"/>
+                        <filter icon="terp-check" string="Installed" domain="[('state', 'in', ['installed', 'to upgrade', 'to remove'])]"/>
+                        <filter icon="terp-dialog-close" string="Not Installed" domain="[('state', 'in', ['uninstalled', 'uninstallable', 'to install'])]"/>
+                        <separator orientation="vertical"/>
+                        <field name="name"
+                            filter_domain="['|', ('name','ilike',self), ('shortdesc','ilike',self)]"
+                            string="Name"/>
+                        <field name="description" string="Keywords"/>
+                        <field name="category_id">
+                            <filter name="no_hidden" help="Hide technical modules"
+                                    icon="STOCK_REMOVE" groups="base.group_no_one"
+                                    domain="['!', ('category_id.parent_id','child_of','Hidden')]"/>
+                        </field>
+                    </group>
+               </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="module_view_kanban">
+            <field name="name">Modules Kanban</field>
+            <field name="model">ir.module.module</field>
+            <field name="type">kanban</field>
+            <field name="arch" type="xml">
+
+              <kanban>
+                  <field name="icon"/>
+                  <field name="name"/>
+                  <field name="state"/>
+                  <field name="complexity"/>
+                  <templates>
+                    <t t-name="kanban-box">
+                      <div class="oe_module_vignette">
+                        <t t-set="installed" t-value="record.state.raw_value == 'installed'"/>
+                        <a type="edit"> 
+                          <img t-attf-src="#{record.icon.value}" class="oe_module_icon"/>
+                        </a>
+                        <div class="oe_module_desc">
+                          <h4><a type="edit"><field name="shortdesc"/></a></h4>
+                          <p>
+                             <field name="category_id"/><br/>
+                             <field name="name"/><br/>
+                             <span t-if="record.complexity.raw_value == 'Expert'" class="oe_label oe_warning">Complex</span>
+                           </p>
+                          <button type="object" name="button_immediate_install" states="uninstalled" class="oe_button">Install</button>
+                          <button t-if="installed" class="oe_button" disabled="disabled">Installed</button>
+                        </div>
+                      </div>
+                    </t>
+                  </templates>
+              </kanban>
+
+            </field>
+        </record>
+
+        <record id="action_module_open_categ" model="ir.actions.act_window">
+            <field name="name">Modules</field>
+            <field name="res_model">ir.module.module</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="domain">[('category_id','=',active_id)]</field>
+        </record>
+        <record id="ir_action_module_category" model="ir.values">
+            <field eval="'tree_but_open'" name="key2"/>
+            <field eval="'ir.module.category'" name="model"/>
+            <field name="name">Categorized Modules</field>
+            <field eval="'ir.actions.act_window,%d'%action_module_open_categ" name="value"/>
+        </record>
+
+
+        <!-- Modules -->
+
+        <record id="module_form" model="ir.ui.view">
+            <field name="name">ir.module.module.form</field>
+            <field name="model">ir.module.module</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Module">
+                    <group colspan="4" col="6">
+                        <field name="name"/>
+                        <field name="shortdesc"/>
+                        <field name="certificate" />
+                        <field name="category_id"/>
+                        <field name="complexity"/>
+                        <field name="demo"/>
+                        <field name="application"/>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Module">
+                            <group colspan="4" col="4">
+                                <group colspan="2" col="2">
+                                    <separator string="Author" colspan="2"/>
+                                    <field name="author" select="2"/>
+                                    <field name="license"/>
+                                    <field name="website" select="2" widget="url" string="Author Website"/>
+                                </group>
+                                <group colspan="2" col="2">
+                                    <separator string="Version" colspan="2"/>
+                                    <field name="installed_version"/>
+                                    <field name="latest_version"/>
+                                    <field name="published_version"/>
+                                </group>
+                            </group>
+                            <separator string="Description" colspan="4"/>
+                            <field colspan="4" name="description" select="2" nolabel="1"/>
+                            <newline/>
+                            <field name="state"/>
+                            <group col="6" colspan="2">
+                                <button name="button_install" states="uninstalled" string="Install" icon="terp-gtk-jump-to-ltr" type="object"/>
+                                <button name="button_install_cancel" states="to install" string="Cancel Install" icon="gtk-cancel" type="object"/>
+                                <button name="button_uninstall" states="installed" string="Uninstall (beta)" icon="terp-dialog-close" type="object"/>
+                                <button name="button_uninstall_cancel" states="to remove" string="Cancel Uninstall" icon="gtk-cancel" type="object"/>
+                                <button name="button_upgrade" states="installed" string="Upgrade" icon="terp-gtk-go-back-rtl" type="object"/>
+                                <button name="button_upgrade_cancel" states="to upgrade" string="Cancel Upgrade" icon="gtk-cancel" type="object"/>
+                            </group>
+                        </page>
+                        <page string="Dependencies">
+                            <field colspan="4" name="dependencies_id" nolabel="1">
+                                <tree string="Dependencies">
+                                    <field name="name"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Features" attrs="{'invisible':[('state','!=','installed')]}">
+                            <separator string="Created Menus" colspan="4"/>
+                            <field colspan="4" name="menus_by_module" nolabel="1"/>
+                            <separator string="Created Views" colspan="2"/>
+                            <separator string="Defined Reports" colspan="2"/>
+                            <field colspan="2" name="views_by_module" nolabel="1"/>
+                            <field colspan="2" name="reports_by_module" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+        <record id="module_tree" model="ir.ui.view">
+            <field name="name">ir.module.module.tree</field>
+            <field name="model">ir.module.module</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree colors="blue:state=='to upgrade' or state=='to install';red:state=='uninstalled';grey:state=='uninstallable';black:state=='installed'" string="Modules">
+                    <field name="name"/>
+                    <field name="category_id"/>
+                    <field name="shortdesc"/>
+                    <field name="complexity"/>
+                    <field name="author"/>
+                    <field name="installed_version"/>
+                    <field name="latest_version"/>
+                    <field name="state"/>
+                    <button name="button_install" states="uninstalled" string="Install" icon="terp-gtk-jump-to-ltr" type="object"/>
+                </tree>
+            </field>
+        </record>
+        <record id="open_module_tree" model="ir.actions.act_window">
+            <field name="name">Modules</field>
+            <field name="res_model">ir.module.module</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="context">{'search_default_app':1, 'search_default_no_hidden': 1}</field>
+            <field name="search_view_id" ref="view_module_filter"/>
+            <field name="help">You can install new modules in order to activate new features, menu, reports or data in your OpenERP instance. To install some modules, click on the button "Install" from the form view and then click on "Start Upgrade".</field>
+        </record>
+        <menuitem action="open_module_tree" id="menu_module_tree" parent="base.menu_management" sequence="1"/>
+
+    </data>
+</openerp>

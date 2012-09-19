@@ -1,0 +1,1294 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* event
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 5.0.4\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2012-02-08 00:36+0000\n"
+"PO-Revision-Date: 2012-05-20 09:04+0000\n"
+"Last-Translator: Fekete Mihai <mihai@erpsystems.ro>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-08-28 09:43+0000\n"
+"X-Generator: Launchpad (build 15864)\n"
+
+#. module: event
+#: view:event.event:0
+msgid "Invoice Information"
+msgstr "Informatii despre factura"
+
+#. module: event
+#: view:partner.event.registration:0
+msgid "Event Details"
+msgstr "Detalii eveniment"
+
+#. module: event
+#: field:event.event,main_speaker_id:0
+msgid "Main Speaker"
+msgstr "Vorbitor principal"
+
+#. module: event
+#: view:event.event:0
+#: view:event.registration:0
+#: view:report.event.registration:0
+msgid "Group By..."
+msgstr "Grupeaza dupa..."
+
+#. module: event
+#: field:event.event,register_min:0
+msgid "Minimum Registrations"
+msgstr "Inregistrari minime"
+
+#. module: event
+#: model:ir.model,name:event.model_event_confirm_registration
+msgid "Confirmation for Event Registration"
+msgstr "Confirmare pentru Inregistrarea Evenimentului"
+
+#. module: event
+#: field:event.registration.badge,title:0
+msgid "Title"
+msgstr "Titlu"
+
+#. module: event
+#: field:event.event,mail_registr:0
+msgid "Registration Email"
+msgstr "Inregistrare e-mail"
+
+#. module: event
+#: model:ir.actions.act_window,name:event.action_event_confirm_registration
+msgid "Make Invoices"
+msgstr "Creeaza Facturi"
+
+#. module: event
+#: view:event.event:0
+#: view:event.registration:0
+msgid "Registration Date"
+msgstr "Data inregistrarii"
+
+#. module: event
+#: view:partner.event.registration:0
+msgid "_Close"
+msgstr "_Inchide"
+
+#. module: event
+#: model:event.event,name:event.event_0
+msgid "Concert of Bon Jovi"
+msgstr "Concertul lui Bon Jovi"
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Invoiced Registrations only"
+msgstr "Numai Inregistrari facturate"
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "March"
+msgstr "Martie"
+
+#. module: event
+#: field:event.event,mail_confirm:0
+msgid "Confirmation Email"
+msgstr "Email de confirmare"
+
+#. module: event
+#: field:event.registration,nb_register:0
+msgid "Quantity"
+msgstr "Cantitate"
+
+#. module: event
+#: code:addons/event/wizard/event_make_invoice.py:63
+#, python-format
+msgid "Registration doesn't have any partner to invoice."
+msgstr "Inregistrarea nu are nici un partener pentru facturare."
+
+#. module: event
+#: field:event.event,company_id:0
+#: field:event.registration,company_id:0
+#: view:report.event.registration:0
+#: field:report.event.registration,company_id:0
+msgid "Company"
+msgstr "Companie"
+
+#. module: event
+#: field:event.make.invoice,invoice_date:0
+msgid "Invoice Date"
+msgstr "Data facturii"
+
+#. module: event
+#: help:event.event,pricelist_id:0
+msgid "Pricelist version for current event."
+msgstr "Versiune a listei de preturi pentru evenimentul curent."
+
+#. module: event
+#: code:addons/event/wizard/partner_event_registration.py:88
+#: view:event.registration:0
+#: model:ir.actions.act_window,name:event.action_partner_event_registration
+#: model:ir.model,name:event.model_event_registration
+#: view:partner.event.registration:0
+#, python-format
+msgid "Event Registration"
+msgstr "Inregistrare eveniment"
+
+#. module: event
+#: field:event.event,parent_id:0
+msgid "Parent Event"
+msgstr "Eveniment principal"
+
+#. module: event
+#: model:ir.actions.act_window,name:event.action_make_invoices
+msgid "Make Invoice"
+msgstr "Creeaza Factura"
+
+#. module: event
+#: field:event.registration,price_subtotal:0
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Event on Registration"
+msgstr "Inregistrare Eveniment"
+
+#. module: event
+#: help:event.event,reply_to:0
+msgid "The email address put in the 'Reply-To' of all emails sent by OpenERP"
+msgstr ""
+"Adresa de email pusa in 'Raspunde la' a tuturor email-urilor trimise de "
+"catre OpenERP"
+
+#. module: event
+#: view:event.registration:0
+msgid "Add Internal Note"
+msgstr "Adauga nota interna"
+
+#. module: event
+#: view:event.event:0
+msgid "Confirmed events"
+msgstr "Evenimente confirmate"
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Event Beginning Date"
+msgstr "Data de inceput a evenimentului"
+
+#. module: event
+#: model:ir.actions.act_window,name:event.action_report_event_registration
+#: model:ir.model,name:event.model_report_event_registration
+#: model:ir.ui.menu,name:event.menu_report_event_registration
+#: view:report.event.registration:0
+msgid "Events Analysis"
+msgstr "Analiza evenimentelor"
+
+#. module: event
+#: field:event.registration,message_ids:0
+msgid "Messages"
+msgstr "Mesaje"
+
+#. module: event
+#: model:ir.model,name:event.model_event_registration_badge
+msgid "event.registration.badge"
+msgstr "emblema.inregistrare.eveniment"
+
+#. module: event
+#: field:event.event,mail_auto_confirm:0
+msgid "Mail Auto Confirm"
+msgstr "Confirmare automata email"
+
+#. module: event
+#: model:product.template,name:event.event_product_1_product_template
+msgid "Ticket for Opera"
+msgstr "Bilet pentru opera"
+
+#. module: event
+#: code:addons/event/event.py:125
+#: view:event.event:0
+#, python-format
+msgid "Confirm Event"
+msgstr "Confirma evenimentul"
+
+#. module: event
+#: selection:event.event,state:0
+#: selection:event.registration,state:0
+#: selection:report.event.registration,state:0
+msgid "Cancelled"
+msgstr "Anulat(a)"
+
+#. module: event
+#: field:event.event,reply_to:0
+msgid "Reply-To"
+msgstr "Raspunde"
+
+#. module: event
+#: model:ir.actions.act_window,name:event.open_board_associations_manager
+#: model:ir.ui.menu,name:event.menu_board_associations_manager
+msgid "Event Dashboard"
+msgstr "Tablou de bord evenimente"
+
+#. module: event
+#: model:event.event,name:event.event_1
+msgid "Opera of Verdi"
+msgstr "Opera lui Verdi"
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "July"
+msgstr "Iulie"
+
+#. module: event
+#: help:event.event,register_prospect:0
+msgid "Total of Prospect Registrations"
+msgstr "Total Inregistrari perspectiva"
+
+#. module: event
+#: help:event.event,mail_auto_confirm:0
+msgid ""
+"Check this box if you want to use automatic confirmation emailing or "
+"reminder."
+msgstr ""
+"Bifati aceasta casuta daca doriti sa folositi confirmarea automata a e-mail-"
+"urilor sau a memento-urilor."
+
+#. module: event
+#: field:event.registration,ref:0
+msgid "Reference"
+msgstr "Referinta"
+
+#. module: event
+#: help:event.event,date_end:0
+#: help:partner.event.registration,end_date:0
+msgid "Closing Date of Event"
+msgstr "Data de incheiere a evenimentului"
+
+#. module: event
+#: view:event.registration:0
+msgid "Emails"
+msgstr "E-mail-uri"
+
+#. module: event
+#: view:event.registration:0
+msgid "Extra Info"
+msgstr "Informatii suplimentare"
+
+#. module: event
+#: code:addons/event/wizard/event_make_invoice.py:83
+#, python-format
+msgid "Customer Invoices"
+msgstr "Facturi client"
+
+#. module: event
+#: selection:event.event,state:0
+#: selection:report.event.registration,state:0
+msgid "Draft"
+msgstr "Ciorna"
+
+#. module: event
+#: field:event.type,name:0
+msgid "Event type"
+msgstr "Tipul evenimentului"
+
+#. module: event
+#: model:ir.model,name:event.model_event_type
+msgid " Event Type "
+msgstr " Tipul evenimentului "
+
+#. module: event
+#: view:event.event:0
+#: view:event.registration:0
+#: field:event.registration,event_id:0
+#: model:ir.model,name:event.model_event_event
+#: field:partner.event.registration,event_id:0
+#: view:report.event.registration:0
+#: field:report.event.registration,event_id:0
+#: view:res.partner:0
+msgid "Event"
+msgstr "Eveniment"
+
+#. module: event
+#: view:event.registration:0
+#: field:event.registration,badge_ids:0
+msgid "Badges"
+msgstr "Insigne"
+
+#. module: event
+#: view:event.event:0
+#: selection:event.event,state:0
+#: view:event.registration:0
+#: selection:event.registration,state:0
+#: selection:report.event.registration,state:0
+msgid "Confirmed"
+msgstr "Confirmat(a)"
+
+#. module: event
+#: view:event.confirm.registration:0
+msgid "Registration Confirmation"
+msgstr "Confirmare inregistrare"
+
+#. module: event
+#: view:event.event:0
+msgid "Events in New state"
+msgstr "Evenimente in stadiu nou"
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Confirm"
+msgstr "Confirma"
+
+#. module: event
+#: view:event.event:0
+#: field:event.event,speaker_ids:0
+msgid "Other Speakers"
+msgstr "Alti vorbitori"
+
+#. module: event
+#: model:ir.model,name:event.model_event_make_invoice
+msgid "Event Make Invoice"
+msgstr "Creare factura eveniment"
+
+#. module: event
+#: help:event.registration,nb_register:0
+msgid "Number of Registrations or Tickets"
+msgstr "Numarul Inregistrarilor sau al Biletelor"
+
+#. module: event
+#: code:addons/event/wizard/event_make_invoice.py:50
+#: code:addons/event/wizard/event_make_invoice.py:54
+#: code:addons/event/wizard/event_make_invoice.py:58
+#: code:addons/event/wizard/event_make_invoice.py:62
+#, python-format
+msgid "Warning !"
+msgstr "Avertizare !"
+
+#. module: event
+#: view:event.registration:0
+msgid "Send New Email"
+msgstr "Trimite un e-mail nou"
+
+#. module: event
+#: help:event.event,register_min:0
+msgid "Provide Minimum Number of Registrations"
+msgstr "Furnizeaza Numarul Minim de Inregistrari"
+
+#. module: event
+#: view:event.event:0
+msgid "Location"
+msgstr "Locatie"
+
+#. module: event
+#: view:event.event:0
+#: view:event.registration:0
+#: view:report.event.registration:0
+msgid "New"
+msgstr "Nou(a)"
+
+#. module: event
+#: field:event.event,register_current:0
+#: view:report.event.registration:0
+msgid "Confirmed Registrations"
+msgstr "Inregistrari confirmate"
+
+#. module: event
+#: field:event.event,mail_auto_registr:0
+msgid "Mail Auto Register"
+msgstr "Inregistrare automata email"
+
+#. module: event
+#: field:event.event,type:0
+#: field:partner.event.registration,event_type:0
+msgid "Type"
+msgstr "Tip"
+
+#. module: event
+#: field:event.registration,email_from:0
+msgid "Email"
+msgstr "E-mail"
+
+#. module: event
+#: help:event.event,mail_confirm:0
+msgid ""
+"This email will be sent when the event gets confirmed or when someone "
+"subscribes to a confirmed event. This is also the email sent to remind "
+"someone about the event."
+msgstr ""
+"Acest e-mail va fi trimis atunci cand evenimentul este confirmat sau atunci "
+"cand cineva se inscrie la un eveniment confirmat. De asemenea, acesta este e-"
+"mailul trimis pentru a-i reaminiti cuiva de eveniment."
+
+#. module: event
+#: field:event.registration,tobe_invoiced:0
+msgid "To be Invoiced"
+msgstr "Va fi facturat(a)"
+
+#. module: event
+#: view:event.event:0
+msgid "My Sales Team(s)"
+msgstr "Echipa mea (echipele mele) de vanzari"
+
+#. module: event
+#: code:addons/event/event.py:398
+#, python-format
+msgid "Error !"
+msgstr "Eroare !"
+
+#. module: event
+#: field:event.event,name:0
+#: field:event.registration,name:0
+msgid "Summary"
+msgstr "Rezumat"
+
+#. module: event
+#: field:event.registration,create_date:0
+msgid "Creation Date"
+msgstr "Data crearii"
+
+#. module: event
+#: view:event.event:0
+#: view:event.registration:0
+#: view:res.partner:0
+msgid "Cancel Registration"
+msgstr "Anuleaza Inregistrarea"
+
+#. module: event
+#: code:addons/event/event.py:399
+#, python-format
+msgid "Registered partner doesn't have an address to make the invoice."
+msgstr "Partenerul inregistrat nu are o adresa pentru crearea facturii."
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Events created in last month"
+msgstr "Evenimente create in ultima luna"
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Events created in current year"
+msgstr "Evenimente create in anul curent"
+
+#. module: event
+#: help:event.event,type:0
+msgid "Type of Event like Seminar, Exhibition, Conference, Training."
+msgstr ""
+"Tipul evenimentului, precum Seminar, Expozitie, Conferinta, Formare "
+"profesionala"
+
+#. module: event
+#: view:event.registration:0
+msgid "Confirmed registrations"
+msgstr "Inregistrari confirmate"
+
+#. module: event
+#: view:event.event:0
+msgid "Event Organization"
+msgstr "Organizarea evenimentului"
+
+#. module: event
+#: view:event.registration:0
+msgid "History Information"
+msgstr "Istoric Informatii"
+
+#. module: event
+#: view:event.registration:0
+msgid "Dates"
+msgstr "Date"
+
+#. module: event
+#: view:event.confirm:0
+#: view:event.confirm.registration:0
+msgid "Confirm Anyway"
+msgstr "Confirma oricum"
+
+#. module: event
+#: code:addons/event/wizard/event_confirm_registration.py:54
+#, python-format
+msgid "Warning: The Event '%s' has reached its Maximum Limit (%s)."
+msgstr "Avertisment: Evenimentul '%s' si-a atins Limita maxima (%s)."
+
+#. module: event
+#: view:report.event.registration:0
+msgid "    Month-1    "
+msgstr "    Luna-1    "
+
+#. module: event
+#: view:event.event:0
+#: view:event.registration:0
+#: field:event.registration.badge,registration_id:0
+#: model:ir.actions.act_window,name:event.act_event_list_register_event
+msgid "Registration"
+msgstr "Inregistrare"
+
+#. module: event
+#: field:report.event.registration,nbevent:0
+msgid "Number Of Events"
+msgstr "Numar de evenimente"
+
+#. module: event
+#: help:event.event,main_speaker_id:0
+msgid "Speaker who will be giving speech at the event."
+msgstr "Vorbitorul care va tine un discurs la eveniment"
+
+#. module: event
+#: help:event.event,state:0
+msgid ""
+"If event is created, the state is 'Draft'.If event is confirmed for the "
+"particular dates the state is set to 'Confirmed'. If the event is over, the "
+"state is set to 'Done'.If event is cancelled the state is set to 'Cancelled'."
+msgstr ""
+"Daca evenimentul este creat, starea este 'Ciorna'. Daca evenimentul este "
+"confirmat pentru anumite date, starea este setata pe 'Confirmat'. Daca "
+"evenimentul a luat sfarsit, starea este setata pe 'Efectuat'. Daca "
+"evenimentul este anulat, starea este setata pe 'Anulat'."
+
+#. module: event
+#: view:event.event:0
+msgid "Cancel Event"
+msgstr "Anuleaza evenimentul"
+
+#. module: event
+#: view:event.event:0
+#: view:event.registration:0
+msgid "Contact"
+msgstr "Contact"
+
+#. module: event
+#: view:event.event:0
+#: view:event.registration:0
+#: field:event.registration,partner_id:0
+#: model:ir.model,name:event.model_res_partner
+msgid "Partner"
+msgstr "Partener"
+
+#. module: event
+#: view:board.board:0
+#: model:ir.actions.act_window,name:event.act_event_reg
+#: view:report.event.registration:0
+msgid "Events Filling Status"
+msgstr "Statusul de Completare a evenimentelor"
+
+#. module: event
+#: field:event.make.invoice,grouped:0
+msgid "Group the invoices"
+msgstr "Grupeaza facturile"
+
+#. module: event
+#: view:event.event:0
+msgid "Mailing"
+msgstr "Expediere"
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Events States"
+msgstr "Starea Evenimentelor"
+
+#. module: event
+#: view:board.board:0
+#: field:event.event,register_prospect:0
+msgid "Unconfirmed Registrations"
+msgstr "Inregistrari neconfirmate"
+
+#. module: event
+#: field:event.registration,partner_invoice_id:0
+msgid "Partner Invoiced"
+msgstr "Partener facturat"
+
+#. module: event
+#: help:event.event,register_max:0
+msgid "Provide Maximum Number of Registrations"
+msgstr "Furnizeaza Numarul Maxim de Inregistrari"
+
+#. module: event
+#: field:event.registration,log_ids:0
+msgid "Logs"
+msgstr "Jurnale"
+
+#. module: event
+#: view:event.event:0
+#: field:event.event,state:0
+#: view:event.registration:0
+#: field:event.registration,state:0
+#: view:report.event.registration:0
+#: field:report.event.registration,state:0
+msgid "State"
+msgstr "Stare"
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "September"
+msgstr "Septembrie"
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "December"
+msgstr "Decembrie"
+
+#. module: event
+#: field:event.registration,event_product:0
+msgid "Invoice Name"
+msgstr "Nume factura"
+
+#. module: event
+#: field:report.event.registration,draft_state:0
+msgid " # No of Draft Registrations"
+msgstr " # Nr Inregistrarilor ciorna"
+
+#. module: event
+#: view:report.event.registration:0
+#: field:report.event.registration,month:0
+msgid "Month"
+msgstr "Luna"
+
+#. module: event
+#: view:event.event:0
+msgid "Event Done"
+msgstr "Eveniment efectuat"
+
+#. module: event
+#: view:event.registration:0
+msgid "Registrations in unconfirmed state"
+msgstr "Inregistrari in stare neconfirmata"
+
+#. module: event
+#: help:event.event,register_current:0
+msgid "Total of Open and Done Registrations"
+msgstr "Totalul Inregistrarilor Deschise si Efectuate"
+
+#. module: event
+#: field:event.confirm.registration,msg:0
+msgid "Message"
+msgstr "Mesaj"
+
+#. module: event
+#: constraint:event.event:0
+msgid "Error ! You cannot create recursive event."
+msgstr "Eroare ! Nu puteti crea un eveniment recursiv."
+
+#. module: event
+#: field:event.registration,ref2:0
+msgid "Reference 2"
+msgstr "Referinta 2"
+
+#. module: event
+#: code:addons/event/event.py:361
+#: view:report.event.registration:0
+#, python-format
+msgid "Invoiced"
+msgstr "Facturat"
+
+#. module: event
+#: view:event.event:0
+#: view:report.event.registration:0
+msgid "My Events"
+msgstr "Evenimentele mele"
+
+#. module: event
+#: view:event.event:0
+msgid "Speakers"
+msgstr "Vorbitori"
+
+#. module: event
+#: view:event.make.invoice:0
+msgid "Create invoices"
+msgstr "Creeaza facturi"
+
+#. module: event
+#: help:event.registration,email_cc:0
+msgid ""
+"These email addresses will be added to the CC field of all inbound and "
+"outbound emails for this record before being sent. Separate multiple email "
+"addresses with a comma"
+msgstr ""
+"Aceste adrese de email vor fi adaugate in campul CC al tuturor email-urilor "
+"primite si trimise pentru aceasta inregistrare inainte de a fi trimise. "
+"Despartiti adresele de mail multiple cu o virgula"
+
+#. module: event
+#: view:event.make.invoice:0
+msgid "Do you really want to create the invoice(s) ?"
+msgstr "Chiar doriti sa creati factura(ile)?"
+
+#. module: event
+#: view:event.event:0
+msgid "Beginning Date"
+msgstr "Data de inceput"
+
+#. module: event
+#: field:event.registration,date_closed:0
+msgid "Closed"
+msgstr "Inchis"
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Events which are in New state"
+msgstr "Evenimente care se afla in stare Nou"
+
+#. module: event
+#: view:event.event:0
+#: model:ir.actions.act_window,name:event.action_event_view
+#: model:ir.ui.menu,name:event.menu_event_event
+#: model:ir.ui.menu,name:event.menu_event_event_assiciation
+#: view:res.partner:0
+msgid "Events"
+msgstr "Evenimente"
+
+#. module: event
+#: field:partner.event.registration,nb_register:0
+msgid "Number of Registration"
+msgstr "Numarul inregistrarii"
+
+#. module: event
+#: field:event.event,child_ids:0
+msgid "Child Events"
+msgstr "Evenimente subordonate"
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "August"
+msgstr "August"
+
+#. module: event
+#: field:res.partner,event_ids:0
+#: field:res.partner,event_registration_ids:0
+msgid "unknown"
+msgstr "necunoscut(a)"
+
+#. module: event
+#: help:event.event,product_id:0
+msgid ""
+"The invoices of this event registration will be created with this Product. "
+"Thus it allows you to set the default label and the accounting info you want "
+"by default on these invoices."
+msgstr ""
+"Facturile acestei inregistrari a evenimentului vor fi create pentru acest "
+"Produs. Astfel, dumneavoastra puteti seta eticheta predefinita si "
+"informatiile contabile pe care le doriti predefinite pe aceste facturi."
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "June"
+msgstr "Iunie"
+
+#. module: event
+#: model:product.template,name:event.event_product_0_product_template
+msgid "Ticket for Concert"
+msgstr "Bilet pentru Concert"
+
+#. module: event
+#: field:event.registration,write_date:0
+msgid "Write Date"
+msgstr "Scrieti data"
+
+#. module: event
+#: view:event.registration:0
+msgid "My Registrations"
+msgstr "Inregistrarile mele"
+
+#. module: event
+#: view:event.confirm:0
+msgid ""
+"Warning: This Event has not reached its Minimum Registration Limit. Are you "
+"sure you want to confirm it?"
+msgstr ""
+"Avertisment: Acest eveniment nu a atins Limita Minima de Inregistrari. "
+"Sunteti sigur(a) ca doriti sa il confirmati?"
+
+#. module: event
+#: field:event.registration,active:0
+msgid "Active"
+msgstr "Activ(a)"
+
+#. module: event
+#: field:event.registration,date:0
+msgid "Start Date"
+msgstr "Data de incepere"
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "November"
+msgstr "Noiembrie"
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Extended Filters..."
+msgstr "Filtre Extinse..."
+
+#. module: event
+#: field:partner.event.registration,start_date:0
+msgid "Start date"
+msgstr "Data de incepere"
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "October"
+msgstr "Octombrie"
+
+#. module: event
+#: field:event.event,language:0
+msgid "Language"
+msgstr "Limba"
+
+#. module: event
+#: view:event.registration:0
+#: field:event.registration,email_cc:0
+msgid "CC"
+msgstr "CC (Carbon copy)"
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "January"
+msgstr "Ianuarie"
+
+#. module: event
+#: help:event.registration,email_from:0
+msgid "These people will receive email."
+msgstr "Aceste persoane vor primi e-mail."
+
+#. module: event
+#: view:event.event:0
+msgid "Set To Draft"
+msgstr "Setare ca Ciorna"
+
+#. module: event
+#: code:addons/event/event.py:499
+#: view:event.event:0
+#: view:event.registration:0
+#: view:res.partner:0
+#, python-format
+msgid "Confirm Registration"
+msgstr "Confirma Inregistrarea"
+
+#. module: event
+#: view:event.event:0
+#: view:report.event.registration:0
+#: view:res.partner:0
+msgid "Date"
+msgstr "Data"
+
+#. module: event
+#: view:event.event:0
+msgid "Registration Email Body"
+msgstr "Inregistrare Corp E-mail"
+
+#. module: event
+#: view:event.event:0
+msgid "Confirmation Email Body"
+msgstr "Confirmare Corp Email"
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Registrations in confirmed or done state"
+msgstr "Inregistrari in starea confirmat sau efectuat"
+
+#. module: event
+#: view:event.registration:0
+#: view:res.partner:0
+msgid "History"
+msgstr "Istoric"
+
+#. module: event
+#: field:event.event,address_id:0
+msgid "Location Address"
+msgstr "Adresa Locatie"
+
+#. module: event
+#: model:ir.actions.act_window,name:event.action_event_type
+#: model:ir.ui.menu,name:event.menu_event_type
+msgid "Types of Events"
+msgstr "Tipuri de evenimente"
+
+#. module: event
+#: field:event.registration,contact_id:0
+msgid "Partner Contact"
+msgstr "Contact Partener"
+
+#. module: event
+#: field:event.event,pricelist_id:0
+msgid "Pricelist"
+msgstr "Lista de preturi"
+
+#. module: event
+#: code:addons/event/wizard/event_make_invoice.py:59
+#, python-format
+msgid "Event related doesn't have any product defined"
+msgstr "Evenimentul asociat nu are nici un produs definit"
+
+#. module: event
+#: view:event.event:0
+msgid "Auto Confirmation Email"
+msgstr "Confirmare automata email"
+
+#. module: event
+#: view:event.registration:0
+msgid "Misc"
+msgstr "Diverse"
+
+#. module: event
+#: constraint:event.event:0
+msgid "Error ! Closing Date cannot be set before Beginning Date."
+msgstr ""
+"Eroare ! Data de inchidere nu poate fi setata inaintea Datei de incepere."
+
+#. module: event
+#: code:addons/event/event.py:446
+#: selection:event.event,state:0
+#: view:event.make.invoice:0
+#: selection:event.registration,state:0
+#: selection:report.event.registration,state:0
+#, python-format
+msgid "Done"
+msgstr "Efectuat"
+
+#. module: event
+#: field:event.event,date_begin:0
+msgid "Beginning date"
+msgstr "Data de incepere"
+
+#. module: event
+#: view:event.registration:0
+#: field:event.registration,invoice_id:0
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: event
+#: view:report.event.registration:0
+#: field:report.event.registration,year:0
+msgid "Year"
+msgstr "An"
+
+#. module: event
+#: code:addons/event/event.py:465
+#, python-format
+msgid "Cancel"
+msgstr "Anuleaza"
+
+#. module: event
+#: view:event.confirm:0
+#: view:event.confirm.registration:0
+#: view:event.make.invoice:0
+msgid "Close"
+msgstr "Inchideti"
+
+#. module: event
+#: view:event.event:0
+msgid "Event by Registration"
+msgstr "Eveniment dupa Inregistrare"
+
+#. module: event
+#: code:addons/event/event.py:436
+#, python-format
+msgid "Open"
+msgstr "Deschideti"
+
+#. module: event
+#: field:event.event,user_id:0
+msgid "Responsible User"
+msgstr "Utilizator responsabil"
+
+#. module: event
+#: code:addons/event/event.py:561
+#: code:addons/event/event.py:568
+#, python-format
+msgid "Auto Confirmation: [%s] %s"
+msgstr "Confirmare automata: [%s] %s"
+
+#. module: event
+#: view:event.event:0
+#: view:event.registration:0
+#: field:event.registration,user_id:0
+#: view:report.event.registration:0
+#: field:report.event.registration,user_id:0
+msgid "Responsible"
+msgstr "Responsabil"
+
+#. module: event
+#: field:event.event,unit_price:0
+#: view:event.registration:0
+#: field:partner.event.registration,unit_price:0
+msgid "Registration Cost"
+msgstr "Costuri inregistrare"
+
+#. module: event
+#: field:event.registration,unit_price:0
+msgid "Unit Price"
+msgstr "Pret unitar"
+
+#. module: event
+#: view:report.event.registration:0
+#: field:report.event.registration,speaker_id:0
+#: field:res.partner,speaker:0
+msgid "Speaker"
+msgstr "Vorbitor"
+
+#. module: event
+#: model:event.event,name:event.event_2
+msgid "Conference on ERP Buisness"
+msgstr "Conferinta despre Afacerea ERP"
+
+#. module: event
+#: view:event.registration:0
+msgid "Reply"
+msgstr "Raspundeti"
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Events created in current month"
+msgstr "Evenimente create in luna curenta"
+
+#. module: event
+#: help:event.event,mail_auto_registr:0
+msgid ""
+"Check this box if you want to use automatic emailing for new registration."
+msgstr ""
+"Bifati aceasta casuta daca doriti sa folositi trimiterea automata de e-mail-"
+"uri pentru noua inregistrare."
+
+#. module: event
+#: field:event.event,date_end:0
+#: field:partner.event.registration,end_date:0
+msgid "Closing date"
+msgstr "Termenul limita"
+
+#. module: event
+#: field:event.event,product_id:0
+#: view:report.event.registration:0
+#: field:report.event.registration,product_id:0
+msgid "Product"
+msgstr "Produs"
+
+#. module: event
+#: view:event.event:0
+#: field:event.event,note:0
+#: view:event.registration:0
+#: field:event.registration,description:0
+msgid "Description"
+msgstr "Descriere"
+
+#. module: event
+#: field:report.event.registration,confirm_state:0
+msgid " # No of Confirmed Registrations"
+msgstr " # Nr Inregistrarilor confirmate"
+
+#. module: event
+#: model:ir.actions.act_window,name:event.act_register_event_partner
+msgid "Subscribe"
+msgstr "Abonare"
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "May"
+msgstr "Mai"
+
+#. module: event
+#: view:res.partner:0
+msgid "Events Registration"
+msgstr "Inregistrare evenimente"
+
+#. module: event
+#: help:event.event,mail_registr:0
+msgid "This email will be sent when someone subscribes to the event."
+msgstr ""
+"Acest email va fi trimis atunci cand cineva se aboneaza la eveniment."
+
+#. module: event
+#: model:product.template,name:event.event_product_2_product_template
+msgid "Ticket for Conference"
+msgstr "Bilete la conferinta"
+
+#. module: event
+#: model:ir.ui.menu,name:event.menu_event_type_association
+msgid "Events Type"
+msgstr "Tipul Evenimentelor"
+
+#. module: event
+#: field:event.registration.badge,address_id:0
+msgid "Address"
+msgstr "Adresa"
+
+#. module: event
+#: view:board.board:0
+#: model:ir.actions.act_window,name:event.act_event_view
+msgid "Next Events"
+msgstr "Evenimentele urmatoare"
+
+#. module: event
+#: view:partner.event.registration:0
+msgid "_Subcribe"
+msgstr "_Abonare"
+
+#. module: event
+#: model:ir.model,name:event.model_partner_event_registration
+msgid "  event Registration "
+msgstr "  Inregistrare eveniment "
+
+#. module: event
+#: help:event.event,date_begin:0
+#: help:partner.event.registration,start_date:0
+msgid "Beginning Date of Event"
+msgstr "Data de incepere a evenimentului"
+
+#. module: event
+#: selection:event.registration,state:0
+msgid "Unconfirmed"
+msgstr "Neconfirmat"
+
+#. module: event
+#: code:addons/event/event.py:565
+#, python-format
+msgid "Auto Registration: [%s] %s"
+msgstr "Inregistrare automata: [%s] %s"
+
+#. module: event
+#: field:event.registration,date_deadline:0
+msgid "End Date"
+msgstr "Data de sfarsit"
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "February"
+msgstr "Februarie"
+
+#. module: event
+#: view:board.board:0
+msgid "Association Dashboard"
+msgstr "Tablou de bord asociatie"
+
+#. module: event
+#: view:event.event:0
+#: field:event.registration.badge,name:0
+msgid "Name"
+msgstr "Nume"
+
+#. module: event
+#: field:event.event,section_id:0
+#: field:event.registration,section_id:0
+#: view:report.event.registration:0
+#: field:report.event.registration,section_id:0
+msgid "Sale Team"
+msgstr "Echipa de vanzari"
+
+#. module: event
+#: field:event.event,country_id:0
+msgid "Country"
+msgstr "Tara"
+
+#. module: event
+#: code:addons/event/wizard/event_make_invoice.py:55
+#, python-format
+msgid "Registration is set as Cannot be invoiced"
+msgstr "Inregistrarea este setata pe Nu se poate factura"
+
+#. module: event
+#: code:addons/event/event.py:527
+#: view:event.event:0
+#: view:event.registration:0
+#: view:res.partner:0
+#, python-format
+msgid "Close Registration"
+msgstr "Inchide Inregistrarea"
+
+#. module: event
+#: selection:report.event.registration,month:0
+msgid "April"
+msgstr "Aprilie"
+
+#. module: event
+#: help:event.event,unit_price:0
+msgid ""
+"This will be the default price used as registration cost when invoicing this "
+"event. Note that you can specify a specific amount for each registration."
+msgstr ""
+"Acesta va fi pretul implicit folosit drept cost de inregistrare atunci cand "
+"facturati acest eveniment. Observati ca puteti specifica o suma fixa pentru "
+"fiecare inregistrare."
+
+#. module: event
+#: view:report.event.registration:0
+msgid "Events which are in confirm state"
+msgstr "Evenimente care sunt in starea confirmat"
+
+#. module: event
+#: view:event.event:0
+#: view:event.type:0
+#: view:report.event.registration:0
+#: field:report.event.registration,type:0
+msgid "Event Type"
+msgstr "Tipul evenimentului"
+
+#. module: event
+#: view:event.event:0
+#: field:event.event,registration_ids:0
+#: model:ir.actions.act_window,name:event.action_registration
+#: model:ir.ui.menu,name:event.menu_action_registration
+#: model:ir.ui.menu,name:event.menu_action_registration_association
+msgid "Registrations"
+msgstr "Inregistrari"
+
+#. module: event
+#: field:event.registration,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: event
+#: field:event.event,register_max:0
+#: field:report.event.registration,register_max:0
+msgid "Maximum Registrations"
+msgstr "Inregistrari Maxime"
+
+#. module: event
+#: constraint:res.partner:0
+msgid "Error ! You cannot create recursive associated members."
+msgstr "Eroare ! Nu puteti crea membri asociati recursiv."
+
+#. module: event
+#: field:report.event.registration,date:0
+msgid "Event Start Date"
+msgstr "Data de incepere a evenimentului"
+
+#. module: event
+#: view:partner.event.registration:0
+msgid "Event For Registration"
+msgstr "Eveniment pentru Inregistrare"
+
+#. module: event
+#: code:addons/event/wizard/event_make_invoice.py:51
+#, python-format
+msgid "Invoice cannot be created if the registration is in %s state."
+msgstr "Factura nu poate fi creata daca inregistrarea se afla in starea %s."
+
+#. module: event
+#: view:event.confirm:0
+#: model:ir.actions.act_window,name:event.action_event_confirm
+#: model:ir.model,name:event.model_event_confirm
+msgid "Event Confirmation"
+msgstr "Confirmarea evenimentului"
+
+#. module: event
+#: view:event.event:0
+msgid "Auto Registration Email"
+msgstr "Inregistrare automata E-mail"
+
+#. module: event
+#: view:event.registration:0
+#: view:report.event.registration:0
+#: field:report.event.registration,total:0
+msgid "Total"
+msgstr "Total"
+
+#. module: event
+#: field:event.event,speaker_confirmed:0
+msgid "Speaker Confirmed"
+msgstr "Vorbitor Confirmat"
+
+#. module: event
+#: model:ir.actions.act_window,help:event.action_event_view
+msgid ""
+"Event is the low level object used by meeting and others documents that "
+"should be synchronized with mobile devices or calendar applications through "
+"caldav. Most of the users should work in the Calendar menu, and not in the "
+"list of events."
+msgstr ""
+"Evenimentul este obiectul de nivel scazut folosit la intalniri si la alte "
+"documente care ar trebui sincronizat cu dispozitivele mobile sau aplicatiile "
+"calendar prin caldav. Majoritatea utilizatorilor ar trebui sa lucreze in "
+"meniul Calendar, si nu in lista de evenimente."

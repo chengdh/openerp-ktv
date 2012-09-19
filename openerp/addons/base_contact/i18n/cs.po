@@ -1,0 +1,266 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* base_contact
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openobject-addons\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2012-02-08 00:36+0000\n"
+"PO-Revision-Date: 2012-02-17 09:10+0000\n"
+"Last-Translator: Jiří Hajda <robie@centrum.cz>\n"
+"Language-Team: Czech <openerp-i18n-czech@lists.launchpad.net >\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-08-28 09:35+0000\n"
+"X-Generator: Launchpad (build 15864)\n"
+"X-Poedit-Language: Czech\n"
+
+#. module: base_contact
+#: field:res.partner.location,city:0
+msgid "City"
+msgstr "Město"
+
+#. module: base_contact
+#: view:res.partner.contact:0
+msgid "First/Lastname"
+msgstr "Křestní jméno/Příjmení"
+
+#. module: base_contact
+#: model:ir.actions.act_window,name:base_contact.action_partner_contact_form
+#: model:ir.ui.menu,name:base_contact.menu_partner_contact_form
+#: model:ir.ui.menu,name:base_contact.menu_purchases_partner_contact_form
+#: model:process.node,name:base_contact.process_node_contacts0
+#: field:res.partner.location,job_ids:0
+msgid "Contacts"
+msgstr "Kontakty"
+
+#. module: base_contact
+#: view:res.partner.contact:0
+msgid "Professional Info"
+msgstr "Povolání"
+
+#. module: base_contact
+#: field:res.partner.contact,first_name:0
+msgid "First Name"
+msgstr "Křestní jméno"
+
+#. module: base_contact
+#: field:res.partner.address,location_id:0
+msgid "Location"
+msgstr "Umístění"
+
+#. module: base_contact
+#: model:process.transition,name:base_contact.process_transition_partnertoaddress0
+msgid "Partner to address"
+msgstr "Partner na adresu"
+
+#. module: base_contact
+#: help:res.partner.contact,active:0
+msgid ""
+"If the active field is set to False,                 it will allow you to "
+"hide the partner contact without removing it."
+msgstr ""
+"Pokud je aktivní pole nastaveno na Nepravda,               umožní vám to "
+"skrýt kontakt partnera bez jeho odstranění."
+
+#. module: base_contact
+#: field:res.partner.contact,website:0
+msgid "Website"
+msgstr "Webová stránka"
+
+#. module: base_contact
+#: field:res.partner.location,zip:0
+msgid "Zip"
+msgstr "PSČ"
+
+#. module: base_contact
+#: field:res.partner.location,state_id:0
+msgid "Fed. State"
+msgstr "Fed. stát"
+
+#. module: base_contact
+#: field:res.partner.location,company_id:0
+msgid "Company"
+msgstr "Společnost"
+
+#. module: base_contact
+#: field:res.partner.contact,title:0
+msgid "Title"
+msgstr "Název"
+
+#. module: base_contact
+#: field:res.partner.location,partner_id:0
+msgid "Main Partner"
+msgstr "Hlavní partner"
+
+#. module: base_contact
+#: model:process.process,name:base_contact.process_process_basecontactprocess0
+msgid "Base Contact"
+msgstr "Základní kontakt"
+
+#. module: base_contact
+#: field:res.partner.contact,email:0
+msgid "E-Mail"
+msgstr "E-mail"
+
+#. module: base_contact
+#: field:res.partner.contact,active:0
+msgid "Active"
+msgstr "Aktivní"
+
+#. module: base_contact
+#: field:res.partner.contact,country_id:0
+msgid "Nationality"
+msgstr "Národnost"
+
+#. module: base_contact
+#: view:res.partner:0
+#: view:res.partner.address:0
+msgid "Postal Address"
+msgstr "Poštovní adresa"
+
+#. module: base_contact
+#: field:res.partner.contact,function:0
+msgid "Main Function"
+msgstr "Hlavní funkce"
+
+#. module: base_contact
+#: model:process.transition,note:base_contact.process_transition_partnertoaddress0
+msgid "Define partners and their addresses."
+msgstr "Určuje partnery a jejich adresy."
+
+#. module: base_contact
+#: field:res.partner.contact,name:0
+msgid "Name"
+msgstr "Jméno"
+
+#. module: base_contact
+#: field:res.partner.contact,lang_id:0
+msgid "Language"
+msgstr "Jazyk"
+
+#. module: base_contact
+#: field:res.partner.contact,mobile:0
+msgid "Mobile"
+msgstr "Mobil"
+
+#. module: base_contact
+#: field:res.partner.location,country_id:0
+msgid "Country"
+msgstr "Země"
+
+#. module: base_contact
+#: view:res.partner.contact:0
+#: field:res.partner.contact,comment:0
+msgid "Notes"
+msgstr "Poznámky"
+
+#. module: base_contact
+#: model:process.node,note:base_contact.process_node_contacts0
+msgid "People you work with."
+msgstr "Lidé, s kterými pracujete."
+
+#. module: base_contact
+#: view:res.partner.contact:0
+msgid "Extra Information"
+msgstr "Speciální informace"
+
+#. module: base_contact
+#: view:res.partner.contact:0
+#: field:res.partner.contact,job_ids:0
+msgid "Functions and Addresses"
+msgstr "Funkce a adresy"
+
+#. module: base_contact
+#: model:ir.model,name:base_contact.model_res_partner_contact
+#: field:res.partner.address,contact_id:0
+msgid "Contact"
+msgstr "Kontakt"
+
+#. module: base_contact
+#: model:ir.model,name:base_contact.model_res_partner_location
+msgid "res.partner.location"
+msgstr "res.partner.location"
+
+#. module: base_contact
+#: model:process.node,note:base_contact.process_node_partners0
+msgid "Companies you work with."
+msgstr "Společnosti, se kterými pracujete."
+
+#. module: base_contact
+#: field:res.partner.contact,partner_id:0
+msgid "Main Employer"
+msgstr "Hlavní zaměstnavatel"
+
+#. module: base_contact
+#: view:res.partner.contact:0
+msgid "Partner Contact"
+msgstr "Kontakt partnera"
+
+#. module: base_contact
+#: model:process.node,name:base_contact.process_node_addresses0
+msgid "Addresses"
+msgstr "Adresy"
+
+#. module: base_contact
+#: model:process.node,note:base_contact.process_node_addresses0
+msgid "Working and private addresses."
+msgstr "Pracovní a soukromé adresy."
+
+#. module: base_contact
+#: field:res.partner.contact,last_name:0
+msgid "Last Name"
+msgstr "Příjmení"
+
+#. module: base_contact
+#: view:res.partner.contact:0
+#: field:res.partner.contact,photo:0
+msgid "Photo"
+msgstr "Fotka"
+
+#. module: base_contact
+#: view:res.partner.location:0
+msgid "Locations"
+msgstr "Umístění"
+
+#. module: base_contact
+#: view:res.partner.contact:0
+msgid "General"
+msgstr "Obecný"
+
+#. module: base_contact
+#: field:res.partner.location,street:0
+msgid "Street"
+msgstr "Ulice"
+
+#. module: base_contact
+#: view:res.partner.contact:0
+msgid "Partner"
+msgstr "Partner"
+
+#. module: base_contact
+#: model:process.node,name:base_contact.process_node_partners0
+msgid "Partners"
+msgstr "Partneři"
+
+#. module: base_contact
+#: model:ir.model,name:base_contact.model_res_partner_address
+msgid "Partner Addresses"
+msgstr "Adresy partnerů"
+
+#. module: base_contact
+#: field:res.partner.location,street2:0
+msgid "Street2"
+msgstr "Ulice 2"
+
+#. module: base_contact
+#: view:res.partner.contact:0
+msgid "Personal Information"
+msgstr "Osobní informace"
+
+#. module: base_contact
+#: field:res.partner.contact,birthdate:0
+msgid "Birth Date"
+msgstr "Datum narození"

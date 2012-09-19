@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<openerp>
+  <data noupdate="1">
+
+    <!-- Casual leave -->
+    <record model="hr.holidays.status" id="holiday_status_cl">
+      <field name="name">Legal Leaves</field>
+      <field name="color_name">black</field>
+    </record>
+
+    <!-- Sick leave -->
+    <record model="hr.holidays.status" id="holiday_status_sl">
+      <field name="name">Sick Leaves</field>
+      <field name="limit">True</field>
+      <field name="color_name">red</field>
+    </record>
+
+
+    <!-- Compensatory Days -->
+    <record model="hr.holidays.status" id="holiday_status_comp">
+      <field name="name">Compensatory Days</field>
+      <field name="limit">True</field>
+      <field name="color_name">brown</field>
+    </record>
+
+    <!--Unpaid Leave -->
+    <record model="hr.holidays.status" id="holiday_status_unpaid">
+      <field name="name">Unpaid</field>
+      <field name="limit">True</field>
+      <field name="color_name">brown</field>
+    </record>
+
+  </data>
+</openerp>

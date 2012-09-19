@@ -1,0 +1,348 @@
+# Finnish translation for openobject-addons
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# This file is distributed under the same license as the openobject-addons package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openobject-addons\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-02-08 00:36+0000\n"
+"PO-Revision-Date: 2012-02-17 09:10+0000\n"
+"Last-Translator: Mantavya Gajjar (Open ERP) <Unknown>\n"
+"Language-Team: Finnish <fi@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-08-28 09:37+0000\n"
+"X-Generator: Launchpad (build 15864)\n"
+
+#. module: board
+#: view:res.log.report:0
+msgid "  Year  "
+msgstr "  Vuosi  "
+
+#. module: board
+#: model:ir.model,name:board.model_board_menu_create
+msgid "Menu Create"
+msgstr "Luo valikko"
+
+#. module: board
+#: view:board.menu.create:0
+msgid "Menu Information"
+msgstr "Valikon tiedot"
+
+#. module: board
+#: view:res.users:0
+msgid "Latest Connections"
+msgstr "Viimeisimmät yhteydet"
+
+#. module: board
+#: view:res.log.report:0
+msgid "Log created in last month"
+msgstr ""
+
+#. module: board
+#: view:board.board:0
+#: model:ir.actions.act_window,name:board.open_board_administration_form
+msgid "Administration Dashboard"
+msgstr "Hallintatyöpöytä"
+
+#. module: board
+#: view:res.log.report:0
+msgid "Group By..."
+msgstr "Ryhmittely.."
+
+#. module: board
+#: view:res.log.report:0
+msgid "Log created in current year"
+msgstr ""
+
+#. module: board
+#: model:ir.model,name:board.model_board_board
+msgid "Board"
+msgstr "Työtila"
+
+#. module: board
+#: field:board.menu.create,menu_name:0
+msgid "Menu Name"
+msgstr "Valikon nimi"
+
+#. module: board
+#: model:ir.actions.act_window,name:board.board_weekly_res_log_report_action
+#: view:res.log.report:0
+msgid "Weekly Global Activity"
+msgstr "Viikottainen yhteinen aktiviteetti"
+
+#. module: board
+#: field:board.board.line,name:0
+msgid "Title"
+msgstr "Otsikko"
+
+#. module: board
+#: field:res.log.report,nbr:0
+msgid "# of Entries"
+msgstr "tapahtumien määrä"
+
+#. module: board
+#: view:res.log.report:0
+#: field:res.log.report,month:0
+msgid "Month"
+msgstr "Kuukausi"
+
+#. module: board
+#: view:res.log.report:0
+msgid "Log created in current month"
+msgstr ""
+
+#. module: board
+#: model:ir.actions.act_window,name:board.board_monthly_res_log_report_action
+#: view:res.log.report:0
+msgid "Monthly Activity per Document"
+msgstr "Kuukaisittainen aktiviteetti dokumenteittain"
+
+#. module: board
+#: view:board.board:0
+msgid "Configuration Overview"
+msgstr ""
+
+#. module: board
+#: model:ir.actions.act_window,name:board.action_view_board_list_form
+#: model:ir.ui.menu,name:board.menu_view_board_form
+msgid "Dashboard Definition"
+msgstr "Työpöydän määrittely"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "March"
+msgstr "Maaliskuu"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "August"
+msgstr "Elokuu"
+
+#. module: board
+#: model:ir.actions.act_window,name:board.action_user_connection_tree
+msgid "User Connections"
+msgstr "Käyttäjän yhteydet"
+
+#. module: board
+#: field:res.log.report,creation_date:0
+msgid "Creation Date"
+msgstr "Luontipäivämäärä"
+
+#. module: board
+#: view:res.log.report:0
+msgid "Log Analysis"
+msgstr "Login analyysi"
+
+#. module: board
+#: field:res.log.report,res_model:0
+msgid "Object"
+msgstr "Objekti"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "June"
+msgstr "Kesäkuu"
+
+#. module: board
+#: field:board.board,line_ids:0
+msgid "Action Views"
+msgstr "Toimintonäkymät"
+
+#. module: board
+#: model:ir.model,name:board.model_res_log_report
+msgid "Log Report"
+msgstr "Lokiraportti"
+
+#. module: board
+#: code:addons/board/wizard/board_menu_create.py:46
+#, python-format
+msgid "Please Insert Dashboard View(s) !"
+msgstr "Ole hyvä ja lisää työtilan näkymät !"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "July"
+msgstr "Heinäkuu"
+
+#. module: board
+#: view:res.log.report:0
+#: field:res.log.report,day:0
+msgid "Day"
+msgstr "Päivä"
+
+#. module: board
+#: view:board.menu.create:0
+msgid "Create Menu For Dashboard"
+msgstr "Luo valikko työpöydälle"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "February"
+msgstr "Helmikuu"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "October"
+msgstr "Lokakuu"
+
+#. module: board
+#: model:ir.model,name:board.model_board_board_line
+msgid "Board Line"
+msgstr "Työpöydän rivi"
+
+#. module: board
+#: field:board.menu.create,menu_parent_id:0
+msgid "Parent Menu"
+msgstr "Päävalikko"
+
+#. module: board
+#: view:res.log.report:0
+msgid "    Month-1    "
+msgstr "    Kuukausi-1    "
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "January"
+msgstr "Tammikuu"
+
+#. module: board
+#: view:board.board:0
+msgid "Users"
+msgstr ""
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "November"
+msgstr "Marraskuu"
+
+#. module: board
+#: help:board.board.line,sequence:0
+msgid ""
+"Gives the sequence order                         when displaying a list of "
+"board lines."
+msgstr "Antaa järjestyksen kun näytetään luettelo työpöydän riveistä."
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "April"
+msgstr "Huhtikuu"
+
+#. module: board
+#: view:board.board:0
+#: field:board.board,name:0
+#: field:board.board.line,board_id:0
+#: model:ir.ui.menu,name:board.menu_dasboard
+msgid "Dashboard"
+msgstr "Työpöytä"
+
+#. module: board
+#: code:addons/board/wizard/board_menu_create.py:45
+#, python-format
+msgid "User Error!"
+msgstr "Käyttäjän virhe!"
+
+#. module: board
+#: field:board.board.line,action_id:0
+msgid "Action"
+msgstr "Toiminto"
+
+#. module: board
+#: field:board.board.line,position:0
+msgid "Position"
+msgstr "Sijainti"
+
+#. module: board
+#: view:res.log.report:0
+msgid "Model"
+msgstr "Malli"
+
+#. module: board
+#: model:ir.actions.act_window,name:board.board_homepage_action
+msgid "Home Page"
+msgstr ""
+
+#. module: board
+#: model:ir.actions.act_window,name:board.action_latest_activities_tree
+msgid "Latest Activities"
+msgstr "Viimeisimmät toiminnot"
+
+#. module: board
+#: selection:board.board.line,position:0
+msgid "Left"
+msgstr "Vasen"
+
+#. module: board
+#: field:board.board,view_id:0
+msgid "Board View"
+msgstr "Työtilan näkymä"
+
+#. module: board
+#: selection:board.board.line,position:0
+msgid "Right"
+msgstr "Oikea"
+
+#. module: board
+#: field:board.board.line,width:0
+msgid "Width"
+msgstr "Leveys"
+
+#. module: board
+#: view:res.log.report:0
+msgid "   Month   "
+msgstr "   Kuukausi   "
+
+#. module: board
+#: field:board.board.line,sequence:0
+msgid "Sequence"
+msgstr "Sekvenssi"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "September"
+msgstr "Syyskuu"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "December"
+msgstr "Joulukuu"
+
+#. module: board
+#: view:board.board:0
+#: view:board.menu.create:0
+msgid "Create Menu"
+msgstr "Luo valikko"
+
+#. module: board
+#: field:board.board.line,height:0
+msgid "Height"
+msgstr "Korkeus"
+
+#. module: board
+#: model:ir.actions.act_window,name:board.action_board_menu_create
+msgid "Create Board Menu"
+msgstr "Luo työtilan valikko"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "May"
+msgstr "Toukokuu"
+
+#. module: board
+#: view:res.log.report:0
+#: field:res.log.report,name:0
+msgid "Year"
+msgstr "Vuosi"
+
+#. module: board
+#: view:board.menu.create:0
+msgid "Cancel"
+msgstr "Peruuta"
+
+#. module: board
+#: view:board.board:0
+msgid "Dashboard View"
+msgstr "Työtilan näkymä"

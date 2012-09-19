@@ -1,0 +1,3764 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* crm
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.0dev\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2012-02-08 01:37+0100\n"
+"PO-Revision-Date: 2012-07-07 11:42+0000\n"
+"Last-Translator: Thorsten Vocks (OpenBig.org) <thorsten.vocks@big-"
+"consulting.net>\n"
+"Language-Team: German <de@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-08-28 09:38+0000\n"
+"X-Generator: Launchpad (build 15864)\n"
+
+#. module: crm
+#: view:crm.lead.report:0
+msgid "# Leads"
+msgstr "Verkaufskontakte"
+
+#. module: crm
+#: view:crm.lead:0 selection:crm.lead,type:0 view:crm.lead.report:0
+#: selection:crm.lead.report,type:0
+msgid "Lead"
+msgstr "Verkaufskontakt"
+
+#. module: crm
+#: model:crm.case.categ,name:crm.categ_oppor3
+msgid "Need Services"
+msgstr "Benötigt Dienstleistungen"
+
+#. module: crm
+#: selection:crm.meeting,rrule_type:0
+msgid "Monthly"
+msgstr "Monatlich"
+
+#. module: crm
+#: model:ir.model,name:crm.model_crm_case_stage
+msgid "Stage of case"
+msgstr "Phase des Falls"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "Visibility"
+msgstr "Anzeige"
+
+#. module: crm
+#: field:crm.lead,title:0
+msgid "Title"
+msgstr "Bezeichnung"
+
+#. module: crm
+#: field:crm.meeting,show_as:0
+msgid "Show as"
+msgstr "Zeigen als"
+
+#. module: crm
+#: field:crm.meeting,day:0 selection:crm.meeting,select1:0
+msgid "Date of month"
+msgstr "Datum im Monat"
+
+#. module: crm
+#: view:crm.lead:0 view:crm.phonecall:0
+msgid "Today"
+msgstr "Heute"
+
+#. module: crm
+#: view:crm.lead2opportunity.partner:0 view:crm.merge.opportunity:0
+msgid "Select Opportunities"
+msgstr "Wähle Verkaufschancen"
+
+#. module: crm
+#: view:crm.meeting:0 view:crm.phonecall2opportunity:0
+#: view:crm.phonecall2phonecall:0
+msgid " "
+msgstr " "
+
+#. module: crm
+#: view:crm.lead.report:0 field:crm.phonecall.report,delay_close:0
+msgid "Delay to close"
+msgstr "Dauer für Beendigung"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Previous Stage"
+msgstr "Vorherige Stufe"
+
+#. module: crm
+#: code:addons/crm/wizard/crm_add_note.py:28
+#, python-format
+msgid "Can not add note!"
+msgstr "Kann keine Anmerkung hinzufügen!"
+
+#. module: crm
+#: field:crm.case.stage,name:0
+msgid "Stage Name"
+msgstr "Bez. Stufe"
+
+#. module: crm
+#: model:ir.model,name:crm.model_crm_lead_report
+msgid "CRM Lead Analysis"
+msgstr "CRM Verkaufskontakte Analyse"
+
+#. module: crm
+#: view:crm.lead.report:0 view:crm.phonecall.report:0
+#: field:crm.phonecall.report,day:0
+msgid "Day"
+msgstr "Tag"
+
+#. module: crm
+#: sql_constraint:crm.case.section:0
+msgid "The code of the sales team must be unique !"
+msgstr "Die Kurzbezeichnung für das Vertriebsteam muss eindeutig sein!"
+
+#. module: crm
+#: code:addons/crm/crm_lead.py:553
+#, python-format
+msgid "Lead '%s' has been converted to an opportunity."
+msgstr "Der Verkaufskontakt '%s' wurde zu einer Verkauschance gewandelt."
+
+#. module: crm
+#: code:addons/crm/crm_lead.py:294
+#, python-format
+msgid "The lead '%s' has been closed."
+msgstr "Der Verkaufskontakt '%s' wurde beendet."
+
+#. module: crm
+#: view:crm.lead.report:0
+msgid "Exp. Closing"
+msgstr "Erw. Abschluß"
+
+#. module: crm
+#: selection:crm.meeting,rrule_type:0
+msgid "Yearly"
+msgstr "Jährlich"
+
+#. module: crm
+#: help:crm.lead.report,creation_day:0
+msgid "Creation day"
+msgstr "Datum Erstellung"
+
+#. module: crm
+#: field:crm.segmentation.line,name:0
+msgid "Rule Name"
+msgstr "Bezeichnung"
+
+#. module: crm
+#: view:crm.case.section:0
+msgid "Configuration"
+msgstr "Konfiguration"
+
+#. module: crm
+#: view:crm.case.resource.type:0 view:crm.lead:0 field:crm.lead,type_id:0
+#: view:crm.lead.report:0 field:crm.lead.report,type_id:0
+#: model:ir.model,name:crm.model_crm_case_resource_type
+msgid "Campaign"
+msgstr "Kampagne"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Search Opportunities"
+msgstr "Suche Verkaufschancen"
+
+#. module: crm
+#: help:crm.lead.report,deadline_month:0
+msgid "Expected closing month"
+msgstr "Erwarteter Abschluß Monat"
+
+#. module: crm
+#: view:crm.lead2opportunity.partner.mass:0
+msgid "Assigned opportunities to"
+msgstr "Verkaufschancen zugeteilt an"
+
+#. module: crm
+#: view:crm.lead:0 field:crm.lead,partner_id:0 view:crm.lead.report:0
+#: field:crm.lead.report,partner_id:0
+#: field:crm.lead2opportunity.partner,partner_id:0
+#: field:crm.lead2opportunity.partner.mass,partner_id:0
+#: field:crm.lead2partner,partner_id:0 view:crm.meeting:0
+#: field:crm.meeting,partner_id:0 field:crm.opportunity2phonecall,partner_id:0
+#: field:crm.partner2opportunity,partner_id:0 view:crm.phonecall:0
+#: field:crm.phonecall,partner_id:0 view:crm.phonecall.report:0
+#: field:crm.phonecall.report,partner_id:0
+#: field:crm.phonecall2opportunity,partner_id:0
+#: field:crm.phonecall2partner,partner_id:0
+#: field:crm.phonecall2phonecall,partner_id:0
+#: model:ir.model,name:crm.model_res_partner
+#: model:process.node,name:crm.process_node_partner0
+msgid "Partner"
+msgstr "Partner"
+
+#. module: crm
+#: field:crm.meeting,organizer:0 field:crm.meeting,organizer_id:0
+msgid "Organizer"
+msgstr "Zeitplaner"
+
+#. module: crm
+#: view:crm.phonecall:0
+#: model:ir.actions.act_window,name:crm.phonecall_to_phonecall_act
+msgid "Schedule Other Call"
+msgstr "Terminiere weiteren Anruf"
+
+#. module: crm
+#: code:addons/crm/crm_phonecall.py:216
+#: model:crm.case.categ,name:crm.categ_meet3 view:crm.phonecall:0
+#, python-format
+msgid "Phone Call"
+msgstr "Kundenanrufe"
+
+#. module: crm
+#: field:crm.lead,optout:0
+msgid "Opt-Out"
+msgstr "Opt-Out"
+
+#. module: crm
+#: field:crm.meeting,end_type:0
+msgid "Recurrence termination"
+msgstr "Ende der Wiederholungen"
+
+#. module: crm
+#: code:addons/crm/crm_lead.py:323
+#, python-format
+msgid "The opportunity '%s' has been marked as lost."
+msgstr "Die Verkaufschance '%s' hat zu keinem Abschluss geführt."
+
+#. module: crm
+#: model:ir.actions.act_window,help:crm.action_report_crm_lead
+msgid ""
+"Leads Analysis allows you to check different CRM related information. Check "
+"for treatment delays, number of responses given and emails sent. You can "
+"sort out your leads analysis by different groups to get accurate grained "
+"analysis."
+msgstr ""
+"Statistik Verkaufskontakte ermöglicht Ihnen die Analyse diverser Kennzahlen "
+"für die Bearbeitung von Vertriebsvorgängen. Prüfen Sie die Verzögerung für "
+"die Eröffnung von Vorgängen, die Zeit für die Bearbeitung von Vorgängen, die "
+"Anzahl an Antworten für die Beendigung von Vorgängen oder die Anzahl "
+"gesendeter EMails. Sie können diese Statistik nach verschiedenen Kriterien "
+"sortieren und gruppieren, um eine exakt auf Ihren Informationsbedarf "
+"abgestimmte Analyse zu erhalten."
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Send New Email"
+msgstr "Sende EMail"
+
+#. module: crm
+#: field:crm.segmentation,segmentation_line:0
+msgid "Criteria"
+msgstr "Kriterien"
+
+#. module: crm
+#: view:crm.segmentation:0
+msgid "Excluded Answers :"
+msgstr "Ausgeschlossene Antworten"
+
+#. module: crm
+#: field:crm.case.stage,section_ids:0
+msgid "Sections"
+msgstr "Vertriebssektionen"
+
+#. module: crm
+#: view:crm.merge.opportunity:0
+msgid "_Merge"
+msgstr "Zusammenfassen"
+
+#. module: crm
+#: view:crm.lead.report:0
+#: model:ir.actions.act_window,name:crm.action_report_crm_lead
+#: model:ir.ui.menu,name:crm.menu_report_crm_leads_tree
+msgid "Leads Analysis"
+msgstr "Statistik Verkaufskontakte"
+
+#. module: crm
+#: selection:crm.meeting,class:0
+msgid "Public"
+msgstr "Öffentlich"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.crm_case_resource_type_act
+#: model:ir.ui.menu,name:crm.menu_crm_case_resource_type_act
+msgid "Campaigns"
+msgstr "Kampagnen"
+
+#. module: crm
+#: view:crm.lead:0 field:crm.lead,state:0 view:crm.lead.report:0
+#: field:crm.lead.report,state:0 field:crm.meeting,state:0
+#: field:crm.phonecall,state:0 view:crm.phonecall.report:0
+#: field:crm.phonecall.report,state:0
+msgid "State"
+msgstr "Status"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.crm_lead_categ_action
+#: model:ir.ui.menu,name:crm.menu_crm_case_phonecall-act
+#: model:ir.ui.menu,name:crm.menu_crm_lead_categ
+msgid "Categories"
+msgstr "Kategorien"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Dates"
+msgstr "Termine"
+
+#. module: crm
+#: help:crm.lead,optout:0
+msgid ""
+"If opt-out is checked, this contact has refused to receive emails or "
+"unsubscribed to a campaign."
+msgstr ""
+"Wenn Sie opt-out aktivieren, wird dieser Kontakt keine weiteren Emails "
+"zugestellt bekommen."
+
+#. module: crm
+#: model:process.transition,name:crm.process_transition_leadpartner0
+msgid "Prospect Partner"
+msgstr "Interessent"
+
+#. module: crm
+#: code:addons/crm/crm_lead.py:735
+#, python-format
+msgid "No Subject"
+msgstr "Kein Betreff"
+
+#. module: crm
+#: model:crm.case.resource.type,name:crm.type_lead6
+msgid "Google Adwords 2"
+msgstr "Google Adwords 2"
+
+#. module: crm
+#: selection:crm.lead2opportunity.partner,action:0
+#: selection:crm.lead2opportunity.partner.mass,action:0
+#: selection:crm.lead2partner,action:0
+#: selection:crm.phonecall2partner,action:0
+msgid "Link to an existing partner"
+msgstr "Link zu vorhandenem Partner"
+
+#. module: crm
+#: view:crm.lead:0 field:crm.lead,contact_id:0 view:crm.meeting:0
+#: field:crm.opportunity2phonecall,contact_name:0
+#: field:crm.phonecall,partner_contact:0
+#: field:crm.phonecall2phonecall,contact_name:0
+msgid "Contact"
+msgstr "Ansprechpartner"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "Delegate"
+msgstr "Delegieren"
+
+#. module: crm
+#: selection:crm.segmentation.line,expr_operator:0
+msgid "="
+msgstr "="
+
+#. module: crm
+#: field:base.action.rule,regex_history:0
+msgid "Regular Expression on Case History"
+msgstr "Suchausdruck in Fallhistorie"
+
+#. module: crm
+#: code:addons/crm/crm_lead.py:274
+#, python-format
+msgid "The lead '%s' has been opened."
+msgstr "Der Verkaufskontakt '%s' wurde eröffnet."
+
+#. module: crm
+#: model:process.transition,name:crm.process_transition_opportunitymeeting0
+msgid "Opportunity Meeting"
+msgstr "Meeting Verkaufschance"
+
+#. module: crm
+#: help:crm.lead.report,delay_close:0 help:crm.phonecall.report,delay_close:0
+msgid "Number of Days to close the case"
+msgstr "Anzahl Tage f. Beendigung"
+
+#. module: crm
+#: model:process.node,note:crm.process_node_opportunities0
+msgid "When a real project/opportunity is detected"
+msgstr "Wenn definitiv Verkaufschance erkannt wird"
+
+#. module: crm
+#: view:res.partner:0 field:res.partner,opportunity_ids:0
+msgid "Leads and Opportunities"
+msgstr "Verkaufskontakte & Verkaufschancen"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Communication"
+msgstr "Betreff"
+
+#. module: crm
+#: selection:crm.meeting,week_list:0
+msgid "Tuesday"
+msgstr "Dienstag"
+
+#. module: crm
+#: field:crm.lead,write_date:0
+msgid "Update Date"
+msgstr "Aktualisiere Datum"
+
+#. module: crm
+#: field:crm.case.section,user_id:0
+msgid "Team Leader"
+msgstr "Teamleiter"
+
+#. module: crm
+#: field:crm.lead2opportunity.partner,name:0
+#: field:crm.lead2opportunity.partner.mass,name:0
+msgid "Select Action"
+msgstr "Wähle Aktion"
+
+#. module: crm
+#: help:crm.case.stage,probability:0
+msgid ""
+"This percentage depicts the default/average probability of the Case for this "
+"stage to be a success"
+msgstr ""
+"Dieser Prozentwert beschreibt die Standard/Durchschnittliche "
+"Wahrscheinlichkeit für einen erfolgreichen Verkaufsabschluss."
+
+#. module: crm
+#: field:base.action.rule,trg_categ_id:0 view:crm.lead:0
+#: field:crm.lead,categ_id:0 view:crm.lead.report:0
+#: field:crm.lead.report,categ_id:0 field:crm.opportunity2phonecall,categ_id:0
+#: field:crm.phonecall,categ_id:0 view:crm.phonecall.report:0
+#: field:crm.phonecall.report,categ_id:0
+#: field:crm.phonecall2phonecall,categ_id:0
+msgid "Category"
+msgstr "Vertriebskategorie"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Opportunity / Customer"
+msgstr "Verkaufschance / Kunde"
+
+#. module: crm
+#: view:crm.lead.report:0
+msgid "#Opportunities"
+msgstr "# Verkaufschancen"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "Privacy"
+msgstr "Vertraulichkeit"
+
+#. module: crm
+#: model:ir.actions.act_window,help:crm.crm_case_stage_form_installer
+msgid ""
+"Stages will allow salesmen to easily track how a specific opportunity is "
+"positioned in the sales cycle. In order to efficiently manage your sales "
+"pipeline, it's important to define conditions to go to the next step. "
+"Example: to set an opportunity as 'Qualified', you must set the \"Expected "
+"Revenue\" and the \"Expected Closing Date.\" You should also have a look at "
+"the tooltip of the field \"Change Probability Automatically\"."
+msgstr ""
+"Die Stufen erlauben den Verkäufern den Zustand einer Chance in "
+"Verkaufszyklus zu verfolgen. Um die Verkaufs Pipeline effizient zu "
+"verwalten, müssen die Bedingungen für den Wechsel der Stufen genau definiert "
+"sein.\r\n"
+"Beispiel: Um eine Verkaufschance als qualifiziert zu setzten muss der "
+"\"Erwartete Umsatz\" und das \"Erwartete Abschluss Datum\" gesetzt "
+"werden.\r\n"
+"Beachten Sie auch den Hinweise beim Feld \"Ändere Wahrscheinlichkeit "
+"automatisch\""
+
+#. module: crm
+#: view:crm.lead.report:0
+msgid "Opportunity Analysis"
+msgstr "Statistik Verkaufschancen"
+
+#. module: crm
+#: help:crm.meeting,location:0
+msgid "Location of Event"
+msgstr "Terminort"
+
+#. module: crm
+#: field:crm.meeting,rrule:0
+msgid "Recurrent Rule"
+msgstr "Wiederkehrende Regel"
+
+#. module: crm
+#: model:process.transition,note:crm.process_transition_opportunitymeeting0
+msgid "Normal or phone meeting for opportunity"
+msgstr "Meeting o. Telefonkonferenz zu Verkaufschance"
+
+#. module: crm
+#: view:crm.case.section:0
+msgid "Mail Gateway"
+msgstr "Mail Gateway"
+
+#. module: crm
+#: model:process.node,note:crm.process_node_leads0
+msgid "Very first contact with new prospect"
+msgstr "Erster Kontakt mit Interessent"
+
+#. module: crm
+#: view:crm.lead2opportunity.partner:0 view:crm.partner2opportunity:0
+#: model:ir.actions.act_window,name:crm.action_view_crm_partner2opportunity
+#: model:ir.actions.act_window,name:crm.crm_partner2opportunity
+msgid "Create Opportunity"
+msgstr "Erstelle Verkaufschance"
+
+#. module: crm
+#: selection:crm.lead.report,creation_month:0
+#: selection:crm.lead.report,deadline_month:0
+#: selection:crm.meeting,month_list:0 selection:crm.phonecall.report,month:0
+msgid "August"
+msgstr "August"
+
+#. module: crm
+#: code:addons/crm/crm.py:433 view:crm.lead:0 view:res.partner:0
+#, python-format
+msgid "Escalate"
+msgstr "Eskalation"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Mailings"
+msgstr "Genehmigung Emailversand"
+
+#. module: crm
+#: view:crm.phonecall:0
+msgid "To Do"
+msgstr "To Do"
+
+#. module: crm
+#: selection:crm.lead.report,creation_month:0
+#: selection:crm.lead.report,deadline_month:0
+#: selection:crm.meeting,month_list:0 selection:crm.phonecall.report,month:0
+msgid "June"
+msgstr "Juni"
+
+#. module: crm
+#: selection:crm.segmentation,state:0
+msgid "Not Running"
+msgstr "Funktioniert Nicht"
+
+#. module: crm
+#: field:crm.lead,email:0
+msgid "E-Mail"
+msgstr "E-Mail"
+
+#. module: crm
+#: view:crm.phonecall:0
+msgid "Phonecalls during last 7 days"
+msgstr "Telefonate der letzten 7 Tage"
+
+#. module: crm
+#: selection:crm.lead.report,creation_month:0
+#: selection:crm.lead.report,deadline_month:0
+#: selection:crm.meeting,month_list:0 selection:crm.phonecall.report,month:0
+msgid "October"
+msgstr "Oktober"
+
+#. module: crm
+#: view:crm.segmentation:0
+msgid "Included Answers :"
+msgstr "Inbegriffene Antworten"
+
+#. module: crm
+#: help:crm.meeting,email_from:0 help:crm.phonecall,email_from:0
+msgid "These people will receive email."
+msgstr "Diese Personen erhalten EMail."
+
+#. module: crm
+#: view:crm.meeting:0 field:crm.meeting,name:0
+msgid "Summary"
+msgstr "Bezeichnung"
+
+#. module: crm
+#: view:crm.segmentation:0
+msgid "State of Mind Computation"
+msgstr "Berechnung der Kundenzufriedenheit"
+
+#. module: crm
+#: view:crm.case.categ:0
+msgid "Case Category"
+msgstr "Vertriebskategorie"
+
+#. module: crm
+#: help:crm.segmentation,som_interval_default:0
+msgid ""
+"Default state of mind for period preceeding the 'Max Interval' computation. "
+"This is the starting state of mind by default if the partner has no event."
+msgstr ""
+"Die Bewertung der Kundenzufriedenheit wird gegebenfalls durch eine "
+"Neuberechnung gemindert, insbesondere wenn es innerhalb eines festzulegenden "
+"Intervalls keinen Kundenkontakt gab."
+
+#. module: crm
+#: field:crm.lead,partner_address_name:0
+msgid "Partner Contact Name"
+msgstr "Partner Kontakt Name"
+
+#. module: crm
+#: selection:crm.meeting,end_type:0
+msgid "End date"
+msgstr "Ende Datum"
+
+#. module: crm
+#: view:crm.opportunity2phonecall:0 view:crm.phonecall2phonecall:0
+msgid "Schedule/Log a call"
+msgstr "Plane/Dokumentiere einen Anruf"
+
+#. module: crm
+#: constraint:base.action.rule:0
+msgid "Error: The mail is not well formated"
+msgstr "Fehler: Email wurde nicht ausreichend konfiguriert"
+
+#. module: crm
+#: view:crm.segmentation:0
+msgid "Profiling Options"
+msgstr "Kunden Profilerstellung"
+
+#. module: crm
+#: view:crm.phonecall.report:0
+msgid "#Phone calls"
+msgstr "# Kundenanrufe"
+
+#. module: crm
+#: help:crm.segmentation,categ_id:0
+msgid ""
+"The partner category that will be added to partners that match the "
+"segmentation criterions after computation."
+msgstr ""
+"Die Partner Kategorie, die gemäß der Segementierungskriterien nach der "
+"Verarbeitung dem Partner zugewiesen wird."
+
+#. module: crm
+#: code:addons/crm/crm_meeting.py:93
+#, python-format
+msgid "The meeting '%s' has been confirmed."
+msgstr "Der Termin '%s' wurde bestätigt."
+
+#. module: crm
+#: selection:crm.add.note,state:0 selection:crm.lead,state:0
+msgid "In Progress"
+msgstr "In Bearbeitung"
+
+#. module: crm
+#: help:crm.case.section,reply_to:0
+msgid ""
+"The email address put in the 'Reply-To' of all emails sent by OpenERP about "
+"cases in this sales team"
+msgstr ""
+"Die Email Anschrift für das 'Antwort An' Feld aus versendeten EMails des "
+"Vertriebs."
+
+#. module: crm
+#: field:crm.lead.report,creation_month:0
+msgid "Creation Month"
+msgstr "Monat Erstellung"
+
+#. module: crm
+#: field:crm.case.section,resource_calendar_id:0
+#: model:ir.ui.menu,name:crm.menu_action_resource_calendar_form
+msgid "Working Time"
+msgstr "Arbeitszeit"
+
+#. module: crm
+#: view:crm.segmentation.line:0
+msgid "Partner Segmentation Lines"
+msgstr "Partner Segmentierungspositionen"
+
+#. module: crm
+#: view:crm.lead:0 view:crm.meeting:0
+msgid "Details"
+msgstr "Details"
+
+#. module: crm
+#: help:crm.meeting,exrule:0
+msgid ""
+"Defines a rule or repeating pattern of time to exclude from the recurring "
+"rule."
+msgstr ""
+"Definiert Regel für den Ausschluß von Daten und Zeiten zu automatisch "
+"wiederkehrenden Vorgängen."
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Leads Form"
+msgstr "Verkaufskontakt Formular"
+
+#. module: crm
+#: view:crm.segmentation:0 model:ir.model,name:crm.model_crm_segmentation
+msgid "Partner Segmentation"
+msgstr "Partner Segmentierung"
+
+#. module: crm
+#: model:ir.actions.act_window,help:crm.crm_case_categ_meet
+msgid ""
+"The meeting calendar is shared between the sales teams and fully integrated "
+"with other applications such as the employee holidays or the business "
+"opportunities. You can also synchronize meetings with your mobile phone "
+"using the caldav interface.\n"
+"        "
+msgstr ""
+"Der \"Meeting\" Kalender ist für das Verkaufsteam und integriert mit "
+"Urlauben und Opportunitäten.\n"
+"        "
+
+#. module: crm
+#: field:crm.lead2opportunity.partner.mass,user_ids:0
+msgid "Salesmans"
+msgstr "Verkäufer"
+
+#. module: crm
+#: field:crm.lead.report,probable_revenue:0
+msgid "Probable Revenue"
+msgstr "Möglicher Umsatz"
+
+#. module: crm
+#: help:crm.lead.report,creation_month:0
+msgid "Creation month"
+msgstr "Monat Erstellung"
+
+#. module: crm
+#: help:crm.segmentation,name:0
+msgid "The name of the segmentation."
+msgstr "Bezeichnung des Kundensegments"
+
+#. module: crm
+#: field:crm.case.stage,probability:0 field:crm.lead,probability:0
+msgid "Probability (%)"
+msgstr "Wahrscheinlichk. (%)"
+
+#. module: crm
+#: field:crm.lead,company_currency:0
+msgid "Company Currency"
+msgstr "Betriebl. Währung"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Leads Generation"
+msgstr "Generierung Verkaufskontakte"
+
+#. module: crm
+#: model:ir.actions.act_window,help:crm.crm_case_section_view_form_installer
+msgid ""
+"Define sales teams to structure your sales organization and assign users to "
+"each team. You should also define the sales stage to each team. As an "
+"example, if you use Solutions Selling techniques to track your "
+"opportunities, you can assign the following stage to the team: Territory, "
+"Qualified, Qualified Sponsors, Proposition, Negociaton, Won/Lost."
+msgstr ""
+"Erzeugen Sie Verkaufsteams um Ihre Verkaufsabteilung zu organisieren und "
+"Benutzer zu Teams zuzuordnen. \r\n"
+"Sie sollten auch Verkaufsstufen zu jedem Team zuteilen. Wenn Sie zB "
+"lösungsbezogene Verkaufstechniken einsetzen, sollten Sie zB folgende Stufen "
+"dem Verkaufsteam zuordnen: Gebiet, Qualifiziert, Qualifizierter Sponsor, "
+"Vorschlag, Verhandlung, Gewonnen/Verloren."
+
+#. module: crm
+#: code:addons/crm/crm_lead.py:718 view:crm.lead:0 selection:crm.lead,type:0
+#: view:crm.lead.report:0 selection:crm.lead.report,type:0
+#: field:crm.meeting,opportunity_id:0
+#, python-format
+msgid "Opportunity"
+msgstr "Verkaufschance"
+
+#. module: crm
+#: view:crm.lead.report:0
+msgid "Leads/Opportunities created in last month"
+msgstr "Verkaufskontakte/-Chancen des letzten Monats"
+
+#. module: crm
+#: model:crm.case.resource.type,name:crm.type_lead7
+msgid "Television"
+msgstr "Fernsehen"
+
+#. module: crm
+#: view:crm.segmentation:0
+msgid "Stop Process"
+msgstr "Beende Prozess"
+
+#. module: crm
+#: view:crm.lead.report:0 view:crm.phonecall.report:0
+msgid "Month-1"
+msgstr "Monat-1"
+
+#. module: crm
+#: view:crm.phonecall:0
+msgid "Search Phonecalls"
+msgstr "Suche Kundenanruf"
+
+#. module: crm
+#: view:crm.lead2partner:0 view:crm.phonecall2partner:0
+msgid "Continue"
+msgstr "Fortsetzen"
+
+#. module: crm
+#: field:crm.segmentation,som_interval:0
+msgid "Days per Periode"
+msgstr "Anzahl Tage pro Periode"
+
+#. module: crm
+#: field:crm.meeting,byday:0
+msgid "By day"
+msgstr "Nach Tag"
+
+#. module: crm
+#: field:base.action.rule,act_section_id:0
+msgid "Set Team to"
+msgstr "Setze Team auf"
+
+#. module: crm
+#: view:calendar.attendee:0 field:calendar.attendee,categ_id:0
+msgid "Event Type"
+msgstr "Terminart"
+
+#. module: crm
+#: field:crm.segmentation,exclusif:0
+msgid "Exclusive"
+msgstr "Exklusive Auswahl"
+
+#. module: crm
+#: code:addons/crm/crm_lead.py:832
+#, python-format
+msgid ""
+"You cannot delete lead '%s'; it must be in state 'Draft' to be deleted. You "
+"should better cancel it, instead of deleting it."
+msgstr ""
+"Sie können die Verkaufsschance '%s' nur im Status \"Entwurf\" löschen. Sie "
+"sollten diese stornieren."
+
+#. module: crm
+#: code:addons/crm/crm_lead.py:451
+#, python-format
+msgid "From %s : %s"
+msgstr "Von %s : %s"
+
+#. module: crm
+#: field:crm.lead.report,creation_year:0
+msgid "Creation Year"
+msgstr "Jahr Erzuegung"
+
+#. module: crm
+#: field:crm.lead.report,create_date:0
+#: field:crm.phonecall.report,create_date:0
+msgid "Create Date"
+msgstr "Erzeugt am"
+
+#. module: crm
+#: field:crm.lead,ref2:0
+msgid "Reference 2"
+msgstr "Ref. 2"
+
+#. module: crm
+#: view:crm.segmentation:0
+msgid "Sales Purchase"
+msgstr "Verkauf, Einkauf"
+
+#. module: crm
+#: help:crm.case.section,resource_calendar_id:0
+msgid "Used to compute open days"
+msgstr "Für Kalkulation der offenen Tage"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Schedule Meeting"
+msgstr "Plane Termin"
+
+#. module: crm
+#: view:crm.case.stage:0 field:crm.case.stage,requirements:0
+msgid "Requirements"
+msgstr "Anforderungen"
+
+#. module: crm
+#: help:crm.meeting,exdate:0
+msgid ""
+"This property defines the list of date/time exceptions for a recurring "
+"calendar component."
+msgstr ""
+"Diese Eigenschaft definiert eine Ausschlussliste für die Anwendung der "
+"wiederkehrenden Termine."
+
+#. module: crm
+#: view:crm.phonecall2opportunity:0
+msgid "Convert To Opportunity "
+msgstr "Konvertiere z. Verkaufschance "
+
+#. module: crm
+#: help:crm.meeting,recurrency:0
+msgid "Recurrent Meeting"
+msgstr "Wiederkehrender Termin"
+
+#. module: crm
+#: view:crm.phonecall:0
+msgid "Unassigned Phonecalls"
+msgstr "Nicht zugeteilte Anrufe"
+
+#. module: crm
+#: view:crm.lead:0 field:crm.lead2opportunity.partner,opportunity_ids:0
+#: field:crm.lead2opportunity.partner.mass,opportunity_ids:0
+#: field:crm.merge.opportunity,opportunity_ids:0
+#: model:ir.actions.act_window,name:crm.crm_case_category_act_oppor11
+#: model:ir.ui.menu,name:crm.menu_crm_case_opp
+#: model:process.node,name:crm.process_node_opportunities0
+msgid "Opportunities"
+msgstr "Verkaufschance"
+
+#. module: crm
+#: field:crm.segmentation,categ_id:0
+msgid "Partner Category"
+msgstr "Partner Kategorie"
+
+#. module: crm
+#: view:crm.add.note:0
+#: model:ir.actions.act_window,name:crm.action_crm_add_note
+msgid "Add Note"
+msgstr "Hinzufügen Anmerkung"
+
+#. module: crm
+#: field:crm.lead,is_supplier_add:0
+msgid "Supplier"
+msgstr "Lieferant"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Mark Won"
+msgstr "Abschluss als Verkauf"
+
+#. module: crm
+#: selection:crm.segmentation.line,expr_name:0
+msgid "Purchase Amount"
+msgstr "Umsatz Einkauf"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Mark Lost"
+msgstr "Kein Verkaufsabschluss"
+
+#. module: crm
+#: selection:crm.lead.report,creation_month:0
+#: selection:crm.lead.report,deadline_month:0
+#: selection:crm.meeting,month_list:0 selection:crm.phonecall.report,month:0
+msgid "March"
+msgstr "März"
+
+#. module: crm
+#: code:addons/crm/crm_lead.py:491
+#: code:addons/crm/wizard/crm_lead_to_opportunity.py:104
+#: code:addons/crm/wizard/crm_lead_to_partner.py:47
+#, python-format
+msgid "Warning !"
+msgstr "Warnung !"
+
+#. module: crm
+#: view:crm.phonecall.report:0
+msgid "Phone calls made in current year"
+msgstr "Anrufe des laufenden Jahres"
+
+#. module: crm
+#: field:crm.lead,day_open:0
+msgid "Days to Open"
+msgstr "Tage b. Eröffnung"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "Show time as"
+msgstr "Verfügbarkeit"
+
+#. module: crm
+#: view:crm.phonecall2partner:0
+msgid "Create Partner"
+msgstr "Erstelle Partner"
+
+#. module: crm
+#: selection:crm.segmentation.line,expr_operator:0
+msgid "<"
+msgstr "<"
+
+#. module: crm
+#: field:crm.lead,mobile:0 field:crm.phonecall,partner_mobile:0
+msgid "Mobile"
+msgstr "Mobil"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Next Stage"
+msgstr "Nächste Stufe"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "My Meetings"
+msgstr "Mein Terminkalender"
+
+#. module: crm
+#: view:crm.phonecall:0
+msgid "Todays's Phonecalls"
+msgstr "Heutige Anrufe"
+
+#. module: crm
+#: view:board.board:0
+msgid "Statistics Dashboard"
+msgstr "Pinnwand Statistiken"
+
+#. module: crm
+#: field:crm.lead,ref:0
+msgid "Reference"
+msgstr "Referenz"
+
+#. module: crm
+#: field:crm.lead,optin:0
+msgid "Opt-In"
+msgstr "Opt-In"
+
+#. module: crm
+#: code:addons/crm/crm_lead.py:814 code:addons/crm/crm_phonecall.py:296
+#: code:addons/crm/wizard/crm_phonecall_to_meeting.py:83 view:crm.meeting:0
+#: model:ir.actions.act_window,name:crm.act_crm_opportunity_crm_meeting_new
+#: model:ir.actions.act_window,name:crm.crm_case_categ_meet
+#: model:ir.ui.menu,name:crm.menu_crm_case_categ_meet
+#: model:ir.ui.menu,name:crm.menu_meeting_sale view:res.partner:0
+#: field:res.partner,meeting_ids:0
+#, python-format
+msgid "Meetings"
+msgstr "Terminkalender"
+
+#. module: crm
+#: field:crm.lead,date_action_next:0 field:crm.lead,title_action:0
+#: field:crm.meeting,date_action_next:0 field:crm.phonecall,date_action_next:0
+msgid "Next Action"
+msgstr "Nächste Aktion"
+
+#. module: crm
+#: field:crm.meeting,end_date:0
+msgid "Repeat Until"
+msgstr "Wiederhole Bis"
+
+#. module: crm
+#: field:crm.meeting,date_deadline:0
+msgid "Deadline"
+msgstr "Frist"
+
+#. module: crm
+#: help:crm.meeting,active:0
+msgid ""
+"If the active field is set to          true, it will allow you to hide the "
+"event alarm information without removing it."
+msgstr ""
+"Wenn das Aktiv Feld angehakt ist wird der Alarm für das Ereigniss "
+"unterdrückt ohne dieses zu löschen."
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Change Color"
+msgstr "Farbe ändern"
+
+#. module: crm
+#: view:crm.segmentation:0
+msgid "Partner Segmentations"
+msgstr "Partner Segmentierung"
+
+#. module: crm
+#: field:crm.meeting,user_id:0 view:crm.phonecall:0
+#: field:crm.phonecall,user_id:0 view:res.partner:0
+msgid "Responsible"
+msgstr "Verantwortlich"
+
+#. module: crm
+#: view:crm.lead.report:0
+msgid "Show only opportunity"
+msgstr "Zeige nur Chancen"
+
+#. module: crm
+#: view:res.partner:0
+msgid "Previous"
+msgstr "Vorherige"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "New Leads"
+msgstr "Neue Kontakte"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Statistics"
+msgstr "Statistik"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "From"
+msgstr "Von"
+
+#. module: crm
+#: view:crm.lead2opportunity.partner.mass:0
+msgid "Convert into Opportunities"
+msgstr "In Chancen Umwandeln"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Show Sales Team"
+msgstr "Zeige Verkaufs Team"
+
+#. module: crm
+#: view:res.partner:0
+msgid "Next"
+msgstr "Nächste"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Stage:"
+msgstr "Stufe:"
+
+#. module: crm
+#: model:crm.case.stage,name:crm.stage_lead5 view:crm.lead:0
+msgid "Won"
+msgstr "Erfolgreich"
+
+#. module: crm
+#: field:crm.lead.report,delay_expected:0
+msgid "Overpassed Deadline"
+msgstr "Abgelaufene Frist"
+
+#. module: crm
+#: model:crm.case.section,name:crm.section_sales_department
+msgid "Sales Department"
+msgstr "Verkaufsabteilung"
+
+#. module: crm
+#: selection:crm.segmentation.line,expr_name:0
+msgid "State of Mind"
+msgstr "Kundenzufriedenheit"
+
+#. module: crm
+#: field:crm.lead,type:0 field:crm.lead.report,type:0
+#: view:crm.opportunity2phonecall:0 view:crm.phonecall2phonecall:0
+msgid "Type"
+msgstr "Typ"
+
+#. module: crm
+#: view:crm.segmentation:0
+msgid "Compute Segmentation"
+msgstr "Berechnung Segmentierung"
+
+#. module: crm
+#: field:crm.case.stage,on_change:0
+msgid "Change Probability Automatically"
+msgstr "Ändere Wahrscheinlichkeit automatisch"
+
+#. module: crm
+#: field:crm.lead,create_date:0 field:crm.meeting,create_date:0
+#: view:crm.phonecall:0 field:crm.phonecall,create_date:0
+#: field:crm.phonecall.report,creation_date:0
+msgid "Creation Date"
+msgstr "Erzeugt am"
+
+#. module: crm
+#: view:board.board:0
+msgid "My Opportunities"
+msgstr "Meine Verkaufschancen"
+
+#. module: crm
+#: model:crm.case.categ,name:crm.categ_oppor5
+msgid "Need a Website Design"
+msgstr "Benötigt Webpage"
+
+#. module: crm
+#: view:crm.phonecall.report:0
+msgid "Year of call"
+msgstr "Jahr des Anrufs"
+
+#. module: crm
+#: field:crm.meeting,recurrent_uid:0
+msgid "Recurrent ID"
+msgstr "Wiederholung ID"
+
+#. module: crm
+#: view:crm.lead:0 view:crm.meeting:0 view:res.partner:0
+msgid "Subject"
+msgstr "Betreff"
+
+#. module: crm
+#: field:crm.meeting,tu:0
+msgid "Tue"
+msgstr "Di"
+
+#. module: crm
+#: view:crm.case.stage:0 view:crm.lead:0 field:crm.lead,stage_id:0
+#: view:crm.lead.report:0 field:crm.lead.report,stage_id:0
+msgid "Stage"
+msgstr "Stufe"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "History Information"
+msgstr "Historie"
+
+#. module: crm
+#: field:base.action.rule,act_mail_to_partner:0
+msgid "Mail to Partner"
+msgstr "Mail an Partner"
+
+#. module: crm
+#: view:crm.opportunity2phonecall:0 view:crm.phonecall2phonecall:0
+msgid "Call Details"
+msgstr "Anruf Details"
+
+#. module: crm
+#: field:crm.meeting,class:0
+msgid "Mark as"
+msgstr "Markiere als"
+
+#. module: crm
+#: view:crm.opportunity2phonecall:0 view:crm.phonecall2phonecall:0
+msgid "Log call"
+msgstr "Dokumentiere Anruf"
+
+#. module: crm
+#: help:crm.meeting,rrule_type:0
+msgid "Let the event automatically repeat at that interval"
+msgstr "Termin wird automatisch in diesem Intervall wiederholt"
+
+#. module: crm
+#: view:base.action.rule:0
+msgid "Condition Case Fields"
+msgstr "Filterkriterien"
+
+#. module: crm
+#: view:crm.phonecall.report:0
+msgid "Phone calls which are in pending state"
+msgstr "Anrufe in Bearbeitung"
+
+#. module: crm
+#: view:crm.case.section:0 field:crm.case.section,stage_ids:0
+#: view:crm.case.stage:0
+#: model:ir.actions.act_window,name:crm.crm_case_stage_act
+#: model:ir.actions.act_window,name:crm.crm_lead_stage_act
+#: model:ir.ui.menu,name:crm.menu_crm_lead_stage_act
+msgid "Stages"
+msgstr "Vertriebsstufen"
+
+#. module: crm
+#: field:crm.lead,planned_revenue:0
+#: field:crm.partner2opportunity,planned_revenue:0
+#: field:crm.phonecall2opportunity,planned_revenue:0
+msgid "Expected Revenue"
+msgstr "Erwart. Umsatz"
+
+#. module: crm
+#: model:ir.actions.act_window,help:crm.crm_phonecall_categ_action
+msgid ""
+"Create specific phone call categories to better define the type of calls "
+"tracked in the system."
+msgstr ""
+"Erstellen Sie spezifische Anruftypen um Anrufe besser nachvollziehen zu "
+"können."
+
+#. module: crm
+#: selection:crm.lead.report,creation_month:0
+#: selection:crm.lead.report,deadline_month:0
+#: selection:crm.meeting,month_list:0 selection:crm.phonecall.report,month:0
+msgid "September"
+msgstr "September"
+
+#. module: crm
+#: field:crm.segmentation,partner_id:0
+msgid "Max Partner ID processed"
+msgstr "Max Partner ID verarbeitet"
+
+#. module: crm
+#: help:crm.case.stage,on_change:0
+msgid ""
+"Setting this stage will change the probability automatically on the "
+"opportunity."
+msgstr ""
+"Das Setzten dieser Stufe wird die Wahrscheinlichkeit automatisch ändern"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.action_report_crm_phonecall
+#: model:ir.ui.menu,name:crm.menu_report_crm_phonecalls_tree
+msgid "Phone Calls Analysis"
+msgstr "Statistik Kundenanrufe"
+
+#. module: crm
+#: field:crm.lead.report,opening_date:0
+#: field:crm.phonecall.report,opening_date:0
+msgid "Opening Date"
+msgstr "Datum Eröffnung"
+
+#. module: crm
+#: help:crm.phonecall,duration:0
+msgid "Duration in Minutes"
+msgstr "Dauer in Minuten"
+
+#. module: crm
+#: field:crm.case.channel,name:0
+msgid "Channel Name"
+msgstr "Verkaufskanal"
+
+#. module: crm
+#: field:crm.partner2opportunity,name:0 field:crm.phonecall2opportunity,name:0
+msgid "Opportunity Name"
+msgstr "Verkaufschance Bez."
+
+#. module: crm
+#: help:crm.lead.report,deadline_day:0
+msgid "Expected closing day"
+msgstr "Erwartetes Abschluss Datum"
+
+#. module: crm
+#: help:crm.case.section,active:0
+msgid ""
+"If the active field is set to true, it will allow you to hide the sales team "
+"without removing it."
+msgstr ""
+"Durch Aktivierung dieser Option, kann die Ansicht dieses Teams verhindert "
+"werden ohne das Team selbst zu löschen."
+
+#. module: crm
+#: field:crm.lead,street2:0
+msgid "Street2"
+msgstr "Strasse2"
+
+#. module: crm
+#: help:crm.case.stage,case_default:0
+msgid ""
+"If you check this field, this stage will be proposed by default on each "
+"sales team. It will not assign this stage to existing teams."
+msgstr ""
+"Bei Aktivierung dieses Feldes wird diese Stufe automatische dem Verkaufsteam "
+"zugeordnet. Gilt nicht für bestehende Teams."
+
+#. module: crm
+#: field:crm.meeting,fr:0
+msgid "Fri"
+msgstr "Fr"
+
+#. module: crm
+#: model:ir.model,name:crm.model_crm_lead
+msgid "crm.lead"
+msgstr "crm.lead"
+
+#. module: crm
+#: field:crm.meeting,write_date:0
+msgid "Write Date"
+msgstr "Bearbeitet am"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "End of recurrency"
+msgstr "Ende Terminwiederholung"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "Reminder"
+msgstr "Erinnerung"
+
+#. module: crm
+#: help:crm.segmentation,sales_purchase_active:0
+msgid ""
+"Check if you want to use this tab as part of the segmentation rule. If not "
+"checked, the criteria beneath will be ignored"
+msgstr ""
+"Setze Haken, falls dieser Tabulator als Bestandteil der Segmentierungs Regel "
+" genutzt werden soll. Falls der Haken nicht gesetzt wird, werden die "
+"Kriterien dieser Seite ignoriert."
+
+#. module: crm
+#: help:crm.meeting,alarm_id:0
+msgid "Set an alarm at this time, before the event occurs"
+msgstr "Setze eine Erinnerung vor Fälligkeit eines Termins."
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.crm_case_categ_phone_create_partner
+msgid "Schedule a Call"
+msgstr "Anruf Planen"
+
+#. module: crm
+#: view:crm.lead2partner:0 view:crm.phonecall:0 view:crm.phonecall2partner:0
+#: model:ir.actions.act_window,name:crm.action_crm_lead2opportunity_partner
+#: model:ir.actions.act_window,name:crm.action_crm_lead2partner
+#: model:ir.actions.act_window,name:crm.action_crm_phonecall2partner
+msgid "Create a Partner"
+msgstr "Erstelle Partner"
+
+#. module: crm
+#: field:crm.segmentation,state:0
+msgid "Execution Status"
+msgstr "Status Durchführung"
+
+#. module: crm
+#: help:crm.phonecall,state:0
+msgid ""
+"The state is set to 'Todo', when a case is created.                          "
+"        \n"
+"If the case is in progress the state is set to 'Open'.                       "
+"           \n"
+"When the call is over, the state is set to 'Held'.                           "
+"       \n"
+"If the call needs to be done then the state is set to 'Not Held'."
+msgstr ""
+"Der Status ist\n"
+"* \"ToDo\", wenn ein Fall angelegt wird\n"
+"* \"Offen\", wenn der Fall bearbeitet wird\n"
+"* \"Erledigt\", wenn der Fall beendet ist\n"
+"* \"Nicht Stattgefunden\", wenn der Fall nicht erledigt ist"
+
+#. module: crm
+#: selection:crm.meeting,week_list:0
+msgid "Monday"
+msgstr "Montag"
+
+#. module: crm
+#: field:crm.lead,day_close:0
+msgid "Days to Close"
+msgstr "Tage f. Beend."
+
+#. module: crm
+#: field:crm.case.section,complete_name:0
+msgid "unknown"
+msgstr "unbekannt"
+
+#. module: crm
+#: code:addons/crm/crm_lead.py:296
+#, python-format
+msgid "The case '%s' has been closed."
+msgstr "Der Fall '%s' wurde beendet"
+
+#. module: crm
+#: model:ir.model,name:crm.model_crm_partner2opportunity
+msgid "Partner To Opportunity"
+msgstr "Partner zu Verkaufschance"
+
+#. module: crm
+#: field:crm.meeting,date:0 field:crm.opportunity2phonecall,date:0
+#: view:crm.phonecall:0 field:crm.phonecall,date:0
+#: field:crm.phonecall2phonecall,date:0 view:res.partner:0
+msgid "Date"
+msgstr "Datum"
+
+#. module: crm
+#: view:crm.lead.report:0 view:crm.phonecall.report:0
+msgid "Extended Filters..."
+msgstr "Erweiterter Filter..."
+
+#. module: crm
+#: view:crm.phonecall.report:0
+msgid "Phone calls which are in closed state"
+msgstr "abgeschlossene Anrufe"
+
+#. module: crm
+#: view:crm.phonecall.report:0
+msgid "Search"
+msgstr "Suche"
+
+#. module: crm
+#: view:board.board:0
+msgid "Opportunities by Categories"
+msgstr "Verkaufschancen nach Kategorien"
+
+#. module: crm
+#: model:crm.case.section,name:crm.section_sales_marketing_department
+msgid "Sales Marketing Department"
+msgstr "Verkauf und Marketing Abteilung"
+
+#. module: crm
+#: view:crm.phonecall.report:0
+msgid "Date of call"
+msgstr "Datum des Anrufs"
+
+#. module: crm
+#: help:crm.lead,section_id:0
+msgid ""
+"When sending mails, the default email address is taken from the sales team."
+msgstr ""
+"Für den Mailversand wird die Standardadresse des  Verkaufsteams verwendet"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "Choose day in the month where repeat the meeting"
+msgstr "Wähle Tag des Monats an dem der wiederholt werden soll"
+
+#. module: crm
+#: view:crm.segmentation:0
+msgid "Segmentation Description"
+msgstr "Beschreibung der Segmente"
+
+#. module: crm
+#: view:crm.phonecall:0
+#: model:ir.actions.act_window,name:crm.crm_case_categ_meet_create_partner
+msgid "Schedule a Meeting"
+msgstr "Plane ein Meeting"
+
+#. module: crm
+#: code:addons/crm/crm_lead.py:431
+#, python-format
+msgid "Merged opportunities"
+msgstr "Zusammengeführte Verkaufschancen"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.crm_case_section_view_form_installer
+msgid "Define Sales Team"
+msgstr "Definiere Verkaufsteam"
+
+#. module: crm
+#: model:ir.actions.act_window,help:crm.crm_segmentation_tree-act
+msgid ""
+"Create specific partner categories which you can assign to your partners to "
+"better manage your interactions with them. The segmentation tool is able to "
+"assign categories to partners according to criteria you set."
+msgstr ""
+"Erstellen Sie Partnerkategorien, um die Kundeninteraktionen des Vertriebs "
+"besser zu organisieren. Das Segementierungswerkzeug ist in der Lage "
+"automatisch Partnernkategorien auf der Basis vorher definierter Regel "
+"zuzuweisen."
+
+#. module: crm
+#: field:crm.case.section,code:0
+msgid "Code"
+msgstr "Kurzbez."
+
+#. module: crm
+#: field:crm.case.section,child_ids:0
+msgid "Child Teams"
+msgstr "untergeordnete Teams"
+
+#. module: crm
+#: view:crm.phonecall.report:0
+msgid "Phone calls which are in draft and open state"
+msgstr "Anrufe Offen und Entwurf"
+
+#. module: crm
+#: model:crm.case.resource.type,name:crm.type_lead1
+msgid "Telesales"
+msgstr "Telesales"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "References"
+msgstr "Referenzen"
+
+#. module: crm
+#: code:addons/crm/crm.py:441 view:crm.lead:0
+#: view:crm.lead2opportunity.partner:0
+#: view:crm.lead2opportunity.partner.mass:0 view:crm.lead2partner:0
+#: view:crm.partner2opportunity:0 view:crm.phonecall:0
+#: view:crm.phonecall2partner:0 view:res.partner:0
+#, python-format
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#. module: crm
+#: model:ir.model,name:crm.model_res_users
+msgid "res.users"
+msgstr "res.users"
+
+#. module: crm
+#: view:crm.lead.report:0
+msgid "Leads/Opportunities which are in pending state"
+msgstr "Verkaufskontakte und Chancen in Wartezustand"
+
+#. module: crm
+#: model:ir.model,name:crm.model_crm_merge_opportunity
+msgid "Merge two Opportunities"
+msgstr "Fasse zwei Verkaufschancen zusammen"
+
+#. module: crm
+#: field:crm.meeting,exrule:0
+msgid "Exception Rule"
+msgstr "Ausschluss Regel"
+
+#. module: crm
+#: help:base.action.rule,act_mail_to_partner:0
+msgid "Check this if you want the rule to send an email to the partner."
+msgstr "Aktiviere, wenn diese Regel eine EMail an Partner versenden wollen"
+
+#. module: crm
+#: field:crm.phonecall,opportunity_id:0
+msgid "Lead/Opportunity"
+msgstr "Verkaufskontakt/Chance"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Mail"
+msgstr "EMail"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.crm_phonecall_categ_action
+msgid "Phonecall Categories"
+msgstr "Kundenanruf Kategorien"
+
+#. module: crm
+#: view:crm.lead.report:0
+msgid "Leads/Opportunities which are in open state"
+msgstr "Offene Verkaufskontakt/Chance"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.act_oppor_categ
+msgid "Opportunities By Categories"
+msgstr "Verkaufschancen nach Kategorien"
+
+#. module: crm
+#: help:crm.lead,partner_name:0
+msgid ""
+"The name of the future partner that will be created while converting the "
+"lead into opportunity"
+msgstr ""
+"Der Name des zukünftigen Partners, wenn der Verkaufskontakt in eine Chance "
+"umgewandelt wird."
+
+#. module: crm
+#: constraint:crm.case.section:0
+msgid "Error ! You cannot create recursive Sales team."
+msgstr "Fehler ! Sie können kein rekursives Sales Team haben."
+
+#. module: crm
+#: selection:crm.opportunity2phonecall,action:0
+#: selection:crm.phonecall2phonecall,action:0
+msgid "Log a call"
+msgstr "Dokumentiere einen Anruf"
+
+#. module: crm
+#: selection:crm.lead2opportunity.partner,action:0
+#: selection:crm.lead2opportunity.partner.mass,action:0
+msgid "Do not link to a partner"
+msgstr "Nicht mit Partner verlinken"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "Search Meetings"
+msgstr "Suche Termine"
+
+#. module: crm
+#: selection:crm.segmentation.line,expr_name:0
+msgid "Sale Amount"
+msgstr "Umsatz Verkauf"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "Choose day where repeat the meeting"
+msgstr "Wähle Tag für Terminwiederholung"
+
+#. module: crm
+#: selection:crm.meeting,state:0
+msgid "Unconfirmed"
+msgstr "Nicht Bestätigt"
+
+#. module: crm
+#: model:ir.actions.act_window,help:crm.action_report_crm_opportunity
+msgid ""
+"Opportunities Analysis gives you an instant access to your opportunities "
+"with information such as the expected revenue, planned cost, missed "
+"deadlines or the number of interactions per opportunity. This report is "
+"mainly used by the sales manager in order to do the periodic review with the "
+"teams of the sales pipeline."
+msgstr ""
+"Statistik Verkaufschancen zeigt Ihnen einen zusammenfassenden Überblick über "
+"die Bearbeitung ihre Verkaufsmöglichkeiten mit Informationen zu erwartetem "
+"Umsatz, geplanten Vertriebskosten, überschrittenen Bearbeitungsfristen oder "
+"der Anzahl an erforderlichen Kontaktaufnahmen durch den Vertrieb. Dieser "
+"Bericht wird i.d.R. durch die Vertriebsleitung eingesetzt, um einen "
+"regelmässigen Überblick über die Auslastung des Vertriebs sowie über die zu "
+"bearbeitende Vertriebspipline zu haben."
+
+#. module: crm
+#: field:crm.case.categ,name:0 field:crm.lead,name:0
+#: field:crm.segmentation,name:0
+msgid "Name"
+msgstr "Bezeichnung"
+
+#. module: crm
+#: field:crm.meeting,alarm_id:0 field:crm.meeting,base_calendar_alarm_id:0
+msgid "Alarm"
+msgstr "Benachrichtigung"
+
+#. module: crm
+#: model:ir.actions.act_window,help:crm.crm_lead_stage_act
+msgid ""
+"Add specific stages to leads and opportunities allowing your sales to better "
+"organise their sales pipeline. Stages will allow them to easily track how a "
+"specific lead or opportunity is positioned in the sales cycle."
+msgstr ""
+"Weisen Sie Ihren Verkaufskontakten oder Verkaufschancen im "
+"Bearbeitungsablauf Vertriebsstufen zu. Verbessern Sie dadurch die laufende "
+"Bearbeitung von Vertriebsvorgängen und ermöglichen Sie gleichzeitig die "
+"Verfolgung der Historie."
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.action_crm_send_mass_convert
+msgid "Convert opportunities"
+msgstr "Konvertiere Chancen"
+
+#. module: crm
+#: view:crm.lead.report:0 view:crm.phonecall.report:0
+msgid "My Case(s)"
+msgstr "Meine Fälle"
+
+#. module: crm
+#: field:crm.lead,birthdate:0
+msgid "Birthdate"
+msgstr "Geburtstag"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "The"
+msgstr "Der"
+
+#. module: crm
+#: view:crm.lead:0 view:crm.phonecall:0
+msgid "Creation"
+msgstr "Erstellung am"
+
+#. module: crm
+#: selection:crm.lead,priority:0 selection:crm.lead.report,priority:0
+#: selection:crm.phonecall,priority:0
+#: selection:crm.phonecall.report,priority:0
+msgid "High"
+msgstr "Hoch"
+
+#. module: crm
+#: model:process.node,note:crm.process_node_partner0
+msgid "Convert to prospect to business partner"
+msgstr "Konvertiere zu Kaufinteressent oder Partner"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "Meeting / Partner"
+msgstr "Meeting / Partner"
+
+#. module: crm
+#: view:crm.phonecall2opportunity:0
+msgid "_Convert"
+msgstr "Konvertiere"
+
+#. module: crm
+#: model:ir.actions.act_window,help:crm.action_view_attendee_form
+msgid ""
+"With Meeting Invitations you can create and manage the meeting invitations "
+"sent/to be sent to your colleagues/partners. You can not only invite OpenERP "
+"users, but also external parties, such as a customer."
+msgstr ""
+"Durch diese Anwendung können Sie Termineinladungen für interne und/oder "
+"externe Teilnehmer erstellen und versenden. Termineinladungen beschränken "
+"sich nicht nur auf die vorhandenen OpenERP Benutzer, sondern umfassen auch "
+"externe\r\n"
+"Teilnehmer wie Kunden, Lieferanten oder andere Geschäftspartner."
+
+#. module: crm
+#: selection:crm.meeting,week_list:0
+msgid "Saturday"
+msgstr "Samstag"
+
+#. module: crm
+#: selection:crm.meeting,byday:0
+msgid "Fifth"
+msgstr "5ter"
+
+#. module: crm
+#: view:crm.lead.report:0
+msgid "Leads/Opportunities which are in done state"
+msgstr "Erledigte Verkaufskontakt/Chance"
+
+#. module: crm
+#: field:crm.lead.report,delay_close:0
+msgid "Delay to Close"
+msgstr "Zeit f. Beendigung"
+
+#. module: crm
+#: field:crm.meeting,we:0
+msgid "Wed"
+msgstr "Mi"
+
+#. module: crm
+#: model:crm.case.categ,name:crm.categ_oppor6
+msgid "Potential Reseller"
+msgstr "Potenzieller Wiederverkäufer"
+
+#. module: crm
+#: help:crm.case.section,change_responsible:0
+msgid ""
+"When escalating to this team override the saleman with the team leader."
+msgstr "Bei Eskalation wird der Verkäufer durch den Team Leiter ersetzt."
+
+#. module: crm
+#: field:crm.lead.report,planned_revenue:0
+msgid "Planned Revenue"
+msgstr "Geplante Umsatzerlöse"
+
+#. module: crm
+#: view:crm.lead:0 view:crm.lead.report:0 view:crm.phonecall:0
+#: view:crm.phonecall.report:0
+msgid "Group By..."
+msgstr "Gruppierung..."
+
+#. module: crm
+#: help:crm.lead,partner_id:0
+msgid "Optional linked partner, usually after conversion of the lead"
+msgstr ""
+"Optionaler Partnerlink, üblicherweise nach der Konvertierung eines Leads "
+"vorzunehmen"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "Invitation details"
+msgstr "Details Einladung"
+
+#. module: crm
+#: field:crm.case.section,parent_id:0
+msgid "Parent Team"
+msgstr "Hauptteam"
+
+#. module: crm
+#: field:crm.lead,date_action:0
+msgid "Next Action Date"
+msgstr "Datum nächste Aktion"
+
+#. module: crm
+#: selection:crm.segmentation,state:0
+msgid "Running"
+msgstr "In Weiterbearbeitung"
+
+#. module: crm
+#: field:crm.lead,zip:0
+msgid "Zip"
+msgstr "Plz"
+
+#. module: crm
+#: code:addons/crm/crm_lead.py:278
+#, python-format
+msgid "The case '%s' has been opened."
+msgstr "Der Fall '%s' wurde eröffnet."
+
+#. module: crm
+#: model:crm.case.categ,name:crm.categ_phone1
+msgid "Inbound"
+msgstr "Eingehende Anrufe"
+
+#. module: crm
+#: view:crm.phonecall.report:0
+msgid "Month of call"
+msgstr "Methode des Anrufs"
+
+#. module: crm
+#: view:crm.phonecall.report:0
+#: model:ir.actions.act_window,name:crm.act_crm_opportunity_crm_phonecall_new
+msgid "Phone calls"
+msgstr "Kundenanrufe"
+
+#. module: crm
+#: selection:crm.meeting,show_as:0
+msgid "Free"
+msgstr "Verfügbar"
+
+#. module: crm
+#: field:crm.case.section,allow_unlink:0
+msgid "Allow Delete"
+msgstr "Erlaube Löschen"
+
+#. module: crm
+#: field:crm.meeting,mo:0
+msgid "Mon"
+msgstr "Mo"
+
+#. module: crm
+#: selection:crm.lead,priority:0 selection:crm.lead.report,priority:0
+#: selection:crm.phonecall,priority:0
+#: selection:crm.phonecall.report,priority:0
+msgid "Highest"
+msgstr "Sehr Hoch"
+
+#. module: crm
+#: help:crm.lead.report,creation_year:0
+msgid "Creation year"
+msgstr "Jahr der Erstellung"
+
+#. module: crm
+#: view:crm.case.section:0 view:crm.lead:0 field:crm.lead,description:0
+#: view:crm.opportunity2phonecall:0
+msgid "Notes"
+msgstr "Anmerkungen"
+
+#. module: crm
+#: field:crm.segmentation.line,expr_value:0
+msgid "Value"
+msgstr "Wert"
+
+#. module: crm
+#: help:crm.lead,type:0 help:crm.lead.report,type:0
+msgid "Type is used to separate Leads and Opportunities"
+msgstr ""
+"Typ wird zur Unterscheidung von Verkaufskontakten und Verkaufschancen "
+"verwendet."
+
+#. module: crm
+#: view:crm.lead:0 view:crm.lead.report:0
+msgid "Opportunity by Categories"
+msgstr "Verkaufschancen nach Vertriebskategorien"
+
+#. module: crm
+#: view:crm.lead:0 field:crm.lead,partner_name:0
+msgid "Customer Name"
+msgstr "Kunde"
+
+#. module: crm
+#: model:ir.model,name:crm.model_crm_phonecall2opportunity
+msgid "Phonecall To Opportunity"
+msgstr "Anrufe zu Verkaufschance"
+
+#. module: crm
+#: field:crm.case.section,reply_to:0
+msgid "Reply-To"
+msgstr "Antwort an"
+
+#. module: crm
+#: view:crm.case.section:0
+msgid "Select stages for this Sales Team"
+msgstr "Wähle Vertriebsstufen für das Vertriebsteam"
+
+#. module: crm
+#: view:board.board:0
+msgid "Opportunities by Stage"
+msgstr "Verkaufschancen nach Stufen"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "Recurrency Option"
+msgstr "Terminwiederholung"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Lead / Customer"
+msgstr "Verkaufskontakt / Kunde"
+
+#. module: crm
+#: model:process.transition,note:crm.process_transition_leadpartner0
+msgid "Prospect is converting to business partner"
+msgstr "Interessent wird zu Partner konvertiert"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.phonecall2opportunity_act
+msgid "Convert To Opportunity"
+msgstr "Konvertiere zu Verkaufschance"
+
+#. module: crm
+#: view:crm.case.channel:0
+#: model:ir.actions.act_window,name:crm.crm_case_channel_action
+#: model:ir.model,name:crm.model_crm_case_channel
+#: model:ir.ui.menu,name:crm.menu_crm_case_channel
+msgid "Channels"
+msgstr "Vertriebskanal"
+
+#. module: crm
+#: view:crm.phonecall:0 selection:crm.phonecall,state:0
+#: view:crm.phonecall.report:0 selection:crm.phonecall.report,state:0
+#: view:res.partner:0
+msgid "Held"
+msgstr "Erledigt"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Reset to Draft"
+msgstr "Zurücksetzen auf Entwurf"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Extra Info"
+msgstr "Extra Information"
+
+#. module: crm
+#: view:crm.merge.opportunity:0
+#: model:ir.actions.act_window,name:crm.action_merge_opportunities
+#: model:ir.actions.act_window,name:crm.merge_opportunity_act
+msgid "Merge Opportunities"
+msgstr "Zusammenfassen von Verkaufschancen"
+
+#. module: crm
+#: model:crm.case.resource.type,name:crm.type_lead5
+msgid "Google Adwords"
+msgstr "Google Adwords"
+
+#. module: crm
+#: model:ir.model,name:crm.model_crm_phonecall
+msgid "crm.phonecall"
+msgstr "crm.phonecall"
+
+#. module: crm
+#: model:crm.case.resource.type,name:crm.type_lead3
+msgid "Mail Campaign 2"
+msgstr "Kampagnen EMail 1"
+
+#. module: crm
+#: model:crm.case.resource.type,name:crm.type_lead2
+msgid "Mail Campaign 1"
+msgstr "Kampagnen EMail 2"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Create"
+msgstr "Erstelle"
+
+#. module: crm
+#: code:addons/crm/crm_lead.py:849
+#, python-format
+msgid "Changed Stage to: %s"
+msgstr "Status auf: %s geändert."
+
+#. module: crm
+#: view:crm.lead:0 field:crm.lead,priority:0 view:crm.lead.report:0
+#: field:crm.lead.report,priority:0 field:crm.phonecall,priority:0
+#: view:crm.phonecall.report:0 field:crm.phonecall.report,priority:0
+msgid "Priority"
+msgstr "Priorität"
+
+#. module: crm
+#: field:crm.segmentation,sales_purchase_active:0
+msgid "Use The Sales Purchase Rules"
+msgstr "Aktiviere Umsatz / Zufriedenheit Segmentierung"
+
+#. module: crm
+#: model:ir.model,name:crm.model_crm_lead2opportunity_partner
+msgid "Lead To Opportunity Partner"
+msgstr "Verkaufskontakt zu Verkaufschance Partner"
+
+#. module: crm
+#: field:crm.lead,location_id:0 field:crm.meeting,location:0
+msgid "Location"
+msgstr "Ort"
+
+#. module: crm
+#: model:ir.model,name:crm.model_crm_lead2opportunity_partner_mass
+msgid "Mass Lead To Opportunity Partner"
+msgstr "Mehrfach Umwandlung"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Reply"
+msgstr "Antwort"
+
+#. module: crm
+#: model:process.node,note:crm.process_node_meeting0
+msgid "Schedule a normal or phone meeting"
+msgstr "Plane eine Besprechung oder Anruf"
+
+#. module: crm
+#: code:addons/crm/crm.py:430
+#, python-format
+msgid "Error !"
+msgstr "Fehler !"
+
+#. module: crm
+#: model:ir.actions.act_window,help:crm.crm_meeting_categ_action
+msgid ""
+"Create different meeting categories to better organize and classify your "
+"meetings."
+msgstr ""
+"Erstelle verschiedene Kategorien für eine bessere Organisation der Termine "
+"Ihres Vertriebs und Veranstaltungen\r\n"
+"Ihres Unternehmens"
+
+#. module: crm
+#: model:ir.model,name:crm.model_crm_segmentation_line
+msgid "Segmentation line"
+msgstr "Segmentierung Positionen"
+
+#. module: crm
+#: view:crm.opportunity2phonecall:0 view:crm.phonecall2phonecall:0
+msgid "Planned Date"
+msgstr "Gepl. Datum"
+
+#. module: crm
+#: field:crm.meeting,base_calendar_url:0
+msgid "Caldav URL"
+msgstr "Caldav URL"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Expected Revenues"
+msgstr "Erwarteter Umsatz"
+
+#. module: crm
+#: field:crm.lead,contact_name:0
+msgid "Contact Name"
+msgstr "Ansprechpartner"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Leads creating during last 7 days"
+msgstr "Verkaufkontakte der letzten 7 Tage"
+
+#. module: crm
+#: view:crm.phonecall2partner:0
+msgid "Are you sure you want to create a partner based on this Phonecall ?"
+msgstr ""
+"Sind Sie sicher, dass Sie einen neuen Partner auf der Grundlage dieses "
+"Telefonanrufs anlegen möchten?"
+
+#. module: crm
+#: selection:crm.lead.report,creation_month:0
+#: selection:crm.lead.report,deadline_month:0
+#: selection:crm.meeting,month_list:0 selection:crm.phonecall.report,month:0
+msgid "July"
+msgstr "Juli"
+
+#. module: crm
+#: model:ir.actions.act_window,help:crm.crm_case_section_act
+msgid ""
+"Define a Sales Team to organize your different salesmen or sales departments "
+"into separate teams. Each team will work in its own list of opportunities, "
+"sales orders, etc. Each user can set a default team in his user preferences. "
+"The opportunities and sales order displayed, will automatically be filtered "
+"according to his team."
+msgstr ""
+"Definieren Sie Ihre Vertriebsteams, um verschiedene Verkäufer oder "
+"Abteilungen separat aufzuteilen und zu organisieren. Jedes Team arbeitet mit "
+"seinen eigenen Verkaufschancen, Verkaufaufträgen etc. Jeder Benutzer kann "
+"dann sein Team als persönliche Voreinstellung wählen. Die Verkaufschancen "
+"und Verkaufaufträge werden dann anhand seiner Teamzugehörigkeit automatisch "
+"gefiltert."
+
+#. module: crm
+#: view:crm.lead.report:0
+msgid "Show only lead"
+msgstr "Zeige nur Verkaufskontakte"
+
+#. module: crm
+#: help:crm.meeting,count:0
+msgid "Repeat x times"
+msgstr "Anzahl Wiederholungen"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.crm_case_section_act
+#: model:ir.model,name:crm.model_crm_case_section
+#: model:ir.ui.menu,name:crm.menu_crm_case_section_act
+msgid "Sales Teams"
+msgstr "Vertriebsteams"
+
+#. module: crm
+#: model:ir.model,name:crm.model_crm_lead2partner
+msgid "Lead to Partner"
+msgstr "Konvertiere zu Partner"
+
+#. module: crm
+#: view:crm.segmentation:0 field:crm.segmentation.line,segmentation_id:0
+#: model:ir.actions.act_window,name:crm.crm_segmentation-act
+msgid "Segmentation"
+msgstr "Segmentierung"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Team"
+msgstr "Name Team"
+
+#. module: crm
+#: view:crm.lead.report:0
+msgid "Leads/Opportunities which are in New state"
+msgstr "Neue Verkaufskontakt/Chance"
+
+#. module: crm
+#: view:crm.phonecall:0 selection:crm.phonecall,state:0
+#: view:crm.phonecall.report:0 view:res.partner:0
+msgid "Not Held"
+msgstr "Nicht Stattgef."
+
+#. module: crm
+#: field:crm.lead.report,probability:0
+msgid "Probability"
+msgstr "Wahrscheinlichk."
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Pending Opportunities"
+msgstr "Verkaufschancen in Wartestellung"
+
+#. module: crm
+#: code:addons/crm/crm_lead.py:491
+#, python-format
+msgid "Please select more than one opportunity from the list view."
+msgstr "Bitte wählen Sie mehr als eine Verkaufsschance aus"
+
+#. module: crm
+#: view:crm.lead.report:0 field:crm.meeting,month_list:0
+#: view:crm.phonecall.report:0 field:crm.phonecall.report,month:0
+msgid "Month"
+msgstr "Monat"
+
+#. module: crm
+#: view:crm.lead:0
+#: model:ir.actions.act_window,name:crm.crm_case_category_act_leads_all
+#: model:ir.ui.menu,name:crm.menu_crm_case_categ0_act_leads
+#: model:process.node,name:crm.process_node_leads0
+msgid "Leads"
+msgstr "Verkaufskontakte"
+
+#. module: crm
+#: model:ir.actions.act_window,help:crm.crm_case_category_act_leads_all
+msgid ""
+"Leads allow you to manage and keep track of all initial contacts with a "
+"prospect or partner showing interest in your products or services. A lead is "
+"usually the first step in your sales cycle. Once qualified, a lead may be "
+"converted into a business opportunity, while creating the related partner "
+"for further detailed tracking of any linked activities. You can import a "
+"database of prospects, keep track of your business cards or integrate your "
+"website's contact form with the OpenERP Leads. Leads can be connected to the "
+"email gateway: new emails may create leads, each of them automatically gets "
+"the history of the conversation with the prospect."
+msgstr ""
+"Verkaufskontakte ermöglichen die Verfolgung von interessanten Kontaktdaten "
+"für bestimmte Produktangebote des Unternehmens. Zunächst ist ein "
+"Kundenkontakt lediglich eine noch noch nicht qualifizierte Kundenadresse. Es "
+"muss qualifiziert werden, inwieweit eine weitere Bearbeitung durch den "
+"Vertrieb sinnvoll ist. Falls dieses der Fall ist, kann eine einfache "
+"Wandlung erfolgen, wobei möglicherweise auch die Kontaktdaten komplettiert "
+"werden können. Sie können die Anwendung Verkaufskontakte auch nutzen für den "
+"Import von Adressdaten oder zwecks Integration des Kontaktformulars Ihrer "
+"Webseite. Die Anwendung kann ausserdem durch das integrierte Email Gateway "
+"mit einem EMail Posteingang Ihres Unternehmens verbunden werden, um "
+"automatisch Verkaufskontakte bei Mailempfang zu erstellen."
+
+#. module: crm
+#: selection:crm.lead2opportunity.partner,action:0
+#: selection:crm.lead2opportunity.partner.mass,action:0
+#: selection:crm.lead2partner,action:0
+#: selection:crm.phonecall2partner,action:0
+msgid "Create a new partner"
+msgstr "Neuer Partner"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.crm_case_categ_phone_outgoing0
+#: model:ir.ui.menu,name:crm.menu_crm_case_phone_outbound
+msgid "Scheduled Calls"
+msgstr "Geplante Anrufe"
+
+#. module: crm
+#: view:crm.meeting:0 view:res.partner:0
+msgid "Start Date"
+msgstr "Beginn am"
+
+#. module: crm
+#: view:crm.phonecall:0
+msgid "Scheduled Phonecalls"
+msgstr "geplante Anrufe"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "Decline"
+msgstr "Absagen"
+
+#. module: crm
+#: field:crm.lead,user_email:0
+msgid "User Email"
+msgstr "Benutzer EMail"
+
+#. module: crm
+#: help:crm.lead,optin:0
+msgid "If opt-in is checked, this contact has accepted to receive emails."
+msgstr ""
+"Wenn Opt-In angekreuzt wurde, bedeutet dieses, dass dieser Kontakt den "
+"Empfang von Emails zugestimmt hat (Permission)."
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "Reset to Unconfirmed"
+msgstr "Zurücksetzen"
+
+#. module: crm
+#: field:crm.opportunity2phonecall,note:0 field:crm.phonecall2phonecall,note:0
+msgid "Note"
+msgstr "Bemerkung"
+
+#. module: crm
+#: constraint:res.users:0
+msgid "The chosen company is not in the allowed companies for this user"
+msgstr ""
+"Das ausgewählte Unternehmen gehört nicht zu den zulässigen Unternehmen für "
+"diesen Benutzer"
+
+#. module: crm
+#: selection:crm.lead,priority:0 selection:crm.lead.report,priority:0
+#: selection:crm.phonecall,priority:0
+#: selection:crm.phonecall.report,priority:0
+msgid "Low"
+msgstr "Gering"
+
+#. module: crm
+#: selection:crm.add.note,state:0 field:crm.lead,date_closed:0
+#: selection:crm.lead,state:0 view:crm.lead.report:0
+#: selection:crm.lead.report,state:0 field:crm.meeting,date_closed:0
+#: field:crm.phonecall,date_closed:0
+msgid "Closed"
+msgstr "Beendet"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Total of Planned Revenue"
+msgstr "Gepl. Umsatz"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Open Opportunities"
+msgstr "Offene Verkaufschancen"
+
+#. module: crm
+#: model:crm.case.categ,name:crm.categ_meet2
+msgid "Internal Meeting"
+msgstr "Internes Meeting"
+
+#. module: crm
+#: code:addons/crm/crm.py:454 selection:crm.add.note,state:0 view:crm.lead:0
+#: selection:crm.lead,state:0 view:crm.lead.report:0
+#: selection:crm.lead.report,state:0 selection:crm.phonecall.report,state:0
+#, python-format
+msgid "Pending"
+msgstr "Schwebend"
+
+#. module: crm
+#: model:crm.case.categ,name:crm.categ_meet1
+msgid "Customer Meeting"
+msgstr "Kundentermin"
+
+#. module: crm
+#: field:crm.lead,email_cc:0
+msgid "Global CC"
+msgstr "Allgemeine Kopie (CC)"
+
+#. module: crm
+#: view:crm.phonecall:0
+#: model:ir.actions.act_window,name:crm.crm_case_categ_phone0
+#: model:ir.ui.menu,name:crm.menu_crm_case_phone
+#: model:ir.ui.menu,name:crm.menu_crm_config_phonecall view:res.partner:0
+msgid "Phone Calls"
+msgstr "Kundenanrufe"
+
+#. module: crm
+#: view:crm.case.stage:0
+msgid "Stage Search"
+msgstr "Suche Stufen"
+
+#. module: crm
+#: help:crm.lead.report,delay_open:0 help:crm.phonecall.report,delay_open:0
+msgid "Number of Days to open the case"
+msgstr "Anzahl Tage f. Eröffnung"
+
+#. module: crm
+#: selection:crm.meeting,end_type:0
+msgid "Number of repetitions"
+msgstr "Anzahl der Wiederholungen"
+
+#. module: crm
+#: field:crm.lead,phone:0 field:crm.opportunity2phonecall,phone:0
+#: field:crm.phonecall,partner_phone:0 field:crm.phonecall2phonecall,phone:0
+msgid "Phone"
+msgstr "Telefon"
+
+#. module: crm
+#: field:crm.case.channel,active:0 field:crm.case.section,active:0
+#: field:crm.lead,active:0 field:crm.meeting,active:0
+#: field:crm.phonecall,active:0
+msgid "Active"
+msgstr "Aktiv"
+
+#. module: crm
+#: code:addons/crm/crm_lead.py:856
+#, python-format
+msgid "The stage of opportunity '%s' has been changed to '%s'."
+msgstr ""
+"Die Stufe für die Verkaufschance ist von '%s' nach '%s' geändert worden."
+
+#. module: crm
+#: selection:crm.segmentation.line,operator:0
+msgid "Mandatory Expression"
+msgstr "Verbindlich"
+
+#. module: crm
+#: selection:crm.segmentation.line,expr_operator:0
+msgid ">"
+msgstr ">"
+
+#. module: crm
+#: view:crm.opportunity2phonecall:0 view:crm.phonecall2phonecall:0
+msgid "Schedule call"
+msgstr "Plane Anruf"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "Uncertain"
+msgstr "Unklar"
+
+#. module: crm
+#: help:crm.case.stage,sequence:0
+msgid "Used to order stages."
+msgstr "Sortiert die Stufen"
+
+#. module: crm
+#: code:addons/crm/crm_lead.py:276
+#, python-format
+msgid "The opportunity '%s' has been opened."
+msgstr "Die Verkaufschance %s wurde eröffnet."
+
+#. module: crm
+#: field:crm.lead2opportunity.partner,action:0
+#: field:crm.lead2opportunity.partner.mass,action:0
+#: field:crm.lead2partner,action:0 field:crm.opportunity2phonecall,action:0
+#: field:crm.phonecall2partner,action:0 field:crm.phonecall2phonecall,action:0
+msgid "Action"
+msgstr "Aktion"
+
+#. module: crm
+#: field:crm.segmentation,som_interval_decrease:0
+msgid "Decrease (0>1)"
+msgstr "Faktor Abschlag(0.0 > 1.0)"
+
+#. module: crm
+#: field:crm.lead.report,deadline_day:0
+msgid "Exp. Closing Day"
+msgstr "Erw. Abschlußtag"
+
+#. module: crm
+#: field:crm.case.section,change_responsible:0
+msgid "Reassign Escalated"
+msgstr "Neuzuweisung Eskalation"
+
+#. module: crm
+#: selection:crm.meeting,rrule_type:0
+msgid "Weekly"
+msgstr "Wöchentlich"
+
+#. module: crm
+#: view:crm.lead.report:0
+#: model:ir.actions.act_window,name:crm.action_report_crm_opportunity
+#: model:ir.ui.menu,name:crm.menu_report_crm_opportunities_tree
+msgid "Opportunities Analysis"
+msgstr "Statistik Verkaufschancen"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Misc"
+msgstr "Diverse"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.open_board_crm
+msgid "Sales"
+msgstr "Verkauf"
+
+#. module: crm
+#: code:addons/crm/crm.py:430
+#, python-format
+msgid ""
+"You can not escalate, you are already at the top level regarding your sales-"
+"team category."
+msgstr ""
+"Keine weitere Eskalation möglich, da Sie bereits die obersten Ebene erreicht "
+"haben."
+
+#. module: crm
+#: model:crm.case.categ,name:crm.categ_oppor8 view:crm.meeting:0
+msgid "Other"
+msgstr "Andere"
+
+#. module: crm
+#: view:crm.meeting:0 selection:crm.meeting,state:0
+msgid "Done"
+msgstr "Erledigt"
+
+#. module: crm
+#: help:crm.meeting,interval:0
+msgid "Repeat every (Days/Week/Month/Year)"
+msgstr "Wiederholungsintervall (Tag/Woche/Monat/Jahr)"
+
+#. module: crm
+#: field:crm.segmentation,som_interval_max:0
+msgid "Max Interval"
+msgstr "Max. Intervall"
+
+#. module: crm
+#: code:addons/crm/crm.py:396 view:crm.lead:0 view:crm.lead.report:0
+#: selection:crm.lead.report,state:0 view:res.partner:0
+#, python-format
+msgid "Open"
+msgstr "Offen"
+
+#. module: crm
+#: field:crm.lead,city:0
+msgid "City"
+msgstr "Stadt"
+
+#. module: crm
+#: view:crm.lead:0 view:res.partner:0
+msgid "History"
+msgstr "Historie"
+
+#. module: crm
+#: selection:crm.meeting,show_as:0
+msgid "Busy"
+msgstr "Beschäftigt"
+
+#. module: crm
+#: field:crm.lead.report,creation_day:0
+msgid "Creation Day"
+msgstr "Datum Erstellung"
+
+#. module: crm
+#: field:crm.meeting,interval:0
+msgid "Repeat every"
+msgstr "Intervall Wiederholung"
+
+#. module: crm
+#: field:crm.meeting,recurrency:0
+msgid "Recurrent"
+msgstr "Terminwiederholung"
+
+#. module: crm
+#: view:crm.phonecall.report:0
+msgid "Phone calls made in last month"
+msgstr "Anrufe des letzten Monats"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.act_my_oppor
+msgid "My Open Opportunities"
+msgstr "Meine offenen Verkaufschancen"
+
+#. module: crm
+#: field:base.action.rule,trg_max_history:0
+msgid "Maximum Communication History"
+msgstr "Max. Anzahl Einträge Historie"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "Invite People"
+msgstr "Personen Einladen"
+
+#. module: crm
+#: view:crm.meeting:0 field:crm.meeting,categ_id:0
+msgid "Meeting Type"
+msgstr "Terminart"
+
+#. module: crm
+#: help:crm.lead,state:0
+msgid ""
+"The state is set to 'Draft', when a case is created.                         "
+"         \n"
+"If the case is in progress the state is set to 'Open'.                       "
+"           \n"
+"When the case is over, the state is set to 'Done'.                           "
+"       \n"
+"If the case needs to be reviewed then the state is set to 'Pending'."
+msgstr ""
+"Durch die Erstellung eines neuen Falls ist der Status 'Entwurf'              "
+"        \n"
+"Wenn der Fall in Bearbeitung ist, wechselt der Status zu 'Offen'.            "
+"              \n"
+"Wenn der Fall abgeschlossen ist, wechselt der Status auf 'Beendet'.          "
+"          \n"
+"Wenn der Vorgang eröffnet wurde und bearbeitet werden soll ist der Status "
+"'Unerledigt'."
+
+#. module: crm
+#: view:crm.meeting:0 view:res.partner:0
+msgid "End Date"
+msgstr "Ende Datum"
+
+#. module: crm
+#: selection:crm.meeting,byday:0
+msgid "Third"
+msgstr "3ter"
+
+#. module: crm
+#: help:crm.segmentation,som_interval_max:0
+msgid ""
+"The computation is made on all events that occured during this interval, the "
+"past X periods."
+msgstr ""
+"Die Berechnung basiert auf allen Terminen innerhalb des festgelegten "
+"Intervals, also den letzten x Perioden."
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Unassigned Opportunities"
+msgstr "Nicht zugeteilte Verkaufschancen"
+
+#. module: crm
+#: view:crm.lead.report:0
+msgid "# of Emails"
+msgstr "# EMails"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Search Leads"
+msgstr "Suche Leads"
+
+#. module: crm
+#: view:crm.lead.report:0 view:crm.phonecall.report:0
+#: field:crm.phonecall.report,delay_open:0
+msgid "Delay to open"
+msgstr "Zeit b. Eröffn."
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "Recurrency period"
+msgstr "Periode Terminwiederholung"
+
+#. module: crm
+#: field:crm.meeting,week_list:0
+msgid "Weekday"
+msgstr "Wochentag"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Referrer"
+msgstr "Wiederkehrer"
+
+#. module: crm
+#: field:crm.lead,id:0 field:crm.meeting,id:0 field:crm.phonecall,id:0
+msgid "ID"
+msgstr "Ticket-Nr."
+
+#. module: crm
+#: help:crm.lead,type_id:0
+msgid ""
+"From which campaign (seminar, marketing campaign, mass mailing, ...) did "
+"this contact come from?"
+msgstr ""
+"Von welcher Marketingaktion (Seminar, Merketing, Postwurf,...) kam dieser "
+"Kontakt?"
+
+#. module: crm
+#: model:ir.model,name:crm.model_calendar_attendee
+msgid "Attendee information"
+msgstr "Information zu Teilnehmern"
+
+#. module: crm
+#: view:crm.segmentation:0
+msgid "Segmentation Test"
+msgstr "Kriterien Segmentierung"
+
+#. module: crm
+#: field:crm.lead,user_login:0
+msgid "User Login"
+msgstr "Benutzer-Login"
+
+#. module: crm
+#: view:crm.segmentation:0
+msgid "Continue Process"
+msgstr "Prozess fortsetzen"
+
+#. module: crm
+#: view:crm.lead.report:0
+msgid "Leads/Opportunities created in current year"
+msgstr "Verkaufskontakt/Chance dieses Jahres"
+
+#. module: crm
+#: model:ir.model,name:crm.model_crm_phonecall2partner
+msgid "Phonecall to Partner"
+msgstr "Telefonanruf zu Partner"
+
+#. module: crm
+#: field:crm.opportunity2phonecall,user_id:0
+#: field:crm.phonecall2phonecall,user_id:0
+msgid "Assign To"
+msgstr "Zuweisen an"
+
+#. module: crm
+#: field:crm.add.note,state:0
+msgid "Set New State To"
+msgstr "Ändere Status zu"
+
+#. module: crm
+#: field:crm.lead,date_action_last:0 field:crm.meeting,date_action_last:0
+#: field:crm.phonecall,date_action_last:0
+msgid "Last Action"
+msgstr "Datum letzte Aktion"
+
+#. module: crm
+#: field:crm.meeting,duration:0 field:crm.phonecall,duration:0
+#: field:crm.phonecall.report,duration:0
+msgid "Duration"
+msgstr "Dauer"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Show countries"
+msgstr "Zeige Länder"
+
+#. module: crm
+#: view:crm.lead2opportunity.partner.mass:0
+msgid "Select Salesman"
+msgstr "Wähle Verkäufer"
+
+#. module: crm
+#: view:board.board:0
+msgid "Sales Dashboard"
+msgstr "Pinnwand Verkauf"
+
+#. module: crm
+#: field:crm.lead.report,nbr:0 field:crm.phonecall.report,nbr:0
+msgid "# of Cases"
+msgstr "# Fälle"
+
+#. module: crm
+#: help:crm.meeting,section_id:0 help:crm.phonecall,section_id:0
+msgid "Sales team to which Case belongs to."
+msgstr "Verkaufsteam zu dem der Vorfall gehört."
+
+#. module: crm
+#: selection:crm.meeting,week_list:0
+msgid "Sunday"
+msgstr "Sonntag"
+
+#. module: crm
+#: selection:crm.meeting,byday:0
+msgid "Fourth"
+msgstr "4ter"
+
+#. module: crm
+#: selection:crm.add.note,state:0
+msgid "Unchanged"
+msgstr "Unverändert"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.crm_segmentation_tree-act
+#: model:ir.ui.menu,name:crm.menu_crm_segmentation-act
+msgid "Partners Segmentation"
+msgstr "Partner Segmentierung"
+
+#. module: crm
+#: field:crm.lead,fax:0
+msgid "Fax"
+msgstr "Fax"
+
+#. module: crm
+#: view:crm.lead.report:0
+msgid "Leads/Opportunities created in current month"
+msgstr "Verkaufskontakt/Chance dieses Monats"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "Assignment"
+msgstr "Zuweisung"
+
+#. module: crm
+#: field:crm.lead,company_id:0 view:crm.lead.report:0
+#: field:crm.lead.report,company_id:0 field:crm.phonecall,company_id:0
+#: view:crm.phonecall.report:0 field:crm.phonecall.report,company_id:0
+msgid "Company"
+msgstr "Unternehmen"
+
+#. module: crm
+#: selection:crm.meeting,week_list:0
+msgid "Friday"
+msgstr "Freitag"
+
+#. module: crm
+#: field:crm.meeting,allday:0
+msgid "All Day"
+msgstr "Gesamter Tag"
+
+#. module: crm
+#: field:crm.segmentation.line,operator:0
+msgid "Mandatory / Optional"
+msgstr "Zwingend / Optional"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Unassigned Leads"
+msgstr "nicht zugeordnete Verkaufskontakte"
+
+#. module: crm
+#: field:crm.lead,subjects:0
+msgid "Subject of Email"
+msgstr "Betreff des Mails"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.action_view_attendee_form
+#: model:ir.ui.menu,name:crm.menu_attendee_invitations
+msgid "Meeting Invitations"
+msgstr "Einladung Termin"
+
+#. module: crm
+#: view:crm.phonecall:0 selection:crm.phonecall,state:0
+#: view:crm.phonecall.report:0 selection:crm.phonecall.report,state:0
+#: view:res.partner:0
+msgid "Todo"
+msgstr "Offen"
+
+#. module: crm
+#: field:crm.case.categ,object_id:0
+msgid "Object Name"
+msgstr "Objekt Bezeichnung"
+
+#. module: crm
+#: help:crm.lead,email_from:0
+msgid "E-mail address of the contact"
+msgstr "EMail Anschrift des Kontakts"
+
+#. module: crm
+#: field:crm.lead,referred:0
+msgid "Referred By"
+msgstr "Vermittelt durch"
+
+#. module: crm
+#: view:crm.lead:0 model:ir.model,name:crm.model_crm_add_note
+msgid "Add Internal Note"
+msgstr "Hinzufügen Anmerkung"
+
+#. module: crm
+#: code:addons/crm/crm_lead.py:853
+#, python-format
+msgid "The stage of lead '%s' has been changed to '%s'."
+msgstr "Die Stufe für den Verkaufskontakt '%s' wurde auf '%s' geändert."
+
+#. module: crm
+#: selection:crm.meeting,byday:0
+msgid "Last"
+msgstr "Letzter"
+
+#. module: crm
+#: field:crm.lead,message_ids:0 field:crm.meeting,message_ids:0
+#: field:crm.phonecall,message_ids:0
+msgid "Messages"
+msgstr "Nachrichten"
+
+#. module: crm
+#: help:crm.lead,channel_id:0
+msgid "Communication channel (mail, direct, phone, ...)"
+msgstr "Kommunikationskanal (Mail, Direkt, Telephon)"
+
+#. module: crm
+#: code:addons/crm/crm_action_rule.py:61
+#, python-format
+msgid "Error!"
+msgstr "Fehler!"
+
+#. module: crm
+#: field:crm.opportunity2phonecall,name:0 field:crm.phonecall2phonecall,name:0
+msgid "Call summary"
+msgstr "Anruf Thema"
+
+#. module: crm
+#: selection:crm.add.note,state:0 selection:crm.lead,state:0
+#: selection:crm.lead.report,state:0 selection:crm.meeting,state:0
+#: selection:crm.phonecall,state:0 selection:crm.phonecall.report,state:0
+msgid "Cancelled"
+msgstr "Abgebrochen"
+
+#. module: crm
+#: field:crm.add.note,body:0
+msgid "Note Body"
+msgstr "Anmerkung Haupttext"
+
+#. module: crm
+#: view:board.board:0
+msgid "My Planned Revenues by Stage"
+msgstr "Meine gepl. Umsätze nach Stufe"
+
+#. module: crm
+#: model:ir.actions.act_window,help:crm.crm_case_category_act_oppor11
+msgid ""
+"With opportunities you can manage and keep track of your sales pipeline by "
+"creating specific customer- or prospect-related sales documents to follow up "
+"potential sales. Information such as expected revenue, opportunity stage, "
+"expected closing date, communication history and much more can be stored. "
+"Opportunities can be connected to the email gateway: new emails may create "
+"opportunities, each of them automatically gets the history of the "
+"conversation with the customer.\n"
+"\n"
+"You and your team(s) will be able to plan meetings and phone calls from "
+"opportunities, convert them into quotations, manage related documents, track "
+"all customer related activities, and much more."
+msgstr ""
+"Verkaufschancen ermöglichen durch die Erfassung der erforderlichen Daten die "
+"Durchführung und Rückverfolgung von Vertriebsvorgängen mit voraussichtlichem "
+"Verkaufsabschluss. Zusatzinformationen wie erwarteter Umsatz, das zu "
+"erwartetende Verkaufsdatum sowie die Vorgangshistorie komplettieren die "
+"erforderlichen Vertriebsdaten von Verkaufschancen. Die Verkaufschancen "
+"lassen sich über das Email Gateway anbinden, hierdurch ist dann auch eine "
+"Historie der Emailkommunikation mit Kunden einsehbar. Sie und das gesamte "
+"Verkaufsteam sind in der Lage Vertriebstermine oder Telefonanrufe für eine "
+"Verkaufschance zu planen und Gesprächsresultate zu erfassen, außerdem können "
+"Sie direkt aus dem Vorgang bereits Angebote erstellen oder schlicht die "
+"Vorgangshistorie einsehen."
+
+#. module: crm
+#: field:crm.lead,color:0
+msgid "Color Index"
+msgstr "Farb Index"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Links"
+msgstr "Links"
+
+#. module: crm
+#: model:ir.actions.act_window,help:crm.crm_lead_categ_action
+msgid ""
+"Create specific categories that fit your company's activities to better "
+"classify and analyse your leads and opportunities. Such categories could for "
+"instance reflect your product structure or the different types of sales you "
+"do."
+msgstr ""
+"Erstellen Sie spezifische Kategorien, die Sie bei neuen Verkaufskontakten "
+"oder Verkaufschancen zum Zweck von Analysen und Auswertungen zuweisen "
+"können. Sie können diese Kategorien beliebig verwenden, zum Beispiel um Ihre "
+"Produktstruktur oder die verschiedenen Typen von Verkäufen zu beschreiben."
+
+#. module: crm
+#: help:crm.segmentation,som_interval_decrease:0
+msgid ""
+"If the partner has not purchased (or bought) during a period, decrease the "
+"state of mind by this factor. It's a multiplication"
+msgstr ""
+"Wenn der Partner nicht während der Periode eingekauft hat,verringere den "
+"Status der  Mitarbeiter."
+
+#. module: crm
+#: model:ir.actions.act_window,help:crm.action_report_crm_phonecall
+msgid ""
+"From this report, you can analyse the performance of your sales team, based "
+"on their phone calls. You can group or filter the information according to "
+"several criteria and drill down the information, by adding more groups in "
+"the report."
+msgstr ""
+"Mit diesem Bericht können Sie die Leistung Ihres Verkaufsteams auf Basis "
+"ihrer Telefonanrufe analysieren. Sie können ausserdem Informationen anhand "
+"verschiedener Kriterien filtern und gründlich untersuchen."
+
+#. module: crm
+#: view:crm.lead.report:0
+msgid "# Mails"
+msgstr "# Mails"
+
+#. module: crm
+#: field:crm.phonecall,name:0 view:res.partner:0
+msgid "Call Summary"
+msgstr "Anruf Thema"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Todays' Leads"
+msgstr "Heutige Verkaufskontakte"
+
+#. module: crm
+#: model:ir.actions.act_window,help:crm.crm_case_categ_phone_outgoing0
+msgid ""
+"Scheduled calls list all the calls to be done by your sales team. A salesman "
+"can record the information about the call in the form view. This information "
+"will be stored in the partner form to trace every contact you have with a "
+"customer. You can also import a .CSV file with a list of calls to be done by "
+"your sales team."
+msgstr ""
+"Die geplanten Anrufe zeigen alle Anrufe, die vom Verkaufsteam gemacht werden "
+"müssen.\r\n"
+"Ein Verkäufer kann den Anruf dokumentieren und dies wird beim Partner "
+"gespeichert.\r\n"
+"Sie können auch .CSV Dateien mit einer Liste der Anrufe, die das Team zu "
+"erledigen hat importieren."
+
+#. module: crm
+#: field:crm.segmentation.line,expr_operator:0
+msgid "Operator"
+msgstr "Operator"
+
+#. module: crm
+#: model:ir.model,name:crm.model_crm_phonecall2phonecall
+msgid "Phonecall To Phonecall"
+msgstr "Kundenanruf zu Kundenanruf"
+
+#. module: crm
+#: view:crm.lead:0
+#: model:ir.actions.act_window,name:crm.opportunity2phonecall_act
+msgid "Schedule/Log Call"
+msgstr "Terminiere Anruf"
+
+#. module: crm
+#: selection:crm.meeting,state:0
+msgid "Confirmed"
+msgstr "Bestätigt"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.act_oppor_stage_user
+msgid "Planned Revenue By User and Stage"
+msgstr "Geplanter Umsatz je Benutzer und Stufe"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "Confirm"
+msgstr "Bestätige"
+
+#. module: crm
+#: field:crm.meeting,su:0
+msgid "Sun"
+msgstr "Son"
+
+#. module: crm
+#: field:crm.phonecall.report,section_id:0
+msgid "Section"
+msgstr "Sektion"
+
+#. module: crm
+#: selection:crm.segmentation.line,operator:0
+msgid "Optional Expression"
+msgstr "Optional"
+
+#. module: crm
+#: selection:crm.meeting,select1:0
+msgid "Day of month"
+msgstr "Tag im Monat"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.act_my_oppor_stage
+msgid "Planned Revenue By Stage"
+msgstr "Geplanter Umsatz je Stufe"
+
+#. module: crm
+#: selection:crm.add.note,state:0 model:crm.case.stage,name:crm.stage_lead1
+#: view:crm.lead:0 selection:crm.lead,state:0 view:crm.lead.report:0
+msgid "New"
+msgstr "Neu"
+
+#. module: crm
+#: view:crm.lead:0 field:crm.lead,email_from:0 field:crm.meeting,email_from:0
+#: field:crm.phonecall,email_from:0
+msgid "Email"
+msgstr "EMail-Versandadresse"
+
+#. module: crm
+#: view:crm.case.channel:0 view:crm.lead:0 field:crm.lead,channel_id:0
+#: view:crm.lead.report:0 field:crm.lead.report,channel_id:0
+msgid "Channel"
+msgstr "Vertriebsweg"
+
+#. module: crm
+#: view:crm.lead:0 view:crm.lead.report:0 view:crm.meeting:0
+#: view:crm.phonecall:0 view:crm.phonecall.report:0
+msgid "My Sales Team(s)"
+msgstr "Mein(e) Verkaufsteam(s)"
+
+#. module: crm
+#: help:crm.segmentation,exclusif:0
+msgid ""
+"Check if the category is limited to partners that match the segmentation "
+"criterions.                        \n"
+"If checked, remove the category from partners that doesn't match "
+"segmentation criterions"
+msgstr ""
+"Prüfe ob diese Kategorie für Partner bereits genutzt wird.\n"
+"Wenn aktiviert, entferne die Kategorie bei Partnern, die diese Bedingung "
+"nicht erfüllen."
+
+#. module: crm
+#: field:crm.meeting,exdate:0
+msgid "Exception Date/Times"
+msgstr "Ausschluss Datum / Zeiten"
+
+#. module: crm
+#: help:crm.meeting,date_deadline:0
+msgid ""
+"Deadline Date is automatically                         computed from Start "
+"Date + Duration"
+msgstr "Definiere automatisch Daten und gleiche die Daten ab."
+
+#. module: crm
+#: field:crm.lead,state_id:0
+msgid "Fed. State"
+msgstr "Bundesland"
+
+#. module: crm
+#: model:process.transition,note:crm.process_transition_leadopportunity0
+msgid "Creating business opportunities from Leads"
+msgstr "Erzeuge Verkaufschance von Verkaufskontakt"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.open_board_statistical_dash
+#: model:ir.ui.menu,name:crm.menu_board_statistics_dash
+msgid "CRM Dashboard"
+msgstr "CRM Pinwand"
+
+#. module: crm
+#: model:crm.case.categ,name:crm.categ_oppor4
+msgid "Need Information"
+msgstr "Benötigt Informationen"
+
+#. module: crm
+#: model:process.transition,name:crm.process_transition_leadopportunity0
+msgid "Prospect Opportunity"
+msgstr "Verkaufschance"
+
+#. module: crm
+#: field:base.action.rule,act_categ_id:0
+msgid "Set Category to"
+msgstr "Setze Kategorie auf"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "Mail To"
+msgstr "Mail an"
+
+#. module: crm
+#: field:crm.meeting,th:0
+msgid "Thu"
+msgstr "Do"
+
+#. module: crm
+#: view:crm.add.note:0 view:crm.merge.opportunity:0
+#: view:crm.opportunity2phonecall:0 view:crm.phonecall2opportunity:0
+#: view:crm.phonecall2phonecall:0
+msgid "_Cancel"
+msgstr "Abbrechen"
+
+#. module: crm
+#: selection:crm.meeting,rrule_type:0
+msgid "Daily"
+msgstr "Täglich"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.crm_case_stage_form_installer
+msgid "Review Sales Stages"
+msgstr "Verkaufsstufen überarbeiten"
+
+#. module: crm
+#: model:crm.case.stage,name:crm.stage_lead2
+msgid "Qualification"
+msgstr "Qualifikation"
+
+#. module: crm
+#: field:crm.lead,partner_address_email:0
+msgid "Partner Contact Email"
+msgstr "Partner Kontakt EMail"
+
+#. module: crm
+#: code:addons/crm/wizard/crm_lead_to_partner.py:48
+#, python-format
+msgid "A partner is already defined."
+msgstr "Es ist bereits ein Partner definiert"
+
+#. module: crm
+#: selection:crm.meeting,byday:0
+msgid "First"
+msgstr "1ster"
+
+#. module: crm
+#: field:crm.lead.report,deadline_month:0
+msgid "Exp. Closing Month"
+msgstr "Erw. Monat Abschluss"
+
+#. module: crm
+#: selection:crm.lead.report,creation_month:0
+#: selection:crm.lead.report,deadline_month:0
+#: selection:crm.meeting,month_list:0 selection:crm.phonecall.report,month:0
+msgid "December"
+msgstr "Dezember"
+
+#. module: crm
+#: view:base.action.rule:0
+msgid "Condition on Communication History"
+msgstr "Filter zu Nachrichtenhistorie."
+
+#. module: crm
+#: view:crm.phonecall:0
+msgid "Date of Call"
+msgstr "Datum des Anrufs"
+
+#. module: crm
+#: help:crm.segmentation,som_interval:0
+msgid ""
+"A period is the average number of days between two cycle of sale or purchase "
+"for this segmentation.                 \n"
+"It's mainly used to detect if a partner has not purchased or buy for a too "
+"long time,                  \n"
+"so we suppose that his state of mind has decreased because he probably "
+"bought goods to another supplier.                  \n"
+"Use this functionality for recurring businesses."
+msgstr ""
+"Eine Periode ist eine durchschn. Anzahl an Tagen zwischen den beiden Zyklen "
+"eines Verkaufs. Primär wird das Modul dazu genutzt, um für Bestandskunden "
+"das Potenzial vermutlich abgeschlossener oder versprochener Kommunikation."
+
+#. module: crm
+#: field:crm.meeting,vtimezone:0
+msgid "Timezone"
+msgstr "Zeitzone"
+
+#. module: crm
+#: field:crm.meeting,sa:0
+msgid "Sat"
+msgstr "Sa"
+
+#. module: crm
+#: view:crm.lead:0 field:crm.lead,user_id:0 view:crm.lead.report:0
+#: view:crm.phonecall.report:0
+msgid "Salesman"
+msgstr "Verkäufer"
+
+#. module: crm
+#: view:crm.lead:0 field:crm.lead,date_deadline:0
+msgid "Expected Closing"
+msgstr "Erw. Abschlussdatum"
+
+#. module: crm
+#: model:ir.model,name:crm.model_crm_opportunity2phonecall
+msgid "Opportunity to Phonecall"
+msgstr "Verkaufschance zu Kundenanruf"
+
+#. module: crm
+#: help:crm.case.section,allow_unlink:0
+msgid "Allows to delete non draft cases"
+msgstr "Erlaube Fälle nicht im Entwurf zu löschen"
+
+#. module: crm
+#: field:crm.meeting,count:0
+msgid "Repeat"
+msgstr "Wiederhole"
+
+#. module: crm
+#: field:crm.lead.report,deadline_year:0
+msgid "Ex. Closing Year"
+msgstr "Erw. Abschluß Jahr"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Partner Name"
+msgstr "Partner"
+
+#. module: crm
+#: model:crm.case.categ,name:crm.categ_phone2
+msgid "Outbound"
+msgstr "Ausgehende Anrufe"
+
+#. module: crm
+#: field:crm.lead,date_open:0 field:crm.phonecall,date_open:0
+msgid "Opened"
+msgstr "Eröffnet"
+
+#. module: crm
+#: view:crm.case.section:0 field:crm.case.section,member_ids:0
+msgid "Team Members"
+msgstr "Teammitglieder"
+
+#. module: crm
+#: view:crm.lead:0 view:crm.meeting:0 view:crm.phonecall:0
+msgid "Contacts"
+msgstr "Kontakte"
+
+#. module: crm
+#: model:crm.case.categ,name:crm.categ_oppor1
+msgid "Interest in Computer"
+msgstr "Interessiert an Hardware"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "Invitation Detail"
+msgstr "Details Einladung"
+
+#. module: crm
+#: field:crm.segmentation,som_interval_default:0
+msgid "Default (0=None)"
+msgstr "Standard (0 = Keiner)"
+
+#. module: crm
+#: help:crm.lead,email_cc:0
+msgid ""
+"These email addresses will be added to the CC field of all inbound and "
+"outbound emails for this record before being sent. Separate multiple email "
+"addresses with a comma"
+msgstr ""
+"Diese EMailanschrift wird hinzugefügt zum CC Feld aller eingehenden und "
+"ausgehenden EMails. Separiere mehrere EMails einfach durch Kommata zwischen "
+"den Datensätzen"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.crm_case_categ_phone_incoming0
+#: model:ir.ui.menu,name:crm.menu_crm_case_phone_inbound
+msgid "Logged Calls"
+msgstr "Dokumentierte Anrufe"
+
+#. module: crm
+#: field:crm.partner2opportunity,probability:0
+#: field:crm.phonecall2opportunity,probability:0
+msgid "Success Probability"
+msgstr "Erfolgswahrscheinlichkeit"
+
+#. module: crm
+#: code:addons/crm/crm.py:466 selection:crm.lead.report,state:0
+#: selection:crm.phonecall,state:0 selection:crm.phonecall.report,state:0
+#, python-format
+msgid "Draft"
+msgstr "Entwurf"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.crm_case_section_act_tree
+msgid "Cases by Sales Team"
+msgstr "Fälle nach Verkaufsteam"
+
+#. module: crm
+#: field:crm.meeting,attendee_ids:0
+msgid "Attendees"
+msgstr "Teilnehmer"
+
+#. module: crm
+#: view:crm.meeting:0 view:crm.phonecall:0
+#: model:ir.model,name:crm.model_crm_meeting
+#: model:process.node,name:crm.process_node_meeting0
+#: model:res.request.link,name:crm.request_link_meeting
+msgid "Meeting"
+msgstr "Termine"
+
+#. module: crm
+#: model:ir.model,name:crm.model_crm_case_categ
+msgid "Category of Case"
+msgstr "Vertriebskategorie"
+
+#. module: crm
+#: view:crm.lead:0 view:crm.phonecall:0
+msgid "7 Days"
+msgstr "7 Tage"
+
+#. module: crm
+#: view:board.board:0
+msgid "Planned Revenue by Stage and User"
+msgstr "Geplanter Umsatz nach Stufe und Benutzer"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Communication & History"
+msgstr "Kommunikation & Historie"
+
+#. module: crm
+#: selection:crm.lead,priority:0 selection:crm.lead.report,priority:0
+#: selection:crm.phonecall,priority:0
+#: selection:crm.phonecall.report,priority:0
+msgid "Normal"
+msgstr "Normal"
+
+#. module: crm
+#: code:addons/crm/wizard/crm_lead_to_opportunity.py:104
+#, python-format
+msgid "Closed/Cancelled Leads can not be converted into Opportunity"
+msgstr ""
+"Abgeschlossene/ stornierte Kontakte, die nicht in Verkaufschance umgewandelt "
+"wurden"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.crm_meeting_categ_action
+#: model:ir.ui.menu,name:crm.menu_crm_case_meeting-act
+msgid "Meeting Categories"
+msgstr "Termine Kategorien"
+
+#. module: crm
+#: view:crm.phonecall2partner:0
+msgid "You may have to verify that this partner does not exist already."
+msgstr "Sie sollten prüfen ob Partner bereits existiert."
+
+#. module: crm
+#: field:crm.lead.report,delay_open:0
+msgid "Delay to Open"
+msgstr "Dauer bis Eröffnung"
+
+#. module: crm
+#: field:crm.lead.report,user_id:0 field:crm.phonecall.report,user_id:0
+msgid "User"
+msgstr "Benutzer"
+
+#. module: crm
+#: code:addons/crm/crm.py:446
+#, python-format
+msgid "The case '%s' has been cancelled."
+msgstr "Der Fall '%s' wurde abgebrochen."
+
+#. module: crm
+#: selection:crm.lead.report,creation_month:0
+#: selection:crm.lead.report,deadline_month:0
+#: selection:crm.meeting,month_list:0 selection:crm.phonecall.report,month:0
+msgid "November"
+msgstr "November"
+
+#. module: crm
+#: view:crm.lead.report:0
+#: model:ir.actions.act_window,name:crm.act_opportunity_stage
+msgid "Opportunities By Stage"
+msgstr "Verkaufschancen nach Stufe"
+
+#. module: crm
+#: selection:crm.lead.report,creation_month:0
+#: selection:crm.lead.report,deadline_month:0
+#: selection:crm.meeting,month_list:0 selection:crm.phonecall.report,month:0
+msgid "January"
+msgstr "Januar"
+
+#. module: crm
+#: model:process.process,name:crm.process_process_contractprocess0
+msgid "Contract"
+msgstr "Vertrag"
+
+#. module: crm
+#: model:crm.case.resource.type,name:crm.type_lead4
+msgid "Twitter Ads"
+msgstr "Twitter Ads"
+
+#. module: crm
+#: code:addons/crm/crm_lead.py:336
+#, python-format
+msgid "The opportunity '%s' has been been won."
+msgstr "Die Chance '%s' wurde gewonnen"
+
+#. module: crm
+#: field:crm.case.stage,case_default:0
+msgid "Common to All Teams"
+msgstr "Gemeinsam für alle Teams"
+
+#. module: crm
+#: code:addons/crm/crm_lead.py:831 code:addons/crm/wizard/crm_add_note.py:28
+#, python-format
+msgid "Error"
+msgstr "Fehler"
+
+#. module: crm
+#: view:crm.lead.report:0
+msgid "Planned Revenues"
+msgstr "Gepl. Umsatz"
+
+#. module: crm
+#: model:crm.case.categ,name:crm.categ_oppor7
+msgid "Need Consulting"
+msgstr "Benötigt Beratung"
+
+#. module: crm
+#: constraint:crm.segmentation:0
+msgid "Error ! You can not create recursive profiles."
+msgstr "Fehler! Es können keine rekursiven Profile erstellt werden."
+
+#. module: crm
+#: help:crm.lead.report,deadline_year:0
+msgid "Expected closing year"
+msgstr "Erw. Abschluß Jahr"
+
+#. module: crm
+#: field:crm.lead,partner_address_id:0 field:crm.meeting,partner_address_id:0
+#: field:crm.phonecall,partner_address_id:0
+msgid "Partner Contact"
+msgstr "Partner Kontakt"
+
+#. module: crm
+#: field:crm.meeting,recurrent_id:0
+msgid "Recurrent ID date"
+msgstr "Wiederkehrende ID"
+
+#. module: crm
+#: sql_constraint:res.users:0
+msgid "You can not have two users with the same login !"
+msgstr "Sie können nicht zwei identische Benutzeranmeldungen definieren!"
+
+#. module: crm
+#: code:addons/crm/crm.py:409 view:crm.lead:0 view:res.partner:0
+#, python-format
+msgid "Close"
+msgstr "Fertig"
+
+#. module: crm
+#: selection:crm.opportunity2phonecall,action:0
+#: selection:crm.phonecall2phonecall,action:0
+msgid "Schedule a call"
+msgstr "Plane Anruf"
+
+#. module: crm
+#: view:crm.lead:0 view:crm.phonecall:0
+msgid "Categorization"
+msgstr "Kategorisierung"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Log Call"
+msgstr "Log Anruf"
+
+#. module: crm
+#: model:ir.model,name:crm.model_base_action_rule
+msgid "Action Rules"
+msgstr "Action Rules"
+
+#. module: crm
+#: field:crm.meeting,rrule_type:0
+msgid "Recurrency"
+msgstr "Wiederholung"
+
+#. module: crm
+#: field:crm.meeting,phonecall_id:0
+msgid "Phonecall"
+msgstr "Kundenanruf"
+
+#. module: crm
+#: selection:crm.meeting,week_list:0
+msgid "Thursday"
+msgstr "Donnerstag"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "To"
+msgstr "An"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Create date"
+msgstr "Erstellungsdatum"
+
+#. module: crm
+#: selection:crm.meeting,class:0
+msgid "Private"
+msgstr "Privat"
+
+#. module: crm
+#: selection:crm.meeting,class:0
+msgid "Public for Employees"
+msgstr "Öffentlich für Mitarbeiter"
+
+#. module: crm
+#: field:crm.lead,function:0
+msgid "Function"
+msgstr "Funktion"
+
+#. module: crm
+#: view:crm.add.note:0
+msgid "_Add"
+msgstr "Hinzufügen"
+
+#. module: crm
+#: field:crm.case.section,note:0 view:crm.meeting:0
+#: field:crm.meeting,description:0 view:crm.phonecall:0
+#: field:crm.phonecall,description:0 field:crm.segmentation,description:0
+msgid "Description"
+msgstr "Beschreibung"
+
+#. module: crm
+#: view:crm.phonecall.report:0
+msgid "Phone calls made in current month"
+msgstr "Anrufe dieses Monats"
+
+#. module: crm
+#: selection:crm.lead.report,creation_month:0
+#: selection:crm.lead.report,deadline_month:0
+#: selection:crm.meeting,month_list:0 selection:crm.phonecall.report,month:0
+msgid "May"
+msgstr "Mai"
+
+#. module: crm
+#: model:crm.case.categ,name:crm.categ_oppor2
+msgid "Interest in Accessories"
+msgstr "Interessiert an Zubehör"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "New Opportunities"
+msgstr "Neue Verkaufschancen"
+
+#. module: crm
+#: code:addons/crm/crm_action_rule.py:61
+#, python-format
+msgid "No E-Mail Found for your Company address!"
+msgstr "Keine EMail für die Unternehmensadresse gefunden"
+
+#. module: crm
+#: field:crm.lead.report,email:0
+msgid "# Emails"
+msgstr "# EMails"
+
+#. module: crm
+#: field:crm.lead,street:0
+msgid "Street"
+msgstr "Strasse"
+
+#. module: crm
+#: view:crm.lead.report:0
+msgid "Opportunities by User and Team"
+msgstr "Verkaufschance nach Benutzer und Team"
+
+#. module: crm
+#: view:crm.phonecall:0
+msgid "Reset to Todo"
+msgstr "Auf ToDo zurücksetzen"
+
+#. module: crm
+#: field:crm.case.section,working_hours:0
+msgid "Working Hours"
+msgstr "Arbeitsstunden"
+
+#. module: crm
+#: field:res.partner,phonecall_ids:0
+msgid "Phonecalls"
+msgstr "Kundenanrufe"
+
+#. module: crm
+#: view:crm.lead:0 field:crm.lead,is_customer_add:0
+msgid "Customer"
+msgstr "Kunde"
+
+#. module: crm
+#: selection:crm.lead,priority:0 selection:crm.lead.report,priority:0
+#: selection:crm.phonecall,priority:0
+#: selection:crm.phonecall.report,priority:0
+msgid "Lowest"
+msgstr "Sehr gering"
+
+#. module: crm
+#: selection:crm.lead.report,creation_month:0
+#: selection:crm.lead.report,deadline_month:0
+#: selection:crm.meeting,month_list:0 selection:crm.phonecall.report,month:0
+msgid "February"
+msgstr "Februar"
+
+#. module: crm
+#: field:base.action.rule,trg_section_id:0 field:crm.case.categ,section_id:0
+#: field:crm.case.resource.type,section_id:0 view:crm.case.section:0
+#: field:crm.case.section,name:0 view:crm.lead:0 field:crm.lead,section_id:0
+#: view:crm.lead.report:0 field:crm.lead.report,section_id:0
+#: field:crm.lead2opportunity.partner.mass,section_id:0
+#: field:crm.meeting,section_id:0 field:crm.opportunity2phonecall,section_id:0
+#: view:crm.phonecall:0 field:crm.phonecall,section_id:0
+#: view:crm.phonecall.report:0 field:crm.phonecall2phonecall,section_id:0
+#: field:res.partner,section_id:0 field:res.users,context_section_id:0
+msgid "Sales Team"
+msgstr "Vertriebsteam"
+
+#. module: crm
+#: model:crm.case.stage,name:crm.stage_lead6 view:crm.lead:0
+msgid "Lost"
+msgstr "Verloren"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#. module: crm
+#: field:crm.lead,country_id:0 view:crm.lead.report:0
+#: field:crm.lead.report,country_id:0
+msgid "Country"
+msgstr "Land"
+
+#. module: crm
+#: view:crm.lead:0 view:crm.lead2opportunity.partner:0
+#: selection:crm.lead2opportunity.partner,name:0
+#: view:crm.lead2opportunity.partner.mass:0
+#: selection:crm.lead2opportunity.partner.mass,name:0 view:crm.phonecall:0
+#: view:res.partner:0
+msgid "Convert to Opportunity"
+msgstr "Konvertiere zu Verkaufschance"
+
+#. module: crm
+#: selection:crm.meeting,week_list:0
+msgid "Wednesday"
+msgstr "Mittwoch"
+
+#. module: crm
+#: model:ir.actions.act_window,help:crm.crm_case_categ_phone_incoming0
+msgid ""
+"This tool allows you to log your inbound calls on the fly. Each call you get "
+"will appear on the partner form to trace every contact you have with a "
+"partner. From the phone call form, you can trigger a request for another "
+"call, a meeting or an opportunity."
+msgstr ""
+"Dieses Programm erlaubt die autom. Dokumentation jedes eingehenden Anrufs, "
+"der dann im Partner Form aufscheint\r\n"
+"Von dem Anruf Formular können Sie dann einen neuen Anruf oder ein Meeting "
+"planen oder eine Verkaufschance erzeugen."
+
+#. module: crm
+#: selection:crm.lead.report,creation_month:0
+#: selection:crm.lead.report,deadline_month:0
+#: selection:crm.meeting,month_list:0 selection:crm.phonecall.report,month:0
+msgid "April"
+msgstr "April"
+
+#. module: crm
+#: field:crm.case.resource.type,name:0
+msgid "Campaign Name"
+msgstr "Kampagnen Bezeichnung"
+
+#. module: crm
+#: view:crm.segmentation:0
+msgid "Profiling"
+msgstr "Profilerstellung"
+
+#. module: crm
+#: model:ir.model,name:crm.model_crm_phonecall_report
+msgid "Phone calls by user and section"
+msgstr "Kundenanrufe nach Benutzer und Sektion"
+
+#. module: crm
+#: model:ir.actions.act_window,help:crm.crm_case_channel_action
+msgid ""
+"Track from where is coming your leads and opportunities by creating specific "
+"channels that will be maintained at the creation of a document in the "
+"system. Some examples of channels can be: Website, Phone Call, Reseller, etc."
+msgstr ""
+"Verfolgen Sie die Herkunft Ihrer Verkaufskontakte und Verkaufschancen durch "
+"die Erstellung von Vertriebskanälen. Diese sind dann bei der Neuerstellung "
+"von Vertriebsvorgängen anzugeben. Zum Beispiel: Webpage, Telefonat, "
+"Vertriebspartner, etc."
+
+#. module: crm
+#: selection:crm.lead2opportunity.partner,name:0
+#: selection:crm.lead2opportunity.partner.mass,name:0
+msgid "Merge with existing Opportunity"
+msgstr "Zusammenführen Verkaufschancen"
+
+#. module: crm
+#: field:crm.meeting,select1:0
+msgid "Option"
+msgstr "Option"
+
+#. module: crm
+#: model:crm.case.stage,name:crm.stage_lead4
+msgid "Negotiation"
+msgstr "Verhandlung"
+
+#. module: crm
+#: view:crm.lead:0
+msgid "Exp.Closing"
+msgstr "Erw. Abschluss"
+
+#. module: crm
+#: field:crm.case.stage,sequence:0 field:crm.meeting,sequence:0
+msgid "Sequence"
+msgstr "Reihenfolge"
+
+#. module: crm
+#: model:ir.model,name:crm.model_mail_compose_message
+msgid "E-mail composition wizard"
+msgstr "Email-Zusammensetzung Assistent"
+
+#. module: crm
+#: view:crm.meeting:0
+msgid "Accept"
+msgstr "Akzeptieren"
+
+#. module: crm
+#: field:crm.segmentation.line,expr_name:0
+msgid "Control Variable"
+msgstr "Variable zur Steuerung"
+
+#. module: crm
+#: selection:crm.meeting,byday:0
+msgid "Second"
+msgstr "2ter"
+
+#. module: crm
+#: model:crm.case.stage,name:crm.stage_lead3
+msgid "Proposition"
+msgstr "Schätzung Umsatzpotenzial"
+
+#. module: crm
+#: field:crm.lead.report,date_closed:0
+#: field:crm.phonecall.report,date_closed:0
+msgid "Close Date"
+msgstr "Datum Beendigung"
+
+#. module: crm
+#: view:crm.lead.report:0 view:crm.phonecall.report:0
+#: field:crm.phonecall.report,name:0
+msgid "Year"
+msgstr "Jahr"
+
+#. module: crm
+#: constraint:res.partner:0
+msgid "Error ! You cannot create recursive associated members."
+msgstr "Fehler! Sie können keine rekursive assoziierte Mitglieder anlegen."
+
+#. module: crm
+#: model:crm.case.resource.type,name:crm.type_lead8
+msgid "Newsletter"
+msgstr "Newsletter"

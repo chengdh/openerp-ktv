@@ -1,0 +1,1071 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* project_scrum
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.0dev\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2012-02-08 00:37+0000\n"
+"PO-Revision-Date: 2012-05-26 15:40+0000\n"
+"Last-Translator: Fekete Mihai <mihai@erpsystems.ro>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-08-28 09:59+0000\n"
+"X-Generator: Launchpad (build 15864)\n"
+
+#. module: project_scrum
+#: view:project.scrum.backlog.assign.sprint:0
+msgid "_Assign"
+msgstr "_Atribuiti"
+
+#. module: project_scrum
+#: field:project.scrum.meeting,name:0
+msgid "Meeting Name"
+msgstr "Nume intalnire"
+
+#. module: project_scrum
+#: model:process.transition,note:project_scrum.process_transition_backlogtask0
+msgid "From backlog create task."
+msgstr "Creati sarcina din comenzi neexecutate restante."
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+#: field:project.scrum.product.backlog,user_id:0
+msgid "Author"
+msgstr "Autor"
+
+#. module: project_scrum
+#: view:project.scrum.meeting:0
+#: view:project.scrum.sprint:0
+msgid "What did you do since the last meeting?"
+msgstr "Ce ati mai facut de la ultima intalnire?"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:0
+msgid "Sprint Month"
+msgstr "Sprint luna"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,help:project_scrum.action_sprint_all_tree
+msgid ""
+"The scrum agile methodology is used in software development projects. In "
+"this methodology, a sprint is a short period of time (e.g. one month) during "
+"which the team implements a list of product backlogs. The sprint review is "
+"organized when the team presents its work to the customer and product owner."
+msgstr ""
+"Metodologia activa scrum este folosita in proiectele de dezvoltare ale "
+"softurilor. In aceasta metodologie, un sprint reprezinta o perioada scurta "
+"de timp (de exemplu o luna) in timpul careia echipa implementeaza o lista cu "
+"comenzile neexecutate restante ale produsului. Verificarea sprintului este "
+"organizata atunci cand echipa isi prezinta munca clientului si "
+"proprietarului produsului."
+
+#. module: project_scrum
+#: view:project.scrum.meeting:0
+#: view:project.scrum.product.backlog:0
+#: view:project.scrum.sprint:0
+msgid "Group By..."
+msgstr "Grupati dupa..."
+
+#. module: project_scrum
+#: model:process.node,note:project_scrum.process_node_productbacklog0
+msgid "Create task from backlogs"
+msgstr "Creati sarcina din comenzile neexecutate restante"
+
+#. module: project_scrum
+#: field:project.scrum.sprint,name:0
+msgid "Sprint Name"
+msgstr "Nume Sprint"
+
+#. module: project_scrum
+#: field:project.scrum.product.backlog,progress:0
+msgid "Progress"
+msgstr "In desfasurare"
+
+#. module: project_scrum
+#: field:project.scrum.meeting,user_id:0
+#: view:project.scrum.sprint:0
+#: field:project.scrum.sprint,scrum_master_id:0
+msgid "Scrum Master"
+msgstr "Expert Scrum"
+
+#. module: project_scrum
+#: code:addons/project_scrum/project_scrum.py:83
+#, python-format
+msgid "The sprint '%s' has been opened."
+msgstr "Sprintul '%s' a fost deschis."
+
+#. module: project_scrum
+#: constraint:project.project:0
+msgid "Error! project start-date must be lower then project end-date."
+msgstr ""
+"Eroare! data de inceput a proiectului trebuie sa fie mai mica decat data de "
+"sfarsit a proiectului."
+
+#. module: project_scrum
+#: view:project.scrum.meeting:0
+#: view:project.scrum.sprint:0
+msgid "Are your Sprint Backlog estimate accurate ?"
+msgstr ""
+"Sunt exacte estimarile dumneavoastra cu privire la Sprintul comenzii "
+"neexecutate restante?"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:0
+msgid "Retrospective"
+msgstr "Retrospectiva"
+
+#. module: project_scrum
+#: view:project.scrum.meeting:0
+#: view:project.scrum.sprint:0
+msgid "Send Email"
+msgstr "Trimiteti E-mail"
+
+#. module: project_scrum
+#: constraint:project.task:0
+msgid "Error ! You cannot create recursive tasks."
+msgstr "Eroare ! Nu puteti crea sarcini recursive."
+
+#. module: project_scrum
+#: view:project.scrum.sprint:0
+msgid "In Progress Sprints"
+msgstr "Sprinturi in desfasurare"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+msgid "For changing to delegate state"
+msgstr "Pentru modificarea in starea delegat"
+
+#. module: project_scrum
+#: code:addons/project_scrum/wizard/project_scrum_backlog_sprint.py:62
+#, python-format
+msgid "Product Backlog '%s' is assigned to sprint %s"
+msgstr "Comanda neexecutata a produsului '%s' este atribuita sprintului %s"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.dblc_proj
+msgid "View project's backlog"
+msgstr "Vizualizarea comenzii neefectuate a proiectului"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+#: view:project.scrum.sprint:0
+msgid "Set to Draft"
+msgstr "Setati ca ciorna"
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_project_scrum_backlog_merge
+msgid "Merge Product Backlogs"
+msgstr "Uneste Comenzile neexecutate restante ale produsului"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.action_scrum_backlog_merge
+#: view:project.scrum.backlog.merge:0
+msgid "Merge Backlogs"
+msgstr "Uneste Comenzile neexecutate restante"
+
+#. module: project_scrum
+#: code:addons/project_scrum/wizard/mail_compose_message.py:54
+#: code:addons/project_scrum/wizard/project_scrum_email.py:53
+#, python-format
+msgid "Scrum Meeting : %s"
+msgstr "Intalnire Scrum : %s"
+
+#. module: project_scrum
+#: view:project.task:0
+msgid "Backlog"
+msgstr "Comanda neexecutata restanta"
+
+#. module: project_scrum
+#: constraint:project.project:0
+msgid "Error! You cannot assign escalation to the same project!"
+msgstr "Eroare! Nu puteti atribui o avansare aceluiasi proiect!"
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_project_task
+msgid "Task"
+msgstr "Sarcina"
+
+#. module: project_scrum
+#: view:postpone.wizard:0
+msgid "Ok"
+msgstr "Ok"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+msgid "Spent hours"
+msgstr "Ore petrecute"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,help:project_scrum.action_meeting_form
+msgid ""
+"The scrum agile methodology is used in software development projects. In "
+"this methodology, a daily meeting is organized by the scrum master with his "
+"team in order to detect the difficulties the team faced/will face."
+msgstr ""
+"Metodologia activa scrum este folosita in proiectele de dezvoltare a "
+"softurilor. In aceasta metodologie, o intalnire zilnica este organizata de "
+"catre expertul scrum cu echipa sa pentru a detecta dificultatile cu care s-a "
+"confruntat/se va confrunta echipa."
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+msgid "Backlogs Assigned To Current Sprints"
+msgstr "Comenzi neexecutate atribuite Sprinturilor curente"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+msgid "For cancelling the task"
+msgstr "Pentru anularea sarcinii"
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_project_scrum_product_backlog
+#: view:project.scrum.product.backlog:0
+#: field:project.task,product_backlog_id:0
+msgid "Product Backlog"
+msgstr "Comanda neexecutata a produsului"
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_project_project
+#: field:project.scrum.backlog.merge,project_id:0
+#: field:project.scrum.meeting,project_id:0
+#: view:project.scrum.product.backlog:0
+#: field:project.scrum.product.backlog,project_id:0
+#: view:project.scrum.sprint:0
+#: field:project.scrum.sprint,project_id:0
+msgid "Project"
+msgstr "Proiect"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+msgid "Start Task"
+msgstr "Incepe sarcina"
+
+#. module: project_scrum
+#: code:addons/project_scrum/wizard/project_scrum_email.py:91
+#: code:addons/project_scrum/wizard/project_scrum_email.py:94
+#: code:addons/project_scrum/wizard/project_scrum_email.py:97
+#, python-format
+msgid "None"
+msgstr "Niciun (niciuna)"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+msgid "Change Stage"
+msgstr "Schimbati Etapa"
+
+#. module: project_scrum
+#: field:project.scrum.sprint,date_stop:0
+msgid "Ending Date"
+msgstr "Data de sfarsit"
+
+#. module: project_scrum
+#: view:project.scrum.meeting:0
+#: view:project.scrum.sprint:0
+msgid "Links"
+msgstr "Link-uri"
+
+#. module: project_scrum
+#: help:project.scrum.sprint,effective_hours:0
+msgid "Computed using the sum of the task work done."
+msgstr "Calculat folosind suma sarcinii de lucru efectuate."
+
+#. module: project_scrum
+#: code:addons/project_scrum/wizard/project_scrum_email.py:92
+#, python-format
+msgid "Task for Today"
+msgstr "Sarcina de astazi"
+
+#. module: project_scrum
+#: field:project.scrum.backlog.assign.sprint,state_open:0
+msgid "Open Backlog"
+msgstr "Deschide comanda neexecutata restanta"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+msgid "Total Spent Hours"
+msgstr "Total Ore lucrate"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:0
+msgid "Pending Sprints"
+msgstr "Sprint-uri in asteptare"
+
+#. module: project_scrum
+#: code:addons/project_scrum/wizard/project_scrum_email.py:95
+#, python-format
+msgid "Blocking points encountered:"
+msgstr "Puncte blocare intalnite:"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+msgid "Backlogs Not Assigned To Sprints."
+msgstr "Comenzi neefectuate care nu au fost atribuite sprint-urilor."
+
+#. module: project_scrum
+#: view:project.scrum.sprint:0
+msgid "Planning"
+msgstr "Planificare"
+
+#. module: project_scrum
+#: view:project.scrum.backlog.assign.sprint:0
+#: view:project.scrum.backlog.create.task:0
+msgid "_Cancel"
+msgstr "_Anulati"
+
+#. module: project_scrum
+#: help:project.scrum.sprint,scrum_master_id:0
+msgid "The person who is maintains the processes for the product"
+msgstr "Persoana care mentine procesele pentru produs"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+#: field:project.scrum.product.backlog,expected_hours:0
+#: field:project.scrum.sprint,expected_hours:0
+msgid "Planned Hours"
+msgstr "Ore planificate"
+
+#. module: project_scrum
+#: view:board.board:0
+#: model:ir.actions.act_window,name:project_scrum.action_sprint_all_dashboard_tree
+#: model:ir.actions.act_window,name:project_scrum.action_sprint_all_tree
+#: model:ir.ui.menu,name:project_scrum.menu_action_sprint_all_tree
+#: view:project.scrum.product.backlog:0
+#: view:project.scrum.sprint:0
+msgid "Sprints"
+msgstr "Sprinturi"
+
+#. module: project_scrum
+#: field:project.scrum.backlog.assign.sprint,convert_to_task:0
+msgid "Convert To Task"
+msgstr "Transforma in sarcina"
+
+#. module: project_scrum
+#: view:project.scrum.backlog.merge:0
+msgid "Are you sure you want to merge these Backlogs?"
+msgstr ""
+"Sunteti sigur(a) ca doriti sa uniti aceste Comenzi neexecutate restante?"
+
+#. module: project_scrum
+#: help:project.scrum.backlog.create.task,user_id:0
+msgid "Responsible user who can work on task"
+msgstr "Utilizatorul responsabil care poate lucra la sarcina"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+#: field:project.scrum.product.backlog,state:0
+#: view:project.scrum.sprint:0
+#: field:project.scrum.sprint,state:0
+msgid "State"
+msgstr "Stare"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.action_sprint_task_open
+msgid "View sprint Tasks"
+msgstr "Vizualizare sprint Sarcini"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:0
+msgid "New"
+msgstr "Nou(a)"
+
+#. module: project_scrum
+#: field:project.scrum.sprint,meeting_ids:0
+msgid "Daily Scrum"
+msgstr "Scrum zilnic"
+
+#. module: project_scrum
+#: view:project.scrum.backlog.create.task:0
+msgid "C_onvert"
+msgstr "C_onvertiti"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+msgid "Pending Backlogs"
+msgstr "Comenzi neefectuate in asteptare"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.action_product_backlog_form
+#: model:ir.ui.menu,name:project_scrum.menu_action_product_backlog_form
+#: view:project.scrum.product.backlog:0
+msgid "Product Backlogs"
+msgstr "Comenzi neexecutate restante Produs"
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_mail_compose_message
+msgid "E-mail composition wizard"
+msgstr "Asistent compunere e-mail"
+
+#. module: project_scrum
+#: field:project.scrum.product.backlog,create_date:0
+msgid "Creation Date"
+msgstr "Data crearii"
+
+#. module: project_scrum
+#: view:project.scrum.meeting:0
+#: view:project.scrum.sprint:0
+msgid "Are there anything blocking you?"
+msgstr "Exista ceva care va blocheaza?"
+
+#. module: project_scrum
+#: model:ir.ui.menu,name:project_scrum.menu_scrum
+msgid "Scrum"
+msgstr "Scrum"
+
+#. module: project_scrum
+#: field:project.scrum.meeting,question_today:0
+msgid "Tasks for today"
+msgstr "Sarcinile de astazi"
+
+#. module: project_scrum
+#: code:addons/project_scrum/wizard/project_scrum_email.py:89
+#: field:project.scrum.meeting,question_yesterday:0
+#, python-format
+msgid "Tasks since yesterday"
+msgstr "Sarcinile de ieri"
+
+#. module: project_scrum
+#: code:addons/project_scrum/wizard/project_scrum_backlog_merger.py:39
+#: code:addons/project_scrum/wizard/project_scrum_backlog_merger.py:71
+#, python-format
+msgid "Warning"
+msgstr "Atentionare"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+#: selection:project.scrum.product.backlog,state:0
+#: view:project.scrum.sprint:0
+#: selection:project.scrum.sprint,state:0
+msgid "Pending"
+msgstr "In asteptare"
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_project_scrum_backlog_assign_sprint
+msgid "Assign sprint to backlogs"
+msgstr "Atribuie sprinturi comenzilor restante neexecutate"
+
+#. module: project_scrum
+#: help:project.scrum.sprint,expected_hours:0
+msgid "Estimated time to do the task."
+msgstr "Timpul estimat pentru efectuarea sarcinii."
+
+#. module: project_scrum
+#: field:project.scrum.product.backlog,task_hours:0
+msgid "Task Hours"
+msgstr "Ore sarcina de lucru"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:0
+msgid "Dates"
+msgstr "Date"
+
+#. module: project_scrum
+#: selection:project.scrum.product.backlog,state:0
+#: selection:project.scrum.sprint,state:0
+msgid "Cancelled"
+msgstr "Anulat(a)"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.dblc_proj2
+msgid "View project's tasks"
+msgstr "Vizualizare sarcini proiect"
+
+#. module: project_scrum
+#: code:addons/project_scrum/wizard/mail_compose_message.py:55
+#: code:addons/project_scrum/wizard/project_scrum_email.py:56
+#, python-format
+msgid ""
+"Hello  , \n"
+"I am sending you Scrum Meeting : %s for the Sprint  '%s' of Project '%s'"
+msgstr ""
+"Buna ziua, \n"
+"Va trimit Intalnirea Scrum : %s pentru Sprintul '%s' Proiectului '%s'"
+
+#. module: project_scrum
+#: view:project.scrum.meeting:0
+msgid "Daily"
+msgstr "Zilnic"
+
+#. module: project_scrum
+#: field:project.scrum.sprint,backlog_ids:0
+msgid "Sprint Backlog"
+msgstr "Sprint Comanda neexecutata restanta"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+msgid "Delegate"
+msgstr "Delegat"
+
+#. module: project_scrum
+#: view:board.board:0
+msgid "My Board"
+msgstr "Panoul meu"
+
+#. module: project_scrum
+#: code:addons/project_scrum/project_scrum.py:90
+#, python-format
+msgid "The sprint '%s' has been closed."
+msgstr "Sprintul '%s' a fost inchis."
+
+#. module: project_scrum
+#: view:board.board:0
+#: model:ir.actions.act_window,name:project_scrum.action_view_task_progress_graph
+#: view:project.task:0
+msgid "Task Progress"
+msgstr "Progres Sarcina"
+
+#. module: project_scrum
+#: view:project.scrum.meeting:0
+#: field:project.scrum.meeting,date:0
+msgid "Meeting Date"
+msgstr "Data intalnirii"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.act_scrum_sprint_2_project_task
+#: view:project.scrum.meeting:0
+#: field:project.scrum.meeting,task_ids:0
+#: view:project.scrum.product.backlog:0
+#: view:project.scrum.sprint:0
+msgid "Tasks"
+msgstr "Sarcini"
+
+#. module: project_scrum
+#: help:project.scrum.backlog.assign.sprint,sprint_id:0
+msgid "Select Sprint to assign backlog."
+msgstr "Selectati Sprintul pentru atribuirea comenzii restante."
+
+#. module: project_scrum
+#: help:project.scrum.product.backlog,progress:0
+#: help:project.scrum.sprint,progress:0
+msgid "Computed as: Time Spent / Total Time."
+msgstr "Calculat in felul urmator: Timpul petrecut / Timpul total."
+
+#. module: project_scrum
+#: view:project.scrum.meeting:0
+#: view:project.scrum.sprint:0
+msgid "Month"
+msgstr "Luna"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+msgid "Draft Backlogs"
+msgstr "Comenzi neefectuate ciorna"
+
+#. module: project_scrum
+#: field:project.scrum.meeting,question_blocks:0
+msgid "Blocks encountered"
+msgstr "Blocaje intalnite"
+
+#. module: project_scrum
+#: help:project.scrum.backlog.assign.sprint,state_open:0
+msgid "Change the state of product backlogs to open if its in draft state"
+msgstr ""
+"Modifica starea comenzilor restante neexecutate ale produselor in 'deschis' "
+"daca starea este 'ciorna'"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+msgid "Total Planned Hours"
+msgstr "Total Ore Planificate"
+
+#. module: project_scrum
+#: help:project.project,product_owner_id:0
+#: help:project.scrum.sprint,product_owner_id:0
+msgid "The person who is responsible for the product"
+msgstr "Persoana care este responsabila pentru produs"
+
+#. module: project_scrum
+#: view:project.scrum.meeting:0
+#: view:project.scrum.sprint:0
+msgid "What do you plan to do till the next meeting?"
+msgstr "Ce planuiti sa faceti pana la intalnirea urmatoare?"
+
+#. module: project_scrum
+#: view:project.scrum.meeting:0
+#: view:project.scrum.sprint:0
+msgid "Scrum Sprint"
+msgstr "Sprint Scrum"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+#: view:project.scrum.sprint:0
+msgid "In Progress"
+msgstr "In curs de desfasurare"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:0
+msgid "Product owner"
+msgstr "Proprietar Produs"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:0
+msgid "Review"
+msgstr "Verificare"
+
+#. module: project_scrum
+#: field:project.scrum.sprint,retrospective:0
+msgid "Sprint Retrospective"
+msgstr "Retrospectiva Sprint"
+
+#. module: project_scrum
+#: field:project.scrum.product.backlog,note:0
+msgid "Note"
+msgstr "Nota"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+#: selection:project.scrum.product.backlog,state:0
+#: selection:project.scrum.sprint,state:0
+msgid "Draft"
+msgstr "Ciorna"
+
+#. module: project_scrum
+#: help:project.task,product_backlog_id:0
+msgid ""
+"Related product backlog that contains this task. Used in SCRUM methodology"
+msgstr ""
+"Comanda neexecutata restanta asociata produsului care contine aceasta "
+"sarcina. Folosit in metodologia SCRUM"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.action_postpone_wizard
+#: view:postpone.wizard:0
+#: view:project.scrum.product.backlog:0
+msgid "Postpone"
+msgstr "Amanati"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+msgid "Change Type"
+msgstr "Schimbati tip"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+msgid "For changing to done state"
+msgstr "Pentru schimbarea in starea efectuat"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:0
+msgid "New Sprints"
+msgstr "Sprint-uri noi"
+
+#. module: project_scrum
+#: view:project.scrum.meeting:0
+#: view:project.scrum.sprint:0
+msgid "Optional Info"
+msgstr "Informatii optionale"
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_project_scrum_backlog_create_task
+msgid "Create Tasks from Product Backlogs"
+msgstr "Creati Sarcini din Comenzile neexecutate restante ale Produselor"
+
+#. module: project_scrum
+#: help:project.project,sprint_size:0
+msgid "Number of days allocated for sprint"
+msgstr "Numarul de zile alocat pentru sprint"
+
+#. module: project_scrum
+#: field:project.project,product_owner_id:0
+#: field:project.scrum.sprint,product_owner_id:0
+msgid "Product Owner"
+msgstr "Proprietar Produs"
+
+#. module: project_scrum
+#: help:project.scrum.product.backlog,sequence:0
+msgid "Gives the sequence order when displaying a list of product backlog."
+msgstr ""
+"Prezinta ordinea secventei atunci cand afiseaza o lista cu comenzile "
+"restante neexecutate ale produselor."
+
+#. module: project_scrum
+#: model:process.node,name:project_scrum.process_node_productbacklog0
+#: view:project.scrum.product.backlog:0
+msgid "Product backlog"
+msgstr "Comanda restanta neexecutata a produsului"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.act_scrum_sprint_2_product_backlog
+msgid "Backlogs"
+msgstr "Comenzi restante neexecutate"
+
+#. module: project_scrum
+#: help:project.scrum.backlog.assign.sprint,convert_to_task:0
+msgid "Create Task for Product Backlog"
+msgstr "Creati Sarcina pentru Comanda restanta neexecutata a produsului"
+
+#. module: project_scrum
+#: field:project.scrum.product.backlog,active:0
+msgid "Active"
+msgstr "Activ(a)"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.action_meeting_form
+#: model:ir.ui.menu,name:project_scrum.menu_action_meeting_form
+msgid "Scrum Meetings"
+msgstr "Intalniri Scrum"
+
+#. module: project_scrum
+#: help:project.scrum.product.backlog,expected_hours:0
+msgid "Estimated total time to do the Backlog"
+msgstr "Timpul total estimat pentru efectuarea comenzii restante neexecutate"
+
+#. module: project_scrum
+#: help:project.scrum.backlog.merge,project_id:0
+msgid "Select project for the new product backlog"
+msgstr "Selectati proiectul pentru noua comanda restanta a produsului"
+
+#. module: project_scrum
+#: view:project.scrum.backlog.merge:0
+msgid "Merge"
+msgstr "Imbinati"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.action_sprint_backlog_open
+msgid "View sprint backlog"
+msgstr "Vizionare sprint comanda restanta"
+
+#. module: project_scrum
+#: field:project.scrum.meeting,question_backlog:0
+msgid "Backlog Accurate"
+msgstr "Comanda restanta exacta"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.action_scrum_backlog_to_task
+#: view:project.scrum.backlog.create.task:0
+#: view:project.scrum.product.backlog:0
+msgid "Convert to Task"
+msgstr "Transformati in Sarcina"
+
+#. module: project_scrum
+#: help:project.scrum.sprint,project_id:0
+msgid ""
+"If you have [?] in the project name, it means there are no analytic account "
+"linked to this project."
+msgstr ""
+"Daca aveti [?] in numele proiectului, inseamna ca nu exista niciun cont "
+"analitic asociat acestui proiect."
+
+#. module: project_scrum
+#: field:project.scrum.product.backlog,sequence:0
+msgid "Sequence"
+msgstr "Secventa"
+
+#. module: project_scrum
+#: view:board.board:0
+#: model:ir.actions.act_window,name:project_scrum.action_view_backlog_progress_graph
+#: view:project.scrum.product.backlog:0
+msgid "Backlog Progress"
+msgstr "Progres Comanda restanta"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+#: selection:project.scrum.product.backlog,state:0
+#: selection:project.scrum.sprint,state:0
+msgid "Done"
+msgstr "Efectuat"
+
+#. module: project_scrum
+#: view:project.scrum.backlog.merge:0
+#: view:project.scrum.product.backlog:0
+msgid "Cancel"
+msgstr "Anulati"
+
+#. module: project_scrum
+#: view:postpone.wizard:0
+#: view:project.scrum.product.backlog:0
+#: view:project.scrum.sprint:0
+msgid "Close"
+msgstr "Inchideti"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+#: selection:project.scrum.product.backlog,state:0
+#: view:project.scrum.sprint:0
+#: selection:project.scrum.sprint,state:0
+msgid "Open"
+msgstr "Deschideti"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:0
+#: field:project.scrum.sprint,effective_hours:0
+msgid "Effective hours"
+msgstr "Ore efective"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+msgid "Information"
+msgstr "Informatii"
+
+#. module: project_scrum
+#: code:addons/project_scrum/wizard/project_scrum_backlog_sprint.py:57
+#, python-format
+msgid "Product Backlog '%s' is converted into Task %d."
+msgstr "Comanda restanta a produsului '%s' este transformata in Sarcina %d."
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+msgid "Remaining Hours"
+msgstr "Ore ramase"
+
+#. module: project_scrum
+#: constraint:project.task:0
+msgid "Error ! Task end-date must be greater then task start-date"
+msgstr ""
+"Eroare ! Data de sfarsit a sarcinii trebuie sa fie mai mare decat data de "
+"inceput"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:0
+msgid "Responsible"
+msgstr "Responsabil"
+
+#. module: project_scrum
+#: field:project.scrum.product.backlog,name:0
+msgid "Feature"
+msgstr "Caracteristica"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+msgid "My Backlogs"
+msgstr "Comenzile mele restante"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+msgid "In Progress Backlogs"
+msgstr "Comenzi restante in desfasurare"
+
+#. module: project_scrum
+#: view:project.task:0
+msgid "View Sprints"
+msgstr "Vizualizati Sprint-urile"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,help:project_scrum.action_product_backlog_form
+msgid ""
+"The scrum agile methodology is used in software development projects. The "
+"Product Backlog is the list of features to be implemented. A product backlog "
+"can be planified in a development sprint and may be split into several "
+"tasks. The product backlog is managed by the product owner of the project."
+msgstr ""
+"Metodologia activa scrum este folosita in proiectele de dezvoltare a "
+"softului. Comanda restanta a produsului este lista cu caracteristici care "
+"urmeaza sa fie implementate. O comanda restanta a produsului poate fi "
+"planificata intr-un sprint de dezvoltare si poate fi impartita in mai multe "
+"sarcini. Comanda restanta a produsului este gestionata de catre proprietarul "
+"produsului proiectului."
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+msgid "Postpone backlog"
+msgstr "Amanati comanda restanta"
+
+#. module: project_scrum
+#: model:process.transition,name:project_scrum.process_transition_backlogtask0
+msgid "Backlog Task"
+msgstr "Sarcina comanda restanta"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+#: view:project.scrum.sprint:0
+msgid "Planned hours"
+msgstr "Ore planificate"
+
+#. module: project_scrum
+#: field:project.scrum.sprint,date_start:0
+msgid "Starting Date"
+msgstr "Data de inceput"
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_project_scrum_meeting
+#: view:project.scrum.meeting:0
+#: view:project.scrum.sprint:0
+msgid "Scrum Meeting"
+msgstr "Intalnire Scrum"
+
+#. module: project_scrum
+#: model:ir.actions.report.xml,name:project_scrum.report_scrum_sprint_burndown_chart
+#: view:project.scrum.sprint:0
+msgid "Burndown Chart"
+msgstr "Grafic descendent"
+
+#. module: project_scrum
+#: view:project.scrum.meeting:0
+#: view:project.scrum.sprint:0
+msgid "Daily Meetings"
+msgstr "Intalniri zilnice"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:0
+msgid "Expected hours"
+msgstr "Ore estimate"
+
+#. module: project_scrum
+#: field:project.project,sprint_size:0
+msgid "Sprint Days"
+msgstr "Sprint Zile"
+
+#. module: project_scrum
+#: field:project.scrum.sprint,progress:0
+msgid "Progress (0-100)"
+msgstr "Progress (0-100)"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:0
+msgid "Sprint Info"
+msgstr "Informatii sprint"
+
+#. module: project_scrum
+#: help:project.scrum.product.backlog,active:0
+msgid ""
+"If Active field is set to true, it will allow you to hide the product "
+"backlog without removing it."
+msgstr ""
+"Daca campul activ este setat pe adevarat, va va permite sa ascundeti comanda "
+"restanta a produsului fara a o sterge."
+
+#. module: project_scrum
+#: help:project.scrum.product.backlog,task_hours:0
+msgid "Estimated time of the total hours of the tasks"
+msgstr "Timpul estimat din orele totale ale sarcinii"
+
+#. module: project_scrum
+#: view:project.project:0
+msgid "Scrum Data"
+msgstr "Date Scrum"
+
+#. module: project_scrum
+#: field:project.project,scrum:0
+msgid "Is a Scrum Project"
+msgstr "Este un Proiect Scrum"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+msgid "Edit"
+msgstr "Editati"
+
+#. module: project_scrum
+#: field:project.scrum.product.backlog,tasks_id:0
+msgid "Tasks Details"
+msgstr "Detalii sarcini"
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_postpone_wizard
+msgid "postpone.wizard"
+msgstr "wizard.amanare"
+
+#. module: project_scrum
+#: view:project.scrum.backlog.merge:0
+msgid ""
+"This wizard merge backlogs and create one new backlog with draft state (Old "
+"backlogs Will be deleted). And it also merge old tasks from backlogs"
+msgstr ""
+"Acest wizard uneste comenzile restante si creeaza o noua comanda restanta in "
+"starea de ciorna (Comenzile restante vechi vor fi sterse). De asemenea, "
+"uneste sarcinile vechi din comenzi restante."
+
+#. module: project_scrum
+#: view:postpone.wizard:0
+msgid "Postpone Backlog"
+msgstr "Amanati Comanda restanta"
+
+#. module: project_scrum
+#: view:project.scrum.backlog.merge:0
+msgid "Select the project for merged backlogs"
+msgstr "Selectati proiectul pentru comenzile restante fuzionate"
+
+#. module: project_scrum
+#: view:board.board:0
+#: model:ir.actions.act_window,name:project_scrum.action_view_my_scrum_sprint_tree
+msgid "My Sprint"
+msgstr "Sprintul meu"
+
+#. module: project_scrum
+#: field:project.scrum.product.backlog,effective_hours:0
+msgid "Spent Hours"
+msgstr "Ore petrecute"
+
+#. module: project_scrum
+#: help:project.scrum.product.backlog,effective_hours:0
+msgid "Computed using the sum of the time spent on every related tasks"
+msgstr "Calculat folosind suma timpului petrecut cu fiecare sarcina asociata"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.open_board_project_scrum
+#: model:ir.ui.menu,name:project_scrum.menu_deshboard_scurm
+msgid "Scrum Dashboard"
+msgstr "Tablou de bord Scrum"
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_project_scrum_sprint
+msgid "Project Scrum Sprint"
+msgstr "Sprint Proiect Scrum"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+msgid "Feature Description"
+msgstr "Descrierea caracteristicii"
+
+#. module: project_scrum
+#: code:addons/project_scrum/wizard/project_scrum_backlog_merger.py:71
+#, python-format
+msgid "Please select any Project."
+msgstr "Va rugam sa selectati orice Proiect."
+
+#. module: project_scrum
+#: code:addons/project_scrum/wizard/project_scrum_email.py:98
+#, python-format
+msgid "Thank you,"
+msgstr "Va multumim,"
+
+#. module: project_scrum
+#: view:project.scrum.meeting:0
+#: view:project.task:0
+msgid "Current Sprints"
+msgstr "Sprinturi actuale"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.action_scrum_backlog_to_sprint
+#: view:project.scrum.backlog.assign.sprint:0
+msgid "Assign Sprint"
+msgstr "Atribuiti Sprint"
+
+#. module: project_scrum
+#: field:project.scrum.backlog.create.task,user_id:0
+msgid "Assign To"
+msgstr "Atribuiti lui"
+
+#. module: project_scrum
+#: view:postpone.wizard:0
+msgid "Are you sure to postpone Backlog ?"
+msgstr "Sunteti sigur(a) ca doriti sa amanati Comanda restanta?"
+
+#. module: project_scrum
+#: view:project.scrum.product.backlog:0
+msgid "For changing to open state"
+msgstr "Pentru schimbarea in starea deschis"
+
+#. module: project_scrum
+#: field:project.scrum.backlog.assign.sprint,sprint_id:0
+#: view:project.scrum.meeting:0
+#: field:project.scrum.meeting,sprint_id:0
+#: view:project.scrum.product.backlog:0
+#: field:project.scrum.product.backlog,sprint_id:0
+#: view:project.task:0
+#: field:project.task,sprint_id:0
+msgid "Sprint"
+msgstr "Sprint"
+
+#. module: project_scrum
+#: code:addons/project_scrum/wizard/project_scrum_backlog_merger.py:39
+#, python-format
+msgid "Please select at least two product Backlogs"
+msgstr "Va rugam sa selectati cel putin doua Comenzi restante ale produselor"
+
+#. module: project_scrum
+#: field:project.scrum.sprint,review:0
+msgid "Sprint Review"
+msgstr "Verificare Sprint"

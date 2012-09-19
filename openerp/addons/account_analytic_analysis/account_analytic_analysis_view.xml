@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!--
+        Analytic Account form 
+
+        Remove information on Account data => because they move on analysis sheet
+        create a page with invoicing informations
+        -->
+        <record id="account_analytic_account_invoice_stat_form" model="ir.ui.view">
+            <field name="name">account.analytic.account.invoice.stat.form.inherit</field> 
+            <field name="model">account.analytic.account</field> 
+            <field name="type">form</field> 
+            <field name="inherit_id" ref="hr_timesheet_invoice.account_analytic_account_form_form"/>
+            <field eval="18" name="priority"/>
+            <field name="arch" type="xml">
+                <group name="invoice_stats" position="inside">
+                    <field name="hours_qtt_non_invoiced" attrs="{'invisible': [('to_invoice','=',0)]}"/>
+                    <field name="ca_to_invoice" attrs="{'invisible': [('to_invoice','=',0)]}"/>
+                    <label string="" colspan="1"/>
+                    <button
+                        name="%(hr_timesheet_invoice.action_hr_timesheet_invoice_create_final)d"
+                        string="Create Invoice"
+                        type="action"
+                        attrs="{'readonly':[('ca_to_invoice','=',0.0)], 'invisible': [('to_invoice','=',0)]}"
+                        icon="gtk-go-forward"/>
+                </group>
+            </field>
+        </record>
+
+        <record id="hr_timesheet.account_analytic_account_form_form" model="ir.ui.view">
+            <field name="name">account.analytic.account.invoice.form.inherit</field> 
+            <field name="model">account.analytic.account</field> 
+            <field name="type">form</field> 
+            <field name="inherit_id" ref="account.view_account_analytic_account_form"/>
+            <field eval="18" name="priority"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Invoice Analysis">
+                        <separator colspan="4" string="Work done stats"/>
+
+                        <field name="total_cost"/>
+                        <field name="remaining_ca"/>
+                        <field name="ca_invoiced"/>
+                        <field name="ca_theorical"/>
+                        <newline/>
+                        <field name="hours_quantity"/>
+                        <field name="hours_qtt_invoiced"/>
+                        <field name="remaining_hours"/>
+                        <newline/>
+                        <separator colspan="4" string="Analysis stats"/>
+
+                        <field name="revenue_per_hour"/>
+                        <field name="real_margin"/>
+                        <field name="real_margin_rate"/>
+                        <field name="theorical_margin"/>
+                        <separator colspan="4" string="Key dates"/>
+
+                        <field name="last_invoice_date"/>
+                        <field name="last_worked_invoiced_date"/>
+                        <field name="last_worked_date"/>
+                    </page>
+                    <page string="Stats by month">
+                        <field colspan="4" name="month_ids" nolabel="1">
+                            <tree string="Month">
+                                <field name="month"/>
+                                <field name="unit_amount" widget="float_time"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Stats by user"> 
+                        <field colspan="4" name="user_ids" nolabel="1">
+                            <tree string="Users">
+                                <field name="user"/>
+                                <field name="unit_amount" widget="float_time"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+
+            </field>
+        </record>
+
+        <!-- Add information on Account analytic list for the project management -->
+        <record id="view_account_analytic_account_tree_c2c_2" model="ir.ui.view">
+            <field name="name">account.analytic.account.tree</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="account.view_account_analytic_account_list"/>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <field name="quantity" position="replace">
+                    <field name="hours_quantity"/>
+                    <field name="hours_qtt_non_invoiced"/>
+                    <field name="remaining_hours"/>
+                    <field name="quantity_max"/>
+                </field>
+            </field>
+        </record>
+        
+        <record id="view_account_analytic_account_tree_c2c_3" model="ir.ui.view"> 
+            <field name="name">account.analytic.account.tree</field> 
+            <field name="model">account.analytic.account</field> 
+            <field name="inherit_id" ref="account.view_account_analytic_account_list"/>
+            <field name="type">tree</field> 
+            <field name="arch" type="xml"> 
+                <field name="date" position="before"> 
+                    <field name="last_invoice_date"/>
+                    <field name="ca_to_invoice"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

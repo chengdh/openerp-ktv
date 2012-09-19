@@ -1,0 +1,147 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+    <record model="ir.ui.view" id="view_gtd_context_tree">
+        <field name="name">project.gtd.context.tree</field>
+        <field name="model">project.gtd.context</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Context">
+                <field name="sequence" invisible="1"/>
+                <field name="name" select="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_gtd_context_form">
+        <field name="name">project.gtd.context.form</field>
+        <field name="model">project.gtd.context</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Context">
+                <field name="name" select="1"/>
+                <field name="sequence"/>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="open_gtd_context_tree">
+        <field name="name">Contexts</field>
+        <field name="res_model">project.gtd.context</field>
+        <field name="help">Contexts are defined in the "Getting Things Done" methodology. It allows you to categorize your tasks according to the context in which they have to be done: at the office, at home, when I take my car, etc.</field>
+    </record>
+
+    <menuitem name="Contexts" id="menu_open_gtd_time_contexts"
+                parent="project.menu_tasks_config" action="open_gtd_context_tree"/>
+
+    <record model="ir.ui.view" id="view_gtd_timebox_tree">
+        <field name="name">project.gtd.timebox.tree</field>
+        <field name="model">project.gtd.timebox</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Timebox">
+                <field name="sequence" invisible="1"/>
+                <field name="name"/>
+                <field name="icon"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_gtd_timebox_form">
+        <field name="name">project.gtd.timebox.form</field>
+        <field name="model">project.gtd.timebox</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Timeboxes">
+                <separator string="Timebox Definition" colspan="4"/>
+                <field name="name" select="1"/>
+                <field name="sequence"/>
+                <field name="icon"/>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="open_gtd_timebox_tree">
+        <field name="name">Timeboxes</field>
+        <field name="res_model">project.gtd.timebox</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_gtd_timebox_tree"/>
+        <field name="help">Timeboxes are defined in the "Getting Things Done" methodology. A timebox defines a period of time in order to categorize your tasks: today, this week, this month, long term.</field>
+    </record>
+
+    <menuitem name="Timeboxes" id="menu_open_gtd_time_timeboxes" parent="project.menu_tasks_config" action="open_gtd_timebox_tree"/>
+
+    <record model="ir.ui.view" id="project_task_tree">
+        <field name="name">project.task.tree.timebox</field>
+        <field name="model">project.task</field>
+        <field name="type">tree</field>
+        <field name="inherit_id" ref="project.view_task_tree2" />
+        <field name="arch" type="xml">
+            <field name="remaining_hours" position="after">
+                <field string="Timebox" name="timebox_id" invisible=" not context.get('gtd', False)"/>
+                <button name="prev_timebox" type="object" icon="gtk-go-back" string="Previous" states="draft,pending,open" invisible=" not context.get('gtd',False)"/>
+                <button name="next_timebox" type="object" icon="gtk-go-forward" string="Next" states="draft,pending,open" invisible=" not context.get('gtd',False)"/>
+                <field name="context_id" invisible="not context.get('context_show', False)" widget="selection" groups="base.group_extended"/>
+                <button name="do_reopen" states="done,cancelled" string="Reactivate" type="object" icon="gtk-convert" help="For reopening the tasks" invisible="not context.get('set_visible',False)"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="project_task">
+        <field name="name">project.task.form.timebox</field>
+        <field name="model">project.task</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <field name="progress" position="after">
+                <field name="context_id" widget="selection"/>
+                <field name="timebox_id" widget="selection" select="1"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_task_gtd_search" model="ir.ui.view">
+        <field name="name">project.task.gtd.search</field>
+        <field name="model">project.task</field>
+        <field name="type">search</field>
+        <field name="priority">50</field>
+        <field name="arch" type="xml">
+           <search string="My Tasks">
+                <filter name="open" string="In Progress" domain="[('state','in',('draft','open'))]" help="In Progress and draft tasks" icon="terp-camera_test"/>
+                <filter string="Pending" domain="[('state','=','pending')]" context="{'show_delegated':False}" help="Pending Tasks" icon="terp-gtk-media-pause"/>
+                <separator orientation="vertical"/>
+                <filter
+                    domain="[('timebox_id','=', False)]"
+                    help="Tasks having no timebox assigned yet" string="Inbox"/>
+                <separator orientation="vertical"/>
+                <separator name="gtdsep"/>
+                <field name="name"/>
+                <field name="context_id" widget="selection" groups="base.group_extended"
+                    context="{'context_show': True}">
+                    <filter string="Show Context"
+                        name="context_show"
+                        context="{'context_show': True}"
+                        domain="[]" icon="terp-camera_test"
+                        help="Show the context field"/>
+                    <filter string="Show Deadlines" context="{'deadline_visible': False}"
+                        domain="[]" help="Show only tasks having a deadline"
+                        icon="terp-gnome-cpu-frequency-applet+"/>
+                </field>
+            </search>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="open_gtd_task">
+        <field name="name">My Tasks</field>
+        <field name="res_model">project.task</field>
+        <field name="search_view_id" ref="view_task_gtd_search"/>
+        <field name="context">{'set_editable':True,'set_visible':True,'gtd':True,'user_invisible':True, "search_default_open": 1}</field>
+        <field name="domain">[('user_id','=',uid)]</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form,calendar,gantt,graph,kanban</field>
+    </record>
+    <menuitem action="open_gtd_task" id="menu_open_gtd_timebox_tree" parent="project.menu_project_management" sequence="4"/>
+
+
+    </data>
+</openerp>

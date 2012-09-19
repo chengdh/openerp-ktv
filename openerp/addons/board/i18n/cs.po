@@ -1,0 +1,350 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# * board
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.0dev\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2012-02-08 00:36+0000\n"
+"PO-Revision-Date: 2012-02-17 09:10+0000\n"
+"Last-Translator: Kuvaly [LCT] <kuvaly@seznam.cz>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-08-28 09:37+0000\n"
+"X-Generator: Launchpad (build 15864)\n"
+"X-Poedit-Language: Czech\n"
+
+#. module: board
+#: view:res.log.report:0
+msgid "  Year  "
+msgstr "  Rok  "
+
+#. module: board
+#: model:ir.model,name:board.model_board_menu_create
+msgid "Menu Create"
+msgstr "Vytvořit nabídku"
+
+#. module: board
+#: view:board.menu.create:0
+msgid "Menu Information"
+msgstr "Informace nabídky"
+
+#. module: board
+#: view:res.users:0
+msgid "Latest Connections"
+msgstr "Poslední spojení"
+
+#. module: board
+#: view:res.log.report:0
+msgid "Log created in last month"
+msgstr "Záznam vytvořený minulý měsíc"
+
+#. module: board
+#: view:board.board:0
+#: model:ir.actions.act_window,name:board.open_board_administration_form
+msgid "Administration Dashboard"
+msgstr "Nástěnka správy"
+
+#. module: board
+#: view:res.log.report:0
+msgid "Group By..."
+msgstr "Seskupit podle..."
+
+#. module: board
+#: view:res.log.report:0
+msgid "Log created in current year"
+msgstr "Záznam vytvořený v tomto roce"
+
+#. module: board
+#: model:ir.model,name:board.model_board_board
+msgid "Board"
+msgstr "Tabule"
+
+#. module: board
+#: field:board.menu.create,menu_name:0
+msgid "Menu Name"
+msgstr "Jméno nabídky"
+
+#. module: board
+#: model:ir.actions.act_window,name:board.board_weekly_res_log_report_action
+#: view:res.log.report:0
+msgid "Weekly Global Activity"
+msgstr "Týdenní celkové činnosti"
+
+#. module: board
+#: field:board.board.line,name:0
+msgid "Title"
+msgstr "Titulek"
+
+#. module: board
+#: field:res.log.report,nbr:0
+msgid "# of Entries"
+msgstr "# z položek"
+
+#. module: board
+#: view:res.log.report:0
+#: field:res.log.report,month:0
+msgid "Month"
+msgstr "Měsíc"
+
+#. module: board
+#: view:res.log.report:0
+msgid "Log created in current month"
+msgstr "Záznam vytvořený v tomto měsíci"
+
+#. module: board
+#: model:ir.actions.act_window,name:board.board_monthly_res_log_report_action
+#: view:res.log.report:0
+msgid "Monthly Activity per Document"
+msgstr "Měsíční činnosti dle dokumentu"
+
+#. module: board
+#: view:board.board:0
+msgid "Configuration Overview"
+msgstr "Přehled nastavení"
+
+#. module: board
+#: model:ir.actions.act_window,name:board.action_view_board_list_form
+#: model:ir.ui.menu,name:board.menu_view_board_form
+msgid "Dashboard Definition"
+msgstr "Definice nástěnky"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "March"
+msgstr "Březen"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "August"
+msgstr "Srpen"
+
+#. module: board
+#: model:ir.actions.act_window,name:board.action_user_connection_tree
+msgid "User Connections"
+msgstr "Spojení uživatele"
+
+#. module: board
+#: field:res.log.report,creation_date:0
+msgid "Creation Date"
+msgstr "DAtum vytvoření"
+
+#. module: board
+#: view:res.log.report:0
+msgid "Log Analysis"
+msgstr "Analýza záznamu"
+
+#. module: board
+#: field:res.log.report,res_model:0
+msgid "Object"
+msgstr "Objekt"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "June"
+msgstr "Červen"
+
+#. module: board
+#: field:board.board,line_ids:0
+msgid "Action Views"
+msgstr "Zobrazení akcí"
+
+#. module: board
+#: model:ir.model,name:board.model_res_log_report
+msgid "Log Report"
+msgstr "Výkaz záznamu"
+
+#. module: board
+#: code:addons/board/wizard/board_menu_create.py:46
+#, python-format
+msgid "Please Insert Dashboard View(s) !"
+msgstr "Prosíme vložte zobrazení nástěnky !"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "July"
+msgstr "Červenec"
+
+#. module: board
+#: view:res.log.report:0
+#: field:res.log.report,day:0
+msgid "Day"
+msgstr "Den"
+
+#. module: board
+#: view:board.menu.create:0
+msgid "Create Menu For Dashboard"
+msgstr "Vytvořit nabídku pro nástěnku"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "February"
+msgstr "Únor"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "October"
+msgstr "Říjen"
+
+#. module: board
+#: model:ir.model,name:board.model_board_board_line
+msgid "Board Line"
+msgstr "Řádek tabule"
+
+#. module: board
+#: field:board.menu.create,menu_parent_id:0
+msgid "Parent Menu"
+msgstr "Nadřazená nabídka"
+
+#. module: board
+#: view:res.log.report:0
+msgid "    Month-1    "
+msgstr "    Měsíc-1    "
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "January"
+msgstr "Leden"
+
+#. module: board
+#: view:board.board:0
+msgid "Users"
+msgstr "Uživatelé"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "November"
+msgstr "Listopad"
+
+#. module: board
+#: help:board.board.line,sequence:0
+msgid ""
+"Gives the sequence order                         when displaying a list of "
+"board lines."
+msgstr ""
+"Dává pořadí posloupnosti                         , když zobrazuje řádky "
+"tabule."
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "April"
+msgstr "Duben"
+
+#. module: board
+#: view:board.board:0
+#: field:board.board,name:0
+#: field:board.board.line,board_id:0
+#: model:ir.ui.menu,name:board.menu_dasboard
+msgid "Dashboard"
+msgstr "Nástěnka"
+
+#. module: board
+#: code:addons/board/wizard/board_menu_create.py:45
+#, python-format
+msgid "User Error!"
+msgstr "Chyba uživatele!"
+
+#. module: board
+#: field:board.board.line,action_id:0
+msgid "Action"
+msgstr "Akce"
+
+#. module: board
+#: field:board.board.line,position:0
+msgid "Position"
+msgstr "Pozice"
+
+#. module: board
+#: view:res.log.report:0
+msgid "Model"
+msgstr "Model"
+
+#. module: board
+#: model:ir.actions.act_window,name:board.board_homepage_action
+msgid "Home Page"
+msgstr "Domovská stránka"
+
+#. module: board
+#: model:ir.actions.act_window,name:board.action_latest_activities_tree
+msgid "Latest Activities"
+msgstr "Poslední aktivity"
+
+#. module: board
+#: selection:board.board.line,position:0
+msgid "Left"
+msgstr "Vlevo"
+
+#. module: board
+#: field:board.board,view_id:0
+msgid "Board View"
+msgstr "Zobrazení tabule"
+
+#. module: board
+#: selection:board.board.line,position:0
+msgid "Right"
+msgstr "Vpravo"
+
+#. module: board
+#: field:board.board.line,width:0
+msgid "Width"
+msgstr "Šířka"
+
+#. module: board
+#: view:res.log.report:0
+msgid "   Month   "
+msgstr "   Měsíc   "
+
+#. module: board
+#: field:board.board.line,sequence:0
+msgid "Sequence"
+msgstr "Posloupnost"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "September"
+msgstr "Září"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "December"
+msgstr "Prosinec"
+
+#. module: board
+#: view:board.board:0
+#: view:board.menu.create:0
+msgid "Create Menu"
+msgstr "Vytvořit nabídku"
+
+#. module: board
+#: field:board.board.line,height:0
+msgid "Height"
+msgstr "Výška"
+
+#. module: board
+#: model:ir.actions.act_window,name:board.action_board_menu_create
+msgid "Create Board Menu"
+msgstr "Vytvořit nabídku tabule"
+
+#. module: board
+#: selection:res.log.report,month:0
+msgid "May"
+msgstr "Květen"
+
+#. module: board
+#: view:res.log.report:0
+#: field:res.log.report,name:0
+msgid "Year"
+msgstr "Rok"
+
+#. module: board
+#: view:board.menu.create:0
+msgid "Cancel"
+msgstr "Zrušit"
+
+#. module: board
+#: view:board.board:0
+msgid "Dashboard View"
+msgstr "Zobrazení nástěnky"

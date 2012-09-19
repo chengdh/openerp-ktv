@@ -1,0 +1,1726 @@
+# Arabic translation for openerp-web
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openerp-web package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openerp-web\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-08-31 15:54+0200\n"
+"PO-Revision-Date: 2012-08-05 04:47+0000\n"
+"Last-Translator: nahla shehata <nahla_shehata2010@yahoo.com>\n"
+"Language-Team: Arabic <ar@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-09-01 05:36+0000\n"
+"X-Generator: Launchpad (build 15890)\n"
+
+#. openerp-web
+#: addons/web/static/src/js/chrome.js:176
+#: addons/web/static/src/js/chrome.js:202
+#: addons/web/static/src/js/chrome.js:380
+#: addons/web/static/src/js/view_form.js:457
+#: addons/web/static/src/js/view_form.js:1295
+#: addons/web/static/src/xml/base.xml:1701
+msgid "Ok"
+msgstr "تم"
+
+#. openerp-web
+#: addons/web/static/src/js/chrome.js:184
+msgid "Send OpenERP Enterprise Report"
+msgstr "إرسال تقرير أوبن إي آر بي إنتربرايز"
+
+#. openerp-web
+#: addons/web/static/src/js/chrome.js:198
+msgid "Dont send"
+msgstr "لا ترسل"
+
+#. openerp-web
+#: addons/web/static/src/js/chrome.js:260
+#, python-format
+msgid "Loading (%d)"
+msgstr "تحميل (%d)"
+
+#. openerp-web
+#: addons/web/static/src/js/chrome.js:292
+msgid "Invalid database name"
+msgstr "اسم قاعدة بيانات خاطئ"
+
+#. openerp-web
+#: addons/web/static/src/js/chrome.js:393
+msgid "Create database"
+msgstr "إنشاء قاعدة بيانات"
+
+#. openerp-web
+#: addons/web/static/src/js/chrome.js:395
+#, python-format
+msgid "Database \"%s\" already exist"
+msgstr "قاعدة البيانات (%s) موجودة بالفعل"
+
+#. openerp-web
+#: addons/web/static/src/js/chrome.js:455
+msgid "Backed"
+msgstr "مدعوم"
+
+#. openerp-web
+#: addons/web/static/src/js/chrome.js:456
+msgid "Database backed up successfully"
+msgstr "تم حفظ قاعدة البيانات بنجاح"
+
+#. openerp-web
+#: addons/web/static/src/js/chrome.js:499
+msgid "Restored"
+msgstr "مستعادة"
+
+#. openerp-web
+#: addons/web/static/src/js/chrome.js:499
+msgid "Database restored successfully"
+msgstr "تم إستعادة قاعدة البيانات بنجاح"
+
+#. openerp-web
+#: addons/web/static/src/js/chrome.js:680
+#: addons/web/static/src/xml/base.xml:359
+msgid "About"
+msgstr "حول"
+
+#. openerp-web
+#: addons/web/static/src/js/chrome.js:759
+#: addons/web/static/src/xml/base.xml:356
+msgid "Preferences"
+msgstr "تفضيلات"
+
+#. openerp-web
+#: addons/web/static/src/js/chrome.js:762
+#: addons/web/static/src/js/search.js:241
+#: addons/web/static/src/js/search.js:300
+#: addons/web/static/src/js/view_editor.js:95
+#: addons/web/static/src/js/view_editor.js:836
+#: addons/web/static/src/js/view_editor.js:962
+#: addons/web/static/src/js/view_form.js:1290
+#: addons/web/static/src/xml/base.xml:743
+#: addons/web/static/src/xml/base.xml:1502
+#: addons/web/static/src/xml/base.xml:1512
+#: addons/web/static/src/xml/base.xml:1521
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. openerp-web
+#: addons/web/static/src/js/chrome.js:763
+msgid "Change password"
+msgstr "تغيير كلمة المرور"
+
+#. openerp-web
+#: addons/web/static/src/js/chrome.js:764
+#: addons/web/static/src/js/view_editor.js:73
+#: addons/web/static/src/js/views.js:967 addons/web/static/src/xml/base.xml:742
+#: addons/web/static/src/xml/base.xml:1506
+#: addons/web/static/src/xml/base.xml:1520
+msgid "Save"
+msgstr "حفظ"
+
+#. openerp-web
+#: addons/web/static/src/js/chrome.js:783
+#: addons/web/static/src/xml/base.xml:226
+#: addons/web/static/src/xml/base.xml:1735
+msgid "Change Password"
+msgstr "تغيير كلمة السر"
+
+#. openerp-web
+#: addons/web/static/src/js/chrome.js:1052
+msgid "OpenERP - Unsupported/Community Version"
+msgstr "أوبن إي آر بي - النسخة العامة"
+
+#. openerp-web
+#: addons/web/static/src/js/chrome.js:1119
+msgid "Client Error"
+msgstr "خطأ عميل"
+
+#. openerp-web
+#: addons/web/static/src/js/data_export.js:6
+msgid "Export Data"
+msgstr "تصدير البيانات"
+
+#. openerp-web
+#: addons/web/static/src/js/data_export.js:19
+#: addons/web/static/src/js/data_import.js:71
+#: addons/web/static/src/js/view_editor.js:49
+#: addons/web/static/src/js/view_editor.js:398
+#: addons/web/static/src/js/view_form.js:734
+#: addons/web/static/src/js/view_form.js:3325
+#: addons/web/static/src/js/views.js:968
+msgid "Close"
+msgstr "إغلاق"
+
+#. openerp-web
+#: addons/web/static/src/js/data_export.js:20
+msgid "Export To File"
+msgstr "تصدير لملف"
+
+#. openerp-web
+#: addons/web/static/src/js/data_export.js:126
+msgid "Please enter save field list name"
+msgstr "رجاء حفظ اسم قائمة الحقل"
+
+#. openerp-web
+#: addons/web/static/src/js/data_export.js:362
+msgid "Please select fields to save export list..."
+msgstr "اختر الحقول للحفظ في قائمة التصدير"
+
+#. openerp-web
+#: addons/web/static/src/js/data_export.js:375
+msgid "Please select fields to export..."
+msgstr "اختر الحقول للتصدير..."
+
+#. openerp-web
+#: addons/web/static/src/js/data_import.js:34
+msgid "Import Data"
+msgstr "استيراد البيانات"
+
+#. openerp-web
+#: addons/web/static/src/js/data_import.js:72
+msgid "Import File"
+msgstr "إستيراد ملف"
+
+#. openerp-web
+#: addons/web/static/src/js/data_import.js:108
+msgid "External ID"
+msgstr "معرف خارجي"
+
+#. openerp-web
+#: addons/web/static/src/js/data_import.js:349
+msgid ""
+"Destination fields should only be selected once, some fields are selected "
+"more than once:"
+msgstr ""
+"الحقول المقصودة يجب أختيارها مرة واحدة فقط ،بعض الحقول يمكن أختيارها اكثر من "
+"مرة:"
+
+#. openerp-web
+#: addons/web/static/src/js/data_import.js:386
+msgid "*Required Fields are not selected :"
+msgstr "*لم يتم اختيار الحقول المطلوبة :"
+
+#. openerp-web
+#: addons/web/static/src/js/formats.js:139
+#, python-format
+msgid "(%d records)"
+msgstr "(%d سجلات)"
+
+#. openerp-web
+#: addons/web/static/src/js/formats.js:325
+#: addons/web/static/src/js/view_page.js:268
+msgid "Download"
+msgstr "تحميل"
+
+#. openerp-web
+#: addons/web/static/src/js/formats.js:330
+#, python-format
+msgid "Download \"%s\""
+msgstr "تحميل \"%s\""
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:193
+msgid "Filter disabled due to invalid syntax"
+msgstr "تم إلغاء الترشيح لخطأ في التعبير"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:239
+msgid "Filter Entry"
+msgstr "إدخال مرشح"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:244
+#: addons/web/static/src/js/search.js:303
+msgid "OK"
+msgstr "تم"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:298
+#: addons/web/static/src/xml/base.xml:1299
+msgid "Add to Dashboard"
+msgstr "أضف للوحة الرئيسية"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:437
+msgid "Invalid Search"
+msgstr "بحث خاطئ"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:437
+msgid "triggered from search view"
+msgstr "مشغلة من بحث العرض"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:528
+#, python-format
+msgid "Incorrect value for field %(fieldname)s: [%(value)s] is %(message)s"
+msgstr "قيمة خاطئة للحقل %(fieldname)s: [%(value)s] تكون %(message)s"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:869
+msgid "not a valid integer"
+msgstr "قيمة رقمية خاطئة"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:883
+msgid "not a valid number"
+msgstr "قيمة رقمية خاطئة"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:962
+#: addons/web/static/src/xml/base.xml:973
+msgid "Yes"
+msgstr "نعم"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:963
+msgid "No"
+msgstr "كلا"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:1341
+msgid "contains"
+msgstr "يحتوي"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:1342
+msgid "doesn't contain"
+msgstr "لا يحتوي علي"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:1343
+#: addons/web/static/src/js/search.js:1359
+#: addons/web/static/src/js/search.js:1380
+#: addons/web/static/src/js/search.js:1401
+#: addons/web/static/src/js/search.js:1424
+msgid "is equal to"
+msgstr "مساوٍ لـ"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:1344
+#: addons/web/static/src/js/search.js:1360
+#: addons/web/static/src/js/search.js:1381
+#: addons/web/static/src/js/search.js:1402
+#: addons/web/static/src/js/search.js:1425
+msgid "is not equal to"
+msgstr "ليس مساويًا لـ"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:1345
+#: addons/web/static/src/js/search.js:1361
+#: addons/web/static/src/js/search.js:1382
+#: addons/web/static/src/js/search.js:1403
+#: addons/web/static/src/js/search.js:1426
+msgid "greater than"
+msgstr "أكبر من"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:1346
+#: addons/web/static/src/js/search.js:1362
+#: addons/web/static/src/js/search.js:1383
+#: addons/web/static/src/js/search.js:1404
+#: addons/web/static/src/js/search.js:1427
+msgid "less than"
+msgstr "أقل من"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:1347
+#: addons/web/static/src/js/search.js:1363
+#: addons/web/static/src/js/search.js:1384
+#: addons/web/static/src/js/search.js:1405
+#: addons/web/static/src/js/search.js:1428
+msgid "greater or equal than"
+msgstr "أكبر من أو يساوي"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:1348
+#: addons/web/static/src/js/search.js:1364
+#: addons/web/static/src/js/search.js:1385
+#: addons/web/static/src/js/search.js:1406
+#: addons/web/static/src/js/search.js:1429
+msgid "less or equal than"
+msgstr "أقل من أو يساوي"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:1349
+#: addons/web/static/src/js/search.js:1365
+#: addons/web/static/src/js/search.js:1386
+#: addons/web/static/src/js/search.js:1407
+#: addons/web/static/src/js/search.js:1430
+#: addons/web/static/src/js/search.js:1446
+msgid "is set"
+msgstr "مضبوطة"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:1350
+#: addons/web/static/src/js/search.js:1366
+#: addons/web/static/src/js/search.js:1387
+#: addons/web/static/src/js/search.js:1408
+#: addons/web/static/src/js/search.js:1431
+#: addons/web/static/src/js/search.js:1447
+msgid "is not set"
+msgstr "لم يضبط"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:1419
+#: addons/web/static/src/js/search.js:1444
+msgid "is"
+msgstr "يكون"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:1445
+msgid "is not"
+msgstr "ليس"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:1459
+msgid "is true"
+msgstr "يكون صواب"
+
+#. openerp-web
+#: addons/web/static/src/js/search.js:1460
+msgid "is false"
+msgstr "يكون خاطئ"
+
+#. openerp-web
+#: addons/web/static/src/js/view_editor.js:20
+#, python-format
+msgid "Manage Views (%s)"
+msgstr "إدارة العروض (%s)"
+
+#. openerp-web
+#: addons/web/static/src/js/view_editor.js:46
+#: addons/web/static/src/js/view_list.js:17
+#: addons/web/static/src/xml/base.xml:100
+#: addons/web/static/src/xml/base.xml:327
+#: addons/web/static/src/xml/base.xml:761
+msgid "Create"
+msgstr "إنشاء"
+
+#. openerp-web
+#: addons/web/static/src/js/view_editor.js:47
+#: addons/web/static/src/xml/base.xml:483
+#: addons/web/static/src/xml/base.xml:760
+msgid "Edit"
+msgstr "تحرير"
+
+#. openerp-web
+#: addons/web/static/src/js/view_editor.js:48
+#: addons/web/static/src/xml/base.xml:1653
+msgid "Remove"
+msgstr "إزالة"
+
+#. openerp-web
+#: addons/web/static/src/js/view_editor.js:71
+#, python-format
+msgid "Create a view (%s)"
+msgstr "إنشاء عرض (%s)"
+
+#. openerp-web
+#: addons/web/static/src/js/view_editor.js:149
+#: addons/web/static/src/js/view_form.js:577
+msgid "The following fields are invalid :"
+msgstr "الحقول التالية غير صحيحة :"
+
+#. openerp-web
+#: addons/web/static/src/js/view_editor.js:168
+msgid "Do you really want to remove this view?"
+msgstr "هل تريد إزالة هذا العرض ؟"
+
+#. openerp-web
+#: addons/web/static/src/js/view_editor.js:248
+msgid "Please select view in list :"
+msgstr "من فضلك اختر العرض في القائمة :"
+
+#. openerp-web
+#: addons/web/static/src/js/view_editor.js:364
+#, python-format
+msgid "View Editor %d - %s"
+msgstr "عرض المحرر %d - %s"
+
+#. openerp-web
+#: addons/web/static/src/js/view_editor.js:367
+msgid "Inherited View"
+msgstr "عرض موروث"
+
+#. openerp-web
+#: addons/web/static/src/js/view_editor.js:371
+msgid "Do you really wants to create an inherited view here?"
+msgstr "هل تريد إنشاء عرض من الموروث هنا؟"
+
+#. openerp-web
+#: addons/web/static/src/js/view_editor.js:375
+#: addons/web/static/src/js/view_editor.js:959
+msgid "Can't Update View"
+msgstr "لايمكن تحديث العرض"
+
+#. openerp-web
+#: addons/web/static/src/js/view_editor.js:378
+msgid "Select an element"
+msgstr "اختر عنصراً"
+
+#. openerp-web
+#: addons/web/static/src/js/view_editor.js:381
+msgid "Preview"
+msgstr "معاينة"
+
+#. openerp-web
+#: addons/web/static/src/js/view_editor.js:501
+msgid "Do you really want to remove this node?"
+msgstr "هل تريد إزالة هذا الطرف؟"
+
+#. openerp-web
+#: addons/web/static/src/js/view_editor.js:815
+#: addons/web/static/src/js/view_editor.js:939
+msgid "Properties"
+msgstr "خصائص"
+
+#. openerp-web
+#: addons/web/static/src/js/view_editor.js:818
+#: addons/web/static/src/js/view_editor.js:942
+msgid "Update"
+msgstr "تحديث"
+
+#. openerp-web
+#: addons/web/static/src/js/view_editor.js:934
+msgid "Node Type"
+msgstr "نوع الوصلة"
+
+#. openerp-web
+#: addons/web/static/src/js/view_editor.js:936
+msgid "Position"
+msgstr "الموضع"
+
+#. openerp-web
+#: addons/web/static/src/js/view_editor.js:974
+msgid "New Field"
+msgstr "حقل جديد"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:16
+#: addons/web/static/src/js/view_form.js:210
+msgid "Form"
+msgstr "نموذج"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:131
+#: addons/web/static/src/js/views.js:808
+msgid "Customize"
+msgstr "تخصيص"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:133
+#: addons/web/static/src/js/view_form.js:728
+msgid "Set Default"
+msgstr "تعيين الافتراضي"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:210
+msgid "The record could not be found in the database."
+msgstr "لم يمكن العثور على هذا السجل قاعدة البيانات."
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:508
+msgid ""
+"Warning, the record has been modified, your changes will be discarded."
+msgstr "تحذير، تم تحرير السجل، تعديلاتك سيتم تجاهلها"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:735
+msgid "Save default"
+msgstr "حفظ كإفتراضي"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:782
+msgid "Could not find id in dataset"
+msgstr "لم يمكن العثور على المعرف في مجموعة البيانات"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:796
+msgid "Attachments"
+msgstr "مرفقات"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:803
+#, python-format
+msgid "Delete the attachment %s"
+msgstr ""
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:837
+#, python-format
+msgid "Do you really want to delete the attachment %s?"
+msgstr "هل تريد حذف هذا المرفق %s ؟"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:845
+msgid "Delete an attachment"
+msgstr "حذف مرفق"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:846
+#, python-format
+msgid "The attachment '%s' has been deleted"
+msgstr "تم حذف المرفق (%s)"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:870
+#, python-format
+msgid "Unknown operator %s in domain %s"
+msgstr "عامل غير معروف %s في نطاق %s"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:878
+#, python-format
+msgid "Unknown field %s in domain %s"
+msgstr "حقل غير معروف %s في نطاق %s"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:916
+#, python-format
+msgid "Unsupported operator %s in domain %s"
+msgstr "عامل غير مدعوم %s في نطاق %s"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1287
+msgid "Confirm"
+msgstr "تأكيد"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1566
+msgid "E-mail error"
+msgstr "خطأ بريد إلكتروني"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1566
+msgid "Can't send email to invalid e-mail address"
+msgstr "لايمكن إرسال رسالة إلكترونية إلى عنوان بريد إلكتروني غير صحيح"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1583
+msgid "Resource error"
+msgstr "مصدر خطأ"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1583
+msgid "This resource is empty"
+msgstr "المصدر فارغ"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1623
+#: addons/web/static/src/xml/base.xml:1170
+#: addons/web/static/src/xml/base.xml:1220
+#: addons/web/static/src/xml/base.xml:1222
+#: addons/web/static/src/xml/base.xml:1279
+msgid "Clear"
+msgstr "إفراغ"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1624
+msgid "Erase the current date"
+msgstr "محو التاريخ الحالي"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1625
+#: addons/web/static/src/js/view_form.js:1655
+msgid "Done"
+msgstr "تم"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1626
+msgid "Close without change"
+msgstr "أغلق دون تغيير"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1627
+msgid "<Prev"
+msgstr "<السابق"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1628
+msgid "Show the previous month"
+msgstr "عرض الشهر السابق"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1629
+msgid "Next>"
+msgstr "التالي >"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1630
+msgid "Show the next month"
+msgstr "عرض الشهر التالي"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1631
+msgid "Today"
+msgstr "اليوم"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1632
+msgid "Show the current month"
+msgstr "عرض الشهر الحالي"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1635
+msgid "Show a different month"
+msgstr "عرض شهر آخر"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1636
+msgid "Show a different year"
+msgstr "عرض سنة أخرى"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1637
+msgid "Wk"
+msgstr "أسبوع"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1638
+msgid "Week of the year"
+msgstr "أسبوع من السنة"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1642
+msgid "Set DD as first week day"
+msgstr "وضع DD كأول يوم في الاسبوع"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1643
+msgid "Select D, M d"
+msgstr "أختر D,Md"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1645
+msgid "Select a date"
+msgstr "اختر تاريخاً"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1649
+msgid "Choose Time"
+msgstr "اختر الوقت"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1650
+msgid "Time"
+msgstr "الوقت"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1651
+msgid "Hour"
+msgstr "الساعة"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1652
+msgid "Minute"
+msgstr "الدقيقة"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1653
+msgid "Second"
+msgstr "الثانية"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:1654
+msgid "Now"
+msgstr "الآن"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:2062
+#: addons/web/static/src/js/view_form.js:2793
+#: addons/web/static/src/js/view_form.js:3018
+msgid "Open: "
+msgstr "فتح: "
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:2220
+msgid "<em>   Search More...</em>"
+msgstr "<em>    مزيداً من البحث...</em>"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:2238
+#, python-format
+msgid "<em>   Create \"<strong>%s</strong>\"</em>"
+msgstr "<em>   إنشاء \"<strong>%s</strong>\"</em>"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:2244
+msgid "<em>   Create and Edit...</em>"
+msgstr "<em>   إنشاء و تحرير...</em>"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:2277
+#: addons/web/static/src/js/views.js:680
+msgid "Search: "
+msgstr "بحث: "
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:2277
+#: addons/web/static/src/js/view_form.js:2765
+msgid "Create: "
+msgstr "إنشاء: "
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:2938
+#: addons/web/static/src/xml/base.xml:755
+#: addons/web/static/src/xml/base.xml:777
+#: addons/web/static/src/xml/base.xml:1652
+msgid "Add"
+msgstr "اضافة"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:2998
+msgid "Add: "
+msgstr "إضافة: "
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:3466
+msgid "File Upload"
+msgstr "رفع ملف"
+
+#. openerp-web
+#: addons/web/static/src/js/view_form.js:3466
+msgid "There was a problem while uploading your file"
+msgstr "حدث خطأ أثناء رفع الملف الخاص بك"
+
+#. openerp-web
+#: addons/web/static/src/js/view_list.js:8
+msgid "List"
+msgstr "قائمة"
+
+#. openerp-web
+#: addons/web/static/src/js/view_list.js:277
+msgid "Unlimited"
+msgstr "غير محدود"
+
+#. openerp-web
+#: addons/web/static/src/js/view_list.js:317
+#, python-format
+msgid "[%(first_record)d to %(last_record)d] of %(records_count)d"
+msgstr "هذا [ %(first_record)d  إلي %(last_record)d ] من %(records_count)d"
+
+#. openerp-web
+#: addons/web/static/src/js/view_list.js:374
+msgid "Group"
+msgstr "مجموعة"
+
+#. openerp-web
+#: addons/web/static/src/js/view_list.js:549
+msgid "Do you really want to remove these records?"
+msgstr "هل تريد إزالة هذه السجلات ؟"
+
+#. openerp-web
+#: addons/web/static/src/js/view_list.js:1243
+msgid "Undefined"
+msgstr "غير محدد"
+
+#. openerp-web
+#: addons/web/static/src/js/view_list.js:1342
+#, python-format
+msgid "%(page)d/%(page_count)d"
+msgstr "%(page)d/%(page_count)d"
+
+#. openerp-web
+#: addons/web/static/src/js/view_page.js:8
+msgid "Page"
+msgstr "صفحة"
+
+#. openerp-web
+#: addons/web/static/src/js/view_page.js:59
+msgid "Do you really want to delete this record?"
+msgstr "هل تريد حذف هذا السجل؟"
+
+#. openerp-web
+#: addons/web/static/src/js/view_tree.js:11
+msgid "Tree"
+msgstr "شجرة"
+
+#. openerp-web
+#: addons/web/static/src/js/views.js:570 addons/web/static/src/xml/base.xml:480
+msgid "Fields View Get"
+msgstr "إستدعاء عرض الحقول"
+
+#. openerp-web
+#: addons/web/static/src/js/views.js:578
+#, python-format
+msgid "View Log (%s)"
+msgstr "عرض السجل (%s)"
+
+#. openerp-web
+#: addons/web/static/src/js/views.js:605
+#, python-format
+msgid "Model %s fields"
+msgstr "نموذج %s للحقول"
+
+#. openerp-web
+#: addons/web/static/src/js/views.js:615 addons/web/static/src/xml/base.xml:482
+msgid "Manage Views"
+msgstr "إدارة العروض"
+
+#. openerp-web
+#: addons/web/static/src/js/views.js:616
+msgid "Could not find current view declaration"
+msgstr "لم يتمكن من إيجاد معرف العرض الحالي"
+
+#. openerp-web
+#: addons/web/static/src/js/views.js:810
+msgid "Translate"
+msgstr "ترجم"
+
+#. openerp-web
+#: addons/web/static/src/js/views.js:812
+msgid "Technical translation"
+msgstr "ترجمة تقنية"
+
+#. openerp-web
+#: addons/web/static/src/js/views.js:816
+msgid "Other Options"
+msgstr "خيارات أخرى"
+
+#. openerp-web
+#: addons/web/static/src/js/views.js:819
+#: addons/web/static/src/xml/base.xml:1742
+msgid "Import"
+msgstr "استيراد"
+
+#. openerp-web
+#: addons/web/static/src/js/views.js:822
+#: addons/web/static/src/xml/base.xml:1612
+msgid "Export"
+msgstr "تصدير"
+
+#. openerp-web
+#: addons/web/static/src/js/views.js:830
+msgid "Reports"
+msgstr "تقارير"
+
+#. openerp-web
+#: addons/web/static/src/js/views.js:830
+msgid "Actions"
+msgstr "إجراءات"
+
+#. openerp-web
+#: addons/web/static/src/js/views.js:830
+msgid "Links"
+msgstr "روابط"
+
+#. openerp-web
+#: addons/web/static/src/js/views.js:924
+msgid "You must choose at least one record."
+msgstr "عليك إختيار سجل واحد علي الأقل."
+
+#. openerp-web
+#: addons/web/static/src/js/views.js:925
+msgid "Warning"
+msgstr "تحذير"
+
+#. openerp-web
+#: addons/web/static/src/js/views.js:962
+msgid "Translations"
+msgstr "ترجمات"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:44 addons/web/static/src/xml/base.xml:315
+msgid "Powered by"
+msgstr "يتم تشغيل هذا التطبيق بواسطة"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:44 addons/web/static/src/xml/base.xml:315
+#: addons/web/static/src/xml/base.xml:1819
+msgid "OpenERP"
+msgstr "OpenERP"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:52
+msgid "Loading..."
+msgstr "جاري التحميل..."
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:61
+msgid "CREATE DATABASE"
+msgstr "إنشاء قاعدة بيانات"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:68 addons/web/static/src/xml/base.xml:211
+msgid "Master password:"
+msgstr "كلمة المرور الرئيسية:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:72 addons/web/static/src/xml/base.xml:191
+msgid "New database name:"
+msgstr "اسم قاعدة البيانات الجديدة:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:77
+msgid "Load Demonstration data:"
+msgstr "تحميل البيانات الوهمية:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:81
+msgid "Default language:"
+msgstr "اللغة الافتراضية:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:91
+msgid "Admin password:"
+msgstr "كلمة مرور المشرف العام:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:95
+msgid "Confirm password:"
+msgstr "تأكيد كلمة المرور:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:109
+msgid "DROP DATABASE"
+msgstr "إسقاط قاعدة البيانات"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:116
+#: addons/web/static/src/xml/base.xml:150
+#: addons/web/static/src/xml/base.xml:301
+msgid "Database:"
+msgstr "قاعدة البيانات:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:128
+#: addons/web/static/src/xml/base.xml:162
+#: addons/web/static/src/xml/base.xml:187
+msgid "Master Password:"
+msgstr "كلمة المرور الرئيسية:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:132
+#: addons/web/static/src/xml/base.xml:328
+msgid "Drop"
+msgstr "إزالة"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:143
+msgid "BACKUP DATABASE"
+msgstr "نسخ احتياطي لقاعدة البيانات"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:166
+#: addons/web/static/src/xml/base.xml:329
+msgid "Backup"
+msgstr "نسخة إحتياطية"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:175
+msgid "RESTORE DATABASE"
+msgstr "استرجاع قاعدة بيانات"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:182
+msgid "File:"
+msgstr "ملف:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:195
+#: addons/web/static/src/xml/base.xml:330
+msgid "Restore"
+msgstr "استرجاع"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:204
+msgid "CHANGE MASTER PASSWORD"
+msgstr "تغيير كلمة المرور الرئيسية"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:216
+msgid "New master password:"
+msgstr "كلمة مرور رئيسية جديدة:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:221
+msgid "Confirm new master password:"
+msgstr "تأكيد كلمة المرور الرئيسية الجديدة:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:251
+msgid ""
+"Your version of OpenERP is unsupported. Support & maintenance services are "
+"available here:"
+msgstr ""
+"هذه الإصدارة من أوبن إي آر بي غير معتمدة. خدمات الدعم والصيانة متوفرة هنا:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:251
+msgid "OpenERP Entreprise"
+msgstr "أوبن إي آر بي إنتربرايز"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:256
+msgid "OpenERP Enterprise Contract."
+msgstr "عقد أوبن إي آر بي إنتربرايز"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:257
+msgid "Your report will be sent to the OpenERP Enterprise team."
+msgstr "سيتم إرسال تقريرك إلى فريق أوبن إي آر بي إنتربرايز"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:259
+msgid "Summary:"
+msgstr "ملخّص:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:263
+msgid "Description:"
+msgstr "الوصف:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:267
+msgid "What you did:"
+msgstr "ماذا أنهيت:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:297
+msgid "Invalid username or password"
+msgstr "كلمة السر أو اسم المستخدم غير صالح"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:306
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:308
+#: addons/web/static/src/xml/base.xml:331
+msgid "Password"
+msgstr "كلمة المرور"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:310
+msgid "Log in"
+msgstr "تسجيل الدخول"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:314
+msgid "Manage Databases"
+msgstr "إدارة قواعد البيانات"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:332
+msgid "Back to Login"
+msgstr "العودة للدخول"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:353
+msgid "Home"
+msgstr "القائمة الرئيسية"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:363
+msgid "LOGOUT"
+msgstr "تسجيل الخروج"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:388
+msgid "Fold menu"
+msgstr "دمج القائمة"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:389
+msgid "Unfold menu"
+msgstr "فتح القائمة"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:454
+msgid "Hide this tip"
+msgstr "إخفاء هذه الملحوظة"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:455
+msgid "Disable all tips"
+msgstr "تعطيل جميع الإرشادات"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:463
+msgid "Add / Remove Shortcut..."
+msgstr "إضافة / إزالة مختَصَر"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:471
+msgid "More…"
+msgstr "أكثر..."
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:477
+msgid "Debug View#"
+msgstr "تنقيح العرض#"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:478
+msgid "View Log (perm_read)"
+msgstr "عرض السجل (perm_read)"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:479
+msgid "View Fields"
+msgstr "عرض الحقول"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:483
+msgid "View"
+msgstr "عرض"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:484
+msgid "Edit SearchView"
+msgstr "تحرير بحث العروض"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:485
+msgid "Edit Action"
+msgstr "تحرير الإجراء"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:486
+msgid "Edit Workflow"
+msgstr "حرر مسار العمل"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:491
+msgid "ID:"
+msgstr "المعرِّف:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:494
+msgid "XML ID:"
+msgstr "معرف XML:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:497
+msgid "Creation User:"
+msgstr "منشأ بالمستخدم:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:500
+msgid "Creation Date:"
+msgstr "تاريخ الإنشاء:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:503
+msgid "Latest Modification by:"
+msgstr "أخر تعديلات بواسطة:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:506
+msgid "Latest Modification Date:"
+msgstr "تاريخ آخر تعديل:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:542
+msgid "Field"
+msgstr "حقل"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:632
+#: addons/web/static/src/xml/base.xml:763
+#: addons/web/static/src/xml/base.xml:1714
+msgid "Delete"
+msgstr "حذف"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:762
+msgid "Duplicate"
+msgstr "تكرار"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:780
+msgid "Add attachment"
+msgstr "إضافة مرفق"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:806
+msgid "Default:"
+msgstr "الإفتراضي:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:823
+msgid "Condition:"
+msgstr "الحالة:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:842
+msgid "Only you"
+msgstr "أنت فقط"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:849
+msgid "All users"
+msgstr "جميع المستخدمين"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:856
+msgid "Unhandled widget"
+msgstr "أداة غير معالجة"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:905
+msgid "Notebook Page \""
+msgstr "صفحة دفتر الملاحظات \""
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:910
+#: addons/web/static/src/xml/base.xml:969
+msgid "Modifiers:"
+msgstr "معدل:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:936
+msgid "(nolabel)"
+msgstr "(لا اسم)"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:941
+msgid "Field:"
+msgstr "حقل:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:945
+msgid "Object:"
+msgstr "كائن:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:949
+msgid "Type:"
+msgstr "نوع:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:953
+msgid "Widget:"
+msgstr "ودجة:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:957
+msgid "Size:"
+msgstr "حجم:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:961
+msgid "Context:"
+msgstr "سياق:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:965
+msgid "Domain:"
+msgstr "نطاق:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:973
+msgid "Change default:"
+msgstr "تغيير الإفتراضي:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:977
+msgid "On change:"
+msgstr "حين التغيير:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:981
+msgid "Relation:"
+msgstr "علاقة:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:985
+msgid "Selection:"
+msgstr "خيار:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1026
+msgid "Send an e-mail with your default e-mail client"
+msgstr "إرسال رسالة بالبريد الإلكتروني المحلي الإفتراضي"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1040
+msgid "Open this resource"
+msgstr "فتح هذا المصدر"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1063
+msgid "Select date"
+msgstr "اختر التاريخ"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1097
+msgid "Open..."
+msgstr "فتح..."
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1098
+msgid "Create..."
+msgstr "إنشاء..."
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1099
+msgid "Search..."
+msgstr "بحث..."
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1102
+msgid "..."
+msgstr "..."
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1162
+#: addons/web/static/src/xml/base.xml:1205
+msgid "Set Image"
+msgstr "عيِّن صورة"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1179
+#: addons/web/static/src/xml/base.xml:1230
+msgid "Uploading ..."
+msgstr "جاري التحميل..."
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1207
+#: addons/web/static/src/xml/base.xml:1501
+msgid "Select"
+msgstr "حدّد"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1214
+#: addons/web/static/src/xml/base.xml:1216
+msgid "Save As"
+msgstr "حفظ باسم"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1245
+msgid "Button"
+msgstr "زر"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1248
+msgid "(no string)"
+msgstr "(لا كلام)"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1255
+msgid "Special:"
+msgstr "خاص:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1260
+msgid "Button Type:"
+msgstr "نوع الزر:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1264
+msgid "Method:"
+msgstr "طريقة:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1268
+msgid "Action ID:"
+msgstr "معرف الإجراء"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1278
+msgid "Search"
+msgstr "بحث"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1286
+msgid "Filters"
+msgstr "المرشحات"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1287
+msgid "-- Filters --"
+msgstr "-- المرشحات --"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1296
+msgid "-- Actions --"
+msgstr "-- الإجراءات --"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1297
+msgid "Add Advanced Filter"
+msgstr "إضافة مرشح متقدم:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1298
+msgid "Save Filter"
+msgstr "حفظ المرشح"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1300
+msgid "Manage Filters"
+msgstr "إدارة المرشحات"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1305
+msgid "Filter Name:"
+msgstr "اسم المرشح:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1307
+msgid "(Any existing filter with the same name will be replaced)"
+msgstr "(لاحظ أن أي مرشح بنفس الاسم سيتم إستبداله)"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1312
+msgid "Select Dashboard to add this filter to:"
+msgstr "اختر اللوحة لإضافة هذا المرشح لها:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1316
+msgid "Title of new Dashboard item:"
+msgstr "اسم العنصرالجديد في اللوحة:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1423
+msgid "Advanced Filters"
+msgstr "مرشحات متقدمة"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1433
+msgid "Any of the following conditions must match"
+msgstr "يجب تطابق أي من الشروط التالية"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1434
+msgid "All the following conditions must match"
+msgstr "يجب تطابق كل الشروط التالية"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1435
+msgid "None of the following conditions must match"
+msgstr "لا يجب تطابق أي من الشروط التالية"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1442
+msgid "Add condition"
+msgstr "إضافة شرط"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1443
+msgid "and"
+msgstr "و"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1509
+msgid "Save & New"
+msgstr "حفظ و جديد"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1510
+msgid "Save & Close"
+msgstr "حفظ و إغلاق"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1617
+msgid ""
+"This wizard will export all data that matches the current search criteria to "
+"a CSV file.\n"
+"            You can export all data or only the fields that can be "
+"reimported after modification."
+msgstr ""
+"هذا المعالج سيقوم بتصدير كافة البيانات التي تطابق شروط البحث الحالية لملف "
+"CSV.\n"
+"            يمكنك تصدير كل البيانات أو الحقول التي يمكن إستيرادها بعد "
+"التعديل."
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1624
+msgid "Export Type:"
+msgstr "نوع التصدير:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1626
+msgid "Import Compatible Export"
+msgstr "إستيراد بيانات ملائمة للتصدير"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1627
+msgid "Export all Data"
+msgstr "تصدير جميع البيانات"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1630
+msgid "Export Formats"
+msgstr "تنسيقات التصدير"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1636
+msgid "Available fields"
+msgstr "الحقول المتوفرة"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1638
+msgid "Fields to export"
+msgstr "حقول للتصدير"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1640
+msgid "Save fields list"
+msgstr "حفظ قائمة الحقول"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1654
+msgid "Remove All"
+msgstr "إزالة الكل"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1666
+msgid "Name"
+msgstr "اسم"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1699
+msgid "Save as:"
+msgstr "حفظ باسم:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1706
+msgid "Saved exports:"
+msgstr "مُصدرة محفوظة:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1720
+msgid "Old Password:"
+msgstr "كلمة المرور القديمة:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1725
+msgid "New Password:"
+msgstr "كلمة المرور الجديدة:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1730
+msgid "Confirm Password:"
+msgstr "تأكيد كلمة المرور:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1748
+msgid "1. Import a .CSV file"
+msgstr "إستيراد ملف .CSV"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1749
+msgid ""
+"Select a .CSV file to import. If you need a sample of file to import,\n"
+"       you should use the export tool with the \"Import Compatible\" option."
+msgstr ""
+"اختر ملف  .CSV للإستيراد. إذا كنت بحاجة إلى عينة ملف للاستيراد،\n"
+"       يجب عليك إستخدام أداة تصدير مع الخيار \" Compatible\" option."
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1753
+msgid "CSV File:"
+msgstr "ملف CSV :"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1756
+msgid "2. Check your file format"
+msgstr "تأكد من إمتداد الملف"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1759
+msgid "Import Options"
+msgstr "خيارات الاستيراد"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1763
+msgid "Does your file have titles?"
+msgstr "هل لملفك عناوين؟"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1769
+msgid "Separator:"
+msgstr "فاصل :"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1771
+msgid "Delimiter:"
+msgstr "محدد:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1775
+msgid "Encoding:"
+msgstr "ترميز:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1778
+msgid "UTF-8"
+msgstr "UTF-8"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1779
+msgid "Latin 1"
+msgstr "Latin 1"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1782
+msgid "Lines to skip"
+msgstr "خطوط للتجاهل"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1782
+msgid ""
+"For use if CSV files have titles on multiple lines, skips more than a single "
+"line during import"
+msgstr "يستخدم مع ملفات CSV لو هناك عناوين لأكثر من سطر"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1809
+msgid "The import failed due to:"
+msgstr "فشلت عملية الإستيراد للأسباب التالية:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1811
+msgid "Here is a preview of the file we could not import:"
+msgstr "هذه معاينة للملف الذي لم يمكن استيراده:"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1818
+msgid "Activate the developper mode"
+msgstr "تنشيط وضع التطوير"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1820
+msgid "Version"
+msgstr "الإصدار"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1821
+msgid "Copyright © 2004-TODAY OpenERP SA. All Rights Reserved."
+msgstr "حقوق النشر محفوظة ٢٠٠٤ - ٢٠١٢ لشركة OpenERP SA"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1822
+msgid "OpenERP is a trademark of the"
+msgstr "OpenERP هي علامة تجارية لـ"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1823
+msgid "OpenERP SA Company"
+msgstr "شركة OpenERP SA"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1825
+msgid "Licenced under the terms of"
+msgstr "النظام مرخص بشروط"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1826
+msgid "GNU Affero General Public License"
+msgstr "GNU Affero General Public License"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1828
+msgid "For more information visit"
+msgstr "لمزيد من العلومات قم بزيارة"
+
+#. openerp-web
+#: addons/web/static/src/xml/base.xml:1829
+msgid "OpenERP.com"
+msgstr "OpenERP.com"

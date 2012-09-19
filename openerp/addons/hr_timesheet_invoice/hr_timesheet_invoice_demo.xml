@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="account.analytic_sednacom" model="account.analytic.account">
+            <field name="to_invoice" ref="timesheet_invoice_factor1"/>
+        </record>
+        <record id="account.analytic_thymbra" model="account.analytic.account">
+            <field name="to_invoice" ref="timesheet_invoice_factor1"/>
+        </record>
+        <record id="account.analytic_partners_camp_to_camp" model="account.analytic.account">
+            <field name="to_invoice" ref="timesheet_invoice_factor1"/>
+        </record>
+    </data>
+</openerp>

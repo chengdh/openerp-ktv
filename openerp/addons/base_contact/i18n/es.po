@@ -1,0 +1,265 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* base_contact
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.0dev\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2012-02-08 00:36+0000\n"
+"PO-Revision-Date: 2012-03-28 20:30+0000\n"
+"Last-Translator: RpJ <Unknown>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-08-28 09:35+0000\n"
+"X-Generator: Launchpad (build 15864)\n"
+
+#. module: base_contact
+#: field:res.partner.location,city:0
+msgid "City"
+msgstr "Ciudad"
+
+#. module: base_contact
+#: view:res.partner.contact:0
+msgid "First/Lastname"
+msgstr "Nombre / Apellido"
+
+#. module: base_contact
+#: model:ir.actions.act_window,name:base_contact.action_partner_contact_form
+#: model:ir.ui.menu,name:base_contact.menu_partner_contact_form
+#: model:ir.ui.menu,name:base_contact.menu_purchases_partner_contact_form
+#: model:process.node,name:base_contact.process_node_contacts0
+#: field:res.partner.location,job_ids:0
+msgid "Contacts"
+msgstr "Contactos"
+
+#. module: base_contact
+#: view:res.partner.contact:0
+msgid "Professional Info"
+msgstr "Información profesional"
+
+#. module: base_contact
+#: field:res.partner.contact,first_name:0
+msgid "First Name"
+msgstr "Nombre"
+
+#. module: base_contact
+#: field:res.partner.address,location_id:0
+msgid "Location"
+msgstr "Ubicación"
+
+#. module: base_contact
+#: model:process.transition,name:base_contact.process_transition_partnertoaddress0
+msgid "Partner to address"
+msgstr "Empresa a dirección"
+
+#. module: base_contact
+#: help:res.partner.contact,active:0
+msgid ""
+"If the active field is set to False,                 it will allow you to "
+"hide the partner contact without removing it."
+msgstr ""
+"Si el campo activo se desmarca, permite ocultar el contacto de la empresa "
+"sin eliminarlo."
+
+#. module: base_contact
+#: field:res.partner.contact,website:0
+msgid "Website"
+msgstr "Sitio web"
+
+#. module: base_contact
+#: field:res.partner.location,zip:0
+msgid "Zip"
+msgstr "Código postal"
+
+#. module: base_contact
+#: field:res.partner.location,state_id:0
+msgid "Fed. State"
+msgstr "Provincia"
+
+#. module: base_contact
+#: field:res.partner.location,company_id:0
+msgid "Company"
+msgstr "Compañía"
+
+#. module: base_contact
+#: field:res.partner.contact,title:0
+msgid "Title"
+msgstr "Título"
+
+#. module: base_contact
+#: field:res.partner.location,partner_id:0
+msgid "Main Partner"
+msgstr "Empresa principal"
+
+#. module: base_contact
+#: model:process.process,name:base_contact.process_process_basecontactprocess0
+msgid "Base Contact"
+msgstr "Contacto base"
+
+#. module: base_contact
+#: field:res.partner.contact,email:0
+msgid "E-Mail"
+msgstr "Correo electrónico"
+
+#. module: base_contact
+#: field:res.partner.contact,active:0
+msgid "Active"
+msgstr "Activo"
+
+#. module: base_contact
+#: field:res.partner.contact,country_id:0
+msgid "Nationality"
+msgstr "Nacionalidad"
+
+#. module: base_contact
+#: view:res.partner:0
+#: view:res.partner.address:0
+msgid "Postal Address"
+msgstr "Dirección postal"
+
+#. module: base_contact
+#: field:res.partner.contact,function:0
+msgid "Main Function"
+msgstr "Función principal"
+
+#. module: base_contact
+#: model:process.transition,note:base_contact.process_transition_partnertoaddress0
+msgid "Define partners and their addresses."
+msgstr "Definir empresas y sus direcciones."
+
+#. module: base_contact
+#: field:res.partner.contact,name:0
+msgid "Name"
+msgstr "Nombre"
+
+#. module: base_contact
+#: field:res.partner.contact,lang_id:0
+msgid "Language"
+msgstr "Idioma"
+
+#. module: base_contact
+#: field:res.partner.contact,mobile:0
+msgid "Mobile"
+msgstr "Móvil"
+
+#. module: base_contact
+#: field:res.partner.location,country_id:0
+msgid "Country"
+msgstr "País"
+
+#. module: base_contact
+#: view:res.partner.contact:0
+#: field:res.partner.contact,comment:0
+msgid "Notes"
+msgstr "Notas"
+
+#. module: base_contact
+#: model:process.node,note:base_contact.process_node_contacts0
+msgid "People you work with."
+msgstr "Gente con la que trabaja."
+
+#. module: base_contact
+#: view:res.partner.contact:0
+msgid "Extra Information"
+msgstr "Información extra"
+
+#. module: base_contact
+#: view:res.partner.contact:0
+#: field:res.partner.contact,job_ids:0
+msgid "Functions and Addresses"
+msgstr "Cargos y direcciones"
+
+#. module: base_contact
+#: model:ir.model,name:base_contact.model_res_partner_contact
+#: field:res.partner.address,contact_id:0
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: base_contact
+#: model:ir.model,name:base_contact.model_res_partner_location
+msgid "res.partner.location"
+msgstr "res.partner.location"
+
+#. module: base_contact
+#: model:process.node,note:base_contact.process_node_partners0
+msgid "Companies you work with."
+msgstr "Empresas en las que trabaja."
+
+#. module: base_contact
+#: field:res.partner.contact,partner_id:0
+msgid "Main Employer"
+msgstr "Empleado principal"
+
+#. module: base_contact
+#: view:res.partner.contact:0
+msgid "Partner Contact"
+msgstr "Contacto empresa"
+
+#. module: base_contact
+#: model:process.node,name:base_contact.process_node_addresses0
+msgid "Addresses"
+msgstr "Direcciones"
+
+#. module: base_contact
+#: model:process.node,note:base_contact.process_node_addresses0
+msgid "Working and private addresses."
+msgstr "Direcciones de trabajo y privadas."
+
+#. module: base_contact
+#: field:res.partner.contact,last_name:0
+msgid "Last Name"
+msgstr "Apellido"
+
+#. module: base_contact
+#: view:res.partner.contact:0
+#: field:res.partner.contact,photo:0
+msgid "Photo"
+msgstr "Foto"
+
+#. module: base_contact
+#: view:res.partner.location:0
+msgid "Locations"
+msgstr "Ubicaciones"
+
+#. module: base_contact
+#: view:res.partner.contact:0
+msgid "General"
+msgstr "General"
+
+#. module: base_contact
+#: field:res.partner.location,street:0
+msgid "Street"
+msgstr "Calle"
+
+#. module: base_contact
+#: view:res.partner.contact:0
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: base_contact
+#: model:process.node,name:base_contact.process_node_partners0
+msgid "Partners"
+msgstr "Empresas"
+
+#. module: base_contact
+#: model:ir.model,name:base_contact.model_res_partner_address
+msgid "Partner Addresses"
+msgstr "Direcciones de empresa"
+
+#. module: base_contact
+#: field:res.partner.location,street2:0
+msgid "Street2"
+msgstr "Calle2"
+
+#. module: base_contact
+#: view:res.partner.contact:0
+msgid "Personal Information"
+msgstr "Información Personal"
+
+#. module: base_contact
+#: field:res.partner.contact,birthdate:0
+msgid "Birth Date"
+msgstr "Fecha nacimiento"

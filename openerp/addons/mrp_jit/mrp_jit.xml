@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<openerp>
+<data>
+
+    <record model="workflow.transition" id="procurement.trans_confirm_confirm_wait">
+        <field name="signal" eval="False"/>
+    </record>
+
+</data>
+</openerp>

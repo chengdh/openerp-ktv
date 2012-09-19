@@ -1,0 +1,239 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* warning
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 5.0.4\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2012-02-08 00:37+0000\n"
+"PO-Revision-Date: 2012-09-08 18:13+0000\n"
+"Last-Translator: almodhesh <Unknown>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-09-09 05:08+0000\n"
+"X-Generator: Launchpad (build 15914)\n"
+
+#. module: warning
+#: sql_constraint:purchase.order:0
+#: sql_constraint:sale.order:0
+msgid "Order Reference must be unique per Company!"
+msgstr ""
+
+#. module: warning
+#: model:ir.model,name:warning.model_purchase_order_line
+#: field:product.product,purchase_line_warn:0
+msgid "Purchase Order Line"
+msgstr "خط امر الشراء"
+
+#. module: warning
+#: field:product.product,sale_line_warn_msg:0
+msgid "Message for Sale Order Line"
+msgstr "رسالة لخط طلب البيع"
+
+#. module: warning
+#: field:product.product,purchase_line_warn_msg:0
+msgid "Message for Purchase Order Line"
+msgstr "رسالة لخط طلب المشتروات"
+
+#. module: warning
+#: model:ir.model,name:warning.model_stock_picking
+msgid "Picking List"
+msgstr "قائمة الالتقاط"
+
+#. module: warning
+#: field:product.product,sale_line_warn:0
+msgid "Sale Order Line"
+msgstr "خط طلب البيع"
+
+#. module: warning
+#: view:product.product:0
+msgid "Warning when Purchasing this Product"
+msgstr "تحذير عند شراء هذا المنتج"
+
+#. module: warning
+#: model:ir.model,name:warning.model_product_product
+msgid "Product"
+msgstr "المنتج"
+
+#. module: warning
+#: view:product.product:0
+#: view:res.partner:0
+msgid "Warnings"
+msgstr "تحذيرات"
+
+#. module: warning
+#: selection:product.product,purchase_line_warn:0
+#: selection:product.product,sale_line_warn:0
+#: selection:res.partner,invoice_warn:0
+#: selection:res.partner,picking_warn:0
+#: selection:res.partner,purchase_warn:0
+#: selection:res.partner,sale_warn:0
+msgid "Warning"
+msgstr "تحذير"
+
+#. module: warning
+#: selection:product.product,purchase_line_warn:0
+#: selection:product.product,sale_line_warn:0
+#: selection:res.partner,invoice_warn:0
+#: selection:res.partner,picking_warn:0
+#: selection:res.partner,purchase_warn:0
+#: selection:res.partner,sale_warn:0
+msgid "Blocking Message"
+msgstr "رسالة حظر"
+
+#. module: warning
+#: field:res.partner,picking_warn:0
+msgid "Stock Picking"
+msgstr ""
+
+#. module: warning
+#: view:res.partner:0
+msgid "Warning on the Invoice"
+msgstr "تحذير على الفاتورة"
+
+#. module: warning
+#: selection:product.product,purchase_line_warn:0
+#: selection:product.product,sale_line_warn:0
+#: selection:res.partner,invoice_warn:0
+#: selection:res.partner,picking_warn:0
+#: selection:res.partner,purchase_warn:0
+#: selection:res.partner,sale_warn:0
+msgid "No Message"
+msgstr "لا توجد رسالة"
+
+#. module: warning
+#: model:ir.model,name:warning.model_account_invoice
+#: field:res.partner,invoice_warn:0
+msgid "Invoice"
+msgstr "فاتورة"
+
+#. module: warning
+#: view:product.product:0
+msgid "Warning when Selling this Product"
+msgstr "تحذير عند بيع هذا المنتج"
+
+#. module: warning
+#: field:res.partner,sale_warn:0
+msgid "Sale Order"
+msgstr "طلب بيع"
+
+#. module: warning
+#: field:res.partner,invoice_warn_msg:0
+msgid "Message for Invoice"
+msgstr "رسالة للفاتورة"
+
+#. module: warning
+#: model:ir.model,name:warning.model_purchase_order
+#: field:res.partner,purchase_warn:0
+msgid "Purchase Order"
+msgstr "أمر الشراء"
+
+#. module: warning
+#: sql_constraint:stock.picking:0
+msgid "Reference must be unique per Company!"
+msgstr ""
+
+#. module: warning
+#: field:res.partner,sale_warn_msg:0
+msgid "Message for Sale Order"
+msgstr "رسالة لطلب البيع"
+
+#. module: warning
+#: field:res.partner,purchase_warn_msg:0
+msgid "Message for Purchase Order"
+msgstr ""
+
+#. module: warning
+#: code:addons/warning/warning.py:32
+#: help:product.product,purchase_line_warn:0
+#: help:product.product,sale_line_warn:0
+#: help:res.partner,invoice_warn:0
+#: help:res.partner,picking_warn:0
+#: help:res.partner,purchase_warn:0
+#: help:res.partner,sale_warn:0
+#, python-format
+msgid ""
+"Selecting the \"Warning\" option will notify user with the message, "
+"Selecting \"Blocking Message\" will throw an exception with the message and "
+"block the flow. The Message has to be written in the next field."
+msgstr ""
+
+#. module: warning
+#: code:addons/warning/warning.py:67
+#: code:addons/warning/warning.py:96
+#: code:addons/warning/warning.py:132
+#: code:addons/warning/warning.py:163
+#: code:addons/warning/warning.py:213
+#: code:addons/warning/warning.py:246
+#, python-format
+msgid "Alert for %s !"
+msgstr ""
+
+#. module: warning
+#: sql_constraint:account.invoice:0
+msgid "Invoice Number must be unique per Company!"
+msgstr ""
+
+#. module: warning
+#: constraint:res.partner:0
+msgid "Error ! You cannot create recursive associated members."
+msgstr "خطأ ! لا يمكنك إنشاء أعضاء مرتبطين و متداخلين."
+
+#. module: warning
+#: constraint:account.invoice:0
+msgid "Invalid BBA Structured Communication !"
+msgstr ""
+
+#. module: warning
+#: view:res.partner:0
+msgid "Warning on the Picking"
+msgstr ""
+
+#. module: warning
+#: view:res.partner:0
+msgid "Warning on the Purchase Order"
+msgstr ""
+
+#. module: warning
+#: code:addons/warning/warning.py:68
+#: code:addons/warning/warning.py:97
+#: code:addons/warning/warning.py:134
+#: code:addons/warning/warning.py:164
+#: code:addons/warning/warning.py:214
+#: code:addons/warning/warning.py:247
+#, python-format
+msgid "Warning for %s"
+msgstr "تحذير لـ %s"
+
+#. module: warning
+#: view:res.partner:0
+msgid "Warning on the Sale Order"
+msgstr "تحذير على طلب البيع"
+
+#. module: warning
+#: constraint:product.product:0
+msgid "Error: Invalid ean code"
+msgstr "خطأ: كود إين غير صالح"
+
+#. module: warning
+#: field:res.partner,picking_warn_msg:0
+msgid "Message for Stock Picking"
+msgstr ""
+
+#. module: warning
+#: model:ir.model,name:warning.model_res_partner
+msgid "Partner"
+msgstr "شريك"
+
+#. module: warning
+#: model:ir.model,name:warning.model_sale_order
+msgid "Sales Order"
+msgstr "أمر المبيعات"
+
+#. module: warning
+#: model:ir.model,name:warning.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "سطر أمر المبيعات"
