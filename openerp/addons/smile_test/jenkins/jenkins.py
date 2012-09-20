@@ -106,7 +106,7 @@ class ServerProxy(object):
             args.append('--test-disable')
         print args
         self.popen = subprocess.Popen(args)
-        time.sleep(20)
+        time.sleep(40)
         if not self.is_running():
             raise Exception('Error launching OpenERP: returncode=%s' % self.popen.returncode)
 
