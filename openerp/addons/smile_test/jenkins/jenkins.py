@@ -105,7 +105,7 @@ class ServerProxy(object):
         if self.test_disable:
             args.append('--test-disable')
         print args
-        self.popen = subprocess.Popen(args,shell=True)
+        self.popen = subprocess.Popen(args)
         time.sleep(40)
         if not self.is_running():
             raise Exception('Error launching OpenERP: returncode=%s' % self.popen.returncode)
@@ -113,7 +113,9 @@ class ServerProxy(object):
     def is_running(self):
         # First check for the return code then the /proc directory
         self.popen.poll()
-        return not self.popen.returncode and os.path.exists('/proc/%s' % self.popen.pid)
+        return not self.popen.returncode
+    #mac osx 系统下,无/proc目录
+    #and os.path.exists('/proc/%s' % self.popen.pid)
 
     def kill(self):
         for sig in [signal.SIGINT, signal.SIGTERM, signal.SIGKILL]:
