@@ -52,7 +52,7 @@
   I check that bank statement state is now "Closed"
 -
   !assert {model: account.bank.statement, id: account_bank_statement_0}:
-    - state == 'confirm'
+    - state == 'confirm1'
 
 -
   I check that move lines created for bank statement and move state is Posted
@@ -69,7 +69,7 @@
   !python {model: account.bank.statement}: |
     try:
       self.button_cancel(cr, uid, [ref("account_bank_statement_0")])
-      assert False, "An exception should have been raised, the journal should not let us cancel moves!" 
+      assert False, "An exception should have been raised, the journal should not let us cancel moves!"
     except Exception:
       # exception was raised as expected, as the journal does not allow cancelling moves
       pass
