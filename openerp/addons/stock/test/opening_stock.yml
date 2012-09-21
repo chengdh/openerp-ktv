@@ -107,7 +107,7 @@
 -
   !python {model: product.product}: |
     product = self.browse(cr, uid, ref('product_icecream'), context=context)
-    assert product.virtual_available == 100, "Vitual stock is not updated."
+    assert product.virtual_available == 10, "Vitual stock is not updated."
 -
   I close physical inventory of Ice-cream.
 -
