@@ -371,7 +371,7 @@ if __name__ == '__main__':
                 ignore_tests = False
         db.sock_exec('smile.test', 'test_to_xunitfile', 'all', conf['xunit_file'], ignore_tests)
         time.sleep(5)
-        server.sock_common.coverage_stop_and_save(conf.get('coverage_file'), source_dir.python_files)
+        #server.sock_common.coverage_stop_and_save(conf.get('coverage_file'), source_dir.python_files)
         time.sleep(1)
     finally:
         # Drop db
