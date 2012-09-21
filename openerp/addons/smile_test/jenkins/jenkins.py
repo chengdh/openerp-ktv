@@ -76,8 +76,8 @@ def build_openerp_conf_file(config, filename='openerp.conf'):
             if key == 'addons_path':
                 value = update_addons_path(value)
             if key in ('db_user', 'db_password', 'db_host', 'db_port', 'addons_path',
-                    'xmlrpc_port', 'admin_passwd', 'logfile', 'email_from',
-                    'xmlrpcs', 'netrpc'):
+                       'xmlrpc_port', 'admin_passwd', 'logfile', 'email_from',
+                       'xmlrpcs', 'netrpc'):
                 conffile.write('%s=%s\n' % (key, value))
 
 
@@ -118,16 +118,16 @@ class ServerProxy(object):
     #and os.path.exists('/proc/%s' % self.popen.pid)
 
     def kill(self):
-        #for sig in [signal.SIGINT, signal.SIGTERM, signal.SIGKILL]:
-        if self.is_running():
-         #   print 'signal: %s' % sig
-            try:
-                self.popen.send_signal(signal.SIGINT)
-            except OSError, e:
-                if self.is_running():
-                    print "Server not killed yet ?!"
-                    raise e
-         time.sleep(5)
+        for sig in [signal.SIGINT]:
+            if self.is_running():
+                print 'signal: %s' % sig
+                try:
+                    self.popen.send_signal(sig)
+                except OSError, e:
+                    if self.is_running():
+                        print "Server not killed yet ?!"
+                        raise e
+                time.sleep(5)
 
     def create_db_and_wait(self, dbname, demo=False, lang='en_US', user_password='admin'):
         print 'creating db:%s' % (dbname,)
@@ -352,7 +352,7 @@ if __name__ == '__main__':
     # Start OpenERP
     # disable_test, since we will run them through smile_test
     server = ServerProxy(conf['manual_launch_command'], conffile='openerp.conf',
-            log_level='test', log_handler=':WARNING', test_disable=True, version=conf.get('openerp_version', '6.0'))
+                         log_level='test', log_handler=':WARNING', test_disable=True, version=conf.get('openerp_version', '6.0'))
     server.start()
     # Create test database
     db = server.create_timed_db(demo=conf.get('demo', True), lang=conf.get('lang', 'fr_FR'), user_password='admin')
