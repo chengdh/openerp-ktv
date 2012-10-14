@@ -41,8 +41,9 @@
     'images': [],
     'depends': [],
     'init_xml': [],
-
-    'update_xml': [],
+    'update_xml': [
+        'ktv_view.xml',
+        ],
     'demo_xml': [],
     'test': [],
     'installable': True,

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <menuitem icon="terp-partner"
+            id="base.menu_base_ktv_sale" name="KTV收银系统"
+            sequence="0" />
+
+        <menuitem id="base.menu_ktv_base_info" name="基础数据"
+            parent="base.menu_base_ktv_sale" sequence="1"
+            />
+
+        <record id="view_ktv_room_type_form" model="ir.ui.view">
+            <field name="name">ktv.ktv_room_type</field>
+            <field name="model">ktv.ktv_room_type</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="room_type">
+                    <field name="name" select="1"/>
+                    <field name="pay_type_id" required="1" select="1" widget="selection"/>
+                    <field name="serve_persons" />
+                    <separator colspan="4" string="fee"/>
+                    <field name="room_fee"/>
+                    <field name="hourly_fee"/>
+                    <field name="buyout_fee"/>
+                    <field name="minimum_fee"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_ktv_room_type_tree" model="ir.ui.view">
+            <field name="name">ktv.ktv_room_type</field>
+            <field name="model">ktv.ktv_room_type</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="包厢类别">
+                    <field name="name"/>
+                    <field name="serve_persons" />
+                    <field name="room_fee"/>
+                    <field name="hourly_fee"/>
+                    <field name="buyout_fee"/>
+                    <field name="minimum_fee"/>
+                </tree>
+            </field>
+        </record>
+
+
+       <record id="action_ktv_room_type_form" model="ir.actions.act_window">
+            <field name="name">KTV包厢类型设置</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ktv.ktv_room_type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_ktv_room_type_tree" />
+            <field name='help'>可以将KTV包厢分为不同的类别,并设定不同包厢类别的各种费用</field>
+        </record>
+
+        <!--包厢类别菜单-->
+        <menuitem action="action_ktv_room_type_form" id="menu_action_ktv_room_type_form" parent="base.menu_ktv_base_info" sequence="0"/>
+    </data>
+</openerp>
