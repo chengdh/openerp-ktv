@@ -43,6 +43,7 @@
     'init_xml': [],
     'update_xml': [
         'ktv_view.xml',
+        'ktv_data.xml'
         ],
     'demo_xml': [],
     'test': [],

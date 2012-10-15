@@ -1,0 +1,135 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* ktv_sale
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.1-20120910-233309\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-15 02:05+0000\n"
+"PO-Revision-Date: 2012-10-15 02:05+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ktv_sale
+#对象定义
+#: model:ir.model,name:ktv_sale.model_ktv_ktv_room_type
+msgid "包厢类别定义"
+msgstr "包厢类别定义"
+
+#: model:ir.model,name:ktv_sale.model_ktv_ktv_room
+msgid "包厢定义"
+msgstr "包厢定义"
+
+#: model:ir.model,name:ktv_sale.model_ktv_ktv_room_area
+msgid "包厢所属区域定义"
+msgstr "包厢区域定义"
+
+#: model:ir.model,name:ktv_sale.model_ktv_fee_type
+msgid "计费方式,系统预置,不可修改"
+msgstr "包厢计费方式定义"
+
+#: model:ir.model,name:ktv_sale.model_ktv_pay_type
+msgid "付款方式,系统预置,不可删除"
+msgstr "付款方式"
+
+#字段定义
+#: field:ktv.ktv_room,name:0
+#: field:ktv.ktv_room_area,name:0
+#: field:ktv.ktv_room_type,name:0
+#: field:ktv.ktv_fee_type,name:0
+#: field:ktv.ktv_pay_type,name:0
+msgid "name"
+msgstr "名称"
+
+#: field:ktv.ktv_room,description:0
+#: field:ktv.ktv_room_area,description:0
+#: field:ktv.ktv_room_type,description:0
+#: field:ktv.ktv_fee_type,description:0
+#: field:ktv.ktv_pay_type,description:0
+msgid "description"
+msgstr "描述"
+
+
+#: field:ktv.ktv_room,active:0
+#: field:ktv.ktv_room_type,active:0
+#: field:ktv.ktv_room_area,active:0
+#: field:ktv.ktv_fee_type,active:0
+#: field:ktv.ktv_pay_type,active:0
+msgid "active"
+msgstr "有效"
+
+
+#: field:ktv.ktv_room_type,fee_type_id:0
+#: field:ktv.ktv_room,fee_type_id:0
+msgid "fee_type_id"
+msgstr "计费方式"
+
+#: field:ktv.ktv_room,ktv_room_area_id:0
+msgid "ktv_room_area_id"
+msgstr "所属区域"
+
+#: field:ktv.ktv_room,ktv_room_type_id:0
+msgid "ktv_room_type_id"
+msgstr "包厢类别"
+
+#: field:ktv.ktv_room,img_1:0
+msgid "pic_1"
+msgstr "包厢图片1"
+
+#: field:ktv.ktv_room,img_2:0
+msgid "pic_2"
+msgstr "包厢图片2"
+
+#. module: ktv_sale
+#: field:ktv.ktv_room,img_3:0
+msgid "pic_3"
+msgstr "包厢图片3"
+
+#: field:ktv.ktv_room,ktv_box_ip:0
+msgid "ktv_box_ip"
+msgstr "包厢机顶盒ip"
+
+#: field:ktv.ktv_room_type,room_fee:0
+#: field:ktv.ktv_room,room_fee:0
+msgid "room_fee"
+msgstr "包厢费"
+
+#: field:ktv.ktv_room_type,hourly_fee:0
+#: field:ktv.ktv_room,hourly_fee:0
+msgid "hourly_fee"
+msgstr "钟点费"
+
+#: field:ktv.ktv_room_type,buyout_fee:0
+#: field:ktv.ktv_room,buyout_fee:0
+msgid "buyout_fee"
+msgstr "买断费用"
+
+#: field:ktv.ktv_room_type,minimum_fee:0
+#: field:ktv.ktv_room,minimum_fee:0
+msgid "minimum_fee"
+msgstr "最低消费"
+
+#: field:ktv.ktv_room,py_code:0
+msgid "py_code"
+msgstr "汉语拼音"
+
+#包厢类别
+#: field:ktv.ktv_room_type,serve_persons:0
+msgid "serve_persons"
+msgstr "容纳人数"
+
+#计费方式
+#: field:ktv.ktv_fee_type,fee_type_code:0
+msgid "fee_type_code"
+msgstr "计费方式编码"
+
+#付款方式
+#: field:ktv.ktv_pay_type,pay_type_code:0
+msgid "pay_type_code"
+msgstr "付款方式编码"
+
