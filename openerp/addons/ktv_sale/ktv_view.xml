@@ -49,7 +49,7 @@
         </record>
 
 
-       <record id="action_ktv_room_type_form" model="ir.actions.act_window">
+        <record id="action_ktv_room_type_form" model="ir.actions.act_window">
             <field name="name">包厢类别</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">ktv.ktv_room_type</field>
@@ -88,7 +88,7 @@
         </record>
 
 
-       <record id="action_ktv_fee_type" model="ir.actions.act_window">
+        <record id="action_ktv_fee_type" model="ir.actions.act_window">
             <field name="name">计费方式</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">ktv.ktv_fee_type</field>
@@ -205,7 +205,7 @@
                     <field name="ktv_room_type_id" widget="selection"/>
                     <field name="ktv_room_area_id"  widget="selection"/>
                     <newline/>
-               </search>
+                </search>
             </field>
         </record>
 
@@ -221,6 +221,88 @@
         </record>
 
         <menuitem action="action_ktv_room" id="menu_action_ktv_room" parent="base.menu_ktv_base_info" name="包厢设置" sequence="0"/>
+
+        <!--包厢打折信息-->
+        <record id="view_room_discount_form" model="ir.ui.view">
+            <field name="name">ktv.room_discount</field>
+            <field name="model">ktv.room_discount</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="room_discount">
+                    <field name="room_type_id" select="1"  required="1"/>
+                    <field name="base_hourly_fee" />
+                    <field name="consume_time_gt" />
+                    <field name="consume_time_lte" />
+
+                    <separator colspan="4" string="请设置折扣信息" />
+                    <notebook colspan="4">
+                        <page string="星期一">
+                            <field name="mon_hourly_fee" string="钟点费"/>
+                            <field name="mon_hourly_discount" string="折率"/>
+                            <field name="mon_continue_hourly_fee" string="续钟" />
+                        </page>
+
+                        <page string="星期二">
+                            <field name="tue_hourly_fee"  string="钟点费"/>
+                            <field name="tue_hourly_discount"  string="折率"/>
+                            <field name="mon_continue_hourly_fee" string="续钟" />
+                        </page>
+                        <page string="星期三">
+                            <field name="wed_hourly_fee"  string="钟点费"/>
+                            <field name="wed_hourly_discount"  string="折率"/>
+                            <field name="wed_continue_hourly_fee" string="续钟" />
+                        </page>
+                         <page string="星期四">
+                            <field name="thurs_hourly_fee"  string="钟点费"/>
+                            <field name="thurs_hourly_discount"  string="折率"/>
+                            <field name="thurs_continue_hourly_fee" string="续钟" />
+                        </page>
+                         <page string="星期五">
+                            <field name="fri_hourly_fee"  string="钟点费"/>
+                            <field name="fri_hourly_discount"  string="折率"/>
+                            <field name="fri_continue_hourly_fee" string="续钟" />
+                        </page>
+                         <page string="星期六">
+                            <field name="sat_hourly_fee"  string="钟点费"/>
+                            <field name="sat_hourly_discount"  string="折率"/>
+                            <field name="sat_continue_hourly_fee" string="续钟" />
+                        </page>
+                         <page string="星期日">
+                            <field name="sun_hourly_fee"  string="钟点费"/>
+                            <field name="sun_hourly_discount"  string="折率"/>
+                            <field name="sun_continue_hourly_fee" string="续钟" />
+                        </page>
+                         <page string="特殊日期">
+                            <field name="special_day_hourly_fee"  string="钟点费"/>
+                            <field name="special_day_hourly_discount"  string="折率"/>
+                            <field name="special_day_continue_hourly_fee" string="续钟" />
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+        <record id="view_ktv_discount_tree" model="ir.ui.view">
+            <field name="name">ktv.room_discount</field>
+            <field name="model">ktv.room_discount</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="room discount">
+                    <field name="room_type_id" />
+                    <field name="consume_time_gt" />
+                    <field name="consume_time_lte" />
+                </tree>
+            </field>
+        </record>
+        <record id="action_room_discount" model="ir.actions.act_window">
+            <field name="name">包厢打折信息</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ktv.room_discount</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name='help'>包厢打折信息</field>
+        </record>
+
+        <menuitem action="action_room_discount" id="menu_action_room_discount" parent="base.menu_ktv_base_info" name="包厢打折信息" sequence="0"/>
 
     </data>
 </openerp>
