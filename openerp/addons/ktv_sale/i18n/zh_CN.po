@@ -118,6 +118,11 @@ msgstr "最低消费"
 msgid "py_code"
 msgstr "汉语拼音"
 
+#: field:ktv.ktv_room,state:0
+msgid "state"
+msgstr "状态"
+
+
 #包厢类别
 #: field:ktv.ktv_room_type,serve_persons:0
 msgid "serve_persons"
@@ -133,3 +138,9 @@ msgstr "计费方式编码"
 msgid "pay_type_code"
 msgstr "付款方式编码"
 
+
+#术语翻译
+#. module: ktv_sale
+#: model:ktv.ktv_room,state:ktv_room
+msgid "in_fee"
+msgstr "空闲中"

@@ -1,0 +1,10 @@
+-
+  我修改包厢的room type
+-
+  !assert {model: ktv.ktv_room, id: ktv_room_1, string: "ktv room 相关数据应随ktv_room_type而变化"}:
+    - fee_type_id.id == ref("fee_type1")
+    - room_fee == 50
+    - hourly_fee == 30
+    - minimum_fee == 40
+    - buyout_fee == 55
+

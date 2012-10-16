@@ -1,0 +1,20 @@
+-
+  !record {model: ktv.ktv_fee_type,id: fee_type1}:
+     name: 只收包厢费
+     fee_type_code: "only_room_fee"
+-
+  !record {model: ktv.ktv_room_area,id: ktv_room_area}:
+    name: 大厅区
+-
+  !record {model: ktv.ktv_room_type,id: ktv_room_type1}:
+    name: vip
+    fee_type_id: fee_type1
+    room_fee: 50
+    hourly_fee: 30
+    buyout_fee: 55
+    minimum_fee: 40
+-
+  !record {model: ktv.ktv_room,id: ktv_room_1}:
+    name: A888
+    ktv_room_area_id: ktv_room_area
+    ktv_room_type_id: ktv_room_type1

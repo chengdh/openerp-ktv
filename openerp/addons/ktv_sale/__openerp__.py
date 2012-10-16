@@ -46,7 +46,10 @@
         'ktv_data.xml'
         ],
     'demo_xml': [],
-    'test': [],
+    'test': [
+        'test/ktv_test_data.yml',
+        'test/ktv_room_test.yml'
+        ],
     'installable': True,
     'application': True,
     # Web client

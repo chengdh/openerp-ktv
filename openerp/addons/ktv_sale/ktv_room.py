@@ -43,6 +43,12 @@ class ktv_room(osv.osv):
             'py_code' : fields.char('room_fee',size = 64),
             #计费方式
             'fee_type_id' : fields.many2one('ktv.ktv_fee_type',"ktv_fee_type_id"),
+            'state' : fields.selection([
+            ('in_free','空闲'),
+            ('in_use', '使用中'),
+            ('in_debug', '调试中'),
+            ('in_clean', '清洁中')
+            ], 'state',readonly = True),
             #赠送套餐
             #包厢效果图
             'img_1' : fields.binary('pic_1',filters = "*.png,*.jpg,*.bmp"),
@@ -58,7 +64,23 @@ class ktv_room(osv.osv):
             'buyout_fee' : 0,
             'minimum_fee' : 0,
             'active' : True,
+            'state' : 'in_free',
             }
+
+    def onchange_ktv_room_type_id(self,cr,uid,ids,room_type_id):
+        if not room_type_id:
+            return {}
+        room_type = self.pool.get('ktv.ktv_room_type').browse(cr, uid, room_type_id)
+
+        val ={
+                "fee_type_id" : room_type.fee_type_id and room_type.fee_type_id.id or False,
+                "room_fee" : room_type.room_fee,
+                "hourly_fee" : room_type.hourly_fee,
+                "buyout_fee" : room_type.buyout_fee,
+                "minimum_fee" : room_type.minimum_fee,
+                }
+
+        return {"value" : val}
 
 ktv_room()
 

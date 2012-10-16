@@ -1,4 +1,4 @@
-# Thai translation for openobject-addons
+# Tsehai translation for openobject-addons
 # Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
 # This file is distributed under the same license as the openobject-addons package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2009.

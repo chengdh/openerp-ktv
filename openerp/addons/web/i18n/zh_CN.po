@@ -420,7 +420,7 @@ msgstr "创建视图 (%s)"
 #: addons/web/static/src/js/view_editor.js:149
 #: addons/web/static/src/js/view_form.js:577
 msgid "The following fields are invalid :"
-msgstr ""
+msgstr "请填写或修改以下字段:"
 
 #. openerp-web
 #: addons/web/static/src/js/view_editor.js:168

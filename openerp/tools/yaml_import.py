@@ -344,7 +344,9 @@ class YamlInterpreter(object):
                 varg = view_id
                 if view_id is True: varg = False
                 view = model.fields_view_get(self.cr, 1, varg, 'form', context)
-                view_id = etree.fromstring(view['arch'].encode('utf-8'))
+                #view_id = etree.fromstring(view['arch'].encode('utf-8'))
+                #FIXME 解决中文问题
+                view_id = etree.fromstring(unicode(view['arch'],'utf-8'))
 
             record_dict = self._create_record(model, fields, view_id, default=default)
             _logger.debug("RECORD_DICT %s" % record_dict)
