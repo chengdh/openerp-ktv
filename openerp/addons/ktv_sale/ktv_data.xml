@@ -42,6 +42,21 @@
             <field name="fee_type_code">only_consume_fee</field>
             <field name="description">按酒水实际消费收取,其他一切费用(除服务费)均免收</field>
         </record>
+
+        <!--费用精度-->
+        <!--房费取整-->
+        <record id="ktv_fee_precision" model="decimal.precision">
+            <field name="name">Ktv Fee</field>
+            <field name="digits">0</field>
+        </record>
+        <!--折扣取两位小数-->
+        <record id="ktv_room_fee_discount_rate_precision" model="decimal.precision">
+            <field name="name">Ktv Fee Discount Rate</field>
+            <field name="digits">2</field>
+        </record>
+
+
+
     </data>
 </openerp>
 

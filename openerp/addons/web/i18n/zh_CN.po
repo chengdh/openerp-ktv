@@ -130,7 +130,7 @@ msgstr "更改密码"
 #. openerp-web
 #: addons/web/static/src/js/chrome.js:1052
 msgid "OpenERP - Unsupported/Community Version"
-msgstr "OpenERP社区支持版"
+msgstr "OpenERP KTV 系统"
 
 #. openerp-web
 #: addons/web/static/src/js/chrome.js:1119
@@ -923,7 +923,7 @@ msgstr "翻译"
 #. openerp-web
 #: addons/web/static/src/xml/base.xml:44 addons/web/static/src/xml/base.xml:315
 msgid "Powered by"
-msgstr "选择自由，选择"
+msgstr ""
 
 #. openerp-web
 #: addons/web/static/src/xml/base.xml:44 addons/web/static/src/xml/base.xml:315
@@ -1043,7 +1043,7 @@ msgstr "确认主控密码："
 msgid ""
 "Your version of OpenERP is unsupported. Support & maintenance services are "
 "available here:"
-msgstr "您的 OpenERP 版本没有包含支持。支持与维护服务在此处可以购买："
+msgstr "您的 OpenERP 出现了以下错误："
 
 #. openerp-web
 #: addons/web/static/src/xml/base.xml:251

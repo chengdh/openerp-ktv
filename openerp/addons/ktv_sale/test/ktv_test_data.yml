@@ -42,5 +42,32 @@
 -
   !record {model: ktv.room_discount,id: room_discount_1}:
     room_type_id: ktv_room_type1
-    consume_time_gt: 0
-    consume_time_lte: 12
+    discount_time_from: 9:30
+    discount_time_to: 12:30
+
+-
+  应能够成功保存包厢打折特殊日设置
+-
+  !record {model: ktv.room_discount_special_day,id: room_discount_special_day_1}:
+    room_type_id: ktv_room_type1
+    special_day: 2012-10-1
+-
+  !record {model: ktv.room_discount_special_day,id: room_discount_special_day_2}:
+    room_type_id: ktv_room_type2
+    special_day: 2012-5-1
+-
+  应能够成功保存买断信息设置
+-
+  !record {model: ktv.buyout_config,id: buyout_config_1}:
+    name: 迷你包下午场买断
+    room_type_id: ktv_room_type1
+    is_member: False
+    time_from: 15:30
+    time_to: 17:30
+
+-
+  应能够成功保存买断信息特殊日期设置
+-
+  !record {model: ktv.buyout_config_special_day,id: buyout_config_special_day_1 }:
+    room_type_id: ktv_room_type1
+    special_day: 2012-10-01

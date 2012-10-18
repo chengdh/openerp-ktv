@@ -32,13 +32,13 @@ class ktv_room(osv.osv):
             #机顶盒IP
             'ktv_box_ip' : fields.char('ktv_box_ip',size = 64),
             #包厢费
-            'room_fee' : fields.float('room_fee',digits = (15,2)),
+            'room_fee' : fields.float('room_fee',digits_compute = dp.get_precision('Ktv Fee')),
             #钟点费
-            'hourly_fee' : fields.float('room_fee',digits = (15,2)),
+            'hourly_fee' : fields.float('room_fee',digits_compute = dp.get_precision('Ktv Fee')),
             #买断金额
-            'buyout_fee' : fields.float('room_fee',digits = (15,2)),
+            'buyout_fee' : fields.float('room_fee',digits_compute = dp.get_precision('Ktv Fee')),
             #最低消费
-            'minimum_fee' : fields.float('room_fee',digits = (15,2)),
+            'minimum_fee' : fields.float('room_fee',digits_compute = dp.get_precision('Ktv Fee')),
             #拼音
             'py_code' : fields.char('room_fee',size = 64),
             #计费方式
@@ -101,13 +101,13 @@ class ktv_room_type(osv.osv):
             #容纳人数
             'serve_persons' : fields.integer('serve_persons'),
             #包厢费
-            'room_fee' : fields.float('room_fee',digits = (15,2)),
+            'room_fee' : fields.float('room_fee',digits_compute = dp.get_precision('Ktv Fee')),
             #钟点费
-            'hourly_fee' : fields.float('room_fee',digits = (15,2)),
+            'hourly_fee' : fields.float('room_fee',digits_compute = dp.get_precision('Ktv Fee')),
             #买断金额
-            'buyout_fee' : fields.float('room_fee',digits = (15,2)),
+            'buyout_fee' : fields.float('room_fee',digits_compute = dp.get_precision('Ktv Fee')),
             #最低消费
-            'minimum_fee' : fields.float('room_fee',digits = (15,2)),
+            'minimum_fee' : fields.float('room_fee',digits_compute = dp.get_precision('Ktv Fee')),
             'active' : fields.boolean('active'),
             }
     _defaults = {
@@ -222,27 +222,24 @@ class room_discount(osv.osv):
             "special_day_continue_hourly_fee",
             ]
 
-    _columns = { field_name : fields.float(field_name,digits =(15,5)) for field_name in _fee_fields}
-
+    _columns = { field_name : fields.float(field_name, digits_compute= dp.get_precision('Ktv Room Default Precision'),required = True) for field_name in _fee_fields}
     _columns.update({
             #包厢类别
             "room_type_id" : fields.many2one("ktv.ktv_room_type","room_type_id",required = True),
 
-            #FIXME 此处注意:起始时间和结束时间指的是消费时长,消费时长越多,折扣越大,也是鼓励客人消费的一种手段
-            #打折消费时间起始值(以半小时作为计算单位)
-            #采用 <消费时长<= 方式来比对打折费用
-            "consume_time_gt": fields.integer("consume_time_gt",required = True),
+            #打折时间限制
+            "discount_time_from": fields.char("discount_time_from",required = True,size = 8 ),
             #打折消费时间结束值
-            "consume_time_lte": fields.integer("consume_time_lte",required = True),
+            "discount_time_to": fields.char("discount_time_to",required = True,size = 8),
             #打折参考的基准价格,默认等于该包厢类别room_type的钟点费,用户可以修改
-            "base_hourly_fee" : fields.float("base_hourly_fee",digits =(15,5)),
+            "base_hourly_fee" : fields.float("base_hourly_fee", digits_compute= dp.get_precision('Ktv Room Default Precision')),
             })
 
     _defaults = { field_name : 0 for field_name in _fee_fields}
 
     _defaults.update({
-        "consume_time_gt" : 0,
-        "consume_time_lte" : 12,
+        "discount_time_from" : '8:30',
+        "discount_time_to" : '12:30',
         #打折参考的基准价格,默认等于该包厢类别room_type的钟点费,用户可以修改
         "base_hourly_fee" : 0,
         })
@@ -252,40 +249,125 @@ class room_discount(osv.osv):
         if not room_type_id:
             return {}
         room_type = self.pool.get('ktv.ktv_room_type').browse(cr, uid, room_type_id)
-        vals = _reset_discount_info(room_type.hourly_fee)
+        vals = self._reset_discount_info(room_type.hourly_fee)
         vals.update({"base_hourly_fee" : room_type.hourly_fee})
         return {"value" : vals}
 
     #重新设置各天费用为100%
     def _reset_discount_info(self,base_hourly_fee = 0):
-        vals = {field_name : base_hourly_fee for field_name in _fee_fields if field_name.find("fee") != -1}
-        vals.update({field_name : 100 for field_name in _fee_fields if field_name.find("discount") != -1})
+        vals = {field_name : base_hourly_fee for field_name in self._fee_fields if field_name.find("fee") != -1}
+        vals.update({field_name : 100.0 for field_name in self._fee_fields if field_name.find("discount") != -1})
         return vals
 
     #基准钟点费发生变换时,充值所有打折数据
     def onchange_base_hourly_fee(self,cr,uid,ids,base_hourly_fee):
         if base_hourly_fee and base_hourly_fee == 0 :
             return {}
-        vals = _reset_discount_info(base_hourly_fee)
-        return {"values" : vals}
+        vals = self._reset_discount_info(base_hourly_fee)
+        return {"value" : vals}
 
     #钟点费或钟点费折扣互为变化
     #context中传递了变化的字段
     def onchange_hourly_fee(self,cr,uid,ids,field_name = False,hourly_fee_or_discount_rate = False ,base_hourly_fee = False,context = None):
         val ={}
-        if not base_hourly_fee or not field_name or field_name.find("continue_hourly_fee") != -1 :
+        if not base_hourly_fee or not field_name :
             return {}
         #如果是修改钟点费,则自动计算折扣百分比
+        precision_discount = self.pool.get('decimal.precision').precision_get(cr, uid, 'Ktv Fee Discount Rate')
+        precision_fee = self.pool.get('decimal.precision').precision_get(cr, uid, 'Ktv Fee')
         if field_name.find("hourly_fee") != -1 :
             to_change_fieldname = field_name.replace('fee','discount')
-            val[to_change_fieldname] = hourly_fee_or_discount_rate / base_hourly_fee * 100
+            val[to_change_fieldname] = round(Decimal(hourly_fee_or_discount_rate) / Decimal(base_hourly_fee) * 100,precision_discount)
 
         #如果是修改钟点费折扣,则自动计算折扣后的钟点费
         if field_name.find("hourly_discount") != -1 :
             to_change_fieldname = field_name.replace('discount','fee')
-            val[to_change_fieldname] = base_hourly_fee * hourly_fee_or_discount_rate / 100
+            val[to_change_fieldname] = round(Decimal(base_hourly_fee) * Decimal(hourly_fee_or_discount_rate) / 100,precision_fee)
+        return {"value" : val}
 
-        return {"values" : val}
+room_discount()
+
+class special_day(osv.osv):
+    '''特殊日期定义,在包厢打折信息、买断设置、固定时长买断设置、会员时段打折信息中都会使用到'''
+    _name="ktv.special_day"
+    _columns ={'special_day' : fields.date('special_day')}
+
+special_day()
+
+class room_discount_special_day(osv.osv):
+    '''包厢打折特殊日设置'''
+    _inherit = "ktv.special_day"
+    _name='ktv.room_discount_special_day'
+    _columns = {
+            "room_type_id" : fields.many2one("ktv.ktv_room_type","room_type_id"),
+            }
+room_discount_special_day()
+
+class buyout_config(osv.osv):
+    """买断信息设置"""
+    _name = "ktv.buyout_config"
+    _discription = "包厢买断信息设置"
+    _fee_fields = [
+            "mon_buyout_fee",
+            #周二
+            "tue_buyout_fee",
+            #周三
+            "wed_buyout_fee",
+            #周四
+            "thurs_buyout_fee",
+            #周五
+            "fri_buyout_fee",
+            #周六
+            "sat_buyout_fee",
+            #周日
+            "sun_buyout_fee",
+            #特殊日
+            "special_day_buyout_fee",
+            ]
+
+    _columns = { field_name : fields.float(field_name, digits_compute= dp.get_precision('Ktv Room Default Precision'),required = True) for field_name in _fee_fields}
+    _columns.update({
+            "name" : fields.char("name",size = 64,required = True),
+            #包厢类别
+            "room_type_id" : fields.many2one("ktv.ktv_room_type","room_type_id",required = True,help="请选择包厢类别"),
+            #买断时间限制
+            "time_from": fields.char("time_from",required = True,size = 8,help="买断起始时间" ),
+            #打折消费时间结束值
+            "time_to": fields.char("time_to",required = True,size = 8,help="买断结束时间"),
+            "is_member" : fields.boolean("is_member",help="是否是会员专用买断"),
+            })
+
+    _defaults = { field_name : 0 for field_name in _fee_fields}
+
+    _defaults.update({
+        "time_from" : '8:30',
+        "time_to" : '12:30',
+        "is_member" : False,
+        })
+
+    #包厢类别发生变化,基准价格同样改变
+    def onchange_room_type_id(self,cr,uid,ids,room_type_id):
+        if not room_type_id:
+            return {}
+        room_type = self.pool.get('ktv.ktv_room_type').browse(cr, uid, room_type_id)
+        vals = self._reset_discount_info(room_type.hourly_fee)
+        return {"value" : vals}
+
+    #重新设置各天费用为100%
+    def _reset_buyout_fee(self,base_hourly_fee = 0):
+        vals = {field_name : buyout_fee for field_name in self._fee_fields }
+        return vals
+
+buyout_config()
+
+class buyout_config_special_day(osv.osv):
+    '''包厢买断特殊日设置'''
+    _inherit = "ktv.special_day"
+    _name='ktv.buyout_config_special_day'
+    _columns = {
+            "room_type_id" : fields.many2one("ktv.ktv_room_type","room_type_id"),
+            }
+room_discount_special_day()
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

@@ -8,3 +8,9 @@
     - minimum_fee == 40
     - buyout_fee == 55
 
+-
+  修改包厢打折设置中的包厢类别,对应的打折金额会发生变化
+-
+  !assert {model: ktv.room_discount,id: room_discount_1,string: "相关信息设置不正确"} :
+    - mon_hourly_fee == 30
+

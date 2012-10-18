@@ -39,7 +39,7 @@
     """,
     'author': '程东辉',
     'images': [],
-    'depends': [],
+    'depends': ["base", "process", "decimal_precision"],
     'init_xml': [],
     'update_xml': [
         'ktv_view.xml',
