@@ -228,9 +228,9 @@ class room_discount(osv.osv):
             "room_type_id" : fields.many2one("ktv.ktv_room_type","room_type_id",required = True),
 
             #打折时间限制
-            "discount_time_from": fields.char("discount_time_from",required = True,size = 8 ),
+            "time_from": fields.time("time_from",required = True ),
             #打折消费时间结束值
-            "discount_time_to": fields.char("discount_time_to",required = True,size = 8),
+            "time_to": fields.time("time_to",required = True),
             #打折参考的基准价格,默认等于该包厢类别room_type的钟点费,用户可以修改
             "base_hourly_fee" : fields.float("base_hourly_fee", digits_compute= dp.get_precision('Ktv Room Default Precision')),
             })
@@ -238,8 +238,6 @@ class room_discount(osv.osv):
     _defaults = { field_name : 0 for field_name in _fee_fields}
 
     _defaults.update({
-        "discount_time_from" : '8:30',
-        "discount_time_to" : '12:30',
         #打折参考的基准价格,默认等于该包厢类别room_type的钟点费,用户可以修改
         "base_hourly_fee" : 0,
         })
@@ -331,17 +329,15 @@ class buyout_config(osv.osv):
             #包厢类别
             "room_type_id" : fields.many2one("ktv.ktv_room_type","room_type_id",required = True,help="请选择包厢类别"),
             #买断时间限制
-            "time_from": fields.char("time_from",required = True,size = 8,help="买断起始时间" ),
+            "time_from": fields.time("time_from",required = True,help="买断起始时间" ),
             #打折消费时间结束值
-            "time_to": fields.char("time_to",required = True,size = 8,help="买断结束时间"),
+            "time_to": fields.time("time_to",required = True,help="买断结束时间"),
             "is_member" : fields.boolean("is_member",help="是否是会员专用买断"),
             })
 
     _defaults = { field_name : 0 for field_name in _fee_fields}
 
     _defaults.update({
-        "time_from" : '8:30',
-        "time_to" : '12:30',
         "is_member" : False,
         })
 

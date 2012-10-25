@@ -42,8 +42,8 @@
 -
   !record {model: ktv.room_discount,id: room_discount_1}:
     room_type_id: ktv_room_type1
-    discount_time_from: 9:30
-    discount_time_to: 12:30
+    time_from: 9:30
+    time_to: 12:30
 
 -
   应能够成功保存包厢打折特殊日设置
@@ -71,3 +71,4 @@
   !record {model: ktv.buyout_config_special_day,id: buyout_config_special_day_1 }:
     room_type_id: ktv_room_type1
     special_day: 2012-10-01
+
