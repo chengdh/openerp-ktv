@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <menuitem icon="terp-partner" id="base.menu_base_ktv_sale" name="KTV后台" sequence="0" />
+        <menuitem id="base.menu_ktv_base_info" name="基础数据" parent="base.menu_base_ktv_sale" sequence="1"/>
+    </data>
+</openerp>
+

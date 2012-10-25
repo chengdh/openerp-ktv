@@ -42,7 +42,14 @@
     'depends': ["base", "process", "decimal_precision"],
     'init_xml': [],
     'update_xml': [
-        'ktv_view.xml',
+        'views/base.xml',
+        'views/fee_type.xml',
+        'views/pay_type.xml',
+        'views/room_area.xml',
+        'views/room_type.xml',
+        'views/room.xml',
+        'views/room_discount.xml',
+        'views/buyout_config.xml',
         'ktv_data.xml'
         ],
     'demo_xml': [],

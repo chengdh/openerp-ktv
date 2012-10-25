@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_buyout_config_form" model="ir.ui.view">
+            <field name="name">ktv.buyout_config</field>
+            <field name="model">ktv.buyout_config</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="buyout config">
+                    <field name="name" required="1" />
+                    <field name="room_type_id" required="1" on_change="onchange_room_type_id(room_type_id)"/>
+                    <field name="time_from" />
+                    <field name="time_to" />
+                    <field name="is_member" />
+
+                    <separator colspan="4" string="设置买断费用信息" />
+                    <field name="mon_buyout_fee" string="星期一买断金额(元)" />
+                    <field name="tue_buyout_fee" string="星期二买断金额(元)" />
+                    <field name="wed_buyout_fee" string="星期三买断金额(元)" />
+                    <field name="thurs_buyout_fee" string="星期四买断金额(元)" />
+                    <field name="fri_buyout_fee" string="星期五买断金额(元)" />
+                    <field name="sat_buyout_fee" string="星期六买断金额(元)" />
+                    <field name="sun_buyout_fee" string="星期日买断金额(元)" />
+                    <field name="special_day_buyout_fee" string="特殊日买断金额(元)" />
+                </form>
+            </field>
+        </record>
+        <record id="view_buyout_config_tree" model="ir.ui.view">
+            <field name="name">ktv.buyout_config_tree</field>
+            <field name="model">ktv.buyout_config</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="buyout config">
+                    <field name="name" />
+                    <field name="room_type_id" />
+                    <field name="is_member" />
+                    <field name="time_from" />
+                    <field name="time_to" />
+                    <field name="mon_buyout_fee" string="星期一" />
+                    <field name="tue_buyout_fee" string="星期二" />
+                    <field name="wed_buyout_fee" string="星期三" />
+                    <field name="thurs_buyout_fee" string="星期四" />
+                    <field name="fri_buyout_fee" string="星期五" />
+                    <field name="sat_buyout_fee" string="星期六" />
+                    <field name="sun_buyout_fee" string="星期日" />
+                    <field name="special_day_buyout_fee" string="特殊日" />
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_buyout_config" model="ir.actions.act_window">
+            <field name="name">买断信息设置</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ktv.buyout_config</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name='help'>设置每周不同时间段包厢的买断金额</field>
+        </record>
+
+        <menuitem action="action_buyout_config" id="menu_action_buyout_config" parent="base.menu_ktv_base_info" name="买断信息设置" sequence="0"/>
+    </data>
+</openerp>
+

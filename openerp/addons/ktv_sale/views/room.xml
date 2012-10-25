@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--包厢信息定义-->
+        <record id="view_ktv_room_form" model="ir.ui.view">
+            <field name="name">ktv.ktv_room</field>
+            <field name="model">ktv.room</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="room_area">
+                    <field name="name" select="1"  required="1"/>
+                    <field name="room_area_id" select="1" />
+                    <field name="room_type_id" select="1" on_change="onchange_room_type_id(room_type_id)" />
+                    <field name="fee_type_id" select="1"  />
+                    <separator colspan="4" string="费用"/>
+                    <field name="room_fee" />
+                    <field name="hourly_fee" />
+                    <field name="minimum_fee" />
+                    <field name="state" />
+                    <separator colspan="4" />
+                    <field name="img_1" widget="image" />
+                    <field name="img_2" widget="image" />
+                    <separator colspan="4" />
+                    <field name="description" />
+                    <field name="active"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_ktv_room_tree" model="ir.ui.view">
+            <field name="name">ktv.ktv_room</field>
+            <field name="model">ktv.room</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="room area">
+                    <field name="name"/>
+                    <field name="room_area_id"/>
+
+                    <field name="room_type_id" />
+                    <field name="fee_type_id" />
+
+                    <field name="room_fee" />
+                    <field name="hourly_fee" />
+                    <field name="minimum_fee" />
+                    <field name="state" />
+                    <field name="description" />
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_ktv_room_search" model="ir.ui.view">
+            <field name="name">ktv.ktv_room.select</field>
+            <field name="model">ktv.room</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Search ktv rooms">
+                    <filter icon="terp-document-new" string="空闲" domain="[('state','=','in_free')]" help="空闲中的包厢"/>
+                    <filter icon="terp-document-new" string="使用中" domain="[('state','=','in_use')]" help="使用中的包厢"/>
+                    <filter icon="terp-document-new" string="调试" domain="[('state','=','in_debug')]" help="调试中的包厢"/>
+                    <filter icon="terp-document-new" string="清洁" domain="[('state','=','in_clean')]" help="清洁中的包厢"/>
+                    <separator orientation="vertical"/>
+                    <filter icon="terp-document-new" string="有效" domain="[('active','=',True)]" help="状态为有效的包厢"/>
+                    <separator orientation="vertical"/>
+                    <field name="name"
+                        filter_domain="['|', ('name','ilike',self),('client_order_ref','ilike',self)]"/>
+                    <field name="room_type_id" widget="selection"/>
+                    <field name="room_area_id"  widget="selection"/>
+                    <newline/>
+                </search>
+            </field>
+        </record>
+
+
+        <record id="action_ktv_room" model="ir.actions.act_window">
+            <field name="name">包厢信息</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ktv.room</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_ktv_room_search" />
+            <field name='help'>设置包厢信息</field>
+        </record>
+
+        <menuitem action="action_ktv_room" id="menu_action_ktv_room" parent="base.menu_ktv_base_info" name="包厢设置" sequence="0"/>
+    </data>
+</openerp>
