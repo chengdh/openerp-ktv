@@ -1,60 +1,48 @@
 -
   应能够真确保存计费方式信息
 -
-  !record {model: ktv.ktv_fee_type,id: fee_type1}:
+  !record {model: ktv.fee_type,id: fee_type1}:
      name: 只收包厢费
      fee_type_code: "only_room_fee"
 -
-  !record {model: ktv.ktv_fee_type,id: fee_type_2}:
+  !record {model: ktv.fee_type,id: fee_type_2}:
      name: 只收钟点费
      fee_type_code: "only_hourly_fee"
 -
   应能够成功保存包厢区域信息
 -
-  !record {model: ktv.ktv_room_area,id: ktv_room_area}:
+  !record {model: ktv.room_area,id: ktv_room_area}:
     name: 大厅区
 -
   应能够正确保存包厢类别信息
 -
-  !record {model: ktv.ktv_room_type,id: ktv_room_type1}:
+  !record {model: ktv.room_type,id: ktv_room_type1}:
     name: vip
     fee_type_id: fee_type1
     room_fee: 50
     hourly_fee: 30
-    buyout_fee: 55
     minimum_fee: 40
 -
-  !record {model: ktv.ktv_room_type,id: ktv_room_type2}:
+  !record {model: ktv.room_type,id: ktv_room_type2}:
     name: 豪华包房
     fee_type_id: fee_type_2
     room_fee: 200
     hourly_fee: 400
-    buyout_fee: 500
     minimum_fee: 300
 -
-  !record {model: ktv.ktv_room,id: ktv_room_1}:
+  !record {model: ktv.room,id: ktv_room_1}:
     name: A888
-    ktv_room_area_id: ktv_room_area
-    ktv_room_type_id: ktv_room_type1
+    room_area_id: ktv_room_area
+    room_type_id: ktv_room_type1
 
 -
   应能够成功保存包厢打折信息
 -
   !record {model: ktv.room_discount,id: room_discount_1}:
     room_type_id: ktv_room_type1
-    time_from: 9:30
-    time_to: 12:30
+    time_from: '09:30'
+    time_to: '12:30'
 
--
-  应能够成功保存包厢打折特殊日设置
--
-  !record {model: ktv.room_discount_special_day,id: room_discount_special_day_1}:
-    room_type_id: ktv_room_type1
-    special_day: 2012-10-1
--
-  !record {model: ktv.room_discount_special_day,id: room_discount_special_day_2}:
-    room_type_id: ktv_room_type2
-    special_day: 2012-5-1
 -
   应能够成功保存买断信息设置
 -
@@ -62,13 +50,6 @@
     name: 迷你包下午场买断
     room_type_id: ktv_room_type1
     is_member: False
-    time_from: 15:30
-    time_to: 17:30
-
--
-  应能够成功保存买断信息特殊日期设置
--
-  !record {model: ktv.buyout_config_special_day,id: buyout_config_special_day_1 }:
-    room_type_id: ktv_room_type1
-    special_day: 2012-10-01
+    time_from: '15:30'
+    time_to: '17:30'
 

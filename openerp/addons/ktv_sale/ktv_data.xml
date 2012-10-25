@@ -12,32 +12,32 @@
              固定时长买断
              结账重开
              -->
-        <record id="ktv_fee_type_only_room_fee" model="ktv.ktv_fee_type">
+        <record id="ktv_fee_type_only_room_fee" model="ktv.fee_type">
             <field name="name">只收包厢费</field>
             <field name="fee_type_code">only_room_fee</field>
             <field name="description">只收包厢费,其他一切费用(除服务费)均免收</field>
         </record>
-        <record id="ktv_fee_type_only_hourly_fee" model="ktv.ktv_fee_type">
+        <record id="ktv_fee_type_only_hourly_fee" model="ktv.fee_type">
             <field name="name">只收钟点费</field>
             <field name="fee_type_code">only_hourly_fee</field>
             <field name="description">只按消费时间收费钟点费,其他一切费用(除服务费)均免收</field>
         </record>
-        <record id="ktv_fee_type_room_fee_plus_hourly_fee" model="ktv.ktv_fee_type">
+        <record id="ktv_fee_type_room_fee_plus_hourly_fee" model="ktv.fee_type">
             <field name="name">包厢费+钟点费</field>
             <field name="fee_type_code">room_fee_plus_hourly_fee</field>
             <field name="description">包厢费必收,再按消费的时间收取钟点费</field>
         </record>
-        <record id="ktv_fee_type_minimum_fee" model="ktv.ktv_fee_type">
+        <record id="ktv_fee_type_minimum_fee" model="ktv.fee_type">
             <field name="name">最低消费</field>
             <field name="fee_type_code">minymum_fee</field>
             <field name="description">如酒水消费低于 “最低消费”则按“最低消费”收取,否则按酒水实际消费收取,其他一切费用(除服务费)均免收</field>
         </record>
-        <record id="ktv_fee_type_buyout_fee" model="ktv.ktv_fee_type">
+        <record id="ktv_fee_type_buyout_fee" model="ktv.fee_type">
             <field name="name">固定时长买断</field>
             <field name="fee_type_code">buyout_fee</field>
             <field name="description">是一种记费方式,进行“预付费”的一种记费方式</field>
         </record>
-        <record id="ktv_fee_type_only_consume_fee" model="ktv.ktv_fee_type">
+        <record id="ktv_fee_type_only_consume_fee" model="ktv.fee_type">
             <field name="name">结账重开</field>
             <field name="fee_type_code">only_consume_fee</field>
             <field name="description">按酒水实际消费收取,其他一切费用(除服务费)均免收</field>
@@ -54,8 +54,6 @@
             <field name="name">Ktv Fee Discount Rate</field>
             <field name="digits">2</field>
         </record>
-
-
 
     </data>
 </openerp>

@@ -1,13 +1,11 @@
 -
   当修改包厢的room type时,当前包厢的计费方式、包厢费、钟点费、最低消费、买断金额都修改为对应room type的值
 -
-  !assert {model: ktv.ktv_room, id: ktv_room_1, string: "ktv room未随ktv_room_type而变化!"}:
+  !assert {model: ktv.room, id: ktv_room_1, string: "ktv room未随ktv_room_type而变化!"}:
     - fee_type_id.id == ref("fee_type1")
     - room_fee == 50
     - hourly_fee == 30
     - minimum_fee == 40
-    - buyout_fee == 55
-
 -
   修改包厢打折设置中的包厢类别,对应的打折金额会发生变化
 -

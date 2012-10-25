@@ -18,10 +18,15 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-
-import ktv_room
+import fee_type
+import pay_type
+import room
+import room_area
+import room_type
+import room
+import room_discount
+import buyout_config
 import wizard
 import report
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
-

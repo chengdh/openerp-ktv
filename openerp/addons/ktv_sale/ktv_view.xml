@@ -11,7 +11,7 @@
 
         <record id="view_ktv_room_type_form" model="ir.ui.view">
             <field name="name">ktv.ktv_room_type</field>
-            <field name="model">ktv.ktv_room_type</field>
+            <field name="model">ktv.room_type</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="room_type">
@@ -21,7 +21,6 @@
                     <separator colspan="4" string="fee"/>
                     <field name="room_fee"/>
                     <field name="hourly_fee"/>
-                    <field name="buyout_fee"/>
                     <field name="minimum_fee"/>
                     <field name="active"/>
                     <separator colspan="4" />
@@ -32,7 +31,7 @@
 
         <record id="view_ktv_room_type_tree" model="ir.ui.view">
             <field name="name">ktv.ktv_room_type</field>
-            <field name="model">ktv.ktv_room_type</field>
+            <field name="model">ktv.room_type</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="包厢类别">
@@ -41,7 +40,6 @@
                     <field name="serve_persons" />
                     <field name="room_fee"/>
                     <field name="hourly_fee"/>
-                    <field name="buyout_fee"/>
                     <field name="minimum_fee"/>
                     <field name="active"/>
                 </tree>
@@ -52,7 +50,7 @@
         <record id="action_ktv_room_type_form" model="ir.actions.act_window">
             <field name="name">包厢类别</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">ktv.ktv_room_type</field>
+            <field name="res_model">ktv.room_type</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name='help'>可以将KTV包厢分为不同的类别,并设定不同包厢类别的各种费用</field>
@@ -63,7 +61,7 @@
         <!--计费方式-->
         <record id="view_ktv_fee_type_form" model="ir.ui.view">
             <field name="name">ktv.ktv_fee_type</field>
-            <field name="model">ktv.ktv_fee_type</field>
+            <field name="model">ktv.fee_type</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="room_type">
@@ -76,7 +74,7 @@
 
         <record id="view_ktv_fee_type_tree" model="ir.ui.view">
             <field name="name">ktv.ktv_fee_type</field>
-            <field name="model">ktv.ktv_fee_type</field>
+            <field name="model">ktv.fee_type</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="计费方式">
@@ -91,7 +89,7 @@
         <record id="action_ktv_fee_type" model="ir.actions.act_window">
             <field name="name">计费方式</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">ktv.ktv_fee_type</field>
+            <field name="res_model">ktv.fee_type</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name='help'>为包厢设置不同的计费方式</field>
@@ -102,7 +100,7 @@
         <!--包厢区域-->
         <record id="view_ktv_room_area_form" model="ir.ui.view">
             <field name="name">ktv.ktv_room_area</field>
-            <field name="model">ktv.ktv_room_area</field>
+            <field name="model">ktv.room_area</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="room_area">
@@ -115,7 +113,7 @@
 
         <record id="view_ktv_room_area_tree" model="ir.ui.view">
             <field name="name">ktv.ktv_room_area</field>
-            <field name="model">ktv.ktv_room_area</field>
+            <field name="model">ktv.room_area</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="room area">
@@ -130,7 +128,7 @@
         <record id="action_ktv_room_area" model="ir.actions.act_window">
             <field name="name">包厢区域</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">ktv.ktv_room_area</field>
+            <field name="res_model">ktv.room_area</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name='help'>为包厢设置不同的区域</field>
@@ -140,18 +138,17 @@
         <!--包厢信息定义-->
         <record id="view_ktv_room_form" model="ir.ui.view">
             <field name="name">ktv.ktv_room</field>
-            <field name="model">ktv.ktv_room</field>
+            <field name="model">ktv.room</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="room_area">
                     <field name="name" select="1"  required="1"/>
-                    <field name="ktv_room_area_id" select="1" />
-                    <field name="ktv_room_type_id" select="1" on_change="onchange_ktv_room_type_id(ktv_room_type_id)" />
+                    <field name="room_area_id" select="1" />
+                    <field name="room_type_id" select="1" on_change="onchange_room_type_id(room_type_id)" />
                     <field name="fee_type_id" select="1"  />
                     <separator colspan="4" string="费用"/>
                     <field name="room_fee" />
                     <field name="hourly_fee" />
-                    <field name="buyout_fee" />
                     <field name="minimum_fee" />
                     <field name="state" />
                     <separator colspan="4" />
@@ -166,19 +163,18 @@
 
         <record id="view_ktv_room_tree" model="ir.ui.view">
             <field name="name">ktv.ktv_room</field>
-            <field name="model">ktv.ktv_room</field>
+            <field name="model">ktv.room</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="room area">
                     <field name="name"/>
-                    <field name="ktv_room_area_id"/>
+                    <field name="room_area_id"/>
 
-                    <field name="ktv_room_type_id" />
+                    <field name="room_type_id" />
                     <field name="fee_type_id" />
 
                     <field name="room_fee" />
                     <field name="hourly_fee" />
-                    <field name="buyout_fee" />
                     <field name="minimum_fee" />
                     <field name="state" />
                     <field name="description" />
@@ -189,7 +185,7 @@
 
         <record id="view_ktv_room_search" model="ir.ui.view">
             <field name="name">ktv.ktv_room.select</field>
-            <field name="model">ktv.ktv_room</field>
+            <field name="model">ktv.room</field>
             <field name="type">search</field>
             <field name="arch" type="xml">
                 <search string="Search ktv rooms">
@@ -202,8 +198,8 @@
                     <separator orientation="vertical"/>
                     <field name="name"
                         filter_domain="['|', ('name','ilike',self),('client_order_ref','ilike',self)]"/>
-                    <field name="ktv_room_type_id" widget="selection"/>
-                    <field name="ktv_room_area_id"  widget="selection"/>
+                    <field name="room_type_id" widget="selection"/>
+                    <field name="room_area_id"  widget="selection"/>
                     <newline/>
                 </search>
             </field>
@@ -213,7 +209,7 @@
         <record id="action_ktv_room" model="ir.actions.act_window">
             <field name="name">包厢信息</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">ktv.ktv_room</field>
+            <field name="res_model">ktv.room</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="search_view_id" ref="view_ktv_room_search" />
@@ -240,49 +236,41 @@
                             <group colspan='4' string="星期一">
                                 <field name="mon_hourly_fee" string="钟点费(元)" on_change="onchange_hourly_fee('mon_hourly_fee',mon_hourly_fee,base_hourly_fee)"/>
                                 <field name="mon_hourly_discount" string="折率%%"  on_change="onchange_hourly_fee('mon_hourly_discount',mon_hourly_discount,base_hourly_fee)"/>
-                                <field name="mon_continue_hourly_fee" string="续钟(元)" />
                             </group>
 
                             <group colspan='4' string="星期二">
                                 <field name="tue_hourly_fee"  string="钟点费(元)" on_change="onchange_hourly_fee('tue_hourly_fee',tue_hourly_fee,base_hourly_fee)"/>
                                 <field name="tue_hourly_discount"  string="折率%%" on_change="onchange_hourly_fee('tue_hourly_discount',tue_hourly_discount,base_hourly_fee)"/>
-                                <field name="tue_continue_hourly_fee" string="续钟(元)" />
                             </group>
 
                             <group colspan='4' string="星期三">
                                 <field name="wed_hourly_fee"  string="钟点费(元)" on_change="onchange_hourly_fee('wed_hourly_fee',wed_hourly_fee,base_hourly_fee)"/>
                                 <field name="wed_hourly_discount"  string="折率%%" on_change="onchange_hourly_fee('wed_hourly_discount',wed_hourly_discount,base_hourly_fee)"/>
-                                <field name="wed_continue_hourly_fee" string="续钟(元)" />
                             </group>
 
                             <group colspan='4' string="星期四">
                                 <field name="thurs_hourly_fee"  string="钟点费(元)" on_change="onchange_hourly_fee('thurs_hourly_fee',thurs_hourly_fee,base_hourly_fee)"/>
                                 <field name="thurs_hourly_discount"  string="折率%%" on_change="onchange_hourly_fee('thurs_hourly_discount',thurs_hourly_discount,base_hourly_fee)"/>
-                                <field name="thurs_continue_hourly_fee" string="续钟(元)" />
                             </group>
 
                             <group colspan='4' string="星期五">
                                 <field name="fri_hourly_fee"  string="钟点费(元)" on_change="onchange_hourly_fee('fri_hourly_fee',fri_hourly_fee,base_hourly_fee)"/>
                                 <field name="fri_hourly_discount"  string="折率%%" on_change="onchange_hourly_fee('fri_hourly_discount',fri_hourly_discount,base_hourly_fee)"/>
-                                <field name="fri_continue_hourly_fee" string="续钟(元)" />
                             </group>
                             <group colspan='4' string="星期六">
                                 <field name="sat_hourly_fee"  string="钟点费(元)" on_change="onchange_hourly_fee('sat_hourly_fee',sat_hourly_fee,base_hourly_fee)"/>
                                 <field name="sat_hourly_discount"  string="折率%%" on_change="onchange_hourly_fee('sat_hourly_discount',sat_hourly_discount,base_hourly_fee)"/>
-                                <field name="sat_continue_hourly_fee" string="续钟(元)" />
                             </group>
 
                             <group colspan='4' string="星期日">
                                 <field name="sun_hourly_fee"  string="钟点费(元)" on_change="onchange_hourly_fee('sun_hourly_fee',sun_hourly_fee,base_hourly_fee)"/>
                                 <field name="sun_hourly_discount"  string="折率%%" on_change="onchange_hourly_fee('sun_hourly_discount',sun_hourly_discount,base_hourly_fee)"/>
-                                <field name="sun_continue_hourly_fee" string="续钟(元)" />
                             </group>
                         </page>
 
                         <page string="特殊日期">
                             <field name="special_day_hourly_fee"  string="钟点费(元)" on_change="onchange_hourly_fee('special_day_hourly_fee',special_day_hourly_fee,base_hourly_fee)"/>
                             <field name="special_day_hourly_discount"  string="折率%%" on_change="onchange_hourly_fee('special_day_hourly_discount',special_day_hourly_discount,base_hourly_fee)"/>
-                            <field name="special_day_continue_hourly_fee" string="续钟(元)" />
                         </page>
                     </notebook>
                 </form>
@@ -324,17 +312,6 @@
         </record>
 
         <menuitem action="action_room_discount" id="menu_action_room_discount" parent="base.menu_ktv_base_info" name="包厢打折信息" sequence="0"/>
-
-        <record id="action_ktv_room_discount_special_day" model="ir.actions.act_window">
-            <field name="name">包厢打折特殊日期设置</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">ktv.room_discount_special_day</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name='help'>为包厢打折设置特殊日期</field>
-        </record>
-
-        <menuitem action="action_ktv_room_discount_special_day" id="menu_action_ktv_room_discount_special_day" parent="base.menu_ktv_base_info" name="包厢打折特殊日期设置" sequence="0"/>
 
     <!--包厢买断设置信息-->
         <record id="view_buyout_config_form" model="ir.ui.view">
@@ -395,17 +372,5 @@
         </record>
 
         <menuitem action="action_buyout_config" id="menu_action_buyout_config" parent="base.menu_ktv_base_info" name="买断信息设置" sequence="0"/>
-
-        <record id="action_buyout_config_special_day" model="ir.actions.act_window">
-            <field name="name">买断特殊日期设置</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">ktv.buyout_config_special_day</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name='help'>为包厢买断设置特殊日期</field>
-        </record>
-
-        <menuitem action="action_buyout_config_special_day" id="menu_action_buyout_config_special_day" parent="base.menu_ktv_base_info" name="包厢买断特殊日期设置" sequence="0"/>
-
     </data>
 </openerp>
