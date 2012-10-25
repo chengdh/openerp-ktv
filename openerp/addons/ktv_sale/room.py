@@ -1,14 +1,6 @@
 # -*- coding: utf-8 -*-
-import time
-from datetime import datetime
-from dateutil.relativedelta import relativedelta
 import logging
-from PIL import Image
-
-import netsvc
 from osv import fields, osv
-from tools.translate import _
-from decimal import Decimal
 import decimal_precision as dp
 import ktv_helper
 

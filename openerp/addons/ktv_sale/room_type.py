@@ -1,21 +1,9 @@
 # -*- coding: utf-8 -*-
-import time
-from datetime import datetime
-from dateutil.relativedelta import relativedelta
-import logging
-from PIL import Image
-
-import netsvc
 from osv import fields, osv
-from tools.translate import _
-from decimal import Decimal
 import decimal_precision as dp
 import ktv_helper
 
-_logger = logging.getLogger(__name__)
-
-
-class ktv_room_type(osv.osv):
+class room_type(osv.osv):
     _name = "ktv.room_type"
     _description = "包厢类别定义"
 

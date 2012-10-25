@@ -1,19 +1,7 @@
 # -*- coding: utf-8 -*-
-import time
-from datetime import datetime
-from dateutil.relativedelta import relativedelta
-import logging
-from PIL import Image
-
-import netsvc
 from osv import fields, osv
-from tools.translate import _
-from decimal import Decimal
-import decimal_precision as dp
 
-_logger = logging.getLogger(__name__)
-
-class ktv_fee_type(osv.osv):
+class fee_type(osv.osv):
     #计费方式定义
     #只收包厢费
     FEE_TYPE_ONLY_ROOM_FEE = "only_room_fee"
