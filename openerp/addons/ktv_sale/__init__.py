@@ -25,12 +25,16 @@ import room_area
 import room_type
 import room
 import room_discount
+import room_type_special_day
 import buyout_config
 import buyout_config_special_day
 import minimum_fee_config
 import minimum_fee_config_special_day
 import price_class
 import hourly_fee_discount
+import hourly_fee_discount_special_day
+import hourly_fee_p_discount
+import hourly_fee_p_discount_special_day
 import wizard
 import report
 

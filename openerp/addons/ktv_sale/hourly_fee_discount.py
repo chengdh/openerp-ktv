@@ -8,10 +8,10 @@ import ktv_helper
 _logger = logging.getLogger(__name__)
 
 
-class room_discount(osv.osv):
+class hourly_fee_discount(osv.osv):
     """包厢钟点费打折设置,设置包厢每周各天的钟点费打折情况"""
     _name = "ktv.hourly_fee_discount"
-    _discription = "包厢钟点费打折设置,设置包厢每周各天的钟点费打折情况"
+    _description = "包厢钟点费打折设置,设置包厢每周各天的钟点费打折情况"
     #费用字段定义
     #其中discount字段存储的是百分比
     _fee_fields = [

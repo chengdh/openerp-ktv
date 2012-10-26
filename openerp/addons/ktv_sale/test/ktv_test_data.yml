@@ -107,4 +107,12 @@
     room_type_id: ktv_room_type1
     time_from: '09:30'
     time_to: '12:30'
+-
+  应能够成功保存按位钟点费打折信息
+-
+  !record {model: ktv.hourly_fee_p_discount,id: hourly_fee_p_discount_1}:
+    price_class_id: price_class_1
+    room_type_id: ktv_room_type1
+    time_from: '09:30'
+    time_to: '12:30'
 
