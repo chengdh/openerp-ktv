@@ -11,6 +11,14 @@
              最低消费
              固定时长买断
              结账重开
+             包厢费+最低消费
+             钟点费+最低消费
+             包厢费+钟点费+最低消费
+             买断
+             按位钟点费
+             按位最低消费
+             自助餐
+             酒水?
              -->
         <record id="ktv_fee_type_only_room_fee" model="ktv.fee_type">
             <field name="name">只收包厢费</field>
@@ -29,19 +37,97 @@
         </record>
         <record id="ktv_fee_type_minimum_fee" model="ktv.fee_type">
             <field name="name">最低消费</field>
-            <field name="fee_type_code">minymum_fee</field>
+            <field name="fee_type_code">minimum_fee</field>
             <field name="description">如酒水消费低于 “最低消费”则按“最低消费”收取,否则按酒水实际消费收取,其他一切费用(除服务费)均免收</field>
-        </record>
-        <record id="ktv_fee_type_buyout_fee" model="ktv.fee_type">
-            <field name="name">固定时长买断</field>
-            <field name="fee_type_code">buyout_fee</field>
-            <field name="description">是一种记费方式,进行“预付费”的一种记费方式</field>
         </record>
         <record id="ktv_fee_type_only_consume_fee" model="ktv.fee_type">
             <field name="name">结账重开</field>
             <field name="fee_type_code">only_consume_fee</field>
-            <field name="description">按酒水实际消费收取,其他一切费用(除服务费)均免收</field>
+            <field name="description">只按酒水实际消费收取,其他一切费用(除服务费)均免收</field>
         </record>
+        <record id="ktv_fee_type_room_fee_plus_minimum_fee" model="ktv.fee_type">
+            <field name="name">包厢费+最低消费</field>
+            <field name="fee_type_code">room_fee_plus_minimum_fee</field>
+            <field name="description">包厢费必收,酒水费按照最低消费设置结算,其他一切费用(除服务费)均免收</field>
+        </record>
+        <record id="ktv_fee_type_hourly_fee_plus_minimum_fee" model="ktv.fee_type">
+            <field name="name">钟点费+最低消费</field>
+            <field name="fee_type_code">hourly_fee_plus_minimum_fee</field>
+            <field name="description">按照消费时间计算钟点费,酒水费按照最低消费设置结算,其他一切费用(除服务费)均免收</field>
+        </record>
+        <record id="ktv_fee_type_room_fee_plus_hourly_fee_plus_minimum_fee" model="ktv.fee_type">
+            <field name="name">包厢费+钟点费+最低消费</field>
+            <field name="fee_type_code">room_fee_plus_hourly_fee_plus_minimum_fee</field>
+            <field name="description">包厢费必收,按照消费时间计算钟点费,酒水费按照最低消费设置结算,其他一切费用(除服务费)均免收</field>
+        </record>
+        <record id="ktv_fee_type_buyout_fee" model="ktv.fee_type">
+            <field name="name">买断</field>
+            <field name="fee_type_code">buyout_fee</field>
+            <field name="description">按照预先设置的买断金额计算费用,其他一切费用(除服务费)免收</field>
+        </record>
+        <record id="ktv_fee_type_hourly_fee_p" model="ktv.fee_type">
+            <field name="name">按位钟点费</field>
+            <field name="fee_type_code">hourly_fee_p</field>
+            <field name="description">钟点费的一种类型，按消费人数、消费时间进行计费</field>
+        </record>
+        <record id="ktv_fee_type_minimum_fee_p" model="ktv.fee_type">
+            <field name="name">按位最低消费</field>
+            <field name="fee_type_code">minimum_fee_p</field>
+            <field name="description">按消费人数计费，并对每个人消费的酒水收取最低消费，如酒水消费低于“最低消费”则按“最低消费”收取，否则按酒水实际消费收取，其他一切费用（除服务费）均免收</field>
+        </record>
+
+        <record id="ktv_fee_type_buffet" model="ktv.fee_type">
+            <field name="name">自助餐</field>
+            <field name="fee_type_code">buffet</field>
+            <field name="description">钟点费的一种类型，按消费人数、预设好的固定时间长度进行计费</field>
+        </record>
+
+        <record id="ktv_fee_type_drinks" model="ktv.fee_type">
+            <field name="name">酒水</field>
+            <field name="fee_type_code">drinks</field>
+            <field name="description">只收取实际消费的酒水费用，其他一切费用（除服务费）均免收</field>
+        </record>
+
+        <!--支付方式-->
+        <record id="pay_type_cash" model="ktv.pay_type">
+            <field name="name">现金</field>
+            <field name="pay_type_code">cash</field>
+        </record>
+        <record id="pay_type_member_card" model="ktv.pay_type">
+            <field name="name">会员卡</field>
+            <field name="pay_type_code">member_card</field>
+        </record>
+
+        <record id="pay_type_credit_card" model="ktv.pay_type">
+            <field name="name">信用卡</field>
+            <field name="pay_type_code">credit_card</field>
+        </record>
+
+        <record id="pay_type_voucher" model="ktv.pay_type">
+            <field name="name">抵用券</field>
+            <field name="pay_type_code">voucher</field>
+        </record>
+
+        <record id="pay_type_free" model="ktv.pay_type">
+            <field name="name">免单</field>
+            <field name="pay_type_code">free</field>
+        </record>
+
+        <record id="pay_type_suspend" model="ktv.pay_type">
+            <field name="name">挂账</field>
+            <field name="pay_type_code">suspend</field>
+        </record>
+
+        <record id="pay_type_check" model="ktv.pay_type">
+            <field name="name">支票</field>
+            <field name="pay_type_code">check</field>
+        </record>
+
+        <record id="pay_type_store_value_card" model="ktv.pay_type">
+            <field name="name">储值卡</field>
+            <field name="pay_type_code">store_value_card</field>
+        </record>
+
 
         <!--费用精度-->
         <!--房费取整-->
@@ -54,8 +140,5 @@
             <field name="name">Ktv Fee Discount Rate</field>
             <field name="digits">2</field>
         </record>
-
     </data>
 </openerp>
-
-

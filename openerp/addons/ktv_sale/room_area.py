@@ -7,7 +7,7 @@ class room_area(osv.osv):
 
     _columns = {
             'name' : fields.char('name',size = 64,required = True),
-            'description' : fields.char('description',size = 255),
+            'description' : fields.text('description',size = 255),
             'active' : fields.boolean('active'),
             }
     _defaults = {

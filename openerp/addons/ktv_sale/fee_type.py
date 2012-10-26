@@ -28,6 +28,7 @@ class fee_type(osv.osv):
     #自助餐?
     FEE_TYPE_BUFFET = "buffet"
     #酒水?
+    FEE_TYPE_DRINKS = "drinks"
 
 
     _name = "ktv.fee_type"

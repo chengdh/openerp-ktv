@@ -28,9 +28,11 @@ class ktv_pay_type(osv.osv):
             #计费类型
             'pay_type_code' : fields.char("pay_type_code",size = 64,required = True,readonly = True),
             'description' : fields.char('description',size = 255),
+            'is_store_point' : fields.boolean('is_store_point'),
             'active' : fields.boolean('active'),
             }
 
     _defaults = {
             'active' : True,
+            'is_store_point' : True,
             }
