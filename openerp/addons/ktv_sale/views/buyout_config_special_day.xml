@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_buyout_config_special_day_form" model="ir.ui.view">
+            <field name="name">ktv.buyout_config_special_day</field>
+            <field name="model">ktv.buyout_config_special_day</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="buyout config">
+                    <field name="room_type_id"/>
+                    <field name="special_day"/>
+                </form>
+            </field>
+        </record>
+        <record id="view_buyout_config_special_day_tree" model="ir.ui.view">
+            <field name="name">ktv.buyout_config_special_day_tree</field>
+            <field name="model">ktv.buyout_config_special_day</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="buyout config">
+                    <field name="room_type_id" />
+                    <field name="special_day" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_buyout_config_special_day" model="ir.actions.act_window">
+            <field name="name">买断特殊日设置</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ktv.buyout_config_special_day</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name='help'>设置买断特殊日期</field>
+        </record>
+
+        <menuitem action="action_buyout_config_special_day" id="menu_action_buyout_config_special_day" parent="base.menu_buyout_config" name="买断特殊日期设置" sequence="0"/>
+    </data>
+</openerp>
