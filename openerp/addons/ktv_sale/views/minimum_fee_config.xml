@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_minimum_fee_config_form" model="ir.ui.view">
+            <field name="name">ktv.minimum_fee_config</field>
+            <field name="model">ktv.minimum_fee_config</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="buyout config">
+                    <group colspan="4">
+                        <field name="room_type_id" />
+                        <field name="active" />
+                        <field name="time_from" />
+                        <field name="time_to" />
+                    </group>
+                    <separator colspan="4" string="设置时段低消费用" />
+                    <html>
+                        <table width="100%%">
+                            <tr>
+                                <td><field name="mon_minimum_fee" string="星期一低消:"/></td>
+                                <td><field name="mon_room_fee" string="包厢费:"/></td>
+                                <td><field name="mon_minimum_fee_p" string="按位低消:"/></td>
+                            </tr>
+                            <tr>
+                                <td><field name="tue_minimum_fee" string="星期二低消:"/></td>
+                                <td><field name="tue_room_fee" string="包厢费:"/></td>
+                                <td><field name="tue_minimum_fee_p" string="按位低消:"/></td>
+                            </tr>
+                            <tr>
+                                <td><field name="wed_minimum_fee" string="星期三低消:"/></td>
+                                <td><field name="wed_room_fee" string="包厢费:"/></td>
+                                <td><field name="wed_minimum_fee_p" string="按位低消:"/></td>
+                            </tr>
+                            <tr>
+                                <td><field name="thurs_minimum_fee" string="星期四低消:"/></td>
+                                <td><field name="thurs_room_fee" string="包厢费:"/></td>
+                                <td><field name="thurs_minimum_fee_p" string="按位低消:"/></td>
+                            </tr>
+                            <tr>
+                                <td><field name="fri_minimum_fee" string="星期五低消:"/></td>
+                                <td><field name="fri_room_fee" string="包厢费:"/></td>
+                                <td><field name="fri_minimum_fee_p" string="按位低消:"/></td>
+                            </tr>
+                            <tr>
+                                <td><field name="sat_minimum_fee" string="星期六低消:"/></td>
+                                <td><field name="sat_room_fee" string="包厢费:"/></td>
+                                <td><field name="sat_minimum_fee_p" string="按位低消:"/></td>
+                            </tr>
+                            <tr>
+                                <td><field name="sun_minimum_fee" string="星期日低消:"/></td>
+                                <td><field name="sun_room_fee" string="包厢费:"/></td>
+                                <td><field name="sun_minimum_fee_p" string="按位低消:"/></td>
+                            </tr>
+                            <tr>
+                                <td><field name="special_day_minimum_fee" string="特殊日低消:"/></td>
+                                <td><field name="special_day_room_fee" string="包厢费:"/></td>
+                                <td><field name="special_day_minimum_fee_p" string="按位低消:"/></td>
+                            </tr>
+                        </table>
+                    </html>
+                </form>
+            </field>
+        </record>
+        <record id="view_minimum_fee_config_tree" model="ir.ui.view">
+            <field name="name">ktv.minimum_fee_config_tree</field>
+            <field name="model">ktv.minimum_fee_config</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="minimum_fee config">
+                    <field name="room_type_id" />
+                    <field name="time_from" />
+                    <field name="time_to" />
+                    <field name="active" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_minimum_fee_config" model="ir.actions.act_window">
+            <field name="name">时段低消设置</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ktv.minimum_fee_config</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name='help'>设置每周不同时间段最低消费及包厢费</field>
+        </record>
+
+        <menuitem action="action_minimum_fee_config" id="menu_action_minimum_fee_config" parent="base.menu_minimum_fee_config" name="时段低消设置" sequence="0"/>
+    </data>
+</openerp>
+

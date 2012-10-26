@@ -60,4 +60,35 @@
 -
   !record {model: ktv.buyout_config_special_day,id: buyout_config_special_day_2}:
     room_type_id: ktv_room_type1
+-
+  应能够成功保存时段低消设置
+-
+  !record {model: ktv.minimum_fee_config,id: minimum_fee_config_1}:
+    room_type_id: ktv_room_type1
+    time_from: '12:00'
+    time_to: '18:30'
+    mon_minimum_fee: 20
+    mon_room_fee: 50
+    mon_minimum_fee_p: 10
+    tue_minimum_fee: 20
+    tue_room_fee: 50
+    tue_minimum_fee_p: 10
+    wed_minimum_fee: 20
+    wed_room_fee: 50
+    wed_minimum_fee_p: 10
+    thurs_minimum_fee: 20
+    thurs_room_fee: 50
+    thurs_minimum_fee_p: 10
+    fri_minimum_fee: 20
+    fri_room_fee: 50
+    fri_minimum_fee_p: 10
+    sat_minimum_fee: 20
+    sat_room_fee: 50
+    sat_minimum_fee_p: 10
+    sun_minimum_fee: 20
+    sun_room_fee: 50
+    sun_minimum_fee_p: 10
+    special_day_minimum_fee: 20
+    special_day_room_fee: 50
+    special_day_minimum_fee_p: 10
 

@@ -51,6 +51,7 @@
         'views/room_discount.xml',
         'views/buyout_config.xml',
         'views/buyout_config_special_day.xml',
+        'views/minimum_fee_config.xml',
         'ktv_data.xml'
         ],
     'demo_xml': [],
