@@ -91,4 +91,10 @@
     special_day_minimum_fee: 20
     special_day_room_fee: 50
     special_day_minimum_fee_p: 10
+-
+  应能正确保存时段低消特殊日设置
+-
+  !record {model : ktv.minimum_fee_config_special_day,id: minimum_fee_config_special_day_1}:
+    room_type_id: ktv_room_type1
+    special_day: 2012-10-1
 

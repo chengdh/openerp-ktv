@@ -28,6 +28,7 @@ import room_discount
 import buyout_config
 import buyout_config_special_day
 import minimum_fee_config
+import minimum_fee_config_special_day
 import wizard
 import report
 
