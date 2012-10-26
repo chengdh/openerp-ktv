@@ -35,13 +35,6 @@
     room_area_id: ktv_room_area
     room_type_id: ktv_room_type1
 
--
-  应能够成功保存包厢打折信息
--
-  !record {model: ktv.room_discount,id: room_discount_1}:
-    room_type_id: ktv_room_type1
-    time_from: '09:30'
-    time_to: '12:30'
 
 -
   应能够成功保存买断信息设置
@@ -97,4 +90,21 @@
   !record {model : ktv.minimum_fee_config_special_day,id: minimum_fee_config_special_day_1}:
     room_type_id: ktv_room_type1
     special_day: 2012-10-1
+
+-
+  应能够成功保存价格类型信息
+-
+  !record {model: ktv.price_class,id: price_class_1}:
+    name: 默认价
+-
+  !record {model: ktv.price_class,id: price_class_2}:
+    name: 开业价
+-
+  应能够成功保存包厢钟点费打折信息
+-
+  !record {model: ktv.hourly_fee_discount,id: hourly_fee_discount_1}:
+    price_class_id: price_class_1
+    room_type_id: ktv_room_type1
+    time_from: '09:30'
+    time_to: '12:30'
 

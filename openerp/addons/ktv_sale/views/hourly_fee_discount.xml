@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <record id="view_room_discount_form" model="ir.ui.view">
-            <field name="name">ktv.room_discount</field>
-            <field name="model">ktv.room_discount</field>
+        <record id="view_hourly_fee_discount_form" model="ir.ui.view">
+            <field name="name">ktv.hourly_fee_discount</field>
+            <field name="model">ktv.hourly_fee_discount</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <form string="room_discount">
-                    <field name="room_type_id" select="1"  required="1" on_change="onchange_room_type_id(room_type_id)"/>
-                    <field name="base_hourly_fee" on_change="onchange_base_hourly_fee(base_hourly_fee)" />
+                <form string="hourly_fee_discount">
+                    <field name="room_type_id"  on_change="onchange_room_type_id(room_type_id)"/>
+                    <field name="price_class_id"/>
                     <field name="time_from" />
                     <field name="time_to" />
+                    <field name="base_hourly_fee" on_change="onchange_base_hourly_fee(base_hourly_fee)" />
 
                     <separator colspan="4" string="请设置折扣信息" />
                     <notebook colspan="4">
@@ -59,8 +60,8 @@
             </field>
         </record>
         <record id="view_ktv_discount_tree" model="ir.ui.view">
-            <field name="name">ktv.room_discount</field>
-            <field name="model">ktv.room_discount</field>
+            <field name="name">ktv.hourly_fee_discount</field>
+            <field name="model">ktv.hourly_fee_discount</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="room discount">
@@ -70,30 +71,31 @@
                 </tree>
             </field>
         </record>
-        <record id="view_room_discount_search" model="ir.ui.view">
-            <field name="name">ktv.room_discount.search</field>
-            <field name="model">ktv.room_discount</field>
+        <record id="view_hourly_fee_discount_search" model="ir.ui.view">
+            <field name="name">ktv.hourly_fee_discount.search</field>
+            <field name="model">ktv.hourly_fee_discount</field>
             <field name="type">search</field>
             <field name="arch" type="xml">
                 <search string="Search ktv room discounts">
                     <field name="room_type_id" widget="selection"/>
+                    <field name="price_class_id" widget="selection"/>
                     <newline/>
                 </search>
             </field>
         </record>
 
 
-        <record id="action_room_discount" model="ir.actions.act_window">
+        <record id="action_hourly_fee_discount" model="ir.actions.act_window">
             <field name="name">包厢打折信息</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">ktv.room_discount</field>
+            <field name="res_model">ktv.hourly_fee_discount</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="view_room_discount_search" />
+            <field name="view_id" ref="view_hourly_fee_discount_search" />
             <field name='help'>包厢打折信息</field>
         </record>
 
-        <menuitem action="action_room_discount" id="menu_action_room_discount" parent="base.menu_ktv_base_info" name="包厢打折信息" sequence="0"/>
+        <menuitem action="action_hourly_fee_discount" id="menu_action_hourly_fee_discount" parent="base.menu_hourly_fee_config" name="包厢钟点费打折信息" sequence="2"/>
 
     </data>
 </openerp>

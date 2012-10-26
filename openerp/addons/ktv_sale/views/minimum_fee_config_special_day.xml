@@ -33,6 +33,6 @@
             <field name='help'>设置低消特殊日期</field>
         </record>
 
-        <menuitem action="action_minimum_fee_config_special_day" id="menu_action_minimum_fee_config_special_day" parent="base.menu_minimum_fee_config" name="买断特殊日期设置" sequence="0"/>
+        <menuitem action="action_minimum_fee_config_special_day" id="menu_action_minimum_fee_config_special_day" parent="base.menu_minimum_fee_config" name="低消特殊日期设置" sequence="0"/>
     </data>
 </openerp>

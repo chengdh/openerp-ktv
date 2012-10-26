@@ -48,11 +48,12 @@
         'views/room_area.xml',
         'views/room_type.xml',
         'views/room.xml',
-        'views/room_discount.xml',
+        'views/hourly_fee_discount.xml',
         'views/buyout_config.xml',
         'views/buyout_config_special_day.xml',
         'views/minimum_fee_config.xml',
         'views/minimum_fee_config_special_day.xml',
+        'views/price_class.xml',
         'ktv_data.xml'
         ],
     'demo_xml': [],

@@ -29,6 +29,8 @@ import buyout_config
 import buyout_config_special_day
 import minimum_fee_config
 import minimum_fee_config_special_day
+import price_class
+import hourly_fee_discount
 import wizard
 import report
 
