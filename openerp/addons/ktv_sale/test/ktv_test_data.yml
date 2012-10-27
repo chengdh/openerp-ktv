@@ -115,4 +115,27 @@
     room_type_id: ktv_room_type1
     time_from: '09:30'
     time_to: '12:30'
+-
+  !record {model: ktv.member_class,id: member_class_jin}:
+    name: 金卡
+    card_fee: 50
+    drinks_fee_discount: 80
+    room_fee_discount: 90
+    up_card_fee: 15
+    drinks_price_type: room_price
+    room_limit_count: 0
+    market_limit_count: 0
+    can_points: True
+    can_manual_input: True
+    can_store_money: True
+    active: True
 
+-
+  应能够成功保存会员时段设置
+-
+  !record {model: ktv.member_hourly_fee_discount,id: member_hourly_fee_discount_1}:
+    price_class_id: price_class_1
+    room_type_id: ktv_room_type1
+    member_class_id: member_class_jin
+    time_from: '09:30'
+    time_to: '12:30'

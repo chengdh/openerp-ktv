@@ -13,7 +13,7 @@ class room_type(osv.osv):
             'description' : fields.text('description',size = 255),
             #赠送套餐
             #酒水价格
-            'price_type' : fields.selection(ktv_helper.price_list_for_selection,string="price_type"),
+            'drinks_price_type' : fields.selection(ktv_helper.price_list_for_selection,string="drinks_price_type"),
             #计费方式
             'fee_type_id' : fields.many2one('ktv.fee_type',"fee_type_id"),
             #容纳人数

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from osv import fields, osv
-class ktv_pay_type(osv.osv):
+class pay_type(osv.osv):
     #系统预置支付方式
     #现金
     PAY_TYPE_CASH = "cash"

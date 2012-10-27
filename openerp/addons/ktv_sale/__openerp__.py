@@ -57,12 +57,15 @@
         'views/minimum_fee_config.xml',
         'views/minimum_fee_config_special_day.xml',
         'views/price_class.xml',
+        'views/member_class.xml',
+        'views/member_hourly_fee_discount.xml',
         'ktv_data.xml'
         ],
     'demo_xml': [],
     'test': [
         'test/ktv_test_data.yml',
-        'test/ktv_room_test.yml'
+        'test/member_test_data.yml',
+        'test/ktv_room_test.yml',
         ],
     'installable': True,
     'application': True,

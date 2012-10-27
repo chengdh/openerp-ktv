@@ -1,0 +1,17 @@
+-
+  应能够成功保存会员等级信息
+-
+  !record {model : ktv.member_class,id: member_class_1}:
+    name: 金卡
+    card_fee: 20
+    drinks_fee_discount: 80
+    room_fee_discount: 90
+    up_card_fee: 15
+    drinks_price_type: room_price
+    room_limit_count: 0
+    market_limit_count: 0
+    can_points: True
+    can_manual_input: True
+    can_store_money: True
+    active: True
+
