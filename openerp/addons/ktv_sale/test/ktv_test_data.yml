@@ -182,3 +182,10 @@
     time_to: '12:30'
     break_on: '13:00'
     break_on_enable: True
+
+-
+  应能正确保存自助餐特殊日设置
+-
+  !record {model: ktv.buffet_config_special_day,id: buffet_config_special_day_1}:
+    room_type_id: ktv_room_type1
+    special_day: 2011-10-01

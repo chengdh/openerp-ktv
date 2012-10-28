@@ -29,6 +29,7 @@ import room_type_special_day
 import buyout_config
 import buyout_config_special_day
 import buffet_config
+import buffet_config_special_day
 import minimum_fee_config
 import minimum_fee_config_special_day
 import price_class
