@@ -56,6 +56,7 @@
         'views/member_hourly_fee_discount_special_day.xml',
         'views/buyout_config.xml',
         'views/buyout_config_special_day.xml',
+        'views/buffet_config.xml',
         'views/minimum_fee_config.xml',
         'views/minimum_fee_config_special_day.xml',
         'views/hourly_fee_promotion.xml',

@@ -170,4 +170,15 @@
     sun_active: True
     active: True
 
-
+-
+  应能够正确保存自助餐设置信息
+-
+  !record {model: ktv.buffet_config,id: buffet_config}:
+    name: 小包日场3H人头买断
+    room_type_id: ktv_room_type1
+    is_member: False
+    active: True
+    time_from: '09:30'
+    time_to: '12:30'
+    break_on: '13:00'
+    break_on_enable: True
