@@ -36,6 +36,7 @@ import hourly_fee_discount_special_day
 import hourly_fee_p_discount
 import hourly_fee_p_discount_special_day
 import member_hourly_fee_discount
+import member_hourly_fee_discount_special_day
 import member_class
 import wizard
 import report

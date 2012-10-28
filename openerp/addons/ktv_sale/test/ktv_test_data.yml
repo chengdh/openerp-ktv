@@ -139,3 +139,10 @@
     member_class_id: member_class_jin
     time_from: '09:30'
     time_to: '12:30'
+-
+  应能够成功保存会员特殊日期设置信息
+-
+  !record {model: ktv.member_hourly_fee_discount_special_day,id: mh_special_day_1}:
+    member_class_id: member_class_jin
+    room_type_id: ktv_room_type1
+    special_day: 2012-10-1

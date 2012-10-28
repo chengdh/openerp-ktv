@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_member_hourly_fee_discount_special_day_form" model="ir.ui.view">
+            <field name="name">ktv.member_hourly_fee_discount_special_day_form</field>
+            <field name="model">ktv.member_hourly_fee_discount_special_day</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="buyout config">
+                    <field name="member_class_id"/>
+                    <field name="room_type_id"/>
+                    <field name="special_day"/>
+                </form>
+            </field>
+        </record>
+        <record id="view_member_hourly_fee_discount_special_day_tree" model="ir.ui.view">
+            <field name="name">ktv.member_hourly_fee_discount_special_day_tree</field>
+            <field name="model">ktv.member_hourly_fee_discount_special_day</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="buyout config">
+                    <field name="member_class_id" />
+                    <field name="room_type_id" />
+                    <field name="special_day" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_member_hourly_fee_discount_special_day" model="ir.actions.act_window">
+            <field name="name">会员时段特殊日设置</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ktv.member_hourly_fee_discount_special_day</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name='help'>会员时段特殊日期</field>
+        </record>
+
+        <menuitem action="action_member_hourly_fee_discount_special_day" id="menu_action_member_hourly_fee_discount_special_day" parent="base.menu_hourly_fee_config" name="会员时段特殊日期设置" sequence="4"/>
+    </data>
+</openerp>
