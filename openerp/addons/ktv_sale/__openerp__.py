@@ -58,6 +58,7 @@
         'views/buyout_config_special_day.xml',
         'views/minimum_fee_config.xml',
         'views/minimum_fee_config_special_day.xml',
+        'views/hourly_fee_promotion.xml',
         'views/price_class.xml',
         'views/member_class.xml',
         'ktv_data.xml'

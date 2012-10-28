@@ -35,6 +35,6 @@
             <field name='help'>会员时段特殊日期</field>
         </record>
 
-        <menuitem action="action_member_hourly_fee_discount_special_day" id="menu_action_member_hourly_fee_discount_special_day" parent="base.menu_hourly_fee_config" name="会员时段特殊日期设置" sequence="4"/>
+        <menuitem action="action_member_hourly_fee_discount_special_day" id="menu_action_member_hourly_fee_discount_special_day" parent="base.menu_hourly_fee_config" name="会员时段特殊日" sequence="5"/>
     </data>
 </openerp>

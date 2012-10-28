@@ -25,14 +25,14 @@
         </record>
 
         <record id="action_hourly_fee_discount_special_day" model="ir.actions.act_window">
-            <field name="name">钟点费特殊日设置</field>
+            <field name="name">包厢时段特殊日设置</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">ktv.hourly_fee_discount_special_day</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name='help'>设置钟点费打折特殊日期</field>
+            <field name='help'>包厢时段特殊日设置</field>
         </record>
 
-        <menuitem action="action_hourly_fee_discount_special_day" id="menu_action_hourly_fee_discount_special_day" parent="base.menu_hourly_fee_config" name="钟点费打折特殊日期设置" sequence="3"/>
+        <menuitem action="action_hourly_fee_discount_special_day" id="menu_action_hourly_fee_discount_special_day" parent="base.menu_hourly_fee_config" name="包厢时段特殊日" sequence="3"/>
     </data>
 </openerp>

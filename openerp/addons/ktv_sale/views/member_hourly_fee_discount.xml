@@ -90,15 +90,15 @@
 
 
         <record id="action_member_hourly_fee_discount" model="ir.actions.act_window">
-            <field name="name">包厢打折信息</field>
+            <field name="name">会员时段钟点费设置</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">ktv.member_hourly_fee_discount</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="view_member_hourly_fee_discount_search" />
-            <field name='help'>包厢打折信息</field>
+            <field name='help'>会员时段钟点费设置</field>
         </record>
 
-        <menuitem action="action_member_hourly_fee_discount" id="menu_action_member_hourly_fee_discount" parent="base.menu_hourly_fee_config" name="包厢钟点费打折信息" sequence="2"/>
+        <menuitem action="action_member_hourly_fee_discount" id="menu_action_member_hourly_fee_discount" parent="base.menu_hourly_fee_config" name="会员时段" sequence="4"/>
     </data>
 </openerp>

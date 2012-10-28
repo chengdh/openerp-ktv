@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_hourly_fee_promotion_form" model="ir.ui.view">
+            <field name="name">ktv.hourly_fee_promotion</field>
+            <field name="model">ktv.hourly_fee_promotion</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="buyout config">
+                    <field name="name" colspan="4"/>
+                    <field name="active" />
+                    <field name="is_member" />
+                    <field name="buy_minutes"/>
+                    <field name="present_minutes"/>
+                    <group colspan="4" col ="6" string="datetime and time config">
+                        <field name="active_datetime_limit"/>
+                        <field name="datetime_from" attrs="{'readonly' : [('active_datetime_limit','=',False)]}"/>
+                        <field name="datetime_to" attrs="{'readonly' : [('active_datetime_limit','=',False)]}"/>
+                        <field name="active_time_limit"/>
+                        <field name="time_from" attrs="{'readonly' : [('active_time_limit','=',False)]}"/>
+                        <field name="time_to" attrs="{'readonly' : [('active_time_limit','=',False)]}"/>
+                    </group>
+                    <group colspan="4" col="6" string="星期设置">
+                        <field name="mon_active" />
+                        <field name="tue_active" />
+                        <field name="wed_active" />
+                        <field name="thurs_active" />
+                        <field name="fri_active" />
+                        <field name="sat_active" />
+                        <field name="sun_active" />
+                    </group>
+
+                </form>
+            </field>
+        </record>
+        <record id="view_hourly_fee_promotion_tree" model="ir.ui.view">
+            <field name="name">ktv.hourly_fee_promotion_tree</field>
+            <field name="model">ktv.hourly_fee_promotion</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="hourly fee promotion config">
+                    <field name="name" />
+                    <field name="is_member" />
+                    <field name="active" />
+                    <field name="buy_minutes" />
+                    <field name="present_minutes" />
+                    <field name="active_datetime_limit" />
+                    <field name="datetime_from" />
+                    <field name="datetime_to" />
+                    <field name="active_time_limit" />
+                    <field name="time_from" />
+                    <field name="time_to" />
+                    <field name="mon_active" />
+                    <field name="tue_active"/>
+                    <field name="wed_active" />
+                    <field name="thurs_active"/>
+                    <field name="fri_active"/>
+                    <field name="sat_active"/>
+                    <field name="sun_active"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_hourly_fee_promotion" model="ir.actions.act_window">
+            <field name="name">买钟优惠设置</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ktv.hourly_fee_promotion</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name='help'>买钟优惠设置</field>
+        </record>
+
+        <menuitem action="action_hourly_fee_promotion" id="menu_action_hourly_fee_promotion" parent="base.menu_hourly_fee_config" name="买钟优惠设置" sequence="8"/>
+    </data>
+</openerp>
+

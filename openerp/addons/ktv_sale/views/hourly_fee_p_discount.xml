@@ -86,15 +86,15 @@
 
 
         <record id="action_hourly_fee_p_discount" model="ir.actions.act_window">
-            <field name="name">包厢打折信息</field>
+            <field name="name">按位时段钟点费设置</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">ktv.hourly_fee_p_discount</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="view_hourly_fee_p_discount_search" />
-            <field name='help'>包厢打折信息</field>
+            <field name='help'>按位时段钟点费设置</field>
         </record>
 
-        <menuitem action="action_hourly_fee_p_discount" id="menu_action_hourly_fee_p_discount" parent="base.menu_hourly_fee_config" name="按位钟点费打折信息" sequence="3"/>
+        <menuitem action="action_hourly_fee_p_discount" id="menu_action_hourly_fee_p_discount" parent="base.menu_hourly_fee_config" name="按位时段" sequence="6"/>
     </data>
 </openerp>

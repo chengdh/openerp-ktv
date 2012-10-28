@@ -146,3 +146,28 @@
     member_class_id: member_class_jin
     room_type_id: ktv_room_type1
     special_day: 2012-10-1
+
+-
+  应能够正确保存买钟优惠设置信息
+-
+  !record {model: ktv.hourly_fee_promotion,id: hourly_fee_promotion_1}:
+    name: 买钟优惠设置1
+    is_member: False
+    buy_minutes: 120
+    present_minutes: 120
+    active_datetime_limit: True
+    datetime_from: 2012-01-01 16:30:00
+    datetime_to: 2012-01-20 18:00:00
+    active_time_limit: False
+    time_from: '09:30'
+    time_to: '22:30'
+    mon_active: True
+    tue_active: True
+    wed_active: True
+    thurs_active: True
+    fri_active: True
+    sat_active: True
+    sun_active: True
+    active: True
+
+
