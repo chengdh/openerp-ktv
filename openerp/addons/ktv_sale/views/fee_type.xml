@@ -7,9 +7,24 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="room_type">
-                    <field name="name" select="1"  required="1"/>
-                    <field name="description" />
-                    <field name="active"/>
+                    <field name="name"/>
+                    <field name="drinks_price_type"/>
+                    <field name="service_fee_rate"/>
+                    <field name="active" colspan="4"/>
+                    <field name="description" colspan="4" />
+                    <newline/>
+                    <field colspan="4" name="member_class_discount_ids" nolabel="1" widget="one2many_list">
+                        <form string="member class discount lines">
+                            <field name="member_class_id" />
+                            <field name="drinks_fee_discount" />
+                            <field name="room_fee_discount" />
+                        </form>
+                        <tree string = "member class discount lines">
+                            <field name="member_class_id" />
+                            <field name="drinks_fee_discount" />
+                            <field name="room_fee_discount" />
+                        </tree>
+                    </field>
                 </form>
             </field>
         </record>

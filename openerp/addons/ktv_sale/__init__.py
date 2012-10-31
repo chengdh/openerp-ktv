@@ -19,6 +19,7 @@
 #
 ##############################################################################
 import fee_type
+import fee_type_member_class_discount
 import pay_type
 import room
 import room_area
