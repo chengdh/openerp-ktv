@@ -63,6 +63,8 @@
         'views/hourly_fee_promotion.xml',
         'views/price_class.xml',
         'views/member_class.xml',
+        'views/discount_card_type.xml',
+        'views/song_ticket.xml',
         'ktv_data.xml'
         ],
     'demo_xml': [],

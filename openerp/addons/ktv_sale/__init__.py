@@ -42,6 +42,8 @@ import hourly_fee_promotion
 import member_hourly_fee_discount
 import member_hourly_fee_discount_special_day
 import member_class
+import discount_card_type #打折卡
+import song_ticket  #欢唱券
 import wizard
 import report
 

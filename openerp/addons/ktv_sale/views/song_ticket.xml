@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_song_ticket_form" model="ir.ui.view">
+            <field name="name">ktv.song_ticket_form</field>
+            <field name="model">ktv.song_ticket</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="song ticket">
+                    <field name="name"/>
+                    <field name="room_type_id" />
+                    <field name="equal_minutes" />
+                    <field name="active_time_limit" />
+                    <field name="time_from" attrs="{'readonly' : [('active_time_limit','=',False)]}" />
+                    <field name="time_to"  attrs="{'readonly' : [('active_time_limit','=',False)]}" />
+                    <field name="active"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_song_ticket_tree" model="ir.ui.view">
+            <field name="name">ktv.song_ticket_tree</field>
+            <field name="model">ktv.song_ticket</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="欢唱券设置">
+                    <field name="name"/>
+                    <field name="room_type_id" />
+                    <field name="equal_minutes" />
+                    <field name="active_time_limit" />
+                    <field name="time_from" />
+                    <field name="time_to" />
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="action_song_ticket" model="ir.actions.act_window">
+            <field name="name">欢唱券设置</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ktv.song_ticket</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name='help'>欢唱券设置</field>
+        </record>
+
+        <menuitem action="action_song_ticket" id="menu_action_song_ticket" parent="base.menu_ktv_base_info" name="欢唱券设置" sequence="1"/>
+
+    </data>
+</openerp>
+

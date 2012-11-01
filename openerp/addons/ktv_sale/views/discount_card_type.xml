@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_discount_card_type_form" model="ir.ui.view">
+            <field name="name">ktv.discount_card_type_form</field>
+            <field name="model">ktv.discount_card_type</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="discount card type">
+                    <field name="name"/>
+                    <field name="drinks_fee_discount"/>
+                    <field name="room_fee_discount"/>
+                    <field name="card_fee"/>
+                    <field name="active" colspan="4"/>
+                    <field name="description" colspan="4" />
+                </form>
+            </field>
+        </record>
+
+        <record id="view_discount_card_type_tree" model="ir.ui.view">
+            <field name="name">ktv.discount_card_type_tree</field>
+            <field name="model">ktv.discount_card_type</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="打折卡设置">
+                    <field name="name"/>
+                    <field name="card_fee"/>
+                    <field name="drinks_fee_discount"/>
+                    <field name="room_fee_discount"/>
+                    <field name="description" />
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="action_discount_card_type" model="ir.actions.act_window">
+            <field name="name">打折卡设置</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ktv.discount_card_type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name='help'>打折卡设置</field>
+        </record>
+
+        <menuitem action="action_discount_card_type" id="menu_action_discount_card_type" parent="base.menu_member" name="打折卡设置" sequence="0"/>
+    </data>
+</openerp>
+
+

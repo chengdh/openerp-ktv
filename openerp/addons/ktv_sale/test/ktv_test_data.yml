@@ -189,3 +189,21 @@
   !record {model: ktv.buffet_config_special_day,id: buffet_config_special_day_1}:
     room_type_id: ktv_room_type1
     special_day: 2011-10-01
+-
+  应能够正确保存打折卡类别设置信息
+-
+  !record {model: ktv.discount_card_type,id: discount_card_type_1}:
+    name: 房费8折卡
+    drinks_fee_discount: 100.00
+    room_fee_discount: 80.00
+    card_fee: 20
+-
+  应能够正确保存欢唱券设置信息
+-
+  !record {model: ktv.song_ticket,id: song_ticket_1}:
+    name: 30分钟欢唱券
+    room_type_id : ktv_room_type1
+    equal_minutes: 30
+    active_time_limit: True
+    time_from: '09:30'
+    time_to: '12:30'
