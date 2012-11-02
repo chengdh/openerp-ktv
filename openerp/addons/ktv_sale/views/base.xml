@@ -8,6 +8,8 @@
         <menuitem id="base.menu_minimum_fee_config" name="时段低消设置" parent="base.menu_ktv_base_info" sequence="4"/>
         <menuitem id="base.menu_hourly_fee_config" name="时段钟点费设置" parent="base.menu_ktv_base_info" sequence="5"/>
         <menuitem id="base.menu_member" name="会员管理" parent="base.menu_ktv_base_info" sequence="6"/>
+        <!--抵用券管理-->
+        <menuitem id="menu_sales_voucher" name="抵用券" parent="base.menu_ktv_base_info" sequence="7"/>
     </data>
 </openerp>
 

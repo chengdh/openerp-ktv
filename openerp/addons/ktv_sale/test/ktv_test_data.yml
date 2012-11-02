@@ -207,3 +207,9 @@
     active_time_limit: True
     time_from: '09:30'
     time_to: '12:30'
+-
+  应能够正确保存抵用券类型设置信息
+-
+  !record {model: ktv.sales_voucher_type,id: sales_voucher_type_1}:
+    name: 低50元抵用券
+    face_value: 50.00

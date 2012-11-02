@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_sales_voucher_type_form" model="ir.ui.view">
+            <field name="name">ktv.sales_voucher_type_form</field>
+            <field name="model">ktv.sales_voucher_type</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="room_type">
+                    <field name="name" select="1"  required="1"/>
+                    <field name="face_value"/>
+                    <field name="active"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_sales_voucher_type_tree" model="ir.ui.view">
+            <field name="name">ktv.sales_voucher_type_tree</field>
+            <field name="model">ktv.sales_voucher_type</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="抵用券类型">
+                    <field name="name"/>
+                    <field name="face_value" />
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="action_sales_voucher_type_form" model="ir.actions.act_window">
+            <field name="name">抵用券类型</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ktv.sales_voucher_type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name='help'>定义不同的抵用券类型</field>
+        </record>
+        <!--包厢类别菜单-->
+        <menuitem action="action_sales_voucher_type_form" id="menu_action_sales_voucher_type_form" parent="menu_sales_voucher" sequence="1"/>
+    </data>
+</openerp>
