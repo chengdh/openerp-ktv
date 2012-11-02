@@ -66,6 +66,7 @@
         'views/discount_card_type.xml',
         'views/song_ticket.xml',
         'views/sales_voucher_type.xml',
+        'views/sales_voucher.xml',
         'ktv_data.xml'
         ],
     'demo_xml': [],

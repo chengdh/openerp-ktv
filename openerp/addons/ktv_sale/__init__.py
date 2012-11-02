@@ -45,6 +45,7 @@ import member_class
 import discount_card_type   #打折卡
 import song_ticket          #欢唱券
 import sales_voucher_type   #抵用券类型
+import sales_voucher   #抵用券登记
 import wizard
 import report
 

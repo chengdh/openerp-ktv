@@ -213,3 +213,11 @@
   !record {model: ktv.sales_voucher_type,id: sales_voucher_type_1}:
     name: 低50元抵用券
     face_value: 50.00
+-
+  应能够正确保存抵用券信息
+-
+  !record {model: ktv.sales_voucher,id: sales_voucher_1}:
+    id_number: 000001234
+    face_value: 50.0
+    as_money: 50
+    description: 抵用券00001234
