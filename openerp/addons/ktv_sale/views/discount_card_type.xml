@@ -43,7 +43,7 @@
             <field name='help'>打折卡设置</field>
         </record>
 
-        <menuitem action="action_discount_card_type" id="menu_action_discount_card_type" parent="base.menu_member" name="打折卡设置" sequence="0"/>
+        <menuitem action="action_discount_card_type" id="menu_action_discount_card_type" parent="menu_members" name="打折卡设置" sequence="0"/>
     </data>
 </openerp>
 

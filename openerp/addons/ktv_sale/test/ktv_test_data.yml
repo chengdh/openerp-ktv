@@ -129,6 +129,21 @@
     can_manual_input: True
     can_store_money: True
     active: True
+-
+  !record {model: ktv.member_class,id: member_class_yin}:
+    name: 银卡
+    card_fee: 50
+    drinks_fee_discount: 80
+    room_fee_discount: 90
+    up_card_fee: 15
+    drinks_price_type: room_price
+    room_limit_count: 0
+    market_limit_count: 0
+    can_points: True
+    can_manual_input: True
+    can_store_money: True
+    active: True
+
 
 -
   应能够成功保存会员时段设置
@@ -221,3 +236,14 @@
     face_value: 50.0
     as_money: 50
     description: 抵用券00001234
+-
+  应能够正确保存会员升降级设置
+-
+  !record {model: ktv.member_class_change_config,id: member_class_change_config}:
+    member_class_id: member_class_jin
+    date_from: 2012-10-01
+    date_to: 2012-12-31
+    up_points: 3000
+    up_member_class_id: member_class_jin
+    down_points : 500
+    down_member_class_id: member_class_yin

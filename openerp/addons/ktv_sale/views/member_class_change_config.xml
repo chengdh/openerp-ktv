@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_member_class_change_config_form" model="ir.ui.view">
+            <field name="name">ktv.member_class_change_config_form</field>
+            <field name="model">ktv.member_class_change_config</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="member class change config">
+                    <field name="member_class_id" colspan="4"/>
+                    <field name="date_from" />
+                    <field name="date_to" />
+                    <field name="up_points" />
+                    <field name="up_member_class_id" />
+                    <field name="down_points" />
+                    <field name="down_member_class_id" />
+                    <field name="active"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_member_class_change_config_tree" model="ir.ui.view">
+            <field name="name">ktv.member_class_change_config_tree</field>
+            <field name="model">ktv.member_class_change_config</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="会员升降级设置">
+                    <field name="member_class_id"/>
+                    <field name="date_from" />
+                    <field name="date_to" />
+                    <field name="up_points" />
+                    <field name="up_member_class_id" />
+                    <field name="down_points" />
+                    <field name="down_member_class_id" />
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="action_member_class_change_config" model="ir.actions.act_window">
+            <field name="name">会员升降级设置</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ktv.member_class_change_config</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name='help'>会员升降级设置</field>
+        </record>
+
+        <menuitem action="action_member_class_change_config" id="menu_action_member_class_change_config" parent="menu_members" name="会员升降级设置" sequence="2"/>
+
+    </data>
+</openerp>
+

@@ -63,6 +63,7 @@
         'views/hourly_fee_promotion.xml',
         'views/price_class.xml',
         'views/member_class.xml',
+        'views/member_class_change_config.xml',
         'views/discount_card_type.xml',
         'views/song_ticket.xml',
         'views/sales_voucher_type.xml',

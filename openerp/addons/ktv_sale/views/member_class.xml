@@ -55,7 +55,7 @@
             <field name='help'>设置会员等级信息</field>
         </record>
 
-        <menuitem action="action_member_class" id="menu_action_member_class" parent="base.menu_member" name="会员等级" sequence="1"/>
+        <menuitem action="action_member_class" id="menu_action_member_class" parent="menu_members" name="会员等级" sequence="1"/>
 
     </data>
 </openerp>
