@@ -11,16 +11,16 @@ class room(osv.osv):
 
     #房态定义
     #空闲、使用、预订、锁定、已结帐、买断、故障、呼叫?、提醒?、带客、清洁、调试
-    ROOM_STATE_FREE = "free"
-    ROOM_STATE_IN_USE = "in_use"
-    ROOM_STATE_PREORDER = "preorder"
-    ROOM_STATE_LOCK = "locked"
-    ROOM_STATE_CHECKOUT = "checkout"
-    ROOM_STATE_BUYOUT = "buyout"
-    ROOM_STATE_MALFUNCTION = "malfunction"
-    ROOM_STATE_VISIT = "visit"
-    ROOM_STATE_CLEAN = "clean"
-    ROOM_STATE_DEBUG = "debug"
+    STATE_FREE = "free"
+    STATE_IN_USE = "in_use"
+    STATE_SCHEDULED = "scheduled"
+    STATE_LOCK = "locked"
+    STATE_CHECKOUT = "checkout"
+    STATE_BUYOUT = "buyout"
+    STATE_MALFUNCTION = "malfunction"
+    STATE_VISIT = "visit"
+    STATE_CLEAN = "clean"
+    STATE_DEBUG = "debug"
 
     _name = "ktv.room"
     _description = "包厢信息定义"
@@ -71,7 +71,7 @@ class room(osv.osv):
             'minimum_persons' : 1,
             'sequence' : 0,
             'active' : True,
-            'state' : ROOM_STATE_FREE,
+            'state' : STATE_FREE,
             }
 
     def onchange_room_type_id(self,cr,uid,ids,room_type_id):

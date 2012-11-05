@@ -25,7 +25,6 @@ import room
 import room_area
 import room_type
 import room
-import room_discount
 import room_type_special_day
 import buyout_config
 import buyout_config_special_day
