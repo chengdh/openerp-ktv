@@ -83,8 +83,18 @@
     'installable': True,
     'application': True,
     # Web client
-    'js': [],
-    'css': [],
-    'qweb': [],
+    'js': [
+            'static/lib/backbone/backbone-0.5.3.js',
+            'static/lib/bootstrap/js/bootstrap.js',
+            'static/src/js/ktv_sale.js',
+            ],
+    'css': [
+            'static/lib/bootstrap/css/bootstrap.css',
+            'static/lib/bootstrap/css/bootstrap-responsive.css',
+            ],
+    'qweb': [
+            'static/src/xml/ktv_sale.xml',
+            ],
+
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

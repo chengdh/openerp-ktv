@@ -10,6 +10,19 @@
         <menuitem id="menu_members" name="会员管理" parent="base.menu_ktv_base_info" sequence="6"/>
         <!--抵用券管理-->
         <menuitem id="menu_sales_voucher" name="抵用券" parent="base.menu_ktv_base_info" sequence="7"/>
+
+        <!--ktv room pos菜单定义-->
+
+        <record model="ir.actions.client" id="action_room_pos">
+          <field name="name">KTV收银</field>
+          <field name="tag">ktv_room_pos.ui</field>
+        </record>
+
+        <record id="menu_ktv_pos_root_touchscreen" model="ir.ui.menu">
+          <field name="name">KTV收银</field>
+          <field name="sequence" eval="21"/>
+          <field name="action" ref="action_room_pos"/>
+        </record>
     </data>
 </openerp>
 
