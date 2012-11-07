@@ -2,5 +2,103 @@
 <!-- vim:fdl=1:
 -->
 <templates id="template" xml:space="preserve">
-</templates>
+    <t t-name="RoomPointOfSale">
+        <div id="room_pos_wrapper">
+            <div class="navbar navbar-inverse">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <a class="brand" href="#">
+                                <img src="/point_of_sale/static/src/img/logo.png" width="120" height="20"/>
+                        </a>
+                        <div class="nav-collapse collapse">
+                            <p class="navbar-text pull-right">
+                                <button class="btn btn-danger" type="button">退出</button>
+                            </p>
+                        </div><!--/.nav-collapse -->
+                    </div>
+                </div>
+            </div>
 
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class='span10'>
+                        <div id="room_status"></div>
+                        <div id="room_filter"></div>
+                        <ul id="room_list" class="thumbnails"></ul>
+                    </div>
+
+                    <div class='span2'>
+                        <div class="well sidebar-nav">
+                            <ul class="nav nav-list">
+                                <li class='nav-header'><h4>操作菜单</h4></li>
+                                <li><a href="#">预定</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">开房</a></li>
+                                <li><a href="#">换房</a></li>
+                                <li><a href="#">并房</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">买钟</a></li>
+                                <li><a href="#">买断</a></li>
+                                <li><a href="#">续钟</a></li>
+                                <li><a href="#">退钟</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">结账</a></li>
+                            </ul>
+                        </div><!--/.well -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+    <!--包厢widget-->
+    <t t-name="room-template">
+        <div class="well">
+            <h4><t t-esc="name"/></h4>
+            <p><t t-esc="room_type_id[1]"/></p>
+        </div>
+    </t>
+
+    <!--包厢状态-->
+    <!--#空闲、使用、预订、锁定、已结帐、买断、故障、呼叫?、提醒?、带客、清洁、调试 -->
+    <!--'free', 'in_use', 'scheduled', 'locked', 'checkout', 'buyout', 'malfunction', 'visit', 'clean', 'debug' -->
+    <t t-name="room-status-template">
+        <div class="btn-toolbar">
+            <div class='btn-group'>
+                <button class='btn'>显示所有状态</button>
+            </div>
+            <div class='btn-group'>
+                <button class='btn'>空闲<span class="badge"><t t-esc="free"/></span></button>
+                <button class='btn'>使用<span class="badge badge-success"><t t-esc="in_use"/></span></button>
+                <button class='btn'>预定<span class="badge"><t t-esc="scheduled"/></span></button>
+                <button class='btn'>锁定<span class="badge"><t t-esc="locked"/></span></button>
+                <button class='btn'>已结账<span class="badge"><t t-esc="checkout"/></span></button>
+                <button class='btn'>买断<span class="badge"><t t-esc="buyout"/></span></button>
+                <button class='btn'>故障<span class="badge badge-warnning"><t t-esc="malfunction"/></span></button>
+                <button class='btn'>带客<span class="badge"><t t-esc="visit"/></span></button>
+                <button class='btn'>清洁<span class="badge"><t t-esc="clean"/></span></button>
+                <button class="btn">调试<span class="badge"><t t-esc="debug"/></span></button>
+            </div>
+        </div>
+    </t>
+
+    <!--room filter-->
+    <t t-name="room-filter">
+        <div class='btn-toolbar'>
+            <!--包厢区域-->
+            <div class='btn-group'>
+                <button class='btn'>全部区域</button>
+                <t t-foreach="room_areas" t-as="room_area">
+                    <button class='btn'><t t-esc="room_area.name" /></button>
+                </t>
+            </div>
+
+            <!--包厢类别-->
+            <div class='btn-group'>
+                <button class='btn'>全部类别</button>
+                <t t-foreach="room_types" t-as="room_type">
+                    <button class='btn'><t t-esc="room_type.name" /></button>
+                </t>
+            </div>
+        </div>
+    </t>
+</templates>

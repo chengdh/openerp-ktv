@@ -90,7 +90,6 @@
             ],
     'css': [
             'static/lib/bootstrap/css/bootstrap.css',
-            'static/lib/bootstrap/css/bootstrap-responsive.css',
             ],
     'qweb': [
             'static/src/xml/ktv_sale.xml',

@@ -7,12 +7,12 @@ openerp.ktv_sale = function(db) {
 		return function(ctx) {
 			return QWeb.render(template, _.extend({},
 			ctx, {
-				'currency': ktv_room_pos.get('currency'),
+				'currency': db.ktv_sale.ktv_room_pos.get('currency'),
 				'format_amount': function(amount) {
-					if (ktv_room_pos.get('currency').position == 'after') {
-						return amount + ' ' + ktv_room_pos.get('currency').symbol;
+					if (db.ktv_sale.ktv_room_pos.get('currency').position == 'after') {
+						return amount + ' ' + db.ktv_sale.ktv_room_pos.get('currency').symbol;
 					} else {
-						return ktv_room_pos.get('currency').symbol + ' ' + amount;
+						return db.ktv_sale.ktv_room_pos.get('currency').symbol + ' ' + amount;
 					}
 				},
 			}));
@@ -251,100 +251,161 @@ openerp.ktv_sale = function(db) {
 		initialize: function() {
 			this.set({
 				rooms: new db.ktv_sale.RoomCollection(),
-                //房态统计
-                room_status : {},
+				//房态统计
+				room_status: {},
 				current_room: null
 			});
-            this.bind('change:rooms',this.update_room_status,this);
-            this.update_room_status();
+			this.bind('change:rooms', this.update_room_status, this);
+			this.get('rooms').bind('reset',_.bind(this.update_room_status, this));
 		},
 		//更新房态
 		update_room_status: function() {
 			var rooms = this.get('rooms');
 			var states = ['free', 'in_use', 'scheduled', 'locked', 'checkout', 'buyout', 'malfunction', 'visit', 'clean', 'debug'];
             var room_status = {};
-			_.each(states, function(s) {
-				room_status[s] = (_.filter(rooms, function(r) {
-					r['state'] == s
-				})).length
-			},
-			this);
-            this.set({'room_status' : room_status});
+            _.each(states,function(s) {
+                state_rooms = _.filter(rooms.toJSON(),function(r) {return r.state == s},this);
+				room_status[s] = state_rooms.length;
+            },this);
+			this.set({
+				'room_status': room_status
+			});
 		}
 	});
 
 	//显示widget
+	//包厢过滤 widget
+	db.ktv_sale.RoomFilterWidget = db.web.OldWidget.extend({
+		template_fct: qweb_template('room-filter'),
+		init: function(parent, options) {
+			this._super(parent);
+			this.ktv_shop = options.ktv_shop;
+			this.room_areas = options.room_areas;
+			this.room_types = options.room_types;
+		},
+		start: function() {},
+		render_element: function() {
+			this.$element.html(this.template_fct({
+				room_areas: this.room_areas,
+				room_types: this.room_types
+			}));
+		}
+	});
+
 	//ShopWidget
 	db.ktv_sale.KtvShopWidget = db.web.OldWidget.extend({
-        init: function(parent,options) {
-            this._super(parent);
-            this.ktv_shop = options.ktv_shop;
-        },
-        start: function(){
-            this.room_list_view = new db.ktv_sale.RoomListWidget(null,{ktv_shop : this.ktv_shop});
-        }
-    });
+		init: function(parent, options) {
+			this._super(parent);
+			this.ktv_shop = options.ktv_shop;
+		},
+		start: function() {
+			this.room_list_view = new db.ktv_sale.RoomListWidget(null, {
+				ktv_shop: this.ktv_shop
+			});
+			this.room_list_view.$element = $('#room_list');
+			this.room_list_view.render_element();
+			this.room_list_view.start();
+
+			this.room_status_view = new db.ktv_sale.RoomStatusWidget(null, {
+				ktv_shop: this.ktv_shop
+			});
+			this.room_status_view.$element = $('#room_status');
+			this.room_status_view.render_element();
+			this.room_status_view.start();
+
+			//room filter
+			this.room_filter_view = new db.ktv_sale.RoomFilterWidget(null, {
+				ktv_shop: this.ktv_shop,
+				room_types: db.ktv_sale.ktv_room_pos.store.get('ktv.room_type'),
+				room_areas: db.ktv_sale.ktv_room_pos.store.get('ktv.room_area'),
+			});
+			this.room_filter_view.$element = $('#room_filter');
+			this.room_filter_view.render_element();
+			this.room_filter_view.start();
+			//room status
+			this.room_status_view.$element = $('#room_status');
+			this.room_status_view.render_element();
+			this.room_status_view.start();
+
+		}
+	});
 	//roomWidget
 	db.ktv_sale.RoomWidget = db.web.OldWidget.extend({
-        init: function(parent,options){
-            this._super(parent);
-            this.model = options.model;
-            this.ktv_shop = options.ktv_shop;
-        },
-        //设置当前选中的包厢
-        select_room : function(evt){
-            evt.preventDefault();
-            this.ktv_shop.set({current_room : this.model});
-        }
-    });
+        tag_name: 'li',
+		template_fct: qweb_template('room-template'),
+		init: function(parent, options) {
+			this._super(parent);
+			this.model = options.model;
+			this.ktv_shop = options.ktv_shop;
+		},
+		render_element: function() {
+			this.$element.html(this.template_fct(this.model.toJSON()));
+			return this;
+		},
+
+		//设置当前选中的包厢
+		select_room: function(evt) {
+			evt.preventDefault();
+			this.ktv_shop.set({
+				current_room: this.model
+			});
+		}
+	});
 	//房间列表
 	db.ktv_sale.RoomListWidget = db.web.OldWidget.extend({
-        init: function(parent,options) {
-            this._super(parent);
-            this.ktv_shop = options.ktv_shop;
-            //房间数据变化时激发重绘列表
-            this.ktv_shop.get('rooms').bind('reset',this.render_element,this);
-        },
-        render_element : function(){
-            this.$element.empty();
-            this.ktv_shop.get('rooms').each(_.bind(function(r){
-                var r_widget = new db.ktv_sale.RoomWidget(null,{model : r});
-                r_widget.appendTo(this.$element);
-            },this),this);
-            return this;
-        }
-    });
+		init: function(parent, options) {
+			this._super(parent);
+			this.ktv_shop = options.ktv_shop;
+			//房间数据变化时激发重绘列表
+			this.ktv_shop.get('rooms').bind('reset', this.render_element, this);
+		},
+		render_element: function() {
+			this.$element.empty();
+			this.ktv_shop.get('rooms').each(_.bind(function(r) {
+				var r_widget = new db.ktv_sale.RoomWidget(null, {
+					model: r
+				});
+				r_widget.appendTo(this.$element);
+			},
+			this), this);
+			return this;
+		}
+	});
 	//房态统计
 	db.ktv_sale.RoomStatusWidget = db.web.OldWidget.extend({
-        init : function(parent,options){
-            this.ktv_shop = options.ktv_shop;
-            //ktv_shop中的包厢数据发生变化时,重绘房态组件
-            this.ktv_shop.bind('change:room_status',this.render_element,this);
-        },
-        render_element : function() {
-            this.$element.empty();
-            //TODO 显示room_status组件
-        }
-    });
+		template_fct: qweb_template('room-status-template'),
+		init: function(parent, options) {
+			this.ktv_shop = options.ktv_shop;
+			//ktv_shop中的包厢数据发生变化时,重绘房态组件
+			this.ktv_shop.bind('change:room_status', this.render_element, this);
+		},
+		render_element: function() {
+			this.$element.empty();
+			this.$element.html(this.template_fct(this.ktv_shop.get('room_status')));
+			return this;
+		}
+	});
 
 	//App,初始化各种widget,并定义widget之间的交互
 	db.ktv_sale.App = (function() {
-        function App($element) {
-            this.initialize($element);
-        }
+		function App($element) {
+			this.initialize($element);
+		}
 
-        App.prototype.initialize = function($element) {
-            this.ktv_shop = new db.ktv_sale.KtvShop();
-            this.ktv_shop_view = new db.ktv_sale.KtvShopWidget(null, {
-                ktv_shop: this.ktv_shop
-            });
-            this.ktv_shop_view.$element = $element;
-            this.ktv_shop_view.start();
-        };
-        return App;
+		App.prototype.initialize = function($element) {
+			this.ktv_shop = new db.ktv_sale.KtvShop();
+			this.ktv_shop_view = new db.ktv_sale.KtvShopWidget(null, {
+				ktv_shop: this.ktv_shop
+			});
+			this.ktv_shop_view.$element = $element;
+			this.ktv_shop_view.start();
+			var rooms = db.ktv_sale.ktv_room_pos.store.get('ktv.room');
+			(this.ktv_shop.get('rooms')).reset(rooms);
 
+		};
+		return App;
 
-    })();
+	})();
 
 	//openerp的入口组件,用于定义系统的初始入口处理
 	db.web.client_actions.add('ktv_room_pos.ui', 'db.ktv_sale.RoomPointOfSale');
@@ -357,7 +418,13 @@ openerp.ktv_sale = function(db) {
 		start: function() {
 			db.ktv_sale.ktv_room_pos.app = new db.ktv_sale.App(self.$element);
 			$('.oe_toggle_secondary_menu').hide();
+			$('.oe_secondary_menu').hide();
+			$('.header').hide();
+			$('.menu').hide();
 			$('.oe_footer').hide();
+		},
+		render: function() {
+			return qweb_template("RoomPointOfSale")();
 		}
 	});
 };
