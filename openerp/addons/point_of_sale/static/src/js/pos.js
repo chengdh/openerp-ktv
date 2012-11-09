@@ -1,5 +1,5 @@
 openerp.point_of_sale = function(db) {
-    
+
     db.point_of_sale = {};
 
     var QWeb = db.web.qweb;
@@ -97,7 +97,7 @@ openerp.point_of_sale = function(db) {
                     return new db.web.Model("res.currency").get_func("read")([currency_id],
                             ['symbol', 'position']).pipe(function(result) {
                         self.set({'currency': result[0]});
-                        
+
                     });
                 });
             }), new db.web.Model("res.users").get_func("read")(this.session.uid, ['name']).pipe(function(result) {
@@ -268,7 +268,7 @@ openerp.point_of_sale = function(db) {
             var base = (this.get('quantity')) * (this.get('list_price')) * (1 - (this.get('discount')) / 100);
             var totalTax = base;
             var totalNoTax = base;
-            
+
             var products = pos.store.get('product.product');
             var product = _.detect(products, function(el) {return el.id === self.get('id');});
             var taxes_ids = product.taxes_id;
@@ -322,7 +322,7 @@ openerp.point_of_sale = function(db) {
 
     // Every PaymentLine has all the attributes of the corresponding CashRegister.
     var Paymentline = Backbone.Model.extend({
-        defaults: { 
+        defaults: {
             amount: 0,
         },
         initialize: function(attributes) {
@@ -345,7 +345,7 @@ openerp.point_of_sale = function(db) {
     var PaymentlineCollection = Backbone.Collection.extend({
         model: Paymentline,
     });
-    
+
     var Order = Backbone.Model.extend({
         defaults:{
             validated: false,
@@ -443,6 +443,7 @@ openerp.point_of_sale = function(db) {
                 lines: orderLines,
                 statement_ids: paymentLines
             };
+
         },
     });
 
@@ -1185,7 +1186,7 @@ openerp.point_of_sale = function(db) {
         App.prototype.category = function(id) {
             var c, products, self = this;
 
-            id = !id ? 0 : id; 
+            id = !id ? 0 : id;
 
             c = pos.categories[id];
             this.categoryView.ancestors = c.ancestors;
@@ -1233,7 +1234,7 @@ openerp.point_of_sale = function(db) {
 
             var codeNumbers = [];
 
-            // returns a product that has a packaging with an EAN matching to provided ean string. 
+            // returns a product that has a packaging with an EAN matching to provided ean string.
             // returns undefined if no such product is found.
             var getProductByEAN = function(ean) {
                 var prefix = ean.substring(0,2);
@@ -1263,7 +1264,7 @@ openerp.point_of_sale = function(db) {
                 return scannedProductModel;
             }
 
-            // The barcode readers acts as a keyboard, we catch all keyup events and try to find a 
+            // The barcode readers acts as a keyboard, we catch all keyup events and try to find a
             // barcode sequence in the typed keys, then act accordingly.
             $('body').delegate('','keyup', function (e){
 
@@ -1271,7 +1272,7 @@ openerp.point_of_sale = function(db) {
                 if (!isNaN(Number(String.fromCharCode(e.keyCode)))) {
 
                     // The barcode reader sends keystrokes with a specific interval.
-                    // We look if the typed keys fit in the interval. 
+                    // We look if the typed keys fit in the interval.
                     if (codeNumbers.length==0) {
                         timeStamp = new Date().getTime();
                     } else {
@@ -1350,7 +1351,7 @@ openerp.point_of_sale = function(db) {
         };
         return App;
     })();
-    
+
     db.point_of_sale.SynchNotification = db.web.OldWidget.extend({
         template: "pos-synch-notification",
         init: function() {
@@ -1385,10 +1386,10 @@ openerp.point_of_sale = function(db) {
                 this.synch_notification = new db.point_of_sale.SynchNotification(this);
                 this.synch_notification.replace($('.oe_pos_synch-notification', this.$element));
                 this.synch_notification.on_synch.add(_.bind(pos.flush, pos));
-                
+
                 pos.bind('change:pending_operations', this.changed_pending_operations, this);
                 this.changed_pending_operations();
-                
+
                 this.$element.find("#loggedas button").click(function() {
                     self.try_close();
                 });
@@ -1396,7 +1397,7 @@ openerp.point_of_sale = function(db) {
                 pos.app = new App(self.$element);
                 $('.oe_toggle_secondary_menu').hide();
                 $('.oe_footer').hide();
-                
+
                 if (pos.store.get('account.bank.statement').length === 0)
                     return new db.web.Model("ir.model.data").get_func("search_read")([['name', '=', 'action_pos_open_statement']], ['res_id']).pipe(
                             _.bind(function(res) {

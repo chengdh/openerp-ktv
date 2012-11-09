@@ -86,6 +86,7 @@
     'js': [
             'static/lib/backbone/backbone-0.5.3.js',
             'static/lib/bootstrap/js/bootstrap.js',
+            'static/src/js/form2json.js',
             'static/src/js/ktv_sale.js',
             ],
     'css': [

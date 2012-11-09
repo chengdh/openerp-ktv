@@ -20,6 +20,10 @@ class room_operate(osv.osv):
     _description = "包厢操作类,与包厢是many2one的关系"
 
     _columns = {
+            "operate_date" : filds.datetime('operate_datetime',required = True),
             "room_id" : fields.many2one('ktv.room','room_id',required = True),
             "bill_no" : fields.char("bill_no",size = "64",required = True,help = "账单号")
+            }
+    _defaults = {
+            'operate_date' : fields.datetime.now,
             }
