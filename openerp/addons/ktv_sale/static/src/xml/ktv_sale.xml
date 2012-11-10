@@ -54,33 +54,20 @@
             <tr>
                 <td width="30"><span class="label label-info"><t t-esc="room_type_id[1]"/></span></td>
                 <td width="30"></td>
-                <td width="30"><span class="label label-important"><t t-esc="state"/></span></td>
+                <td width="30"><span class="label label-important"><t t-esc="state_description"/></span></td>
+            </tr>
+            <tr>
+                <td colspan="3">&#160;</td>
+            </tr>
+            <tr>
+                <td colspan="3">&#160;</td>
+            </tr>
+            <tr>
+                <td colspan="3">&#160;</td>
             </tr>
             <tr>
                 <td colspan="3">
-                    包厢:
-                    <t t-esc="room_fee" />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    钟点:
-                    <t t-esc="hourly_fee" />
-                    或
-                    <t t-esc="hourly_fee" />/人
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    低消:
-                    <t t-esc="minimum_fee" />
-                    或
-                    <t t-esc="minimum_fee_p" />/人
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <div class="btn-group">
+                    <div class="btn-group pull-center">
                         <button class="btn"><t t-esc="name"/></button>
                         <button class="btn dropdown-toggle" data-toggle="dropdown">
                             <span class="caret"></span>
@@ -145,7 +132,7 @@
 
             <!--包厢类别-->
             <div class='btn-group'>
-                <button class='btn'>全部类别</button>
+                <button class='btn active'>全部类别</button>
                 <t t-foreach="room_types" t-as="room_type">
                     <button class='btn'><t t-esc="room_type.name" /></button>
                 </t>
@@ -156,43 +143,42 @@
     <!--包厢预定-->
     <t t-name="room-scheduled-form-template">
         <form class="form-horizontal" id="room_scheduled_form">
-            <div class="control-group">
-                <label class="control-label" for="room_id">包厢名称</label>
+            <div class="control-group info">
+                <label class="control-label" for="room_id">包厢名称:</label>
                 <div class="controls">
                     <select id="room_id" name="room_id">
                         <t t-foreach="rooms" t-as="r">
                             <option t-att-value="r.id"><t t-esc="r.name"/></option>
                         </t>
                     </select>
-
                 </div>
             </div>
-            <div class="control-group">
-                <label class="control-label" for="guest_name">预定人</label>
+            <div class="control-group info">
+                <label class="control-label" for="guest_name">预定人:</label>
                 <div class="controls">
-                    <input type="text" id="guest_name" name="guest_name" />
+                    <input type="text" class="required" id="guest_name" name="guest_name" />
                 </div>
             </div>
-            <div class="control-group">
-                <label class="control-label" for="scheduled_time">预定时间</label>
+            <div class="control-group info">
+                <label class="control-label" for="scheduled_time">预定时间:</label>
                 <div class="controls">
-                    <input type="text" id="scheduled_time" name="scheduled_time"/>
+                    <input type="text" class="required" id="scheduled_time" name="scheduled_time" t-att-value="model.scheduled_time"/>
                 </div>
             </div>
-            <div class="control-group">
-                <label class="control-label" for="guest_phone">联系电话</label>
+            <div class="control-group info">
+                <label class="control-label" for="guest_phone">联系电话:</label>
                 <div class="controls">
-                    <input type="text" id="guest_phone" name="guest_phone"/>
+                    <input type="text" class="required" id="guest_phone" name="guest_phone"/>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="persons_count">人数</label>
+                <label class="control-label" for="persons_count">人数:</label>
                 <div class="controls">
-                    <input type="text" id="persons_count" name="persons_count"/>
+                    <input type="text" id="persons_count" class="number" name="persons_count"/>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="description">备注</label>
+                <label class="control-label" for="description">备注:</label>
                 <div class="controls">
                     <textarea rows="3" id="description" name="description" />
                 </div>
