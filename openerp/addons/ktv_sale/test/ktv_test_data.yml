@@ -38,7 +38,7 @@
   !record {model: ktv.room,id: ktv_room_2}:
     name: A001
     room_area_id: ktv_room_area
-    room_type_id: ktv_room_type1
+    room_type_id: ktv_room_type2
 
 -
   !record {model: ktv.room,id: ktv_room_3}:
@@ -50,7 +50,7 @@
   !record {model: ktv.room,id: ktv_room_4}:
     name: A003
     room_area_id: ktv_room_area
-    room_type_id: ktv_room_type1
+    room_type_id: ktv_room_type2
 
 
 -
@@ -63,7 +63,7 @@
   !record {model: ktv.room,id: ktv_room_6}:
     name: A005
     room_area_id: ktv_room_area
-    room_type_id: ktv_room_type1
+    room_type_id: ktv_room_type2
 
 
 -

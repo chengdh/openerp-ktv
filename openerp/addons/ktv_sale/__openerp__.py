@@ -91,6 +91,7 @@
             ],
     'css': [
             'static/lib/bootstrap/css/bootstrap.css',
+            'static/src/css/override.css',
             ],
     'qweb': [
             'static/src/xml/ktv_sale.xml',

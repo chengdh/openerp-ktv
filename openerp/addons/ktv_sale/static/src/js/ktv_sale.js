@@ -293,9 +293,6 @@ openerp.ktv_sale = function(db) {
 		//导出为json
 		export_as_json: function() {
 			var ret = this.toJSON();
-			if (this.get('current_operate')) {
-				ret.current_operate = this.get('current_operate').export_as_json();
-			}
 			ret.state_description = this.state_description();
 			return ret;
 		},
@@ -334,13 +331,12 @@ openerp.ktv_sale = function(db) {
 				rooms: new db.ktv_sale.RoomCollection(),
 				//房态统计
 				room_status: {},
-				current_room: null
 			});
-			this.get('rooms').bind('change', this.update_room_status, this);
-			this.get('rooms').bind('reset', _.bind(this.update_room_status, this));
+			this.get('rooms').bind('change', this._update_room_status, this);
+			this.get('rooms').bind('reset', _.bind(this._update_room_status, this));
 		},
 		//更新房态
-		update_room_status: function() {
+		_update_room_status: function() {
 			var rooms = this.get('rooms');
 			var states = ['free', 'in_use', 'scheduled', 'locked', 'checkout', 'buyout', 'malfunction', 'visit', 'clean', 'debug'];
 			var room_status = {};
@@ -421,7 +417,7 @@ openerp.ktv_sale = function(db) {
 			this.model = new db.ktv_sale.RoomScheduled();
 		},
 		start: function() {
-            this.$form = $(this.$element).find("#room_scheduled_form");
+			this.$form = $(this.$element).find("#room_scheduled_form");
 			this.$form.find('#scheduled_time').datetimepicker();
 			//包厢改变事件
 			this.$form.find("#room_id").change(_.bind(this.on_change_room, this));
@@ -443,26 +439,24 @@ openerp.ktv_sale = function(db) {
 			});
 			this.room = changed_room;
 		},
-        //验证录入数据是否有效
-        validate :function()
-        {
+		//验证录入数据是否有效
+		validate: function() {
 
 			return this.$form.validate().form();
-        },
+		},
 		//保存预定信息
 		save: function() {
-			if(!this.validate())
-            {
-                return false;
-            }
+			if (!this.validate()) {
+				return false;
+			}
 			var self = this;
-			var room_operate = this.room.current_operate;
-			if (!this.room.current_operate) {
+			var room_operate_bill_no = this.room.get('current_operate_bill_no');
+			if (!room_operate_bill_no) {
 				room_operate = new db.ktv_sale.RoomOperate({
 					room: this.room
 				});
 				this.room.set({
-					current_operate: room_operate
+					current_operate_bill_no: room_operate.bill_no
 				});
 			}
 			//自界面获取各项值
@@ -472,7 +466,7 @@ openerp.ktv_sale = function(db) {
 				self.room.set({
 					state: 'scheduled'
 				});
-                self.$element.dialog('close');
+				self.$element.dialog('close');
 			});
 		}
 	});
@@ -485,7 +479,38 @@ openerp.ktv_sale = function(db) {
 			this._super(parent);
 			this.ktv_shop = options.ktv_shop;
 		},
-		start: function() {},
+		start: function() {
+			//绑定按钮点击事件
+			$('.btn-room-type-filter,.btn-room-area-filter,.btn-room-state-filter').click(_.bind(this._filter_room, this));
+		},
+		_filter_room: function(evt) {
+			var click_btn = $(evt.target);
+			var btn_class = "";
+			if (click_btn.hasClass('btn-room-type-filter')) btn_class = ".btn-room-type-filter";
+			if (click_btn.hasClass('btn-room-state-filter')) btn_class = ".btn-room-state-filter";
+			if (click_btn.hasClass('btn-room-area-filter')) btn_class = ".btn-room-area-filter";
+
+			$(btn_class).removeClass('active')
+			if (!click_btn.hasClass('active')) click_btn.addClass('active');
+			var room_state = $('.btn-room-state-filter').filter('.active').data('room-state');
+			var room_area_id = $('.btn-room-area-filter').filter('.active').data('room-area-id');
+			var room_type_id = $('.btn-room-type-filter').filter('.active').data('room-type-id');
+			//所有房间
+			var rooms = ktv_room_pos.store.get('ktv.room');
+			var filtered_rooms = rooms;
+			if (room_state != - 1) filtered_rooms = _.filter(rooms, function(r) {
+				return r.state == room_state;
+			});
+			if (room_type_id != - 1) filtered_rooms = _.filter(filtered_rooms, function(r) {
+				return r.room_type_id[0] == room_type_id;
+			});
+			if (room_area_id != - 1) filtered_rooms = _.filter(filtered_rooms, function(r) {
+				return r.room_area_id[0] == room_area_id;
+			});
+
+			this.ktv_shop.get('rooms').reset(filtered_rooms);
+		},
+
 		render_element: function() {
 			this.$element.html(this.template_fct({}));
 			return this;
@@ -610,7 +635,10 @@ openerp.ktv_sale = function(db) {
 	db.ktv_sale.RoomStatusWidget = db.web.OldWidget.extend({
 		template_fct: qweb_template('room-status-template'),
 		init: function(parent, options) {
+			this._super(parent);
 			this.ktv_shop = options.ktv_shop;
+		},
+		start: function() {
 			//ktv_shop中的包厢数据发生变化时,重绘房态组件
 			this.ktv_shop.bind('change:room_status', this.render_element, this);
 		},
