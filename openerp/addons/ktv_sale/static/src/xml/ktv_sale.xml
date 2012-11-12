@@ -4,7 +4,7 @@
 <templates id="template" xml:space="preserve">
     <t t-name="RoomPointOfSale">
         <div id="room_pos_wrapper">
-            <div class="navbar">
+            <div id="header" class="navbar">
                 <div class="navbar-inner">
                     <div class="container-fluid">
                         <a class="brand" href="#">
@@ -19,15 +19,13 @@
 
             <div class="container-fluid">
                 <div class="row-fluid">
-                    <div class='span10'>
+                   <div class='span10'>
                         <div id="room_status"></div>
                         <div id="room_filter"></div>
-                        <hr/>
                         <ul id="room_list" class="thumbnails"></ul>
                     </div>
-
                     <div class='span2'>
-                        <div class="well sidebar-nav">
+                        <div class='well'>
                             <ul class="nav nav-list">
                                 <li><a href="#">预定</a></li>
                                 <li class="divider"></li>
@@ -42,8 +40,9 @@
                                 <li class="divider"></li>
                                 <li><a href="#">结账</a></li>
                             </ul>
-                        </div><!--/.well -->
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -66,10 +65,10 @@
                 <td colspan="3">&#160;</td>
             </tr>
             <tr>
-                <td colspan="3">
+                <td colspan="3" style='text-align : center;'>
                     <div class="btn-group pull-center">
-                        <button class="btn"><t t-esc="name"/></button>
                         <button class="btn dropdown-toggle" data-toggle="dropdown">
+                            <t t-esc="name"/>
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
@@ -189,12 +188,6 @@
                 <label class="control-label" for="persons_count">人数:</label>
                 <div class="controls">
                     <input type="text" id="persons_count" class="number" name="persons_count"/>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="description">备注:</label>
-                <div class="controls">
-                    <textarea rows="3" id="description" name="description" />
                 </div>
             </div>
         </form>

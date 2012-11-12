@@ -1,7 +1,88 @@
 //定义ktv开房pos界面
 openerp.ktv_sale = function(db) {
-	db.ktv_sale = {};
 
+	db.ktv_sale = {};
+	//房态常数量
+	db.ktv_sale.room_state = {};
+	db.ktv_sale.room_state.states = {
+		FREE: ["free", "空闲"],
+		IN_USE: ["in_use", "使用中"],
+		SCHEDULED: ["scheduled", "已预定"],
+		LOCKED: ["locked", "锁定"],
+		CHECKOUT: ["checkout", "已结账"],
+		BUYOUT: ["buyout", "买断"],
+		BUYTIME: ["buytime", "买钟"],
+		MALFUNCTION: ["malfunction", "故障"],
+		VISIT: ["visit", "带客看房"],
+		CLEAN: ["clean", "清洁中"],
+		DEBUG: ["debug", "调试中"]
+	};
+	//包厢状态key数组
+	db.ktv_sale.room_state.key_states = function() {
+		ret = [];
+		for (s in db.ktv_sale.room_state.states) {
+			ret.push(db.ktv_sale.room_state.states[s][0]);
+		}
+		return ret;
+	} ();
+	//获取包厢状态中文描述
+	db.ktv_sale.room_state.get_state_desc = function(a_state) {
+		var state_desc = ""
+		var states = db.ktv_sale.room_state.states;
+		for (s in states) {
+			if (states[s][0] == a_state) state_desc = states[s][1];
+		}
+		return state_desc;
+
+	};
+	//判断当前包厢可做的动作
+	//do_operate  当前要操作的房态
+	//return 返回可以操作时房态数组
+	db.ktv_sale.room_state.array_states_on_operate = function(do_operate) {
+		var key_states = db.ktv_sale.room_state.key_states;
+		//[已结账 锁定 已预定 清洁中 带客看房 清洁中 调试中] -- 空置操作
+		if (do_operate == 'room_free') {
+			var array_states = [
+			db.ktv_sale.room_state.states.CHECKOUT[0], db.ktv_sale.room_state.states.LOCKED[0], db.ktv_sale.room_state.states.MALFUNCTION[0], db.ktv_sale.room_state.states.CLEAN[0], db.ktv_sale.room_state.states.SCHEDULED[0], db.ktv_sale.room_state.states.CHECKOUT[0], db.ktv_sale.room_state.states.VISIT[0], db.ktv_sale.room_state.states.DEBUG[0]];
+			return array_states;
+		}
+		//预定操作
+		if (do_operate == 'room_scheduled') {
+			var array_states = [
+			db.ktv_sale.room_state.states.FREE[0], db.ktv_sale.room_state.states.SCHEDULED[0], //已预定的房间还可以再预定
+			db.ktv_sale.room_state.states.CHECKOUT[0], db.ktv_sale.room_state.states.CLEAN[0]];
+			return array_states;
+		}
+		//取消预定操作
+		if (do_operate == 'cancel_scheduled') {
+			var array_states = [
+			db.ktv_sale.room_state.states.SCHEDULED[0] //已预定的房间还可以再预定
+			];
+			return array_states;
+		}
+		//正常开房/买钟/买断操作
+		if (do_operate == 'room_open' || do_operate == "room_buytime" || do_operate == "room_buyout") {
+			var array_states = [
+			db.ktv_sale.room_state.states.FREE[0], db.ktv_sale.room_state.states.SCHEDULED[0], //已预定的房间还可以再预定
+			db.ktv_sale.room_state.states.CHECKOUT[0]];
+			return array_states;
+		}
+		//续钟/退钟操作
+		if (do_operate == 'room_buytime_continue || room_buytime_back') {
+			var array_states = [
+			db.ktv_sale.room_state.states.BUYTIME][0];
+			return array_states;
+		}
+		//结账操作
+		if (do_operate == 'room_checkout') {
+			var array_states = [
+			db.ktv_sale.room_state.states.IN_USE][0];
+			return array_states;
+		}
+
+	};
+
+	//扩展通用的模板方法
 	var QWeb = db.web.qweb;
 	var qweb_template = function(template) {
 		return function(ctx) {
@@ -49,6 +130,8 @@ openerp.ktv_sale = function(db) {
 	db.ktv_sale.KtvRoomPos = Backbone.Model.extend({
 		initialize: function(session, attribute) {
 			Backbone.Model.prototype.initialize.call(this, attributes);
+			//设置全局变量
+			ktv_room_pos = this;
 			var self = this;
 			this.store = new Store();
 			this.ready = $.Deferred();
@@ -80,11 +163,11 @@ openerp.ktv_sale = function(db) {
 			//自服务器端获取数据
 			var func_fetch_array = [];
 			for (attr in this.osv_objects) {
-				func_fetch_array.push(this.fetch(attr, this.osv_objects[attr]['fields'], this.osv_objects[attr]['domain']));
+				func_fetch_array.push(this._fetch(attr, this.osv_objects[attr]['fields'], this.osv_objects[attr]['domain']));
 			}
 			$.when.apply(this, func_fetch_array);
 		},
-		//根据包厢状态货物包厢信息
+		//根据包厢状态返回包厢数组
 		get_rooms_by_state: function(r_state) {
 			var rooms_all = this.store.get('ktv.room');
 			var rooms_filted = rooms_all;
@@ -95,7 +178,7 @@ openerp.ktv_sale = function(db) {
 
 		},
 		//自服务器端获取数据,并保存到browser的localstorage中去
-		fetch: function(osvModel, fields, domain) {
+		_fetch: function(osvModel, fields, domain) {
 			var dataSetSearch;
 			var self = this;
 
@@ -283,39 +366,54 @@ openerp.ktv_sale = function(db) {
 		on_change: function() {
 			var rooms = _.clone(ktv_room_pos.store.get('ktv.room'));
 			var changed_room = _.find(rooms, function(r) {
-				return r.id == this.get('id')
+				return r.id == this.get('id');
 			},
 			this);
 			if (changed_room) rooms = _.without(rooms, changed_room);
 			rooms.push(this.export_as_json());
 			ktv_room_pos.store.set('ktv.room', rooms);
 		},
+		//保存预定信息
+		//room_scheduled  预定信息对象
+		save_room_scheduled: function(room_scheduled) {
+			var self = this;
+			var room_states = db.ktv_sale.room_state.array_states_on_operate('room_scheduled');
+			if (_.contains(room_states, this.get('state'), this)) {
+				//获取当前包厢操作对象
+				var cur_room_operate = this.get('current_room_operate');
+				if (!cur_room_operate) {
+					cur_room_operate = new db.ktv_sale.RoomOperate({
+						room: this
+					});
+					this.set({
+						current_room_operate: cur_room_operate
+					});
+				}
+				cur_room_operate.get("room_scheduled_lines").add(room_scheduled);
+				ktv_room_pos.push_room_operate(cur_room_operate.export_as_json()).always(function() {
+					self.set({
+						state: 'scheduled'
+					});
+				});
+				return true;
+			}
+			else return false;
+		},
 		//导出为json
 		export_as_json: function() {
 			var ret = this.toJSON();
+			//不再重新保存current_operate,只保存其room_operate的bill_no和id
+			ret['current_room_operate'] = {
+				//id: this.get('current_room_operate').get('id'),
+				//bill_no: this.get('current_room_operate').get('bill_no')
+			};
 			ret.state_description = this.state_description();
 			return ret;
 		},
 		//获取state的中文描述
 		state_description: function() {
-
-			//var states = ['free', 'in_use', 'scheduled', 'locked', 'checkout', 'buyout', 'malfunction', 'visit', 'clean', 'debug'];
-			var state_description = {
-				"free": "空闲",
-				"in_use ": "使用中",
-				"scheduled": "已预定",
-				"locked": "锁定",
-				"checkout": "已结账",
-				"buyout": "买断",
-				"buytime ": "买钟",
-				"malfunction ": "故障",
-				"visit ": "带客看房",
-				"clean ": "清洁中",
-				"debug ": "调试中"
-			};
-			return state_description[this.get('state')];
+			return db.ktv_sale.room_state.get_state_desc(this.get('state'));
 		}
-
 	});
 
 	db.ktv_sale.RoomCollection = Backbone.Collection.extend({
@@ -330,7 +428,7 @@ openerp.ktv_sale = function(db) {
 			this.set({
 				rooms: new db.ktv_sale.RoomCollection(),
 				//房态统计
-				room_status: {},
+				room_status: {}
 			});
 			this.get('rooms').bind('change', this._update_room_status, this);
 			this.get('rooms').bind('reset', _.bind(this._update_room_status, this));
@@ -338,7 +436,10 @@ openerp.ktv_sale = function(db) {
 		//更新房态
 		_update_room_status: function() {
 			var rooms = this.get('rooms');
-			var states = ['free', 'in_use', 'scheduled', 'locked', 'checkout', 'buyout', 'malfunction', 'visit', 'clean', 'debug'];
+			var states = [];
+			for (s in db.ktv_sale.room_state.key_states) {
+				states.push(s);
+			}
 			var room_status = {};
 			_.each(states, function(s) {
 				state_rooms = _.filter(rooms.toJSON(), function(r) {
@@ -356,34 +457,30 @@ openerp.ktv_sale = function(db) {
 
 	//包厢操作类
 	//一个包厢操作可包含开房、换房、并房、结账、买钟、买断、续钟、退钟、结账等操作
+	//
 	db.ktv_sale.RoomOperate = Backbone.Model.extend({
 		defaults: {
 			//当前操作的包厢
 			room: null,
-			//是否已验证通过,并上传到服务器端了
+			//是否已保存到数据库
 			saved: false,
-			//FIXME 由于还包含各种子操作,当子操作发生变化时validated会修改为false,表明子操作还未和服务器同步
-			validated: false
-
+			//用于标示是否已和服务器同步
+			validated: false,
+			operate_date: new Date(),
 		},
 		initialize: function(attributes) {
 			Backbone.Model.prototype.initialize.apply(this, arguments);
 			this.set({
-				//各种子操作信息
-				operate_lines: new Backbone.Collection(),
 				bill_no: "R" + this.generateUniqueId(),
+				//包厢预定-操作列表
+				room_scheduled_lines: new db.ktv_sale.RoomScheduledCollection(),
+				//TODO 取消预定列表
+				//开房列表
+				//其他操作列表
 			});
-			this.bind('change:operate_lines', function() {
-				this.validated = false;
-			},
-			this);
 		},
 		generateUniqueId: function() {
 			return new Date().getTime();
-		},
-		//添加操作
-		add_operate: function(operate) {
-			this.get('operate_lines').add(operate);
 		},
 		//导出为json
 		export_as_json: function() {
@@ -391,12 +488,12 @@ openerp.ktv_sale = function(db) {
 				bill_no: this.get('bill_no'),
 				room_id: this.get('room').get('id')
 			}
-			lines = [];
-			this.get('operate_lines').each(function(op) {
-				lines.push(op.toJSON());
+			room_scheduled_lines = [];
+			this.get('room_scheduled_lines').each(function(line) {
+				room_scheduled_lines.push(line.toJSON());
 			},
 			this);
-			ret['operate_lines'] = lines;
+			ret['room_scheduled_lines'] = room_scheduled_lines;
 			return ret;
 		}
 	});
@@ -406,6 +503,11 @@ openerp.ktv_sale = function(db) {
 		defaults: {
 			scheduled_time: new Date()
 		}
+	});
+
+	//预定信息列表
+	db.ktv_sale.RoomScheduledCollection = Backbone.Collection.extend({
+		model: db.ktv_sale.RoomScheduled
 	});
 
 	//预定widget
@@ -419,6 +521,7 @@ openerp.ktv_sale = function(db) {
 		start: function() {
 			this.$form = $(this.$element).find("#room_scheduled_form");
 			this.$form.find('#scheduled_time').datetimepicker();
+			this.$form.find('#scheduled_time').val(this.model.get('scheculed_time'));
 			//包厢改变事件
 			this.$form.find("#room_id").change(_.bind(this.on_change_room, this));
 			//设置初始值
@@ -441,33 +544,17 @@ openerp.ktv_sale = function(db) {
 		},
 		//验证录入数据是否有效
 		validate: function() {
-
 			return this.$form.validate().form();
 		},
 		//保存预定信息
 		save: function() {
 			if (!this.validate()) {
+                this.$element.dialog('close');
 				return false;
-			}
-			var self = this;
-			var room_operate_bill_no = this.room.get('current_operate_bill_no');
-			if (!room_operate_bill_no) {
-				room_operate = new db.ktv_sale.RoomOperate({
-					room: this.room
-				});
-				this.room.set({
-					current_operate_bill_no: room_operate.bill_no
-				});
 			}
 			//自界面获取各项值
 			this.model.set(this.$form.form2json());
-			room_operate.add_operate(this.model);
-			ktv_room_pos.push_room_operate(room_operate.export_as_json()).always(function() {
-				self.room.set({
-					state: 'scheduled'
-				});
-				self.$element.dialog('close');
-			});
+			if (this.room.save_room_scheduled(this.model)) this.$element.dialog('close');
 		}
 	});
 
@@ -483,6 +570,7 @@ openerp.ktv_sale = function(db) {
 			//绑定按钮点击事件
 			$('.btn-room-type-filter,.btn-room-area-filter,.btn-room-state-filter').click(_.bind(this._filter_room, this));
 		},
+		//根据前端的操作过滤包厢的显示
 		_filter_room: function(evt) {
 			var click_btn = $(evt.target);
 			var btn_class = "";
@@ -568,15 +656,16 @@ openerp.ktv_sale = function(db) {
 		render_element: function() {
 			this.$element.empty();
 			this.$element.html(this.template_fct(this.model.export_as_json()));
+			var states = db.ktv_sale.room_state.states;
 			//设置当前room可用的action
-			if (this.model.get('state') == 'free') $(this.$element).find('.action_room_scheduled_cancel,.action_room_change,.action_room_merge,.action_room_buy_time_continue,.action_room_buy_time_back,.action_room_checkout,.action_room_reopen').parent('li').addClass('disabled');
-			if (this.model.get('state') == 'scheduled') $(this.$element).find('.action_room_scheduled,.action_room_change,.action_room_merge,.action_room_buy_time_continue,.action_room_buy_time_back,.action_room_checkout,.action_room_reopen').parent('li').addClass('disabled');
+			if (this.model.get('state') == states.FREE[0]) $(this.$element).find('.action_room_scheduled_cancel,.action_room_change,.action_room_merge,.action_room_buy_time_continue,.action_room_buy_time_back,.action_room_checkout,.action_room_reopen').parent('li').addClass('disabled');
+			if (this.model.get('state') == states.SCHEDULED[0]) $(this.$element).find('.action_room_scheduled,.action_room_change,.action_room_merge,.action_room_buy_time_continue,.action_room_buy_time_back,.action_room_checkout,.action_room_reopen').parent('li').addClass('disabled');
 
-			if (this.model.get('state') == 'in_use') $(this.$element).find('.action_room_scheduled,.action_scheduled_cancel,.action_room_change,.action_room_merge,.action_room_buy_time_continue,.action_room_buy_time_back,.action_room_reopen').parent('li').addClass('disabled');
-			if (this.model.get('state') == 'locked' || this.model.get('state') == 'malfunction' || this.model.get('state') == 'debug' || this.model.get('state') == 'clean') $(this.$element).find('.action_room_scheduled,.action_room_scheduled_cancel,.action_room_open,.action_room_change,.action_room_merge,.action_room_buy_time_continue,.action_room_buy_time_back,.action_room_checkout,.action_room_reopen').parent('li').addClass('disabled');
-			if (this.model.get('state') == 'buyout') $(this.$element).find('.action_room_scheduled,.action_room_scheduled_cancel,.action_room_open,.action_room_change,.action_room_merge,.action_room_buy_time_continue,.action_room_buy_time_back,.action_room_checkout').parent('li').addClass('disabled');
+			if (this.model.get('state') == states.IN_USE[0]) $(this.$element).find('.action_room_scheduled,.action_scheduled_cancel,.action_room_change,.action_room_merge,.action_room_buy_time_continue,.action_room_buy_time_back,.action_room_reopen').parent('li').addClass('disabled');
+			if (this.model.get('state') == states.LOCKED[0] || this.model.get('state') == states.MALFUNCTION[0] || this.model.get('state') == states.DEBUG[0] || this.model.get('state') == states.CLEAN[0]) $(this.$element).find('.action_room_scheduled,.action_room_scheduled_cancel,.action_room_open,.action_room_change,.action_room_merge,.action_room_buy_time_continue,.action_room_buy_time_back,.action_room_checkout,.action_room_reopen').parent('li').addClass('disabled');
+			if (this.model.get('state') == states.BUYOUT[0]) $(this.$element).find('.action_room_scheduled,.action_room_scheduled_cancel,.action_room_open,.action_room_change,.action_room_merge,.action_room_buy_time_continue,.action_room_buy_time_back,.action_room_checkout').parent('li').addClass('disabled');
 
-			if (this.model.get('state') == 'buytime') $(this.$element).find('.action_room_scheduled,.action_room_scheduled_cancel,.action_room_open,.action_room_checkout').parent('li').addClass('disabled');
+			if (this.model.get('state') == db.ktv_sale.room_state.states.BUYTIME[0]) $(this.$element).find('.action_room_scheduled,.action_room_scheduled_cancel,.action_room_open,.action_room_checkout').parent('li').addClass('disabled');
 			return this;
 		},
 		//预定
@@ -667,7 +756,6 @@ openerp.ktv_sale = function(db) {
 
 		};
 		return App;
-
 	})();
 
 	//openerp的入口组件,用于定义系统的初始入口处理
@@ -691,4 +779,6 @@ openerp.ktv_sale = function(db) {
 		}
 	});
 };
+
+//return 正常操作时房态的数组
 
