@@ -430,25 +430,20 @@ openerp.ktv_sale = function(db) {
 				//房态统计
 				room_status: {}
 			});
+            //this.bind('change:rooms',this._update_room_status,this);
 			this.get('rooms').bind('change', this._update_room_status, this);
-			this.get('rooms').bind('reset', _.bind(this._update_room_status, this));
+			this.get('rooms').bind('reset', this._update_room_status, this);
 		},
 		//更新房态
 		_update_room_status: function() {
 			var rooms = this.get('rooms');
-			var states = [];
-			for (s in db.ktv_sale.room_state.key_states) {
-				states.push(s);
-			}
 			var room_status = {};
-			_.each(states, function(s) {
-				state_rooms = _.filter(rooms.toJSON(), function(r) {
-					return r.state == s
-				},
-				this);
+			_.each(db.ktv_sale.room_state.key_states, function(s) {
+				var state_rooms = rooms.filter(function(r) {
+					return r.get("state") == s
+				});
 				room_status[s] = state_rooms.length;
-			},
-			this);
+			});
 			this.set({
 				'room_status': room_status
 			});

@@ -2,6 +2,8 @@ $(document).ready(function() {
 	var openerp;
     var room_pos;
     var rooms_collection;
+    //原始的包厢信息.从localStorage中获取到的
+    var rooms;
 	module("ktv sale tests", {
 		setup: function() {
 			openerp = window.openerp.init();
@@ -11,7 +13,7 @@ $(document).ready(function() {
 			window.openerp.ktv_sale(openerp);
 			openerp.connection.bind();
 			room_pos = openerp.ktv_sale.ktv_room_pos = new openerp.ktv_sale.KtvRoomPos(openerp.connection);
-            var rooms = room_pos.store.get('ktv.room');
+            rooms = room_pos.store.get('ktv.room');
             rooms_collection = new openerp.ktv_sale.RoomCollection(rooms);
 		},
 		teardown: function() {}
@@ -47,6 +49,12 @@ $(document).ready(function() {
         });
         ret = the_room.save_room_scheduled(room_scheduled);
         ok(ret);
+    });
+    test('应能够正确获取房态信息',function(){
+        var ktv_shop = new openerp.ktv_sale.KtvShop();
+        ktv_shop.get("rooms").reset(rooms);
+        //目前所有包厢应全部是空闲状态
+        ok(ktv_shop.get("room_status")["free"] == rooms.length)
     });
 });
 
