@@ -1,48 +1,62 @@
 <!DOCTYPE html>
-<html style="height: 100%">
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>OpenERP</title>
-    <link rel="shortcut icon" href="/web/static/src/img/favicon.ico" type="image/x-icon"/>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>OpenERP</title>
+        <link rel="shortcut icon" href="/web/static/src/img/favicon.ico" type="image/x-icon"/>
 
-    <link rel="stylesheet" href="/web/static/lib/qunit/qunit.css">
-    <script src="/web/static/lib/qunit/qunit.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="/web/static/lib/qunit/qunit.css" type="text/css"/>
+        <script src="/web/static/lib/qunit/qunit.js" type="text/javascript"></script>
+        <script src="/web/static/lib/datejs/globalization/en-US.js" type="text/javascript"></script>
+        <script src="/web/static/lib/datejs/core.js" type="text/javascript"></script>
+        <script src= "/web/static/lib/datejs/parser.js" type="text/javascript"></script>
+        <script src="/web/static/lib/datejs/sugarpak.js" type="text/javascript"></script>
+        <script src="/web/static/lib/datejs/extras.js" type="text/javascript"></script>
+        <script src="/web/static/lib/jquery/jquery-1.7.2.js" type="text/javascript"></script>
+        <script src="/web/static/lib/jquery.MD5/jquery.md5.js" type="text/javascript"></script>
+        <script src="/web/static/lib/jquery.form/jquery.form.js" type="text/javascript"></script>
+        <script src="/web/static/lib/jquery.validate/jquery.validate.js" type="text/javascript"></script>
+        <script src="/web/static/lib/jquery.ba-bbq/jquery.ba-bbq.js" type="text/javascript"></script>
+        <script src="/web/static/lib/jquery.contextmenu/jquery.contextmenu.r2.packed.js" type="text/javascript"></script>
+        <script src="/web/static/lib/jquery.blockUI/jquery.blockUI.js" type="text/javascript"></script>
+        <script src="/web/static/lib/jquery.superfish/js/hoverIntent.js" type="text/javascript"></script>
+        <script src="/web/static/lib/jquery.superfish/js/superfish.js" type="text/javascript"></script>
+        <script src="/web/static/lib/jquery.ui/js/jquery-ui-1.8.17.custom.min.js" type="text/javascript"></script>
+        <script src="/web/static/lib/jquery.ui.timepicker/js/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
+        <script src="/web/static/lib/jquery.ui.notify/js/jquery.notify.js" type="text/javascript"></script>
+        <script src="/web/static/lib/jquery.deferred-queue/jquery.deferred-queue.js" type="text/javascript"></script>
+        <script src="/web/static/lib/jquery.scrollTo/jquery.scrollTo-min.js" type="text/javascript"></script>
+        <script src="/web/static/lib/jquery.tipsy/jquery.tipsy.js" type="text/javascript"></script>
+        <script src="/web/static/lib/json/json2.js" type="text/javascript"></script>
+        <script src="/web/static/lib/qweb/qweb2.js" type="text/javascript"></script>
+        <script src="/web/static/lib/underscore/underscore.js" type="text/javascript"></script>
+        <script src="/web/static/lib/underscore/underscore.string.js" type="text/javascript"></script>
+        <script src="/web/static/lib/labjs/LAB.src.js" type="text/javascript"></script>
+        <script src="/web/static/lib/py.parse/lib/py.js" type="text/javascript"></script>
+        <script src="/web/static/src/js/boot.js" type="text/javascript"></script>
+        <script src="/web/static/src/js/core.js" type="text/javascript"></script>
+        <script src="/web/static/src/js/dates.js" type="text/javascript"></script>
+        <script src="/web/static/src/js/formats.js" type="text/javascript"></script>
+        <script src="/web/static/src/js/chrome.js" type="text/javascript"></script>
+        <script src="/web/static/src/js/views.js" type="text/javascript"></script>
+        <script src="/web/static/src/js/data.js" type="text/javascript"></script>
+        <script src="/web/static/src/js/data_export.js" type="text/javascript"></script>
+        <script src="/web/static/src/js/data_import.js" type="text/javascript"></script>
+        <script src="/web/static/src/js/search.js" type="text/javascript"></script>
+        <script src="/web/static/src/js/view_form.js" type="text/javascript"></script>
+        <script src="/web/static/src/js/view_page.js" type="text/javascript"></script>
+        <script src="/web/static/src/js/view_list.js" type="text/javascript"></script>
+        <script src="/web/static/src/js/view_list_editable.js" type="text/javascript"></script>
+        <script src="/web/static/src/js/view_tree.js" type="text/javascript"></script>
+        <script src="/web/static/src/js/view_editor.js" type="text/javascript"></script>
 
-    <script src="/web/static/lib/underscore/underscore.js" type="text/javascript"></script>
-    <script src="/web/static/lib/underscore/underscore.string.js" type="text/javascript"></script>
-
-    <!-- jquery -->
-    <script src="/web/static/lib/jquery/jquery-1.7.2.js"></script>
-    <script src="/web/static/lib/jquery.ui/js/jquery-ui-1.8.17.custom.min.js"></script>
-    <script src="/web/static/lib/jquery.ba-bbq/jquery.ba-bbq.js"></script>
-
-    <script src="/web/static/lib/datejs/globalization/en-US.js"></script>
-    <script src="/web/static/lib/datejs/core.js"></script>
-    <script src="/web/static/lib/datejs/parser.js"></script>
-    <script src="/web/static/lib/datejs/sugarpak.js"></script>
-    <script src="/web/static/lib/datejs/extras.js"></script>
-
-    <script src="/web/static/lib/qweb/qweb2.js"></script>
-
-    <script src="/web/static/lib/py.parse/lib/py.js"></script>
-
-    <script src="/web/static/src/js/boot.js"></script>
-    <script src="/web/static/src/js/core.js"></script>
-    <script src="/web/static/src/js/dates.js"></script>
-    <script src="/web/static/src/js/formats.js"></script>
-    <script src="/web/static/src/js/chrome.js"></script>
-    <script src="/web/static/src/js/data.js"></script>
-    <script src="/web/static/src/js/views.js"></script>
-    <script src="/web/static/src/js/search.js"></script>
-    <script src="/web/static/src/js/view_form.js"></script>
-    <script src="/web/static/src/js/view_list.js"></script>
-
-    <!--ktv 相关测试-->
-    <script src="/ktv_sale/static/lib/backbone/backbone-0.5.3.js"></script>
-    <script src="/ktv_sale/static/src/js/ktv_sale.js"></script>
-
-</head>
-    <body id="oe" class="openerp">
+        <!--ktv 相关测试-->
+        <script src="/ktv_sale/static/lib/backbone/backbone-0.5.3.js" type="text/javascript"></script>
+        <script src="/ktv_sale/static/lib/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+        <script src="/ktv_sale/static/src/js/form2json.js" type="text/javascript"></script>
+        <script src="/ktv_sale/static/src/js/ktv_sale.js" type="text/javascript"></script>
+    </head>
+    <body>
         <h1 id="qunit-header">OpenERP ktv_sale Test Suite</h1>
         <h2 id="qunit-banner"></h2>
         <div id="qunit-testrunner-toolbar"></div>
@@ -50,5 +64,5 @@
         <ol id="qunit-tests"></ol>
         <div id="qunit-fixture"></div>
     </body>
-    <script src="/ktv_sale/static/test/ktv_sale_tests.js"></script>
+    <script src="/ktv_sale/static/test/ktv_sale_tests.js" type='text/javascript'></script>
 </html>

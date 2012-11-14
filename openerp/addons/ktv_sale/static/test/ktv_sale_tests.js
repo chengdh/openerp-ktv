@@ -13,8 +13,10 @@ $(document).ready(function() {
 			window.openerp.ktv_sale(openerp);
 			openerp.connection.bind();
 			room_pos = openerp.ktv_sale.ktv_room_pos = new openerp.ktv_sale.KtvRoomPos(openerp.connection);
-            rooms = room_pos.store.get('ktv.room');
-            rooms_collection = new openerp.ktv_sale.RoomCollection(rooms);
+            room_pos.set_app_data();
+            //清空缓存的操作对象
+            room_pos.set({'pending_operations' : null});
+            room_pos.store.set({'ktv.room_operate' : null});
 		},
 		teardown: function() {}
 	});
@@ -23,9 +25,8 @@ $(document).ready(function() {
 	});
 
 	test("ktv.room属性发生变化时,应自动更新localstorage中对应的room属性", function() {
-        var rooms = room_pos.store.get('ktv.room');
-		var rooms_collection = new openerp.ktv_sale.RoomCollection(rooms);
-		var room = rooms_collection.at(0);
+        console.debug("execute test update room in localStorage");
+		var room = room_pos.rooms_all.at(0);
         console.debug("原包厢名称:" + room.get("name"));
 		room.set({
 			'name': 'test_room'
@@ -40,7 +41,7 @@ $(document).ready(function() {
     });
 
     test('应能正确处理订房操作',function(){
-        var the_room = rooms_collection.at(0);
+        var the_room = room_pos.rooms_all.at(0);
         var room_scheduled = new openerp.ktv_sale.RoomScheduled();
         room_scheduled.set({
             guest_name : "张三",
@@ -52,9 +53,68 @@ $(document).ready(function() {
     });
     test('应能够正确获取房态信息',function(){
         var ktv_shop = new openerp.ktv_sale.KtvShop();
-        ktv_shop.get("rooms").reset(rooms);
+        ktv_shop.get("rooms").reset(room_pos.rooms_all.export_as_json());
         //目前所有包厢应全部是空闲状态
-        ok(ktv_shop.get("room_status")["free"] == rooms.length)
+        ok(ktv_shop.get("room_status")["free"]  > 0);
     });
+
+
+    test('应能够正确保存开房信息',function(){
+        var the_room = room_pos.rooms_all.at(1);
+        var room_open = new openerp.ktv_sale.RoomOpen();
+        room_open.set({
+            saler_id : 1,     //销售经理
+            fee_type_id : 1,  //计费方式
+            room_fee : 100,  //包厢费
+            minimum_fee : 0,  //最低消费
+            minimum_fee_p : 0, //最低消费按人
+            base_minimum_fee : 70,  //原最低消费
+            base_minimum_fee_p : 70,  //原最低消费按人
+            base_hourly_fee_p : 30, //原按人钟点费
+
+            base_hourly_fee : 70,  //原钟点费
+            base_hourly_fee_p : 30, //原按人钟点费
+
+            hourly_fee : 50,  //折后钟点费
+            hourly_fee_discount : 0.5, //钟点费折扣
+            hourly_fee_p : 20,  //折后钟点费按人
+            hourly_fee_discount : 0.5,  //钟点费折扣按人
+            member_card_id : 1, //会员卡id
+            drinks_fee_discount : 0.5, //会员卡酒水折扣
+            room_fee_discount : 0.8, //房费折扣
+            guest_name : "张三",  //客人姓名
+            person_count : 10  //客人人数
+
+        });
+        ret = the_room.save_room_open(room_open);
+        ok(ret);
+    });
+	module("ktv 收银系统 qweb模板测试", {
+		setup: function() {
+			openerp = window.openerp.init();
+			window.openerp.web.core(openerp);
+			window.openerp.web.chrome(openerp);
+			window.openerp.web.data(openerp);
+			window.openerp.ktv_sale(openerp);
+			openerp.connection.bind();
+			room_pos = openerp.ktv_sale.ktv_room_pos = new openerp.ktv_sale.KtvRoomPos(openerp.connection);
+            room_pos.set_app_data();
+            //清空缓存的操作对象
+            room_pos.set({'pending_operations' : null});
+            room_pos.store.set({'ktv.room_operate' : null});
+            openerp.web.qweb.add_template('../src/xml/ktv_sale.xml');
+		},
+		teardown: function() {}
+	});
+
+    test('应能正常显示预定界面',function() {
+        var room = room_pos.rooms_all.at(2);
+        var room_scheduled_widget = new openerp.ktv_sale.RoomScheduledWidget(null,{room : room});
+        room_scheduled_widget.render_element();
+        room_scheduled_widget.start();
+        ok(room_scheduled_widget.$element);
+    });
+
+
 });
 

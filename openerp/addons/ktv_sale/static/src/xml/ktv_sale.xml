@@ -192,4 +192,19 @@
             </div>
         </form>
     </t>
+    <!--正常开房界面room_open-->
+    <t t-name="room-open-template">
+        <form class="form-horizontal" id="room_open_form">
+            <div class="control-group info">
+                <label class="control-label" for="room_id">包厢名称:</label>
+                <div class="controls">
+                    <select id="room_id" name="room_id">
+                        <t t-foreach="rooms" t-as="r">
+                            <option t-att-value="r.id"><t t-esc="r.name"/></option>
+                        </t>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </t>
 </templates>
