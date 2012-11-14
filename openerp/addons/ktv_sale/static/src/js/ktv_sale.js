@@ -92,6 +92,7 @@ openerp.ktv_sale = function(db) {
 				'room_types': ktv_room_pos.store.get('ktv.room_type'),
 				'room_areas': ktv_room_pos.store.get('ktv.room_area'),
 				'fee_types': ktv_room_pos.store.get('ktv.fee_type'),
+                'price_classes' : ktv_room_pos.store.get('ktv.price_class'),
 				'currency': ktv_room_pos.get('currency'),
 				'format_amount': function(amount) {
 					if (ktv_room_pos.get('currency').position == 'after') {
@@ -649,7 +650,7 @@ openerp.ktv_sale = function(db) {
 		render_element: function() {
 			this.$element.html(this.template_fct({
 				//空闲、已预定、已结账、清洁的房间都可以开房
-				rooms: ktv_room_pos.get_rooms_by_state(['free', 'scheduled', 'checkout', 'clean']),
+				rooms: ktv_room_pos.get_rooms_by_state(['free', 'scheduled', 'checkout', 'clean']).export_as_json(),
 				model: this.model
 			}));
 			return this;
@@ -750,6 +751,7 @@ openerp.ktv_sale = function(db) {
 		start: function() {
 			this.model.bind('change:state', _.bind(this.refresh, this));
 			$(this.$element).find('.action_room_scheduled').click(_.bind(this.action_room_scheduled, this));
+			$(this.$element).find('.action_room_open').click(_.bind(this.action_room_open, this));
 		},
 		refresh: function() {
 			this.render_element();
@@ -770,7 +772,6 @@ openerp.ktv_sale = function(db) {
 			if (this.model.get('state') == db.ktv_sale.room_state.states.BUYTIME[0]) $(this.$element).find('.action_room_scheduled,.action_room_scheduled_cancel,.action_room_open,.action_room_checkout').parent('li').addClass('disabled');
 			return this;
 		},
-		//预定
 		//显示预定窗口
 		action_room_scheduled: function() {
 			var rs_dialog = new db.ktv_sale.RoomScheduledWidget(null, {
@@ -790,6 +791,34 @@ openerp.ktv_sale = function(db) {
 				}
 			};
 			new db.web.Dialog(null, options, rs_dialog.$element).open();
+
+		},
+		//显示开房窗口
+		action_room_open: function() {
+			var room_open_dialog = new db.ktv_sale.RoomOpenWidget(null, {
+				room: this.model
+			});
+			room_open_dialog.render_element();
+			room_open_dialog.start();
+			var options = {
+                width : 900,
+				title: "正常开房",
+				buttons: {
+					"会员卡": function() {
+					},
+					"保存开房信息": function() {
+						room_open_dialog.save();
+					},
+					"预定信息": function() {
+					},
+					"重打开房条": function() {
+					},
+					"取消": function() {
+						room_open_dialog.$element.dialog('close');
+					}
+				}
+			};
+			new db.web.Dialog(null, options, room_open_dialog.$element).open();
 
 		},
 

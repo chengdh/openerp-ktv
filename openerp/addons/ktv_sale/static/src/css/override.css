@@ -1,6 +1,5 @@
 /* room status bar display style */
-#header {background : 5C5A5A;}
-button.btn {
-    pading-left : 10px;
-    pading-right : 10px;
+legend {
+    font-size : 0.8em;
+    font-weight : bold;
 }

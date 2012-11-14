@@ -19,7 +19,7 @@
 
             <div class="container-fluid">
                 <div class="row-fluid">
-                   <div class='span10'>
+                    <div class='span10'>
                         <div id="room_status"></div>
                         <div id="room_filter"></div>
                         <ul id="room_list" class="thumbnails"></ul>
@@ -195,16 +195,106 @@
     <!--正常开房界面room_open-->
     <t t-name="room-open-template">
         <form class="form-horizontal" id="room_open_form">
-            <div class="control-group info">
-                <label class="control-label" for="room_id">包厢名称:</label>
-                <div class="controls">
-                    <select id="room_id" name="room_id">
-                        <t t-foreach="rooms" t-as="r">
-                            <option t-att-value="r.id"><t t-esc="r.name"/></option>
-                        </t>
-                    </select>
+            <fieldset>
+                <div class="row">
+                    <div class="control-group info pull-left">
+                        <label class="control-label" for="room_id">包厢名称:</label>
+                        <div class="controls">
+                            <select id="room_id" name="room_id">
+                                <t t-foreach="rooms" t-as="r">
+                                    <option t-att-value="r.id"><t t-esc="r.name"/></option>
+                                </t>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group info pull-left">
+                        <label class="control-label" for="saler_id">销售经理:</label>
+                        <div class="controls">
+                            <input type="text" id="saler_id" name="saler_id" />
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="control-group info pull-left">
+                        <label class="control-label" for="fee_type_id">计费方式:</label>
+                        <div class="controls">
+                            <select id="fee_type_id" name="fee_type_id">
+                                <t t-foreach="fee_types" t-as="f">
+                                    <option t-att-value="f.id"><t t-esc="f.name"/></option>
+                                </t>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group info pull-left">
+                        <label class="control-label" for="price_class_id">价格类型:</label>
+                        <div class="controls">
+                            <select id="price_class_id" name="price_class_id">
+                                <t t-foreach="price_classes" t-as="p">
+                                    <option t-att-value="p.id"><t t-esc="p.name"/></option>
+                                </t>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="control-group info pull-left">
+                        <label class="control-label" for="guest_name">客人姓名:</label>
+                        <div class="controls">
+                            <input type="text" id="guest_name" name="guest_name" />
+                        </div>
+                    </div>
+                    <div class="control-group info pull-left">
+                        <label class="control-label" for="persons_count">客人数量:</label>
+                        <div class="controls">
+                            <input type="text" id="persons_count" name="persons_count" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="control-group pull-left">
+                        <label class="control-label" for="room_fee">包厢费:</label>
+                        <div class="controls">
+                            <input type="text" id="room_fee" name="room_fee" class="number" />
+                        </div>
+                    </div>
+                    <div class="control-group pull-left">
+                        <label class="control-label" for="minimum_fee">最低消费:</label>
+                        <div class="controls">
+                            <input type="text" id="minimum_fee" name="minimum_fee" class="number" />
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="row">
+                    <div class="control-group pull-left">
+                        <label class="control-label" for="member_card_no">会员卡号:</label>
+                        <div class="controls">
+                            <input type="text" id="member_card_no" name="member_card_no" class="number" />
+                        </div>
+                    </div>
+                    <div class="control-group pull-left">
+                        <label class="control-label" for="room_fee_discount">房费折扣:</label>
+                        <div class="controls">
+                            <input type="text" id="room_fee_discount" name="room_fee_discount" class="number" />
+                        </div>
+                    </div>
+
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>时段钟点费</legend>
+                <div class="row">
+                    <div class="control-group pull-left">
+                        <label class="control-label" for="persons_count">钟点费:</label>
+                        <div class="controls">
+                            <input type="text" id="base_hourly_fee" name="base_hourly_fee" />
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
         </form>
     </t>
 </templates>

@@ -1,40 +1,40 @@
 $(document).ready(function() {
-	var openerp;
+    var openerp;
     var room_pos;
     var rooms_collection;
     //原始的包厢信息.从localStorage中获取到的
     var rooms;
-	module("ktv sale tests", {
-		setup: function() {
-			openerp = window.openerp.init();
-			window.openerp.web.core(openerp);
-			window.openerp.web.chrome(openerp);
-			window.openerp.web.data(openerp);
-			window.openerp.ktv_sale(openerp);
-			openerp.connection.bind();
-			room_pos = openerp.ktv_sale.ktv_room_pos = new openerp.ktv_sale.KtvRoomPos(openerp.connection);
+    module("ktv sale tests", {
+        setup: function() {
+            openerp = window.openerp.init();
+            window.openerp.web.core(openerp);
+            window.openerp.web.chrome(openerp);
+            window.openerp.web.data(openerp);
+            window.openerp.ktv_sale(openerp);
+            openerp.connection.bind();
+            room_pos = openerp.ktv_sale.ktv_room_pos = new openerp.ktv_sale.KtvRoomPos(openerp.connection);
             room_pos.set_app_data();
             //清空缓存的操作对象
             room_pos.set({'pending_operations' : null});
             room_pos.store.set({'ktv.room_operate' : null});
-		},
-		teardown: function() {}
-	});
-	test("应能正确初始化ktv_sale_pos对象", function() {
-		ok(room_pos.store.get('ktv.fee_type').length > 0);
-	});
+        },
+        teardown: function() {}
+    });
+    test("应能正确初始化ktv_sale_pos对象", function() {
+        ok(room_pos.store.get('ktv.fee_type').length > 0);
+    });
 
-	test("ktv.room属性发生变化时,应自动更新localstorage中对应的room属性", function() {
+    test("ktv.room属性发生变化时,应自动更新localstorage中对应的room属性", function() {
         console.debug("execute test update room in localStorage");
-		var room = room_pos.rooms_all.at(0);
+        var room = room_pos.rooms_all.at(0);
         console.debug("原包厢名称:" + room.get("name"));
-		room.set({
-			'name': 'test_room'
-		});
+        room.set({
+            'name': 'test_room'
+        });
         updated_rooms = JSON.parse(localStorage["oe_ktv_ktv.room"]);
         ret = _.any(updated_rooms,function(r) {return r.name == "test_room"});
-		ok(ret);
-	});
+        ok(ret);
+    });
 
     test("db.ktv_sale.get_state_desc",function(){
         ok(openerp.ktv_sale.room_state.get_state_desc('free') == "空闲")
@@ -89,32 +89,46 @@ $(document).ready(function() {
         ret = the_room.save_room_open(room_open);
         ok(ret);
     });
-	module("ktv 收银系统 qweb模板测试", {
-		setup: function() {
-			openerp = window.openerp.init();
-			window.openerp.web.core(openerp);
-			window.openerp.web.chrome(openerp);
-			window.openerp.web.data(openerp);
-			window.openerp.ktv_sale(openerp);
-			openerp.connection.bind();
-			room_pos = openerp.ktv_sale.ktv_room_pos = new openerp.ktv_sale.KtvRoomPos(openerp.connection);
+    module("ktv 收银系统 qweb模板测试", {
+        setup: function() {
+            openerp = window.openerp.init();
+            window.openerp.web.core(openerp);
+            window.openerp.web.chrome(openerp);
+            window.openerp.web.data(openerp);
+            window.openerp.ktv_sale(openerp);
+            openerp.connection.bind();
+            room_pos = openerp.ktv_sale.ktv_room_pos = new openerp.ktv_sale.KtvRoomPos(openerp.connection);
             room_pos.set_app_data();
             //清空缓存的操作对象
             room_pos.set({'pending_operations' : null});
             room_pos.store.set({'ktv.room_operate' : null});
             openerp.web.qweb.add_template('../src/xml/ktv_sale.xml');
-		},
-		teardown: function() {}
-	});
+        },
+        teardown: function() {
+            openerp.web.qweb.templates = [];
+            openerp.web.qweb.tag = {};
+            openerp.web.qweb.att = {};
+
+        }
+    });
 
     test('应能正常显示预定界面',function() {
         var room = room_pos.rooms_all.at(2);
         var room_scheduled_widget = new openerp.ktv_sale.RoomScheduledWidget(null,{room : room});
+        //room_scheduled_widget.$element = $('#ktv_widget');
         room_scheduled_widget.render_element();
         room_scheduled_widget.start();
         ok(room_scheduled_widget.$element);
     });
 
+    test("应能正常显示开房界面",function(){
+        var room = room_pos.rooms_all.at(3);
+        var w = new openerp.ktv_sale.RoomOpenWidget(null,{room : room});
+        w.$element = $('#ktv_widget');
+        w.render_element();
+        w.start();
+        ok(w.$element);
+    });
 
 });
 
