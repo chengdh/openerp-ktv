@@ -473,6 +473,14 @@ openerp.ktv_sale = function(db) {
 			Backbone.Model.prototype.initialize.apply(this, arguments);
 			this.bind('change', this.on_change, this);
 		},
+		//获取room_fee_info
+		get_room_fee_info: function() {
+			if (!this.room_fee_info) this.room_fee_info = new db.ktv_sale.RoomFeeInfo({
+				room: this
+			});
+
+			return this.room_fee_info;
+		},
 		//如果包厢信息发生变化,更新Localstorage中的数据
 		on_change: function() {
 			var rooms = ktv_room_pos.rooms_all;
@@ -528,6 +536,7 @@ openerp.ktv_sale = function(db) {
 		//导出为json
 		export_as_json: function() {
 			var ret = this.toJSON();
+			ret.room_fee_info = this.get_room_fee_info().export_as_json();
 			ret.state_description = this.state_description();
 			return ret;
 		},
@@ -575,7 +584,7 @@ openerp.ktv_sale = function(db) {
 				//判断时间是否在区间内
 				return current_time.between(Date.parse(l.get('time_from')), Date.parse(l.get('time_to')));
 			});
-            if(match_line) current_fee = match_line.get(which_fee);
+			if (match_line) current_fee = match_line.get(which_fee);
 			return current_fee;
 		},
 		current_room_fee: function() {
@@ -587,86 +596,83 @@ openerp.ktv_sale = function(db) {
 		current_minimum_fee_p: function() {
 			return this._get_current_fee("minimum_fee_p");
 		},
-        //导出为Json
-        export_as_json : function(){
-            ret = {
-                room_fee : this.current_room_fee(),
-                minimum_fee : this.current_minimum_fee(),
-                minimum_fee_p : this.current_minimum_fee_p(),
-            };
-            //时段钟点费
-            ret.hourly_fee_lines = this._export_hourly_fee_lines("hourly_fee_discount");
-            ret.hourly_fee_p_lines = this._export_hourly_fee_lines("hourly_fee_p_discount");
-            ret.member_hourly_fee_lines = this._export_hourly_fee_lines("member_hourly_fee_discount");
-            //买断设置
-            var buyout_config_lines =[];
-            this.get("buyout_config_lines").each(function(l){
-                buyout_config_lines.push({
-                    name : l.get("name"),
-                    time_range : l.get("time_from") + "~" + l.get("time_to"),
-                    is_member : l.get("is_member"),
-                    buyout_time : l.get("buyout_time"),
-                    buyout_fee : l.get("buyout_fee")
-                });
-            });
-            ret.buyout_config_lines = buyout_config_lines;
-            //自助餐设置
-            var buffet_config_lines =[];
-            this.get("buffet_config_lines").each(function(l){
-                buffet_config_lines.push({
-                    name : l.get("name"),
-                    time_range : l.get("time_from") + "~" + l.get("time_to"),
-                    is_member : l.get("is_member"),
-                    buyout_time : l.get("buyout_time"),
-                    buyout_fee : l.get("buyout_fee"),
-                    child_buyout_fee : l.get("child_buyout_fee")
-                });
-            });
-            ret.buffet_config_lines = buffet_config_lines;
+		//导出为Json
+		export_as_json: function() {
+			ret = {
+				room_fee: this.current_room_fee(),
+				minimum_fee: this.current_minimum_fee(),
+				minimum_fee_p: this.current_minimum_fee_p(),
+			};
+			//时段钟点费
+			ret.hourly_fee_lines = this._export_hourly_fee_lines("hourly_fee_discount");
+			ret.hourly_fee_p_lines = this._export_hourly_fee_lines("hourly_fee_p_discount");
+			ret.member_hourly_fee_lines = this._export_hourly_fee_lines("member_hourly_fee_discount");
+			//买断设置
+			var buyout_config_lines = [];
+			this.get("buyout_config_lines").each(function(l) {
+				buyout_config_lines.push({
+					name: l.get("name"),
+					time_range: l.get("time_from") + "~" + l.get("time_to"),
+					is_member: l.get("is_member"),
+					buyout_time: l.get("buyout_time"),
+					buyout_fee: l.get("buyout_fee")
+				});
+			});
+			ret.buyout_config_lines = buyout_config_lines;
+			//自助餐设置
+			var buffet_config_lines = [];
+			this.get("buffet_config_lines").each(function(l) {
+				buffet_config_lines.push({
+					name: l.get("name"),
+					time_range: l.get("time_from") + "~" + l.get("time_to"),
+					is_member: l.get("is_member"),
+					buyout_time: l.get("buyout_time"),
+					buyout_fee: l.get("buyout_fee"),
+					child_buyout_fee: l.get("child_buyout_fee")
+				});
+			});
+			ret.buffet_config_lines = buffet_config_lines;
 
-            //买钟优惠
-            var hourly_fee_promotion_lines =[];
-            this.get("hourly_fee_promotion_lines").each(function(l){
-                hourly_fee_promotion_lines.push({
-                    name : l.get("name"),
-                    time_range : l.get("time_from") + "~" + l.get("time_to"),
-                    is_member : l.get("is_member"),
-                    buy_minutes : l.get("buy_minutes"),
-                    present_minutes : l.get("present_minutes")
-                });
-            });
-            ret.hourly_fee_promotion_lines = hourly_fee_promotion_lines;
+			//买钟优惠
+			var hourly_fee_promotion_lines = [];
+			this.get("hourly_fee_promotion_lines").each(function(l) {
+				hourly_fee_promotion_lines.push({
+					name: l.get("name"),
+					time_range: l.get("time_from") + "~" + l.get("time_to"),
+					is_member: l.get("is_member"),
+					buy_minutes: l.get("buy_minutes"),
+					present_minutes: l.get("present_minutes")
+				});
+			});
+			ret.hourly_fee_promotion_lines = hourly_fee_promotion_lines;
 
-            return ret;
-        },
-        //导出钟点费设置
-        _export_hourly_fee_lines : function(which_fee) {
-            var hourly_fee_lines = [];
-            if(this.get("today_" +which_fee+"_lines").length == 0)
-                hourly_fee_discount_lines.push({
-                    member_class_id : -1,
-                    price_class_id : -1,
-                    base_hourly_fee : this.get(which_fee),
-                    "time_range" : "00:00 ~ 24:00",
-                    hourly_fee_discount : "不打折",
-                    hourly_fee : this.get(which_fee)
-                });
-            else
-            {
-                this.get("today_" +which_fee+"_lines").each(function(l){
-                    hourly_fee_lines.push({
-                        member_class_id : l.get("member_class_id"),
-                        price_class_id : l.get("price_class_id"),
-                        base_hourly_fee : l.get("base_hourly_fee"),
-                        "time_range" : l.get("time_from") + "~" + l.get("time_to"),
-                        hourly_fee_discount : l.get("hourly_fee_discount"),
-                        hourly_fee : l.get("hourly_fee")
-                    });
-                });
-            }
-            return hourly_fee_lines;
-
-        },
+			return ret;
+		},
+		//导出钟点费设置
+		_export_hourly_fee_lines: function(which_fee) {
+			var hourly_fee_lines = [];
+			if (this.get("today_" + which_fee + "_lines").length == 0) hourly_fee_lines.push({
+				member_class_id: - 1,
+				price_class_id: - 1,
+				base_hourly_fee: this.get(which_fee),
+				"time_range": "00:00 ~ 24:00",
+				hourly_fee_discount: "不打折",
+				hourly_fee: this.get(which_fee)
+			});
+			else {
+				this.get("today_" + which_fee + "_lines").each(function(l) {
+					hourly_fee_lines.push({
+						member_class_id: l.get("member_class_id"),
+						price_class_id: l.get("price_class_id"),
+						base_hourly_fee: l.get("base_hourly_fee"),
+						"time_range": l.get("time_from") + "~" + l.get("time_to"),
+						hourly_fee_discount: l.get("hourly_fee_discount"),
+						hourly_fee: l.get("hourly_fee")
+					});
+				});
+			}
+			return hourly_fee_lines;
+		},
 		//包厢发生变化
 		_on_room_change: function() {
 			var the_room = this.get("room");
@@ -728,11 +734,11 @@ openerp.ktv_sale = function(db) {
 			});
 			this._set_minimum_fee();
 			this._set_hourly_fee_discount("hourly_fee_discount");
-			this._set_hourly_fee_discount("hourly_fee_discount",true);
+			this._set_hourly_fee_discount("hourly_fee_discount", true);
 			this._set_hourly_fee_discount("hourly_fee_p_discount");
-			this._set_hourly_fee_discount("hourly_fee_p_discount",true);
-            this._set_hourly_fee_discount("member_hourly_fee_discount");
-			this._set_hourly_fee_discount("member_hourly_fee_discount",true);
+			this._set_hourly_fee_discount("hourly_fee_p_discount", true);
+			this._set_hourly_fee_discount("member_hourly_fee_discount");
+			this._set_hourly_fee_discount("member_hourly_fee_discount", true);
 
 			this._set_buyout_config();
 			this._set_buffet_config();
@@ -778,13 +784,13 @@ openerp.ktv_sale = function(db) {
 		},
 		//设置包厢时段钟点费
 		//load_all 读取所有设置,默认只读取当日设置
-		_set_hourly_fee_discount: function(which_fee,load_all) {
+		_set_hourly_fee_discount: function(which_fee, load_all) {
 			var the_room = this.get("room");
 			var the_room_type = this.get("room_type");
 			var today = Date.today();
 			//先获取特殊日设置
 			var hourly_fee_configs = ktv_room_pos.store.get("ktv." + which_fee);
-			var hourly_fee_config_special_days = ktv_room_pos.store.get("ktv."+ which_fee + "_special_day");
+			var hourly_fee_config_special_days = ktv_room_pos.store.get("ktv." + which_fee + "_special_day");
 			//得到当日的特殊日设置
 			var sd_config = _.find(hourly_fee_config_special_days, function(c) {
 				return (c.room_type_id[0] == the_room_type.get("id") && Date.parse(c.special_day).equals(today));
@@ -802,8 +808,7 @@ openerp.ktv_sale = function(db) {
 						hourly_fee: c[today_week_day + "_hourly_fee"],
 						hourly_fee_discount: c[today_week_day + "_hourly_discount"]
 					};
-                    if(c.member_class_id)
-                        today_config.member_class_id = c.member_class_id[0];
+					if (c.member_class_id) today_config.member_class_id = c.member_class_id[0];
 					//如果当日是特殊日,则用特殊日设置覆盖当日设置
 					if (sd_config) {
 						today_config.hourly_fee = c["special_day_hourly_fee"];
@@ -1114,7 +1119,8 @@ openerp.ktv_sale = function(db) {
 			this.$element.html(this.template_fct({
 				//空闲、已预定、已结账、清洁的房间都可以开房
 				rooms: ktv_room_pos.get_rooms_by_state(['free', 'scheduled', 'checkout', 'clean']).export_as_json(),
-				model: this.model
+				model: this.model,
+				room: this.room.export_as_json()
 			}));
 			return this;
 		},

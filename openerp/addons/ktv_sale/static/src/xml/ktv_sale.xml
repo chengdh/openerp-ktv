@@ -42,7 +42,6 @@
                             </ul>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -249,7 +248,7 @@
                             </div>
                         </div>
 
-                       <div class="row">
+                        <div class="row">
                             <div class="control-group pull-left">
                                 <label class="control-label" for="prepay_fee">预收款:</label>
                                 <div class="controls">
@@ -275,7 +274,6 @@
                     </fieldset>
 
                     <fieldset>
-                        <legend>费用</legend>
                         <div class="row">
                             <div class="control-group info pull-left">
                                 <label class="control-label" for="fee_type_id">计费方式:</label>
@@ -298,14 +296,13 @@
                                 </div>
                             </div>
                         </div>
-
-                        <table class="table">
-                            <tr>
-                                <td></td>
-                            </tr>
-                        </table>
-                   </fieldset>
+                    </fieldset>
                 </form>
+                <!--调用费用列表-->
+                <t t-call="room-fee-info-template">
+                    <t t-set="room_fee_info" t-value="room.room_fee_info" />
+                </t>
+
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary">开房</button>
@@ -317,43 +314,52 @@
     <!--包厢费用列表-->
     <t t-name="room-fee-info-template">
         <table class="table table-condensed table-striped table-hover">
-            <tr>
-                <td>包厢费:</td>
-                <td colspan="2"></td>
-            </tr>
-            <tr>
-                <td>最低消费:</td>
-                <td colspan="2"></td>
-            </tr>
-            <tr>
-                <td>按人消费:</td>
-                <td colspan="2"></td>
-            </tr>
-            <tr>
-                <td colspan="3">时段钟点费</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td colspan="3">会员时段</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td colspan="3">按位时段</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
+            <tbody>
+                <tr>
+                    <td>包厢费:</td>
+                    <td colspan="2"><t t-esc="room_fee_info.room_fee"/></td>
+                </tr>
+                <tr>
+                    <td>最低消费:</td>
+                    <td colspan="2"><t t-esc="room_fee_info.minimum_fee"/></td>
+                </tr>
+                <tr>
+                    <td>按人消费:</td>
+                    <td colspan="2"><t t-esc="room_fee_info.minimum_fee_p"/></td>
+                </tr>
+                <tr>
+                    <td colspan="3">时段钟点费</td>
+                </tr>
+                <t t-foreach="room_fee_info.hourly_fee_lines" t-as="l">
+                    <tr>
+                        <td><t t-esc="l.time_range"/></td>
+                        <td><t t-esc="l.hourly_fee_discount"/></td>
+                        <td><t t-esc="l.hourly_fee"/></td>
+                    </tr>
+                </t>
+                <tr>
+                    <td colspan="3">会员时段</td>
+                </tr>
 
+                <t t-foreach="room_fee_info.member_hourly_fee_lines" t-as="l">
+                    <tr>
+                        <td><t t-esc="l.time_range"/></td>
+                        <td><t t-esc="l.hourly_fee_discount"/></td>
+                        <td><t t-esc="l.hourly_fee"/></td>
+                    </tr>
+                </t>
+                <tr>
+                    <td colspan="3">按位时段</td>
+                </tr>
+
+                <t t-foreach="room_fee_info.hourly_fee_p_lines" t-as="l">
+                    <tr>
+                        <td><t t-esc="l.time_range"/></td>
+                        <td><t t-esc="l.hourly_fee_discount"/></td>
+                        <td><t t-esc="l.hourly_fee"/></td>
+                    </tr>
+                </t>
+            </tbody>
+        </table>
     </t>
 </templates>
