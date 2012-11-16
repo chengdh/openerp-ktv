@@ -3,3 +3,6 @@ legend {
     font-size : 0.8em;
     font-weight : bold;
 }
+
+.form-horizontal .control-label {width : 100px;}
+.form-horizontal .controls {margin-left : 110px;}

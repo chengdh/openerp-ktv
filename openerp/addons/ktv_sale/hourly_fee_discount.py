@@ -24,8 +24,8 @@ class hourly_fee_discount(osv.osv):
             "wed_hourly_fee",
             "wed_hourly_discount",
             #周四
-            "thurs_hourly_fee",
-            "thurs_hourly_discount",
+            "thu_hourly_fee",
+            "thu_hourly_discount",
             #周五
             "fri_hourly_fee",
             "fri_hourly_discount",

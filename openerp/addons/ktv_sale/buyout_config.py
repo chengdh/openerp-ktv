@@ -20,7 +20,7 @@ class buyout_config(osv.osv):
             #周三
             "wed_buyout_fee",
             #周四
-            "thurs_buyout_fee",
+            "thu_buyout_fee",
             #周五
             "fri_buyout_fee",
             #周六
@@ -38,7 +38,7 @@ class buyout_config(osv.osv):
             #周三
             "wed_buyout_enable",
             #周四
-            "thurs_buyout_enable",
+            "thu_buyout_enable",
             #周五
             "fri_buyout_enable",
             #周六

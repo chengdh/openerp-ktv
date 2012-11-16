@@ -89,6 +89,13 @@ $(document).ready(function() {
         ret = the_room.save_room_open(room_open);
         ok(ret);
     });
+    test("应能正常初始化RoomFeeInfo对象",function(){
+        var the_room =  room_pos.rooms_all.at(0);
+        var room_fee_info = new openerp.ktv_sale.RoomFeeInfo({"room" : the_room});
+        ok(room_fee_info.get("room_fee") > 0);
+        ok(room_fee_info.current_room_fee() > 0);
+        ok(room_fee_info.export_as_json());
+    });
     module("ktv 收银系统 qweb模板测试", {
         setup: function() {
             openerp = window.openerp.init();
@@ -114,20 +121,19 @@ $(document).ready(function() {
 
     test('应能正常显示预定界面',function() {
         var room = room_pos.rooms_all.at(2);
-        var room_scheduled_widget = new openerp.ktv_sale.RoomScheduledWidget(null,{room : room});
-        //room_scheduled_widget.$element = $('#ktv_widget');
-        room_scheduled_widget.render_element();
-        room_scheduled_widget.start();
+        var room_scheduled_widget = new openerp.ktv_sale.RoomScheduledWidget(null,{show : false,room : room});
         ok(room_scheduled_widget.$element);
     });
 
     test("应能正常显示开房界面",function(){
         var room = room_pos.rooms_all.at(3);
-        var w = new openerp.ktv_sale.RoomOpenWidget(null,{room : room});
+        var w = new openerp.ktv_sale.RoomOpenWidget(null,{show : false,room : room});
         w.$element = $('#ktv_widget');
         w.render_element();
         w.start();
         ok(w.$element);
+    });
+    test("应能正确显示包厢费用列表",function(){
     });
 
 });

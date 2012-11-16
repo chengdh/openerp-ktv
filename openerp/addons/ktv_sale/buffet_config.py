@@ -22,7 +22,7 @@ class buffet_config(osv.osv):
             #周三
             "wed_child_buyout_fee",
             #周四
-            "thurs_child_buyout_fee",
+            "thu_child_buyout_fee",
             #周五
             "fri_child_buyout_fee",
             #周六
