@@ -266,6 +266,7 @@
                                         <input type="text" id="member_card_no" name="member_card_no" disabled="true"/>
                                         <div class="btn-group">
                                             <button class="btn" type="button"><i class='icon-user'></i>刷卡</button>
+                                            <button class="btn" type="button"><i class='icon-remove'></i>清除</button>
                                         </div>
                                     </div>
                                 </div>
@@ -313,47 +314,52 @@
     </t>
     <!--包厢费用列表-->
     <t t-name="room-fee-info-template">
-        <table class="table table-condensed table-striped table-hover">
+        <table class="table table-condensed table-striped table-hover table-room-fee-info">
             <tbody>
-                <tr>
-                    <td>包厢费:</td>
+                <tr class="room_fee">
+                    <th>包厢费:</th>
                     <td colspan="2"><t t-esc="room_fee_info.room_fee"/></td>
                 </tr>
-                <tr>
-                    <td>最低消费:</td>
+                <tr class="minimum_fee">
+                    <th>最低消费:</th>
                     <td colspan="2"><t t-esc="room_fee_info.minimum_fee"/></td>
                 </tr>
-                <tr>
-                    <td>按人消费:</td>
+                <tr class="minimum_fee_p">
+                    <th>按人低消:</th>
                     <td colspan="2"><t t-esc="room_fee_info.minimum_fee_p"/></td>
                 </tr>
-                <tr>
-                    <td colspan="3">时段钟点费</td>
+                <tr class="hourly_fee_lines">
+                    <th>时段</th>
+                    <th>折扣率</th>
+                    <th>钟点费/小时</th>
                 </tr>
                 <t t-foreach="room_fee_info.hourly_fee_lines" t-as="l">
-                    <tr>
+                    <tr class="hourly_fee_lines" t-att-data-price-class-id="l.price_class_id" t-att-data-member-class-id="l.member_class_id">
                         <td><t t-esc="l.time_range"/></td>
                         <td><t t-esc="l.hourly_fee_discount"/></td>
                         <td><t t-esc="l.hourly_fee"/></td>
                     </tr>
                 </t>
-                <tr>
-                    <td colspan="3">会员时段</td>
+                <tr class="member_hourly_fee_lines">
+                    <th>时段</th>
+                    <th>折扣率</th>
+                    <th>钟点费/小时</th>
                 </tr>
-
                 <t t-foreach="room_fee_info.member_hourly_fee_lines" t-as="l">
-                    <tr>
+                    <tr class="member_hourly_fee_lines" t-att-data-price-class-id="l.price_class_id" t-att-data-member-class-id="l.member_class_id">
                         <td><t t-esc="l.time_range"/></td>
                         <td><t t-esc="l.hourly_fee_discount"/></td>
                         <td><t t-esc="l.hourly_fee"/></td>
                     </tr>
                 </t>
-                <tr>
-                    <td colspan="3">按位时段</td>
+                <tr class="hourly_fee_p_lines">
+                    <th>时段</th>
+                    <th>折扣率</th>
+                    <th>钟点费/小时</th>
                 </tr>
 
                 <t t-foreach="room_fee_info.hourly_fee_p_lines" t-as="l">
-                    <tr>
+                    <tr class="hourly_fee_p_lines" t-att-data-price-class-id="l.price_class_id" t-att-data-member-class-id="l.member_class_id">
                         <td><t t-esc="l.time_range"/></td>
                         <td><t t-esc="l.hourly_fee_discount"/></td>
                         <td><t t-esc="l.hourly_fee"/></td>

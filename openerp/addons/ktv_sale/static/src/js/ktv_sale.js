@@ -339,7 +339,7 @@ openerp.ktv_sale = function(db) {
 		osv_objects: {
 			//fee_type  //计费方式
 			'ktv.fee_type': {
-				'fields': ['id', 'name'],
+				'fields': ['id','fee_type_code','name'],
 				'domain': []
 			},
 			//fee_type_member_class_discount //计费方式-会员折扣信息
@@ -657,7 +657,7 @@ openerp.ktv_sale = function(db) {
 				base_hourly_fee: this.get(which_fee),
 				"time_range": "00:00 ~ 24:00",
 				hourly_fee_discount: "不打折",
-				hourly_fee: this.get(which_fee)
+				hourly_fee: this.get("hourly_fee")
 			});
 			else {
 				this.get("today_" + which_fee + "_lines").each(function(l) {
@@ -1114,7 +1114,18 @@ openerp.ktv_sale = function(db) {
 			this.model = new db.ktv_sale.RoomOpen();
 			this._super(parent, options);
 		},
-		start: function() {},
+		start: function() {
+            this.$form = this.$element.find("form");
+            //绑定room_id变化事件
+            this.$form.find("#room_id").change(_.bind(this.on_change_room_id,this));
+            //绑定价格类型价格变化
+            this.$form.find("#fee_type_id").change(_.bind(this.on_change_fee_type_id,this));
+            //绑定计费方式价格变化
+            this.$form.find("#price_class_id").change(_.bind(this.on_change_price_class_id,this));
+			//设置初始值
+			if (this.room) this.$form.find('#room_id').val(this.room.id);
+            this.on_change_price_class_id();
+        },
 		render_element: function() {
 			this.$element.html(this.template_fct({
 				//空闲、已预定、已结账、清洁的房间都可以开房
@@ -1125,9 +1136,85 @@ openerp.ktv_sale = function(db) {
 			return this;
 		},
 		on_change_room_id: function() {
-			var rooms = db.ktv_sale.rooms_all.get(this.$form.find('#room_id').val());
+			var changed_room = ktv_room_pos.rooms_all.get(this.$form.find('#room_id').val());
 			this.room = changed_room;
+            this.close();
+            this.open();
+		},
+		on_change_fee_type_id: function() {
+            var fee_types = ktv_room_pos.store.get("ktv.fee_type");
+            var fee_type = _.find(fee_types,function(f){return f.id == this.$form.find('#fee_type_id').val();},this);
+            this.$element.find(".room_fee,.minimum_fee,.minimum_fee_p,.hourly_fee_lines,.member_hourly_fee_lines,.hourly_fee_p_lines").hide();
+            //只收包厢费
+            if(fee_type.fee_type_code == "only_room_fee")
+            {
+                this.$element.find(".room_fee").show();
+            }
+            //只收钟点费
+            if(fee_type.fee_type_code == "only_hourly_fee")
+            {
+                this.$element.find(".hourly_fee,.hourly_fee_lines").show();
+            }
+
+            //钟点费+包厢费
+            if(fee_type.fee_type_code == "room_fee_plus_hourly_fee")
+            {
+                this.$element.find(".room_fee,.hourly_fee,.hourly_fee_lines").show();
+            }
+            //最低消费
+            if(fee_type.fee_type_code == "minimum_fee")
+            {
+                this.$element.find(".minimum_fee").show();
+            }
+
+            //包厢费+最低消费
+            if(fee_type.fee_type_code == "room_fee_plus_minimum_fee")
+            {
+                this.$element.find(".room_fee,.minimum_fee").show();
+            }
+
+
+            //钟点费+最低消费
+            if(fee_type.fee_type_code == "hourly_fee_plus_minimum_fee")
+            {
+                this.$element.find(".hourly_fee_lines,.minimum_fee").show();
+            }
+
+            //包厢费+钟点费+最低消费
+            if(fee_type.fee_type_code == "room_fee_plus_hourly_fee_plus_minimum_fee")
+            {
+                this.$element.find(".room_fee,.hourly_fee,.hourly_fee_lines,.minimum_fee").show();
+            }
+            //按位钟点费
+            if(fee_type.fee_type_code == "hourly_fee_p")
+            {
+                this.$element.find(".hourly_fee_p_lines").show();
+            }
+
+            //按位最低消费
+            if(fee_type.fee_type_code == "minimum_fee_p")
+            {
+                this.$element.find(".minimum_fee_p").show();
+            }
+
+            //自助餐
+            //TODO
+            //酒水费
+            //TODO
+
+		},
+		on_change_price_class_id: function() {
+            var price_class_id = this.$form.find("#price_class_id").val();
+            var match_els = this.$element.find('tr[data-price-class-id="'+price_class_id + '"]');
+            if(match_els.length > 0)
+            {
+                //只显示当前价格类型相关的钟点折扣信息
+                this.$element.find('tr[data-price-class-id]').hide();
+                this.$element.find('tr[data-price-class-id="'+price_class_id + '"]').show();
+            }
+            this.on_change_fee_type_id();
 		}
+
 	});
 
 	//包厢过滤 widget
