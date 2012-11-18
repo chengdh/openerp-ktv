@@ -242,6 +242,7 @@ openerp.ktv_sale = function(db) {
 			self.rooms_all = new db.ktv_sale.RoomCollection(self.store.get('ktv.room'));
 			//获取包厢操作对象
 			self.room_operates = new db.ktv_sale.RoomOperateCollection(self.store.get('ktv.room_operate'));
+            //将包厢操作中的room
 			return this.ready.resolve();
 		},
 		//根据包厢状态返回包厢数组
@@ -339,7 +340,7 @@ openerp.ktv_sale = function(db) {
 		osv_objects: {
 			//fee_type  //计费方式
 			'ktv.fee_type': {
-				'fields': ['id','fee_type_code','name'],
+				'fields': ['id', 'fee_type_code', 'name'],
 				'domain': []
 			},
 			//fee_type_member_class_discount //计费方式-会员折扣信息
@@ -520,12 +521,13 @@ openerp.ktv_sale = function(db) {
 		},
 		//保存正常开房信息
 		save_room_open: function(room_open) {
+            var self = this;
 			var room_states = db.ktv_sale.room_state.array_states_on_operate('room_open');
 			if (_.contains(room_states, this.get('state'), this)) {
 				var rop = this.get_or_create_current_room_operate();
 				rop.get("room_open_lines").add(room_open);
 				ktv_room_pos.push_room_operate(rop).always(function() {
-					this.set({
+					self.set({
 						state: 'in_use'
 					});
 				});
@@ -982,7 +984,7 @@ openerp.ktv_sale = function(db) {
 	//
 	db.ktv_sale.RoomOperate = Backbone.Model.extend({
 		defaults: {
-			room: null,
+			//room: null,
 			//是否已保存到数据库
 			saved: false,
 			//用于标示是否已和服务器同步
@@ -1001,6 +1003,8 @@ openerp.ktv_sale = function(db) {
 				room_open_lines: new db.ktv_sale.RoomOpenCollection()
 				//其他操作列表
 			});
+            if(attributes.room)
+                this.set({room : new db.ktv_sale.Room(attributes.room)});
 		},
 		generateUniqueId: function() {
 			return new Date().getTime();
@@ -1099,13 +1103,15 @@ openerp.ktv_sale = function(db) {
 	//正常开房信息
 	db.ktv_sale.RoomOpen = Backbone.Model.extend({
 		defaults: {
-			open_date: new Date(), //开房时间
-            prepay_fee : 0.0,   //预付款项
-            persons_count : 3   //默认人数为
+			open_date: new Date(),
+			//开房时间
+			prepay_fee: 0.0,
+			//预付款项
+			persons_count: 3 //默认人数为
 		},
-        export_as_json : function(){
-            return this.toJSON();
-        }
+		export_as_json: function() {
+			return this.toJSON();
+		}
 	});
 	//正常开房信息列表
 	db.ktv_sale.RoomOpenCollection = Backbone.Collection.extend({
@@ -1120,17 +1126,18 @@ openerp.ktv_sale = function(db) {
 			this._super(parent, options);
 		},
 		start: function() {
-            this.$form = this.$element.find("form");
-            //绑定room_id变化事件
-            this.$form.find("#room_id").change(_.bind(this.on_change_room_id,this));
-            //绑定价格类型价格变化
-            this.$form.find("#fee_type_id").change(_.bind(this.on_change_fee_type_id,this));
-            //绑定计费方式价格变化
-            this.$form.find("#price_class_id").change(_.bind(this.on_change_price_class_id,this));
+			this.$form = this.$element.find("form");
+			//绑定room_id变化事件
+			this.$form.find("#room_id").change(_.bind(this.on_change_room_id, this));
+			//绑定价格类型价格变化
+			this.$form.find("#fee_type_id").change(_.bind(this.on_change_fee_type_id, this));
+			//绑定计费方式价格变化
+			this.$form.find("#price_class_id").change(_.bind(this.on_change_price_class_id, this));
+			this.$element.find('.btn-save-room-open').click(_.bind(this.on_btn_save, this));
 			//设置初始值
 			if (this.room) this.$form.find('#room_id').val(this.room.id);
-            this.on_change_price_class_id();
-        },
+			this.on_change_price_class_id();
+		},
 		render_element: function() {
 			this.$element.html(this.template_fct({
 				//空闲、已预定、已结账、清洁的房间都可以开房
@@ -1140,85 +1147,85 @@ openerp.ktv_sale = function(db) {
 			}));
 			return this;
 		},
-        //包厢信息发生变化时,需要重新显示界面
+		//包厢信息发生变化时,需要重新显示界面
 		on_change_room_id: function() {
 			var changed_room = ktv_room_pos.rooms_all.get(this.$form.find('#room_id').val());
 			this.room = changed_room;
-            this.close();
-            this.open();
+			this.close();
+			this.open();
 		},
 		on_change_fee_type_id: function() {
-            var fee_types = ktv_room_pos.store.get("ktv.fee_type");
-            var fee_type = _.find(fee_types,function(f){return f.id == this.$form.find('#fee_type_id').val();},this);
-            this.$element.find(".room_fee,.minimum_fee,.minimum_fee_p,.hourly_fee_lines,.member_hourly_fee_lines,.hourly_fee_p_lines").hide();
-            //只收包厢费
-            if(fee_type.fee_type_code == "only_room_fee")
-            {
-                this.$element.find(".room_fee").show();
-            }
-            //只收钟点费
-            if(fee_type.fee_type_code == "only_hourly_fee")
-            {
-                this.$element.find(".hourly_fee,.hourly_fee_lines").show();
-            }
+			var fee_types = ktv_room_pos.store.get("ktv.fee_type");
+			var fee_type = _.find(fee_types, function(f) {
+				return f.id == this.$form.find('#fee_type_id').val();
+			},
+			this);
+			this.$element.find(".room_fee,.minimum_fee,.minimum_fee_p,.hourly_fee_lines,.member_hourly_fee_lines,.hourly_fee_p_lines").hide();
+			//只收包厢费
+			if (fee_type.fee_type_code == "only_room_fee") {
+				this.$element.find(".room_fee").show();
+			}
+			//只收钟点费
+			if (fee_type.fee_type_code == "only_hourly_fee") {
+				this.$element.find(".hourly_fee,.hourly_fee_lines").show();
+			}
 
-            //钟点费+包厢费
-            if(fee_type.fee_type_code == "room_fee_plus_hourly_fee")
-            {
-                this.$element.find(".room_fee,.hourly_fee,.hourly_fee_lines").show();
-            }
-            //最低消费
-            if(fee_type.fee_type_code == "minimum_fee")
-            {
-                this.$element.find(".minimum_fee").show();
-            }
+			//钟点费+包厢费
+			if (fee_type.fee_type_code == "room_fee_plus_hourly_fee") {
+				this.$element.find(".room_fee,.hourly_fee,.hourly_fee_lines").show();
+			}
+			//最低消费
+			if (fee_type.fee_type_code == "minimum_fee") {
+				this.$element.find(".minimum_fee").show();
+			}
 
-            //包厢费+最低消费
-            if(fee_type.fee_type_code == "room_fee_plus_minimum_fee")
-            {
-                this.$element.find(".room_fee,.minimum_fee").show();
-            }
+			//包厢费+最低消费
+			if (fee_type.fee_type_code == "room_fee_plus_minimum_fee") {
+				this.$element.find(".room_fee,.minimum_fee").show();
+			}
 
+			//钟点费+最低消费
+			if (fee_type.fee_type_code == "hourly_fee_plus_minimum_fee") {
+				this.$element.find(".hourly_fee_lines,.minimum_fee").show();
+			}
 
-            //钟点费+最低消费
-            if(fee_type.fee_type_code == "hourly_fee_plus_minimum_fee")
-            {
-                this.$element.find(".hourly_fee_lines,.minimum_fee").show();
-            }
+			//包厢费+钟点费+最低消费
+			if (fee_type.fee_type_code == "room_fee_plus_hourly_fee_plus_minimum_fee") {
+				this.$element.find(".room_fee,.hourly_fee,.hourly_fee_lines,.minimum_fee").show();
+			}
+			//按位钟点费
+			if (fee_type.fee_type_code == "hourly_fee_p") {
+				this.$element.find(".hourly_fee_p_lines").show();
+			}
 
-            //包厢费+钟点费+最低消费
-            if(fee_type.fee_type_code == "room_fee_plus_hourly_fee_plus_minimum_fee")
-            {
-                this.$element.find(".room_fee,.hourly_fee,.hourly_fee_lines,.minimum_fee").show();
-            }
-            //按位钟点费
-            if(fee_type.fee_type_code == "hourly_fee_p")
-            {
-                this.$element.find(".hourly_fee_p_lines").show();
-            }
+			//按位最低消费
+			if (fee_type.fee_type_code == "minimum_fee_p") {
+				this.$element.find(".minimum_fee_p").show();
+			}
 
-            //按位最低消费
-            if(fee_type.fee_type_code == "minimum_fee_p")
-            {
-                this.$element.find(".minimum_fee_p").show();
-            }
-
-            //自助餐
-            //TODO
-            //酒水费
-            //TODO
-
+			//自助餐
+			//TODO
+			//酒水费
+			//TODO
 		},
 		on_change_price_class_id: function() {
-            var price_class_id = this.$form.find("#price_class_id").val();
-            var match_els = this.$element.find('tr[data-price-class-id="'+price_class_id + '"]');
-            if(match_els.length > 0)
-            {
-                //只显示当前价格类型相关的钟点折扣信息
-                this.$element.find('tr[data-price-class-id]').hide();
-                this.$element.find('tr[data-price-class-id="'+price_class_id + '"]').show();
-            }
-            this.on_change_fee_type_id();
+			var price_class_id = this.$form.find("#price_class_id").val();
+			var match_els = this.$element.find('tr[data-price-class-id="' + price_class_id + '"]');
+			if (match_els.length > 0) {
+				//只显示当前价格类型相关的钟点折扣信息
+				this.$element.find('tr[data-price-class-id]').hide();
+				this.$element.find('tr[data-price-class-id="' + price_class_id + '"]').show();
+			}
+			this.on_change_fee_type_id();
+		},
+		//保存开房信息
+		on_btn_save: function() {
+			if (!this.$form.validate()) {
+				return false;
+			}
+			//自界面获取各项值
+			this.model.set(this.$form.form2json());
+			if (this.room.save_room_open(this.model)) this.close();
 		}
 
 	});
@@ -1457,3 +1464,4 @@ openerp.ktv_sale = function(db) {
 		}
 	});
 };
+

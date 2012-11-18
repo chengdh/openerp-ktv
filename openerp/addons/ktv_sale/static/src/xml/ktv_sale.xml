@@ -306,8 +306,7 @@
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary">开房</button>
-                <button class="btn btn-primary">重打开房条</button>
+                <button class="btn btn-primary btn-save-room-open">开房并打印开房条</button>
                 <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
             </div>
         </div>
