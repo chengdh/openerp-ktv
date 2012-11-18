@@ -1078,7 +1078,7 @@ openerp.ktv_sale = function(db) {
 		},
 		//修改包厢
 		on_change_room: function() {
-			var changed_room = db.ktv_sale.rooms_all.get(this.$form.find('#room_id').val());
+			var changed_room = ktv_room_pos.rooms_all.get(this.$form.find('#room_id').val());
 			this.room = changed_room;
 		},
 		//验证录入数据是否有效
@@ -1140,6 +1140,7 @@ openerp.ktv_sale = function(db) {
 			}));
 			return this;
 		},
+        //包厢信息发生变化时,需要重新显示界面
 		on_change_room_id: function() {
 			var changed_room = ktv_room_pos.rooms_all.get(this.$form.find('#room_id').val());
 			this.room = changed_room;
