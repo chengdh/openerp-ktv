@@ -216,7 +216,7 @@
                 <form class="form-horizontal" id="room_open_form">
                     <fieldset>
                         <div class="row">
-                            <div class="control-group info pull-left">
+                            <div class="control-group pull-left">
                                 <label class="control-label" for="room_id">包厢名称:</label>
                                 <div class="controls">
                                     <select id="room_id" name="room_id">
@@ -226,7 +226,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="control-group info pull-left">
+                            <div class="control-group pull-left">
                                 <label class="control-label" for="saler_id">销售经理:</label>
                                 <div class="controls">
                                     <input type="text" id="saler_id" name="saler_id" />
@@ -243,7 +243,7 @@
                             <div class="control-group info pull-left">
                                 <label class="control-label" for="persons_count">客人人数:</label>
                                 <div class="controls">
-                                    <input type="text" id="persons_count" name="persons_count" />
+                                    <input type="text" id="persons_count" name="persons_count" class="number" t-att-value="model.persons_count" />
                                 </div>
                             </div>
                         </div>
@@ -252,7 +252,7 @@
                             <div class="control-group pull-left">
                                 <label class="control-label" for="prepay_fee">预收款:</label>
                                 <div class="controls">
-                                    <input type="text" id="prepay_fee" name="prepay_fee" class="number" />
+                                    <input type="text" id="prepay_fee" name="prepay_fee" class="number" t-att-value="model.prepay_fee" />
                                 </div>
                             </div>
                         </div>
@@ -314,7 +314,7 @@
     </t>
     <!--包厢费用列表-->
     <t t-name="room-fee-info-template">
-        <table class="table table-condensed table-striped table-hover table-room-fee-info">
+        <table class="table table-condensed table-room-fee-info">
             <tbody>
                 <tr class="room_fee">
                     <th>包厢费:</th>

@@ -993,7 +993,7 @@ openerp.ktv_sale = function(db) {
 			Backbone.Model.prototype.initialize.apply(this, arguments);
 			this.set({
 				bill_no: "R" + this.generateUniqueId(),
-				room: new db.ktv_sale.Room(),
+				//room: new db.ktv_sale.Room(),
 				//包厢预定-操作列表
 				room_scheduled_lines: new db.ktv_sale.RoomScheduledCollection(),
 				//TODO 取消预定列表
@@ -1099,8 +1099,13 @@ openerp.ktv_sale = function(db) {
 	//正常开房信息
 	db.ktv_sale.RoomOpen = Backbone.Model.extend({
 		defaults: {
-			open_date: new Date() //开房时间
-		}
+			open_date: new Date(), //开房时间
+            prepay_fee : 0.0,   //预付款项
+            persons_count : 3   //默认人数为
+		},
+        export_as_json : function(){
+            return this.toJSON();
+        }
 	});
 	//正常开房信息列表
 	db.ktv_sale.RoomOpenCollection = Backbone.Collection.extend({
@@ -1130,7 +1135,7 @@ openerp.ktv_sale = function(db) {
 			this.$element.html(this.template_fct({
 				//空闲、已预定、已结账、清洁的房间都可以开房
 				rooms: ktv_room_pos.get_rooms_by_state(['free', 'scheduled', 'checkout', 'clean']).export_as_json(),
-				model: this.model,
+				model: this.model.export_as_json(),
 				room: this.room.export_as_json()
 			}));
 			return this;
@@ -1451,4 +1456,3 @@ openerp.ktv_sale = function(db) {
 		}
 	});
 };
-
