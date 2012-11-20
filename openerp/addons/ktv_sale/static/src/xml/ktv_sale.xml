@@ -248,32 +248,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="control-group pull-left">
-                                <label class="control-label" for="prepay_fee">预收款:</label>
-                                <div class="controls">
-                                    <input type="text" id="prepay_fee" name="prepay_fee" class="number" t-att-value="model.prepay_fee" />
-                                </div>
-                            </div>
-                        </div>
                     </fieldset>
-                    <fieldset>
-                        <div class="row">
-                            <div class="control-group pull-left">
-                                <label class="control-label" for="member_card_no">会员卡号:</label>
-                                <div class="controls">
-                                    <div class="input-append">
-                                        <input type="text" id="member_card_no" name="member_card_no" disabled="true"/>
-                                        <div class="btn-group">
-                                            <button class="btn" type="button"><i class='icon-user'></i>刷卡</button>
-                                            <button class="btn" type="button"><i class='icon-remove'></i>清除</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-
                     <fieldset>
                         <div class="row">
                             <div class="control-group info pull-left">
@@ -298,6 +273,100 @@
                             </div>
                         </div>
                     </fieldset>
+
+                    <fieldset class="buytime_fieldset">
+                        <div class="row">
+                            <div class="control-group pull-left">
+                                <label class="control-label" for="buytime_minutes">买钟时间:</label>
+                                <div class="controls">
+                                    <select id="buytime_minutes" name="buytime_minutes">
+                                        <option value="-1">不限时间</option>
+                                        <option value="30">30分钟</option>
+                                        <option value="30">60分钟</option>
+                                        <option value="30">90分钟</option>
+                                        <option value="30">120分钟</option>
+                                        <option value="30">150分钟</option>
+                                        <option value="30">180分钟</option>
+                                        <option value="30">210分钟</option>
+                                        <option value="30">240分钟</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group pull-left">
+                                <label class="control-label" for="buytime_break_at">到钟时间:</label>
+                                <div class="controls">
+                                    <input type='text' readonly="true" id="buytime_break_at" name="buytime_break_at"/>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="buyout_fieldset">
+                        <div class="row">
+                            <div class="control-group pull-left">
+                                <label class="control-label" for="buyout_config_id">买断名称:</label>
+                                <div class="controls">
+                                    <select id="buyout_config_id" name="buyout_config_id">
+                                        <t t-foreach="room.room_fee_info.active_buyout_config_lines" t-as="l">
+                                            <option t-att-value="l.id"><t t-esc="l.name"/></option>
+                                        </t>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group pull-left">
+                                <label class="control-label" for="buyout_break_at">到钟时间:</label>
+                                <div class="controls">
+                                    <input type='text' readonly="true" id="buyout_break_at" name="buyout_break_at"/>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="buffet_fieldset">
+                        <div class="row">
+                            <div class="control-group pull-left">
+                                <label class="control-label" for="buyout_id">自助餐:</label>
+                                <div class="controls">
+                                    <select id="buffet_config_id" name="buffet_config_id">
+                                        <t t-foreach="room.room_fee_info.active_buffet_config_lines" t-as="l">
+                                            <option t-att-value="l.id"><t t-esc="l.name"/></option>
+                                        </t>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group pull-left">
+                                <label class="control-label" for="buffet_break_at">到钟时间:</label>
+                                <div class="controls">
+                                    <input type='text' readonly="true" id="buffet_break_at" name="buffet_break_at"/>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+
+                    <fieldset>
+                        <div class="row">
+                            <div class="control-group pull-left">
+                                <label class="control-label" for="member_card_no">会员卡号:</label>
+                                <div class="controls">
+                                    <div class="input-append">
+                                        <input type="text" id="member_card_no" name="member_card_no" disabled="true"/>
+                                        <div class="btn-group">
+                                            <button class="btn" type="button"><i class='icon-user'></i>刷卡</button>
+                                            <button class="btn" type="button"><i class='icon-remove'></i>清除</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="row">
+                        <div class="control-group pull-left">
+                            <label class="control-label" for="prepay_fee">预收款:</label>
+                            <div class="controls">
+                                <input type="text" id="prepay_fee" name="prepay_fee" class="number" t-att-value="model.prepay_fee" />
+                            </div>
+                        </div>
+                    </div>
+
                 </form>
                 <!--调用费用列表-->
                 <t t-call="room-fee-info-template">
@@ -306,7 +375,7 @@
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary btn-save-room-open">开房并打印开房条</button>
+                <button class="btn btn-primary btn-save-room-open">开房</button>
                 <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
             </div>
         </div>
@@ -324,7 +393,7 @@
                     <td colspan="2"><t t-esc="room_fee_info.minimum_fee"/></td>
                 </tr>
                 <tr class="minimum_fee_p">
-                    <th>按人低消:</th>
+                    <th>按位低消:</th>
                     <td colspan="2"><t t-esc="room_fee_info.minimum_fee_p"/></td>
                 </tr>
                 <tr class="hourly_fee_lines">
@@ -364,6 +433,48 @@
                         <td><t t-esc="l.hourly_fee"/></td>
                     </tr>
                 </t>
+                <tr class="buyout_config_lines">
+                    <th>名称</th>
+                    <th>时段</th>
+                    <th>分钟/费用</th>
+                </tr>
+
+                <t t-foreach="room_fee_info.active_buyout_config_lines" t-as="l">
+                    <tr class="buyout_config_lines">
+                        <td><t t-esc="l.name"/></td>
+                        <td><t t-esc="l.time_range"/></td>
+                        <td><t t-esc="l.buyout_time"/>分钟 <t t-esc="l.buyout_fee"/>元</td>
+                    </tr>
+                </t>
+                <!--自助餐设置-->
+                <tr class="buffet_config_lines">
+                    <th>名称</th>
+                    <th>时段</th>
+                    <th>分钟/费用</th>
+                </tr>
+
+                <t t-foreach="room_fee_info.active_buffet_config_lines" t-as="l">
+                    <tr class="buffet_config_lines">
+                        <td><t t-esc="l.name"/></td>
+                        <td><t t-esc="l.time_range"/></td>
+                        <td><t t-esc="l.buyout_time"/>分钟 <t t-esc="l.buyout_fee"/>元 儿童<t t-esc="l.child_buyout_fee"/>元</td>
+                    </tr>
+                </t>
+                <!--买钟优惠设置-->
+                <tr class="hourly_fee_promotion_lines">
+                    <th>名称</th>
+                    <th>购买分钟</th>
+                    <th>赠送分钟</th>
+                </tr>
+
+                <t t-foreach="room_fee_info.hourly_fee_promotion_lines" t-as="l">
+                    <tr class="hourly_fee_promotion_lines">
+                        <td><t t-esc="l.name"/></td>
+                        <td><t t-esc="l.buy_minutes"/>分钟</td>
+                        <td><t t-esc="l.present_minutes"/>分钟</td>
+                    </tr>
+                </t>
+
             </tbody>
         </table>
     </t>
