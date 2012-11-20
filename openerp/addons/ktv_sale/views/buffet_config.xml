@@ -30,9 +30,9 @@
                         <field name="wed_buyout_enable"/>
                         <field name="wed_buyout_fee"/>
                         <field name="wed_child_buyout_fee"/>
-                        <field name="thurs_buyout_enable"/>
-                        <field name="thurs_buyout_fee"/>
-                        <field name="thurs_child_buyout_fee"/>
+                        <field name="thu_buyout_enable"/>
+                        <field name="thu_buyout_fee"/>
+                        <field name="thu_child_buyout_fee"/>
 
                         <field name="fri_buyout_enable"/>
                         <field name="fri_buyout_fee"/>

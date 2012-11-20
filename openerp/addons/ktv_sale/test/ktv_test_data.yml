@@ -107,9 +107,9 @@
     wed_minimum_fee: 20
     wed_room_fee: 50
     wed_minimum_fee_p: 10
-    thurs_minimum_fee: 20
-    thurs_room_fee: 50
-    thurs_minimum_fee_p: 10
+    thu_minimum_fee: 20
+    thu_room_fee: 50
+    thu_minimum_fee_p: 10
     fri_minimum_fee: 20
     fri_room_fee: 50
     fri_minimum_fee_p: 10
@@ -217,7 +217,7 @@
     mon_active: True
     tue_active: True
     wed_active: True
-    thurs_active: True
+    thu_active: True
     fri_active: True
     sat_active: True
     sun_active: True

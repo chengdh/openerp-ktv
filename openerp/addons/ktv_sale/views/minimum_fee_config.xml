@@ -32,9 +32,9 @@
                                 <td><field name="wed_minimum_fee_p" string="按位低消:"/></td>
                             </tr>
                             <tr>
-                                <td><field name="thurs_minimum_fee" string="星期四低消:"/></td>
-                                <td><field name="thurs_room_fee" string="包厢费:"/></td>
-                                <td><field name="thurs_minimum_fee_p" string="按位低消:"/></td>
+                                <td><field name="thu_minimum_fee" string="星期四低消:"/></td>
+                                <td><field name="thu_room_fee" string="包厢费:"/></td>
+                                <td><field name="thu_minimum_fee_p" string="按位低消:"/></td>
                             </tr>
                             <tr>
                                 <td><field name="fri_minimum_fee" string="星期五低消:"/></td>

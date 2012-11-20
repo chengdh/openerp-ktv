@@ -24,7 +24,7 @@
                         <field name="mon_active" />
                         <field name="tue_active" />
                         <field name="wed_active" />
-                        <field name="thurs_active" />
+                        <field name="thu_active" />
                         <field name="fri_active" />
                         <field name="sat_active" />
                         <field name="sun_active" />
@@ -53,7 +53,7 @@
                     <field name="mon_active" />
                     <field name="tue_active"/>
                     <field name="wed_active" />
-                    <field name="thurs_active"/>
+                    <field name="thu_active"/>
                     <field name="fri_active"/>
                     <field name="sat_active"/>
                     <field name="sun_active"/>

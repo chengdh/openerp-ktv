@@ -42,10 +42,10 @@
                                     <field name="wed_buyout_fee" string="星期三" />
                                 </td>
                                 <td>
-                                    <field name="thurs_buyout_enable" nolabel="1" />
+                                    <field name="thu_buyout_enable" nolabel="1" />
                                 </td>
                                 <td>
-                                    <field name="thurs_buyout_fee" string="星期四" />
+                                    <field name="thu_buyout_fee" string="星期四" />
                                 </td>
                             </tr>
 
@@ -98,7 +98,7 @@
                     <field name="mon_buyout_fee" string="星期一" />
                     <field name="tue_buyout_fee" string="星期二" />
                     <field name="wed_buyout_fee" string="星期三" />
-                    <field name="thurs_buyout_fee" string="星期四" />
+                    <field name="thu_buyout_fee" string="星期四" />
                     <field name="fri_buyout_fee" string="星期五" />
                     <field name="sat_buyout_fee" string="星期六" />
                     <field name="sun_buyout_fee" string="星期日" />

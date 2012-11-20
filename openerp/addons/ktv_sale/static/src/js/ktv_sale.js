@@ -340,122 +340,151 @@ openerp.ktv_sale = function(db) {
 		osv_objects: {
 			//fee_type  //计费方式
 			'ktv.fee_type': {
+                'model_class' : 'FeeType',
+                'model_collection_class' : 'FeeTypeCollection',
 				'fields': ['id', 'fee_type_code', 'name'],
 				'domain': []
 			},
 			//fee_type_member_class_discount //计费方式-会员折扣信息
 			'ktv.fee_type_member_class_discount': {
+                'model_class' : 'FeeTypeMemberClassDiscount',
+                'model_collection_class' : 'FeeTypeMemberClassDiscountCollection',
 				'fields': ['fee_type_id', 'memeber_class_id', 'drinks_fee_discount', 'room_fee_discount'],
 				'domain': []
 			},
 			//pay_type //付款方式
 			'ktv.pay_type': {
+                'model_class' : 'PayType',
+                'model_collection_class' : 'PayTypeCollection',
 				'fields': ['id', 'name'],
 				'domain': []
 			},
 			//room_area //包厢区域
 			'ktv.room_area': {
+                'model_class' : 'RoomArea',
 				'fields': ['id', 'name'],
 				'domain': []
 			},
 			//room_type  //包厢类别
 			'ktv.room_type': {
+                'model_class' : 'RoomType',
 				'fields': ['id', 'name', 'drinks_price_type', 'fee_type_id', 'serve_persons', 'room_fee', 'hourly_fee', 'hourly_fee_p', 'minimum_fee', 'minimum_fee_p', 'service_fee', 'present_rate'],
 				'domain': []
 			},
 			//room      //包厢信息
 			'ktv.room': {
+                'model_class' : 'Room',
 				'fields': ['id', 'name', 'room_area_id', 'room_type_id', 'fee_type_id', 'ktv_box_ip', 'room_fee', 'hourly_fee', 'minimum_fee', 'hourly_fee_p', 'minimum_fee_p', 'minimum_persons', 'sequence', 'state'],
 				'domain': []
 			},
 			//buyout_config //买断设置
 			'ktv.buyout_config': {
+                'model_class' : 'BuyoutConfig',
 				'fields': ['id', 'name', 'room_type_id', 'is_member', 'time_from', 'time_to', 'break_on_enable', 'break_on', 'buyout_time', 'mon_buyout_enable', 'mon_buyout_fee', 'tue_buyout_enable', 'tue_buyout_fee', 'wed_buyout_enable', 'wed_buyout_fee', 'thu_buyout_enable', 'thu_buyout_fee', 'fri_buyout_enable', 'fri_buyout_fee', 'sat_buyout_enable', 'sat_buyout_fee', 'sun_buyout_enable', 'sun_buyout_fee', 'special_day_buyout_fee'],
 				'domain': []
 			},
 			//buyout_config_special_day //买断特殊日设置
 			'ktv.buyout_config_special_day': {
+                'model_class' : 'BuyoutConfigSpecialDay',
 				'fields': ['room_type_id', 'special_day'],
 			},
 
 			//buffet_config buffet_config_special_day 自助餐设置
 			'ktv.buffet_config': {
+                'model_class' : 'BuffetConfig',
 				'fields': ['id', 'name', 'room_type_id', 'is_member', 'time_from', 'time_to', 'break_on_enable', 'break_on', 'buyout_time', 'mon_buyout_enable', 'mon_buyout_fee', 'mon_child_buyout_fee', 'tue_buyout_enable', 'tue_buyout_fee', 'tue_child_buyout_fee', 'wed_buyout_enable', 'wed_buyout_fee', 'wed_child_buyout_fee', 'thu_buyout_enable', 'thu_buyout_fee', 'thu_child_buyout_fee', 'fri_buyout_enable', 'fri_buyout_fee', 'fri_child_buyout_fee', 'sat_buyout_enable', 'sat_buyout_fee', 'sat_child_buyout_fee', 'sun_buyout_enable', 'sun_buyout_fee', 'sun_child_buyout_fee', 'special_day_buyout_fee', 'special_day_child_buyout_fee'],
 				'domain': []
 			},
 			'ktv.buffet_config_special_day': {
+                'model_class' : 'BuffetConfigSpecialDay',
 				'fields': ['room_type_id', 'special_day'],
 			},
 
 			//minimum_fee_config minimum_fee_config_special_day时段低消设置
 			'ktv.minimum_fee_config': {
+                'model_class' : 'MinimumFeeConfig',
 				'fields': ['room_type_id', 'time_from', 'time_to', 'mon_minimum_fee', 'mon_minimum_fee_p', 'mon_room_fee', 'tue_minimum_fee', 'tue_minimum_fee_p', 'tue_room_fee', 'wed_minimum_fee', 'wed_minimum_fee_p', 'wed_room_fee', 'thu_minimum_fee', 'thu_minimum_fee_p', 'thu_room_fee', 'fri_minimum_fee', 'fri_minimum_fee_p', 'fri_room_fee', 'sat_minimum_fee', 'sat_minimum_fee_p', 'sat_room_fee', 'sun_minimum_fee', 'sun_minimum_fee_p', 'sun_room_fee', 'special_day_minimum_fee', 'special_day_minimum_fee_p', 'special_day_room_fee'],
 				'domain': [['active', '=', true]]
 			},
 			'ktv.minimum_fee_config_special_day': {
+                'model_class' : 'MinimumFeeConfigSpecialDay',
 				'fields': ['room_type_id', 'special_day'],
 				'domain': []
 			},
 			//price_class 价格类型
 			'ktv.price_class': {
+                'model_class' : 'PriceClass',
 				'fields': ['id', 'name', 'sequence'],
 				'domain': [['active', '=', true]]
 			},
 
 			//hourly_fee_discount hourly_fee_p_discount member_hourly_fee_discount 时段钟点费设置
 			'ktv.hourly_fee_discount': {
+                'model_class' : 'HourlyFeeDiscount',
 				'fields': ['id', 'price_class_id', 'room_type_id', 'time_from', 'time_to', 'base_hourly_fee', 'mon_hourly_fee', 'mon_hourly_discount', 'tue_hourly_fee', 'tue_hourly_discount', 'wed_hourly_fee', 'wed_hourly_discount', 'thu_hourly_fee', 'thu_hourly_discount', 'fri_hourly_fee', 'fri_hourly_discount', 'sat_hourly_fee', 'sat_hourly_discount', 'sun_hourly_fee', 'sun_hourly_discount', 'special_day_hourly_fee', 'special_day_hourly_discount'],
 				'domain': []
 			},
 			'ktv.hourly_fee_discount_special_day': {
+                'model_class' : 'HourlyFeeDiscountSpecialDay',
 				'fields': ['room_type_id', 'special_day'],
 				'domain': []
 			},
 			'ktv.hourly_fee_p_discount': {
+                'model_class' : 'HourlyFeePDiscount',
 				'fields': ['id', 'price_class_id', 'room_type_id', 'time_from', 'time_to', 'base_hourly_fee', 'mon_hourly_fee', 'mon_hourly_discount', 'tue_hourly_fee', 'tue_hourly_discount', 'wed_hourly_fee', 'wed_hourly_discount', 'thu_hourly_fee', 'thu_hourly_discount', 'fri_hourly_fee', 'fri_hourly_discount', 'sat_hourly_fee', 'sat_hourly_discount', 'sun_hourly_fee', 'sun_hourly_discount', 'special_day_hourly_fee', 'special_day_hourly_discount'],
 				'domain': []
 			},
 			'ktv.hourly_fee_p_discount_special_day': {
+                'model_class' : 'HourlyFeePDiscountSpecialDay',
 				'fields': ['room_type_id', 'special_day'],
 				'domain': []
 			},
 			'ktv.member_hourly_fee_discount': {
+                'model_class' : 'MemberHourlyFeeDiscount',
 				'fields': ['id', 'price_class_id', 'member_class_id', 'room_type_id', 'time_from', 'time_to', 'base_hourly_fee', 'mon_hourly_fee', 'mon_hourly_discount', 'tue_hourly_fee', 'tue_hourly_discount', 'wed_hourly_fee', 'wed_hourly_discount', 'thu_hourly_fee', 'thu_hourly_discount', 'fri_hourly_fee', 'fri_hourly_discount', 'sat_hourly_fee', 'sat_hourly_discount', 'sun_hourly_fee', 'sun_hourly_discount', 'special_day_hourly_fee', 'special_day_hourly_discount'],
 				'domain': []
 			},
 			'ktv.member_hourly_fee_discount_special_day': {
+                'model_class' : 'MemberHourlyFeeDiscountSpecialDay',
 				'fields': ['room_type_id', 'member_class_id', 'special_day'],
 				'domain': []
 			},
 
 			//hourly_fee_promotion 买钟优惠设置
 			'ktv.hourly_fee_promotion': {
+                'model_class' : 'HourlyFeePromotion',
 				'fields': ['id', 'name', 'is_member', 'buy_minutes', 'present_minutes', 'active_datetime_limit', 'datetime_from', 'datetime_to', 'active_time_limit', 'time_from', 'time_to', 'mon_active', 'tue_active', 'wed_active', 'thu_active', 'fri_active', 'sat_active', 'sun_active'],
 				'domain': []
 			},
 			//member_class会员卡等级设置
 			'ktv.member_class': {
+                'model_class' : 'MemberClass',
 				'fields': ['id', 'name', 'card_fee', 'drinks_fee_discount', 'room_fee_discount', 'up_card_fee', 'drinks_price_type', 'room_limit_count', 'market_limit_count', 'can_points', 'can_manual_input', 'can_store_money'],
 				'domain': [['active', '=', true]]
 			},
 
 			//discount_card_type 打折卡设置
 			'ktv.discount_card_type': {
+                'model_class' : 'DiscountCardType',
 				'fields': ['id', 'name', 'drinks_fee_discount', 'room_fee_discount', 'card_fee'],
 				'domain': [['active', '=', true]]
 			},
 
 			//song_ticket 欢唱券设置
 			'ktv.song_ticket': {
+                'model_class' : 'SongTicket',
 				'fields': ['id', 'name', 'room_type_id', 'equal_time_limit', 'active_time_limit', 'time_from', 'time_to'],
 				'domain': [['active', '=', true]]
 			},
 
 			//sales_voucher_type sales_voucher 抵用券设置
 			'ktv.sales_voucher_type': {
+                'model_class' : 'SalesVoucherType',
 				'fields': ['id', 'name', 'face_value'],
 			},
 			'ktv.sales_voucher': {
+                'model_class' : 'SalesVoucher',
+                'model_collection_class' : 'SalesVoucherCollection',
 				'fields': ['id', 'id_number', 'as_money', 'datetime_from', 'datetime_to', 'state'],
 			}
 		}
