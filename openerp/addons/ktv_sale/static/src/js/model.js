@@ -10,9 +10,13 @@ openerp.ktv_sale.model = function(erp_instance) {
 		return dataSetSearch.read_slice(fields, 0);
 	},
 	//根据osv_model名称从服务器端获取数据
-	model.fetch_by_osv_name = function(osv_name) {
+	model.fetch_by_osv_name = function(osv_name, options) {
 		var fields = model._osv_objects[osv_name]['fields'];
 		var domain = model._osv_objects[osv_name]['domain'];
+		if (options && options['fields']) fields = options['fields'];
+
+		if (options && options['domain']) domain = options['domain'];
+
 		return model._fetch(osv_name, fields, domain);
 	},
 	//需要从服务器端同步的对象
@@ -195,11 +199,13 @@ openerp.ktv_sale.model = function(erp_instance) {
 		get_state_desc: function() {
 			return erp_instance.ktv_sale.helper.get_room_state_desc(this.get('state'));
 		},
-        //获取room_fee_info对象
-        get_room_fee_info : function() {
-            var room_fee_info = new model.RoomFeeInfo({"room": this});
-            return room_fee_info;
-        },
+		//获取room_fee_info对象
+		get_room_fee_info: function() {
+			var room_fee_info = new model.RoomFeeInfo({
+				"room": this
+			});
+			return room_fee_info;
+		},
 		//导出到json
 		export_as_json: function() {
 			var ret = this.toJSON();
@@ -240,7 +246,9 @@ openerp.ktv_sale.model = function(erp_instance) {
 				self.get("display_rooms").reset(result);
 				//设置当前选中包厢
 				var display_rooms = self.get("display_rooms");
-				if (display_rooms.length > 0) self.set({"current_room" : display_rooms.at(0)});
+				if (display_rooms.length > 0) self.set({
+					"current_room": display_rooms.at(0)
+				});
 			}), model.RoomArea.fetch().pipe(function(result) {
 				self.get('room_areas').reset(result);
 			}), model.RoomType.fetch().pipe(function(result) {
@@ -309,8 +317,8 @@ openerp.ktv_sale.model = function(erp_instance) {
 				//设置买钟优惠
 				"hourly_fee_promotion_lines": new Backbone.Collection()
 			});
-            //是否已从服务器端获取了数据
-            this.ready = $.Deferred();
+			//是否已从服务器端获取了数据
+			this.ready = $.Deferred();
 			this.bind("change:room", this._on_room_change, this);
 			this.bind("change:room_type_id", this._on_room_type_id_change, this);
 			this._on_room_change();
@@ -461,7 +469,9 @@ openerp.ktv_sale.model = function(erp_instance) {
 				this.get("today_" + which_fee + "_lines").each(function(l) {
 					hourly_fee_lines.push({
 						member_class_id: l.get("member_class_id"),
+						member_class_name: l.get("member_class_name"),
 						price_class_id: l.get("price_class_id"),
+						price_class_name: l.get("price_class_name"),
 						base_hourly_fee: l.get("base_hourly_fee"),
 						"time_range": l.get("time_from") + "~" + l.get("time_to"),
 						hourly_fee_discount: l.get("hourly_fee_discount"),
@@ -484,8 +494,8 @@ openerp.ktv_sale.model = function(erp_instance) {
 			var room = this.get("room");
 			var room_type_id = this.get("room_type_id");
 			//获取room_type完整信息
-			new erp_instance.web.Model("ktv.room_type").get_func("read")(room_type_id, ['id', 'name']).pipe(function(result) {
-				var room_type = new model.RoomType(result);
+			model.fetch_by_osv_name("ktv.room_type",{"domain" : [["id","=",room_type_id]]}).pipe(function(result) {
+				var room_type = new model.RoomType(result[0]);
 				self.set({
 					"room_type": room_type
 				});
@@ -534,8 +544,10 @@ openerp.ktv_sale.model = function(erp_instance) {
 					minimum_persons: minimum_persons
 				});
 			}).then(function() {
-				return $.when(self._set_minimum_fee(), self._set_hourly_fee_discount("hourly_fee_discount"), self._set_hourly_fee_discount("hourly_fee_discount", true), self._set_hourly_fee_discount("hourly_fee_p_discount"), self._set_hourly_fee_discount("hourly_fee_p_discount", true), self._set_hourly_fee_discount("member_hourly_fee_discount"), self._set_hourly_fee_discount("member_hourly_fee_discount", true), self._set_buyout_config(), self._set_buffet_config(), self._set_hourly_fee_promotion());
-			}).then(function(){self.ready.resolve();});
+				return $.when(self._set_minimum_fee(), self._set_hourly_fee_discount("hourly_fee_discount"), self._set_hourly_fee_discount("hourly_fee_discount", true), self._set_hourly_fee_discount("hourly_fee_p_discount"), self._set_hourly_fee_discount("hourly_fee_p_discount", true), self._set_hourly_fee_discount("member_hourly_fee_discount"), self._set_hourly_fee_discount("member_hourly_fee_discount", true), self._set_buyout_config(), self._set_buffet_config(), self._set_hourly_fee_promotion()).then(function() {
+					self.ready.resolve();
+				});
+			});
 		},
 		//设置时段低消费用
 		//只提取当日相关信息,且该信息active = true
@@ -605,13 +617,17 @@ openerp.ktv_sale.model = function(erp_instance) {
 						var today_week_day = erp_instance.ktv_sale.helper.today_week_day();
 						var today_config = {
 							price_class_id: c["price_class_id"][0],
+							price_class_name: c["price_class_id"][1],
 							base_hourly_fee: c.base_hourly_fee,
 							time_from: c.time_from,
 							time_to: c.time_to,
 							hourly_fee: c[today_week_day + "_hourly_fee"],
 							hourly_fee_discount: c[today_week_day + "_hourly_discount"]
 						};
-						if (c.member_class_id) today_config.member_class_id = c.member_class_id[0];
+						if (c.member_class_id) {
+                            today_config.member_class_id = c.member_class_id[0];
+                            today_config.member_class_name = c.member_class_id[1];
+                        }
 						//如果当日是特殊日,则用特殊日设置覆盖当日设置
 						if (sd_config) {
 							today_config.hourly_fee = c["special_day_hourly_fee"];
@@ -716,6 +732,7 @@ openerp.ktv_sale.model = function(erp_instance) {
 		},
 		//设置买钟优惠
 		_set_hourly_fee_promotion: function() {
+			var self = this;
 			var the_room = this.get("room");
 			var the_room_type = this.get("room_type");
 			var today = Date.today().setTimeToNow();

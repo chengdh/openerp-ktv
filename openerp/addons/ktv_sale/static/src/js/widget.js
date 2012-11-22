@@ -90,11 +90,13 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		},
 		start: function() {
 			this.model.bind('change:state', _.bind(this.render_element, this));
-            this.$element.click(_.bind(this.on_click,this));
+			this.$element.click(_.bind(this.on_click, this));
 		},
-        on_click : function(){
-            erp_instance.ktv_sale.ktv_room_point.set({"current_room" : this.model});
-        },
+		on_click: function() {
+			erp_instance.ktv_sale.ktv_room_point.set({
+				"current_room": this.model
+			});
+		},
 		render_element: function() {
 			this.$element.empty();
 			this.$element.html(this.template_fct(this.model.export_as_json()));
@@ -202,35 +204,100 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			this.room_filter_view.render_element();
 			this.room_filter_view.start();
 
-            //room info
-            this.room_info_tab_view = new widget.RoomInfoWidget();
-            this.room_info_tab_view.$element = $('#room_info_tab');
-            this.room_info_tab_view.render_element();
-            this.room_info_tab_view.start();
+			//room info
+			this.room_info_tab_view = new widget.RoomInfoWidget();
+			this.room_info_tab_view.$element = $('#room_info_tab');
+			this.room_info_tab_view.render_element();
+			this.room_info_tab_view.start();
 		}
 	});
 
-    //右侧显示的包厢信息对象
-    widget.RoomInfoWidget = erp_instance.web.OldWidget.extend({
-        template_fct: qweb_template('room-info-wrapper-template'),
-        init : function(parent,options){
-            this._super(parent);
-            erp_instance.ktv_sale.ktv_room_point.bind("change:current_room",this.render_element,this);
-        },
-        start : function(){},
-        render_element : function(){
-            var self = this;
-            var the_room = erp_instance.ktv_sale.ktv_room_point.get("current_room");
-            var the_room_fee_info = the_room.get_room_fee_info();
-            the_room_fee_info.ready.then(function(){
-                self.$element.html(self.template_fct({
-                    "room_info" : the_room.export_as_json(),
-                    "room_fee_info" : the_room_fee_info.export_as_json()
-                }));
-            });
-        }
-    });
+	//右侧显示的包厢信息对象
+	widget.RoomInfoWidget = erp_instance.web.OldWidget.extend({
+		template_fct: qweb_template('room-info-wrapper-template'),
+		init: function(parent, options) {
+			this._super(parent);
+			erp_instance.ktv_sale.ktv_room_point.bind("change:current_room", this.render_element, this);
+		},
+		start: function() {
+		},
+		set_display_by_fee_type: function() {
+			var self = this;
+			//需要根据计费方式不同显示不同的费用信息
+			var cur_room = erp_instance.ktv_sale.ktv_room_point.get("current_room");
+			if (!cur_room) return false;
 
+			var fee_type_id = cur_room.get("fee_type_id")[0];
+			new erp_instance.web.Model("ktv.fee_type").get_func("read")(fee_type_id, ['id', 'fee_type_code', 'name']).pipe(function(fee_type) {
+
+				self.$element.find(".room_fee,.minimum_fee,.minimum_fee_p,.buyout_fieldset,.buffet_fieldset,.buyout_config_lines,.buffet_config_lines,.buytime_fieldset,.hourly_fee_promotion_lines,.hourly_fee_lines,.member_hourly_fee_lines,.hourly_fee_p_lines").hide();
+				//只收包厢费
+				if (fee_type.fee_type_code == "only_room_fee") {
+					self.$element.find(".room_fee").show();
+				}
+				//只收钟点费
+				if (fee_type.fee_type_code == "only_hourly_fee") {
+					self.$element.find(".hourly_fee,.hourly_fee_lines,.buytime_fieldset,.hourly_fee_promotion_lines").show();
+				}
+
+				//钟点费+包厢费
+				if (fee_type.fee_type_code == "room_fee_plus_hourly_fee") {
+					self.$element.find(".room_fee,.hourly_fee,.hourly_fee_lines,.buytime_fieldset,.hourly_fee_promotion_lines").show();
+				}
+				//最低消费
+				if (fee_type.fee_type_code == "minimum_fee") {
+					self.$element.find(".minimum_fee,.buytime_fieldset,.hourly_fee_promotion_lines").show();
+				}
+
+				//包厢费+最低消费
+				if (fee_type.fee_type_code == "room_fee_plus_minimum_fee") {
+					self.$element.find(".room_fee,.minimum_fee,.buytime_fieldset").show();
+				}
+
+				//钟点费+最低消费
+				if (fee_type.fee_type_code == "hourly_fee_plus_minimum_fee") {
+					self.$element.find(".hourly_fee_lines,.minimum_fee,.buytime_fieldset,.hourly_fee_promotion_lines").show();
+				}
+
+				//包厢费+钟点费+最低消费
+				if (fee_type.fee_type_code == "room_fee_plus_hourly_fee_plus_minimum_fee") {
+					self.$element.find(".room_fee,.hourly_fee,.hourly_fee_lines,.minimum_fee,.buytime_fieldset,.hourly_fee_promotion_lines").show();
+				}
+				//按位钟点费
+				if (fee_type.fee_type_code == "hourly_fee_p") {
+					self.$element.find(".hourly_fee_p_lines,.buytime_fieldset,.hourly_fee_promotion_lines").show();
+				}
+
+				//按位最低消费
+				if (fee_type.fee_type_code == "minimum_fee_p") {
+					self.$element.find(".minimum_fee_p").show();
+				}
+				//买断
+				if (fee_type.fee_type_code == "buyout_fee") {
+					self.$element.find(".buyout_config_lines,.buyout_fieldset").show();
+					self.$element.find(".buytime_fieldset").hide();
+				}
+				//自助餐
+				if (fee_type.fee_type_code == "buffet") {
+					self.$element.find(".buffet_config_lines,.buffet_fieldset").show();
+					self.$element.find(".buytime_fieldset").hide();
+				}
+			});
+		},
+		render_element: function() {
+			var self = this;
+			var the_room = erp_instance.ktv_sale.ktv_room_point.get("current_room");
+			var the_room_fee_info = the_room.get_room_fee_info();
+			the_room_fee_info.ready.then(function() {
+				self.$element.html(self.template_fct({
+					"room_info": the_room.export_as_json(),
+					"room_fee_info": the_room_fee_info.export_as_json()
+				}));
+                //self.set_display_by_fee_type();
+			});
+            return this;
+		}
+	});
 
 	//预定widget
 	widget.RoomScheduledWidget = widget.BootstrapModal.extend({
