@@ -189,7 +189,24 @@ openerp.ktv_sale.model = function(erp_instance) {
 	}
 
 	//以下定义房态
+	//扩展Room定义
 	model.Room.states = ("free in_use scheduled locked checkout buyout buytime malfunction visit clean debug").split(/\s/);
+	_.extend(model.Room.prototype, {
+		get_state_desc: function() {
+			return erp_instance.ktv_sale.helper.get_room_state_desc(this.get('state'));
+		},
+        //获取room_fee_info对象
+        get_room_fee_info : function() {
+            var room_fee_info = new model.RoomFeeInfo({"room": this});
+            return room_fee_info;
+        },
+		//导出到json
+		export_as_json: function() {
+			var ret = this.toJSON();
+			ret.state_description = this.get_state_desc();
+			return ret;
+		}
+	});
 
 	//定义ktv_room_point对象,该对象对应一个ktv的收银结账柜台
 	model.KtvRoomPoint = Backbone.Model.extend({
@@ -221,6 +238,9 @@ openerp.ktv_sale.model = function(erp_instance) {
 			$.when(model.Room.fetch().pipe(function(result) {
 				self.get("all_rooms").reset(result);
 				self.get("display_rooms").reset(result);
+				//设置当前选中包厢
+				var display_rooms = self.get("display_rooms");
+				if (display_rooms.length > 0) self.set({"current_room" : display_rooms.at(0)});
 			}), model.RoomArea.fetch().pipe(function(result) {
 				self.get('room_areas').reset(result);
 			}), model.RoomType.fetch().pipe(function(result) {
@@ -234,8 +254,8 @@ openerp.ktv_sale.model = function(erp_instance) {
 			}), model.PayType.fetch().pipe(function(result) {
 				self.get('pay_types').reset(result);
 			})).then(function() {
-                self.ready.resolve();
-            });
+				self.ready.resolve();
+			});
 		},
 		//更新房态
 		_update_room_status: function() {
@@ -289,6 +309,8 @@ openerp.ktv_sale.model = function(erp_instance) {
 				//设置买钟优惠
 				"hourly_fee_promotion_lines": new Backbone.Collection()
 			});
+            //是否已从服务器端获取了数据
+            this.ready = $.Deferred();
 			this.bind("change:room", this._on_room_change, this);
 			this.bind("change:room_type_id", this._on_room_type_id_change, this);
 			this._on_room_change();
@@ -513,7 +535,7 @@ openerp.ktv_sale.model = function(erp_instance) {
 				});
 			}).then(function() {
 				return $.when(self._set_minimum_fee(), self._set_hourly_fee_discount("hourly_fee_discount"), self._set_hourly_fee_discount("hourly_fee_discount", true), self._set_hourly_fee_discount("hourly_fee_p_discount"), self._set_hourly_fee_discount("hourly_fee_p_discount", true), self._set_hourly_fee_discount("member_hourly_fee_discount"), self._set_hourly_fee_discount("member_hourly_fee_discount", true), self._set_buyout_config(), self._set_buffet_config(), self._set_hourly_fee_promotion());
-			});
+			}).then(function(){self.ready.resolve();});
 		},
 		//设置时段低消费用
 		//只提取当日相关信息,且该信息active = true

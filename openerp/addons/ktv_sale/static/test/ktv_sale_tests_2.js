@@ -19,22 +19,15 @@ $(document).ready(function() {
         });
     });
     test("应能够正确获取房态",function(){
+        var ktv_room_point = new openerp.ktv_sale.model.KtvRoomPoint();
         openerp.ktv_sale.model.Room.fetch().pipe(function(result){
             var rooms = new openerp.ktv_sale.model.RoomCollection(result);
             ktv_room_point.set({rooms : rooms});
-            return ktv_room_point;
-        }).pipe(function(krp){
-            ok(krp.get('room_status')['free'] > 0);
+            ok(ktv_room_point.get('room_status')['free'] > 0);
         });
     });
     test("应能够正确初始话RoomFeeInfo对象",function(){
-        openerp.ktv_sale.model.Room.fetch().pipe(function(result){
-            var rooms = new openerp.ktv_sale.model.RoomCollection(result);
-            var the_room = rooms.at(0);
-            return the_room;
-        }).pipe(function(room){
-            new openerp.ktv_sale.model.RoomFeeInfo({room : the_room});
-        });
     });
 });
+
 

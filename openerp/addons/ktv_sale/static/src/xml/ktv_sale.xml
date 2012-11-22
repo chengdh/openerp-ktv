@@ -19,28 +19,13 @@
 
             <div class="container-fluid">
                 <div class="row-fluid">
-                    <div class='span10'>
+                    <div class='span9'>
                         <div id="room_status"></div>
                         <div id="room_filter"></div>
                         <ul id="room_list" class="thumbnails"></ul>
                     </div>
-                    <div class='span2'>
-                        <div class='well'>
-                            <ul class="nav nav-list">
-                                <li><a href="#">预定</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">开房</a></li>
-                                <li><a href="#">换房</a></li>
-                                <li><a href="#">并房</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">买钟</a></li>
-                                <li><a href="#">买断</a></li>
-                                <li><a href="#">续钟</a></li>
-                                <li><a href="#">退钟</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">结账</a></li>
-                            </ul>
-                        </div>
+                    <div class='span3'>
+                        <div  id="room_info_tab"></div>
                     </div>
                 </div>
             </div>
@@ -379,6 +364,74 @@
                 <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
             </div>
         </div>
+    </t>
+    <!--包厢信息的包装对象,将包厢信息、包厢费用信息、消费信息等界面组装到一起-->
+    <t t-name="room-info-wrapper-template">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#room_info" data-toggle="tab">包厢信息</a></li>
+            <li><a href="#room_consume_fee_info" data-toggle="tab">消费信息</a></li>
+        </ul>
+        <div class="tab-content well">
+            <div class="tab-pane active" id="room_info">
+                <t t-call="room-table-template">
+                    <t t-set="room_info" t-value="room_info"/>
+                </t>
+                <t t-call="room-fee-info-template">
+                    <t t-set="room_fee_info" t-value="room_fee_info"/>
+                </t>
+            </div>
+            <div class="tab-pane" id="room_consume_fee_info">
+                <div class="alert">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>TODO!</strong> Best check yo self, you're not looking too good.
+                </div>
+            </div>
+        </div>
+    </t>
+    <!---包厢列表信息-->
+    <t t-name="room-table-template">
+        <table class="table table-condensed table-striped table-hover">
+            <tr>
+                <td>包厢名称:</td>
+                <td><t t-esc="room_info.name"/></td>
+            </tr>
+            <tr>
+                <td>包厢类型:</td>
+                <td><t t-esc="room_info.room_type_id[1]"/></td>
+            </tr>
+            <tr>
+                <td>计费方式:</td>
+                <td><t t-esc="room_info.fee_type_id[1]"/></td>
+            </tr>
+            <tr>
+                <td>预 定 人:</td>
+                <td><t t-esc="guest_name"/></td>
+            </tr>
+            <tr>
+                <td>预定备注:</td>
+                <td><t t-esc="guest_name"/></td>
+            </tr>
+            <tr>
+                <td>客人姓名:</td>
+                <td><t t-esc="guest_name"/></td>
+            </tr>
+            <tr>
+                <td>客人人数:</td>
+                <td><t t-esc="guest_name"/></td>
+            </tr>
+            <tr>
+                <td>低消差额:</td>
+                <td><t t-esc="guest_name"/></td>
+            </tr>
+            <tr>
+                <td>消费时长:</td>
+                <td><t t-esc="guest_name"/></td>
+            </tr>
+            <tr>
+                <td>消费金额:</td>
+                <td><t t-esc="guest_name"/></td>
+            </tr>
+        </table>
     </t>
     <!--包厢费用列表-->
     <t t-name="room-fee-info-template">

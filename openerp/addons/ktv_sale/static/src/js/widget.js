@@ -90,10 +90,14 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		},
 		start: function() {
 			this.model.bind('change:state', _.bind(this.render_element, this));
+            this.$element.click(_.bind(this.on_click,this));
 		},
+        on_click : function(){
+            erp_instance.ktv_sale.ktv_room_point.set({"current_room" : this.model});
+        },
 		render_element: function() {
 			this.$element.empty();
-			this.$element.html(this.template_fct(this.model.toJSON()));
+			this.$element.html(this.template_fct(this.model.export_as_json()));
 		}
 	});
 	//房间列表
@@ -198,8 +202,35 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			this.room_filter_view.render_element();
 			this.room_filter_view.start();
 
+            //room info
+            this.room_info_tab_view = new widget.RoomInfoWidget();
+            this.room_info_tab_view.$element = $('#room_info_tab');
+            this.room_info_tab_view.render_element();
+            this.room_info_tab_view.start();
 		}
 	});
+
+    //右侧显示的包厢信息对象
+    widget.RoomInfoWidget = erp_instance.web.OldWidget.extend({
+        template_fct: qweb_template('room-info-wrapper-template'),
+        init : function(parent,options){
+            this._super(parent);
+            erp_instance.ktv_sale.ktv_room_point.bind("change:current_room",this.render_element,this);
+        },
+        start : function(){},
+        render_element : function(){
+            var self = this;
+            var the_room = erp_instance.ktv_sale.ktv_room_point.get("current_room");
+            var the_room_fee_info = the_room.get_room_fee_info();
+            the_room_fee_info.ready.then(function(){
+                self.$element.html(self.template_fct({
+                    "room_info" : the_room.export_as_json(),
+                    "room_fee_info" : the_room_fee_info.export_as_json()
+                }));
+            });
+        }
+    });
+
 
 	//预定widget
 	widget.RoomScheduledWidget = widget.BootstrapModal.extend({
