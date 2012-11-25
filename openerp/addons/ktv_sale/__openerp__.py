@@ -73,7 +73,6 @@
     'demo_xml': [
         'test/ktv_test_data.yml',
         'test/member_test_data.yml',
-        'test/ktv_room_test.yml',
             ],
     'test': [
         'test/ktv_test_data.yml',

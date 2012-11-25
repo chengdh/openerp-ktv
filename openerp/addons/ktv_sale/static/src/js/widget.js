@@ -89,9 +89,16 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			this.model = options.model;
 		},
 		start: function() {
-			this.model.bind('change:state', _.bind(this.render_element, this));
+			this.model.bind('change', _.bind(this.render_element, this));
 			this.$element.click(_.bind(this.on_click, this));
+            //预定事件
+            this.$element.find(".action_room_scheduled").click(_.bind(this.action_room_scheduled,this));
 		},
+        //包厢预定
+        action_room_scheduled : function(){
+            new widget.RoomScheduledWidget(null,{room : this.model,width : 450});
+        },
+        //当前包厢点击事件
 		on_click: function() {
 			erp_instance.ktv_sale.ktv_room_point.set({
 				"current_room": this.model
@@ -219,8 +226,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			this._super(parent);
 			erp_instance.ktv_sale.ktv_room_point.bind("change:current_room", this.render_element, this);
 		},
-		start: function() {
-		},
+		start: function() {},
 		set_display_by_fee_type: function() {
 			var self = this;
 			//需要根据计费方式不同显示不同的费用信息
@@ -293,9 +299,9 @@ openerp.ktv_sale.widget = function(erp_instance) {
 					"room_info": the_room.export_as_json(),
 					"room_fee_info": the_room_fee_info.export_as_json()
 				}));
-                //self.set_display_by_fee_type();
+				self.set_display_by_fee_type();
 			});
-            return this;
+			return this;
 		}
 	});
 
@@ -304,7 +310,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		template_fct: qweb_template('room-scheduled-form-template'),
 		init: function(parent, options) {
 			this.room = options.room;
-			this.model = new erp_instance.ktv_sale.model.RoomScheduled();
+			this.model = new erp_instance.ktv_sale.model.RoomScheduled({room_id : this.room.get("id")});
 			this._super(parent, options);
 		},
 		start: function() {
@@ -330,6 +336,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		on_change_room: function() {
 			var changed_room = erp_instance.ktv_sale.ktv_room_point.get("rooms_all").get(this.$form.find('#room_id').val());
 			this.room = changed_room;
+            this.model.set({"room_id" : changed_room.get("id")});
 		},
 		//验证录入数据是否有效
 		validate: function() {
@@ -337,11 +344,21 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		},
 		//保存预定信息
 		save: function() {
+            var self = this;
 			if (!this.validate()) {
 				return false;
 			}
 			//自界面获取各项值
 			this.model.set(this.$form.form2json());
+            var scheduled_time = this.$form.find("#scheduled_time").val();
+
+            //var f_scheduled_time =  erp_instance.web.format_value(scheduled_time, {"widget": "datetime"});
+            this.model.set({"scheduled_time" : scheduled_time});
+            this.model.push().pipe(function(result){
+                //更新包厢状态
+                self.room.set(result);
+                self.close();
+            });
 		}
 	});
 	//openerp的入口组件,用于定义系统的初始入口处理
@@ -357,6 +374,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			return erp_instance.ktv_sale.ktv_room_point.ready.then(function() {
 				self.render_element();
 				erp_instance.ktv_sale.ktv_room_point.app = new erp_instance.ktv_sale.App(self.$element);
+				self.$element.find(".btn-close").click(_.bind(self.stop, self));
 				$('oe_toggle_secondary_menu').hide();
 				$('#oe_secondary_menu').hide();
 				$('.header').hide();
@@ -366,6 +384,16 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		},
 		render: function() {
 			return qweb_template("RoomPointOfSale")();
+		},
+		stop: function() {
+			$('oe_toggle_secondary_menu').show();
+			$('#oe_secondary_menu').show();
+			$('.header').show();
+			$('.menu').show();
+			$('.oe_footer').show();
+			erp_instance.ktv_sale.ktv_room_point = undefined;
+			this._super();
+
 		}
 	});
 };

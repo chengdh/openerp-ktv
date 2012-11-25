@@ -286,7 +286,7 @@ openerp.ktv_sale.model = function(erp_instance) {
 				if (_.isArray(r_state)) return _.contains(r_state, r.get("state"));
 				else return r.get("state") == r_state;
 			});
-			return ret;
+			return new Backbone.Collection().add(ret);
 		},
 
 	});
@@ -776,6 +776,11 @@ openerp.ktv_sale.model = function(erp_instance) {
 		}
 	});
 	//预定对象
-	model.RoomScheduled = Backbone.Model.extend();
+	model.RoomScheduled = Backbone.Model.extend({
+        //将数据上传至服务器
+        push : function(){
+            return new erp_instance.web.Model("ktv.room").get_func("create_room_scheduled")(this.toJSON());
+        }
+    });
 };
 

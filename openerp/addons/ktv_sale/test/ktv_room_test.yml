@@ -11,4 +11,24 @@
 -
   !assert {model: ktv.hourly_fee_discount,id: hourly_fee_discount_1,string: "相关信息设置不正确"} :
     - mon_hourly_fee == 30
+-
+  测试获取当前room的room_operate
+-
+  !python {model: ktv.room }: |
+    rp = self.find_or_create_room_operate(cr,uid,ref("ktv_room_1"))
+    assert rp,'创建room_operate失败'
+
+-
+  应可正常创建room_scheduled对象
+-
+  !python {model: ktv.room}: |
+    scheduled_vals = {
+        "room_id" : ref("ktv_room_1"),
+        "persons_count" : 5,
+        "guest_name" : "程东辉",
+        "guest_phone" : "13676997527"
+    }
+    rs = self.create_room_scheduled(cr,uid,scheduled_vals)
+    assert rs,"创建room_scheduled失败"
+    assert self.browse(cr,uid,ref('ktv_room_1')).state == "scheduled"
 

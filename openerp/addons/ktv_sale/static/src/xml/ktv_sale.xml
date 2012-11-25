@@ -11,7 +11,7 @@
                             <img src="/point_of_sale/static/src/img/logo.png"/>
                         </a>
                         <div class="pull-right">
-                            <button class="btn btn-danger" type="button">退出</button>
+                            <button class="btn btn-danger btn-close" type="button">退出</button>
                         </div>
                     </div>
                 </div>
@@ -35,47 +35,45 @@
     <t t-name="room-template">
         <table class="table well">
             <tr>
-                <td width="30"><span class="label label-info"><t t-esc="room_type_id[1]"/></span></td>
-                <td width="30"></td>
-                <td width="30"><span class="label label-important"><t t-esc="state_description"/></span></td>
-            </tr>
-            <tr>
-                <td colspan="3">&#160;</td>
-            </tr>
-            <tr>
-                <td colspan="3">&#160;</td>
-            </tr>
-            <tr>
-                <td colspan="3">&#160;</td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <div class="input-append">
-                        <span class="span2 uneditable-input"><t t-esc="name"/></span>
-                        <div class="btn-group">
-                            <button class="btn dropdown-toggle" data-toggle="dropdown">
-                                操作
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="action_room_scheduled" href="#">预定</a></li>
-                                <li><a class="action_room_scheduled_cancel" href="#">取消预定</a></li>
-                                <li class="divider"></li>
-                                <li><a class="action_room_open" href="#">开房</a></li>
-                                <li><a class="action_room_change" href="#">换房</a></li>
-                                <li><a class="action_room_merge" href="#">并房</a></li>
-                                <li class="divider"></li>
-                                <li><a class="action_room_buy_time" href="#">买钟</a></li>
-                                <li><a class="action_room_buyout" href="#">买断</a></li>
-                                <li><a class="action_room_buy_time_continue" href="#">续钟</a></li>
-                                <li><a class="action_room_buy_time_back" href="#">退钟</a></li>
-                                <li class="divider"></li>
-                                <li><a class="action_room_checkout" href="#">结账</a></li>
-                                <li><a class="action_room_reopen" href="#">结账重开</a></li>
-                            </ul>
-                        </div>
+                <td></td>
+                <td>
+                    <div class="btn-group">
+                        <button class="btn dropdown-toggle" data-toggle="dropdown">
+                            <t t-esc="name"/>
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="action_room_scheduled" href="#">预定</a></li>
+                            <li><a class="action_room_scheduled_cancel" href="#">取消预定</a></li>
+                            <li class="divider"></li>
+                            <li><a class="action_room_open" href="#">开房</a></li>
+                            <li><a class="action_room_change" href="#">换房</a></li>
+                            <li><a class="action_room_merge" href="#">并房</a></li>
+                            <li class="divider"></li>
+                            <li><a class="action_room_buy_time" href="#">买钟</a></li>
+                            <li><a class="action_room_buyout" href="#">买断</a></li>
+                            <li><a class="action_room_buy_time_continue" href="#">续钟</a></li>
+                            <li><a class="action_room_buy_time_back" href="#">退钟</a></li>
+                            <li class="divider"></li>
+                            <li><a class="action_room_checkout" href="#">结账</a></li>
+                            <li><a class="action_room_reopen" href="#">结账重开</a></li>
+                        </ul>
                     </div>
                 </td>
+                <td></td>
+            </tr>
+            <!--
+            <tr>
+                <td><span class="label label-info"><t t-esc="room_type_id[1]"/></span></td>
+                <td>&#160;</td>
+                <td><span class="label label-important"><t t-esc="state_description"/></span></td>
+            </tr>
+            -->
+            <tr>
+                <td colspan="3">&#160;</td>
+            </tr>
+            <tr>
+                <td colspan="3">&#160;</td>
             </tr>
         </table>
     </t>
@@ -166,7 +164,7 @@
                     </div>
                     <div class="control-group info">
                         <label class="control-label" for="scheduled_time">预定时间:</label>
-                        <div class="controls">
+                        <div class="controls scheduled_time" name="scheduled_time">
                             <input type="text" class="required" id="scheduled_time" name="scheduled_time" t-att-value="model.scheduled_time"/>
                         </div>
                     </div>

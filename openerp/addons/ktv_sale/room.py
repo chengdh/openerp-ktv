@@ -59,6 +59,9 @@ class room(osv.osv):
             'img_2' : fields.binary('room_pic_2',filters = "*.png,*.jpg,*.bmp"),
             'img_3' : fields.binary('room_pic_3',filters = "*.png,*.jpg,*.bmp"),
             'description' : fields.text('description',size = 255),
+            'current_room_operate_id' : fields.many2one('ktv.room_operate','current_room_operate_id',readonly = True,help = "当前包厢操作对象"),
+            'open_time' : fields.datetime('open_time',help = "开房时间",readonly = True),
+            'presale_break_on_time' : fields.datetime('presale_break_on_time',help ="预售到钟时间(包括买钟和买断)",readonly = True),
             'active' : fields.boolean('active'),
             }
 
@@ -89,3 +92,31 @@ class room(osv.osv):
                 }
 
         return {"value" : val}
+    #获取或创建当前包厢的room_operate对象
+    def find_or_create_room_operate(self,cr,uid,room_id):
+        room = self.browse(cr,uid,room_id)
+        op_obj = room.current_room_operate_id
+        if not op_obj:
+            op_id = self.pool.get('ktv.room_operate').create(cr,uid,{"room_id" : room_id})
+            #更新当前包厢的操作对象
+            self.write(cr,uid,[room_id],{"current_room_operate_id" : op_id})
+        else:
+            op_id = op_obj.id
+        return op_id
+
+    #创建room_scheduled对象
+    def create_room_scheduled(self,cr,uid,scheduled_vals):
+        room_id = scheduled_vals.pop("room_id")
+        cur_rp_id = self.find_or_create_room_operate(cr,uid,room_id)
+        scheduled_vals.update({"room_operate_id" : cur_rp_id})
+        self.pool.get("ktv.room_scheduled").create(cr,uid,scheduled_vals)
+        #更新当前房态
+        if self.write(cr,uid,[room_id],{"state" : room.STATE_SCHEDULED}):
+            the_room =  self.read(cr,uid,[room_id],["id","name","state","current_room_operate_id"])
+            return the_room[0]
+        else:
+            raise osv.except_osv(_("错误"), _('保存预定信息失败.'))
+
+
+
+

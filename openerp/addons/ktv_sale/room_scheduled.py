@@ -14,7 +14,7 @@ class room_scheduled(osv.osv):
 
     _columns = {
             'room_operate_id' :  fields.many2one('ktv.room_operate',"room_operate_id",required = True),
-            'scheduled_time'  : fields.datetime('scheduled_time',required = True,help = "预定时间")
+            'scheduled_time'  : fields.datetime('scheduled_time',required = True,help = "预定时间"),
             'persons_count' : fields.integer('persons_count'),
             'saler_id' : fields.many2one('res.users','saler_id',help = "销售经理"),
             'guest_name' : fields.char('guest_name',size = 64,required = True,help = "预定客人姓名"),
@@ -23,7 +23,7 @@ class room_scheduled(osv.osv):
             'state' : fields.selection([(STATE_SCHEDULED,"已预定"),(STATE_CANCELED,"已取消"),(STATE_CLOSED,"正常关闭")],"state",required = True,readonly = True),
             }
     _defaults = {
-            "scheduled_time" : fields.datetiem.now,
+            "scheduled_time" : fields.datetime.now,
             "persons_count" : 2,
             "state" : STATE_SCHEDULED,
             }
