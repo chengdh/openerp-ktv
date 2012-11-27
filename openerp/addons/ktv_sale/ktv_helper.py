@@ -16,4 +16,11 @@ def price_list_for_selection(self,cr,uid,context = None):
 def room_states_for_selection(self,cr,uid,context = None):
     ret =[("free","空闲"),("in_use","使用"),("scheduled","预定"),("locked","锁定"),("checkout","已结账"),("buyout","买断"),("malfunction","故障"),("clean","清洁"),("debug","调试"),("visit","带客")]
     return ret
-
+#男女
+def sexes_for_select(self,cr,uid,context = None):
+    ret=[("F","女"),("M","男")]
+    return ret
+#证件类型
+def id_types_for_select(self,cr,uid,context = None):
+    ret=[(1,"身份证"),(2,"驾驶证"),(3,"其他证件")]
+    return ret

@@ -118,5 +118,20 @@ class room(osv.osv):
             raise osv.except_osv(_("错误"), _('保存预定信息失败.'))
 
 
+    #创建room_opens对象
+    def create_room_opens(self,cr,uid,opens_vals):
+        room_id = opens_vals.pop("room_id")
+        cur_rp_id = self.find_or_create_room_operate(cr,uid,room_id)
+        opens_vals.update({"room_operate_id" : cur_rp_id})
+        self.pool.get("ktv.room_opens").create(cr,uid,opens_vals)
+        #更新当前房态
+        if self.write(cr,uid,[room_id],{"state" : room.STATE_IN_USE}):
+            the_room =  self.read(cr,uid,[room_id],["id","name","state","current_room_operate_id"])
+            return the_room[0]
+        else:
+            raise osv.except_osv(_("错误"), _('保存开房信息失败.'))
+
+
+
 
 

@@ -285,3 +285,23 @@
     up_member_class_id: member_class_jin
     down_points : 500
     down_member_class_id: member_class_yin
+-
+  应能够正确保存会员信息
+-
+  !record {model : ktv.member,id: member_1}:
+    name: "程东辉"
+    member_card_no: "412929197510020418"
+    member_class_id: member_class_jin
+    make_fee: 20
+    valid_date: 2013-12-31
+    overdraft_fee: 2000
+    card_password: yesno
+    phone: 13676997527
+    birthday: 1970-10-02
+    sex: M
+    id_type: 1
+    id_no: "412929197510020418"
+    v_no: "预A-299Z0"
+    qq: 542340109
+    email: c@a.com
+    address: "河南省郑州市"

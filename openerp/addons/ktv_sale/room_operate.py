@@ -17,6 +17,7 @@ class room_operate(osv.osv):
     room_operate与以上各个操作是one2many的关系,这样通过一个room_operate可以获取所有包厢在开房过程中所进行的操作,结账时遍历所有的操作并进行计算即可
     '''
     _name = "ktv.room_operate"
+    #由于在其他地方需要引用该对象,所有将name定义为bill_no
     _rec_name = "bill_no"
 
     _description = "包厢操作类,与包厢是many2one的关系"
@@ -25,6 +26,8 @@ class room_operate(osv.osv):
             "operate_date" : fields.datetime('operate_datetime',required = True),
             "room_id" : fields.many2one('ktv.room','room_id',required = True),
             "bill_no" : fields.char("bill_no",size = 64,required = True,help = "账单号"),
+            "room_scheduled_ids" : fields.one2many("ktv.room_scheduled","room_operate_id",help="预定信息列表"),
+            "room_opens_ids" : fields.one2many("ktv.room_opens","room_operate_id",help="开房信息列表"),
             }
 
     _defaults = {

@@ -31,4 +31,17 @@
     rs = self.create_room_scheduled(cr,uid,scheduled_vals)
     assert rs,"创建room_scheduled失败"
     assert self.browse(cr,uid,ref('ktv_room_1')).state == "scheduled"
-
+-
+  应可正常创建room_opens对象
+-
+  !python {model: ktv.room}: |
+    room_opens_vals = {
+    "room_id" : ref("ktv_room_1"),
+    'guest_name' : '程东辉',
+    'persons_count' : 5,
+    'fee_type_id' : ref('fee_type1'),
+    'price_class_id' : ref('price_class_1')
+    }
+    rs = self.create_room_opens(cr,uid,room_opens_vals)
+    assert rs
+    assert self.browse(cr,uid,ref('ktv_room_1')).state == "in_use"

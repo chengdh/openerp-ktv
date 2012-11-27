@@ -25,8 +25,9 @@ import room
 import room_area
 import room_type
 import room
-import room_operate
-import room_scheduled
+import room_operate     #包厢操作对象
+import room_scheduled   #包厢预定对象
+import room_opens       #开房对象
 import room_type_special_day
 import buyout_config
 import buyout_config_special_day
@@ -42,7 +43,8 @@ import hourly_fee_p_discount_special_day
 import hourly_fee_promotion
 import member_hourly_fee_discount
 import member_hourly_fee_discount_special_day
-import member_class   #会员卡等级设置
+import member_class     #会员卡等级设置
+import member           #会员信息设置
 import member_class_change_config  #会员升降级设置
 import discount_card_type   #打折卡
 import song_ticket          #欢唱券
