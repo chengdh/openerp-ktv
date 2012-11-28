@@ -63,6 +63,10 @@ function paramString2obj(serializedParams) {
 			x = tmpArray[0] + ".push({\"" + tmpArray[1] + "\":\"" + attributeValue + "\"});";
 		} else if (1 == tmpArray.length) {
 			x = "obj." + attributeName + "='" + attributeValue + "';"
+            //判断attributeName中是否有id,有的话转换为int
+            if(attributeName.indexOf("_id") > 0)
+                x = "obj." + attributeName + "=" + attributeValue + ";"
+
 		} else {
 			alert("Form2JSON Error!");
 			return;

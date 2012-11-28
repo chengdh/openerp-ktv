@@ -782,5 +782,15 @@ openerp.ktv_sale.model = function(erp_instance) {
             return new erp_instance.web.Model("ktv.room").get_func("create_room_scheduled")(this.toJSON());
         }
     });
+    //开房对象
+    model.RoomOpens = Backbone.Model.extend({
+        defaults : {
+            "persons_count" : 4
+        },
+        //上传数据到服务器
+        push : function(){
+            return new erp_instance.web.Model("ktv.room").get_func("create_room_opens")(this.toJSON());
+        }
+    });
 };
 

@@ -46,7 +46,7 @@
                             <li><a class="action_room_scheduled" href="#">预定</a></li>
                             <li><a class="action_room_scheduled_cancel" href="#">取消预定</a></li>
                             <li class="divider"></li>
-                            <li><a class="action_room_open" href="#">开房</a></li>
+                            <li><a class="action_room_opens" href="#">开房</a></li>
                             <li><a class="action_room_change" href="#">换房</a></li>
                             <li><a class="action_room_merge" href="#">并房</a></li>
                             <li class="divider"></li>
@@ -190,15 +190,15 @@
             </div>
         </div>
     </t>
-    <!--正常开房界面room_open-->
-    <t t-name="room-open-template">
+    <!--正常开房界面room_opens-->
+    <t t-name="room-opens-template">
         <div class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&#x00D7;</button>
                 <span>开房</span>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" id="room_open_form">
+                <form class="form-horizontal" id="room_opens_form">
                     <fieldset>
                         <div class="row">
                             <div class="control-group pull-left">
@@ -259,74 +259,6 @@
                         </div>
                     </fieldset>
 
-                    <fieldset class="buytime_fieldset">
-                        <div class="row">
-                            <div class="control-group pull-left">
-                                <label class="control-label" for="buytime_minutes">买钟时间:</label>
-                                <div class="controls">
-                                    <select id="buytime_minutes" name="buytime_minutes">
-                                        <option value="-1">不限时间</option>
-                                        <option value="30">30分钟</option>
-                                        <option value="30">60分钟</option>
-                                        <option value="30">90分钟</option>
-                                        <option value="30">120分钟</option>
-                                        <option value="30">150分钟</option>
-                                        <option value="30">180分钟</option>
-                                        <option value="30">210分钟</option>
-                                        <option value="30">240分钟</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="control-group pull-left">
-                                <label class="control-label" for="buytime_break_at">到钟时间:</label>
-                                <div class="controls">
-                                    <input type='text' readonly="true" id="buytime_break_at" name="buytime_break_at"/>
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-                    <fieldset class="buyout_fieldset">
-                        <div class="row">
-                            <div class="control-group pull-left">
-                                <label class="control-label" for="buyout_config_id">买断名称:</label>
-                                <div class="controls">
-                                    <select id="buyout_config_id" name="buyout_config_id">
-                                        <t t-foreach="room.room_fee_info.active_buyout_config_lines" t-as="l">
-                                            <option t-att-value="l.id"><t t-esc="l.name"/></option>
-                                        </t>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="control-group pull-left">
-                                <label class="control-label" for="buyout_break_at">到钟时间:</label>
-                                <div class="controls">
-                                    <input type='text' readonly="true" id="buyout_break_at" name="buyout_break_at"/>
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-                    <fieldset class="buffet_fieldset">
-                        <div class="row">
-                            <div class="control-group pull-left">
-                                <label class="control-label" for="buyout_id">自助餐:</label>
-                                <div class="controls">
-                                    <select id="buffet_config_id" name="buffet_config_id">
-                                        <t t-foreach="room.room_fee_info.active_buffet_config_lines" t-as="l">
-                                            <option t-att-value="l.id"><t t-esc="l.name"/></option>
-                                        </t>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="control-group pull-left">
-                                <label class="control-label" for="buffet_break_at">到钟时间:</label>
-                                <div class="controls">
-                                    <input type='text' readonly="true" id="buffet_break_at" name="buffet_break_at"/>
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-
-
                     <fieldset>
                         <div class="row">
                             <div class="control-group pull-left">
@@ -351,16 +283,10 @@
                             </div>
                         </div>
                     </div>
-
                 </form>
-                <!--调用费用列表-->
-                <t t-call="room-fee-info-template">
-                    <t t-set="room_fee_info" t-value="room.room_fee_info" />
-                </t>
-
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary btn-save-room-open">开房</button>
+                <button class="btn btn-primary btn-save-room-opens">开房</button>
                 <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
             </div>
         </div>

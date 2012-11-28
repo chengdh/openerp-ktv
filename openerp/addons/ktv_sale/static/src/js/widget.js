@@ -1,6 +1,9 @@
 //widget定义
 //erp_instance openerp的客户端实例对象，在boot.js中初始化
 openerp.ktv_sale.widget = function(erp_instance) {
+	//引用model和helper
+	var model = erp_instance.ktv_sale.model;
+	var helper = erp_instance.ktv_sale.helper;
 	//扩展通用的模板方法
 	var QWeb = erp_instance.web.qweb;
 	var qweb_template = function(template) {
@@ -91,14 +94,22 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		start: function() {
 			this.model.bind('change', _.bind(this.render_element, this));
 			this.$element.click(_.bind(this.on_click, this));
-            //预定事件
-            this.$element.find(".action_room_scheduled").click(_.bind(this.action_room_scheduled,this));
+			//预定事件
+			this.$element.find(".action_room_scheduled").click(_.bind(this.action_room_scheduled, this));
+			this.$element.find(".action_room_opens").click(_.bind(this.action_room_opens, this));
 		},
-        //包厢预定
-        action_room_scheduled : function(){
-            new widget.RoomScheduledWidget(null,{room : this.model,width : 450});
+		//包厢预定
+		action_room_scheduled: function() {
+			new widget.RoomScheduledWidget(null, {
+				room: this.model,
+				width: 450
+			});
+		},
+        //开房
+        action_room_opens : function(){
+            new widget.RoomOpensWidget(null,{room : this.model});
         },
-        //当前包厢点击事件
+		//当前包厢点击事件
 		on_click: function() {
 			erp_instance.ktv_sale.ktv_room_point.set({
 				"current_room": this.model
@@ -310,7 +321,9 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		template_fct: qweb_template('room-scheduled-form-template'),
 		init: function(parent, options) {
 			this.room = options.room;
-			this.model = new erp_instance.ktv_sale.model.RoomScheduled({room_id : this.room.get("id")});
+			this.model = new erp_instance.ktv_sale.model.RoomScheduled({
+				room_id: this.room.get("id")
+			});
 			this._super(parent, options);
 		},
 		start: function() {
@@ -334,9 +347,11 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		},
 		//修改包厢
 		on_change_room: function() {
-			var changed_room = erp_instance.ktv_sale.ktv_room_point.get("rooms_all").get(this.$form.find('#room_id').val());
+			var changed_room = erp_instance.ktv_sale.ktv_room_point.get("all_rooms").get(this.$form.find('#room_id').val());
 			this.room = changed_room;
-            this.model.set({"room_id" : changed_room.get("id")});
+			this.model.set({
+				"room_id": changed_room.get("id")
+			});
 		},
 		//验证录入数据是否有效
 		validate: function() {
@@ -344,22 +359,74 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		},
 		//保存预定信息
 		save: function() {
-            var self = this;
+			var self = this;
 			if (!this.validate()) {
 				return false;
 			}
 			//自界面获取各项值
 			this.model.set(this.$form.form2json());
-            var scheduled_time = this.$form.find("#scheduled_time").val();
+			var scheduled_time = this.$form.find("#scheduled_time").val();
 
-            //var f_scheduled_time =  erp_instance.web.format_value(scheduled_time, {"widget": "datetime"});
-            this.model.set({"scheduled_time" : scheduled_time});
-            this.model.push().pipe(function(result){
-                //更新包厢状态
-                self.room.set(result);
-                self.close();
-            });
+			//var f_scheduled_time =  erp_instance.web.format_value(scheduled_time, {"widget": "datetime"});
+			this.model.set({
+				"scheduled_time": scheduled_time
+			});
+			this.model.push().pipe(function(result) {
+				//更新包厢状态
+				self.room.set(result);
+				self.close();
+			});
 		}
+	});
+
+	//RoomOpensWidget 开房widget
+	widget.RoomOpensWidget = widget.BootstrapModal.extend({
+		template_fct: qweb_template("room-opens-template"),
+		init: function(parent, options) {
+			//当前包厢
+			this.room = options.room;
+			this.model = new model.RoomOpens();
+			this._super(parent, options);
+		},
+		start: function() {
+			//绑定相关事件
+            this.$form = this.$element.find("#room_opens_form");
+            this.$form.find("#room_id").change(_.bind(this.on_change_room,this));
+            this.$form.find("#room_id").val(this.room.get("id"));
+            this.$element.find(".btn-save-room-opens").click(_.bind(this.save,this));
+		},
+		render_element: function() {
+			this.$element.html(this.template_fct({
+				rooms: erp_instance.ktv_sale.ktv_room_point.get_rooms_by_state('free').toJSON(),
+				model: this.model.toJSON()
+			}));
+			return this;
+		},
+		validate: function() {
+			//验证模型数据
+			return this.$form.validate().form();
+		},
+		on_change_room: function() {
+			var changed_room = erp_instance.ktv_sale.ktv_room_point.get("all_rooms").get(this.$form.find('#room_id').val());
+			this.room = changed_room;
+			this.model.set({
+				"room_id": changed_room.get("id")
+			});
+
+		},
+        save : function(){
+            var self = this;
+            //保存数据
+            if(!this.validate())
+                return false;
+			this.model.set(this.$form.form2json());
+            this.model.push().then(function(result){
+				//更新包厢状态
+				self.room.set(result);
+				self.close();
+            });
+        }
+
 	});
 	//openerp的入口组件,用于定义系统的初始入口处理
 	erp_instance.web.client_actions.add('ktv_room_pos.ui', 'erp_instance.ktv_sale.widget.MainRoomPointOfSale');

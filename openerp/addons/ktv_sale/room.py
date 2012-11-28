@@ -111,9 +111,9 @@ class room(osv.osv):
         scheduled_vals.update({"room_operate_id" : cur_rp_id})
         self.pool.get("ktv.room_scheduled").create(cr,uid,scheduled_vals)
         #更新当前房态
-        if self.write(cr,uid,[room_id],{"state" : room.STATE_SCHEDULED}):
-            the_room =  self.read(cr,uid,[room_id],["id","name","state","current_room_operate_id"])
-            return the_room[0]
+        if self.write(cr,uid,room_id,{"state" : room.STATE_SCHEDULED}):
+            the_room =  self.read(cr,uid,room_id,["id","name","state","current_room_operate_id"])
+            return the_room
         else:
             raise osv.except_osv(_("错误"), _('保存预定信息失败.'))
 
@@ -123,11 +123,12 @@ class room(osv.osv):
         room_id = opens_vals.pop("room_id")
         cur_rp_id = self.find_or_create_room_operate(cr,uid,room_id)
         opens_vals.update({"room_operate_id" : cur_rp_id})
-        self.pool.get("ktv.room_opens").create(cr,uid,opens_vals)
+        room_opens_id = self.pool.get("ktv.room_opens").create(cr,uid,opens_vals)
+        room_opens = self.pool.get('ktv.room_opens').read(cr,uid,room_opens_id,['id','open_time']);
         #更新当前房态
-        if self.write(cr,uid,[room_id],{"state" : room.STATE_IN_USE}):
-            the_room =  self.read(cr,uid,[room_id],["id","name","state","current_room_operate_id"])
-            return the_room[0]
+        if self.write(cr,uid,room_id,{"state" : room.STATE_IN_USE,'open_time' : room_opens["open_time"]}):
+            the_room =  self.read(cr,uid,room_id,["id","name","state","current_room_operate_id"])
+            return the_room
         else:
             raise osv.except_osv(_("错误"), _('保存开房信息失败.'))
 
