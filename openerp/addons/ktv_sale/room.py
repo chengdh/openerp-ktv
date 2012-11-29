@@ -131,7 +131,9 @@ class room(osv.osv):
             return the_room
         else:
             raise osv.except_osv(_("错误"), _('保存开房信息失败.'))
-
+    #build 包厢结账信息
+    #FIXME 此处是build，并没有存入数据库
+    def build_room_checkout(cr,uid,room_id,context = None):
 
 
 

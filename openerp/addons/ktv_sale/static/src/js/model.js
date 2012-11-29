@@ -217,6 +217,7 @@ openerp.ktv_sale.model = function(erp_instance) {
 	//定义ktv_room_point对象,该对象对应一个ktv的收银结账柜台
 	model.KtvRoomPoint = Backbone.Model.extend({
 		initialize: function() {
+			Backbone.Model.prototype.initialize.apply(this, arguments);
 			this.set({
 				//全部包厢
 				all_rooms: new model.RoomCollection(),
