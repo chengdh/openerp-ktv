@@ -145,6 +145,12 @@ openerp.ktv_sale.model = function(erp_instance) {
 			'fields': ['id', 'name', 'card_fee', 'drinks_fee_discount', 'room_fee_discount', 'up_card_fee', 'drinks_price_type', 'room_limit_count', 'market_limit_count', 'can_points', 'can_manual_input', 'can_store_money'],
 			'domain': [['active', '=', true]]
 		},
+        //member 会员信息设置
+        'ktv.member' : {
+            'model_class' : 'Member',
+            'fields' : ['id','member_no','name','member_class_id','member_card_no','make_fee','valid_date','phone','birthday'],
+            'domain' : [['active','=',true]]
+        },
 
 		//discount_card_type 打折卡设置
 		'ktv.discount_card_type': {
@@ -791,6 +797,14 @@ openerp.ktv_sale.model = function(erp_instance) {
         //上传数据到服务器
         push : function(){
             return new erp_instance.web.Model("ktv.room").get_func("create_room_opens")(this.toJSON());
+        }
+    });
+
+    //预售-买断对象
+    model.RoomBuyout = Backbone.Model.extend({
+        defaults : {
+            "persons_count" : 4,
+            "time_from" : Date.today().setTimeToNow()
         }
     });
 };

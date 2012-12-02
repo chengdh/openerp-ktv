@@ -3,10 +3,8 @@ legend {
     font-size : 0.8em;
     font-weight : bold;
 }
-.openerp, .openerp textarea, .openerp input, .openerp select, .openerp option, .openerp button, .openerp .ui-widget {font-size : 80%;}
-.form-horizontal .control-label {width : 100px;}
-.form-horizontal .controls {margin-left : 110px;}
 .nav {margin-bottom : 0;}
 #room_info_tab .tab-content {background : #FFF;}
 #room_info_tab .nav-tabs > li {margin-bottom: -3px;}
 .table-room-fee-info {font-size : 13px;}
+.window {padding-top : 5px;}

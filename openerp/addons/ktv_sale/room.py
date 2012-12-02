@@ -62,6 +62,7 @@ class room(osv.osv):
             'current_room_operate_id' : fields.many2one('ktv.room_operate','current_room_operate_id',readonly = True,help = "当前包厢操作对象"),
             'open_time' : fields.datetime('open_time',help = "开房时间",readonly = True),
             'presale_break_on_time' : fields.datetime('presale_break_on_time',help ="预售到钟时间(包括买钟和买断)",readonly = True),
+            'member_id' : fields.many2one('ktv.member','member_id',help="会员编码"),
             'active' : fields.boolean('active'),
             }
 
@@ -133,7 +134,27 @@ class room(osv.osv):
             raise osv.except_osv(_("错误"), _('保存开房信息失败.'))
     #build 包厢结账信息
     #FIXME 此处是build，并没有存入数据库
+    #TODO
     def build_room_checkout(cr,uid,room_id,context = None):
+        #TODO
+        pass
+
+    #提交buyout对象,并返回结账信息
+    #FIXME 需要修改
+    def confirm_room_buyout(self,uid,vals):
+        room_id = vals.pop("room_id")
+        cur_rp_id = self.find_or_create_room_operate(cr,uid,room_id)
+        vals.update({"room_operate_id" : cur_rp_id})
+        room_buyout_id = self.pool.get("ktv.room_buyout").create(cr,uid,vals)
+        room_buyout = self.pool.get('ktv.room_buyout').read(cr,uid,room_buyout_id,['id','guest_name','persons_count',"buyout_config_id","time_from","time_to",'buyout_minutes','member_id']);
+        #更新当前房态
+        if self.write(cr,uid,room_id,{"state" : room.STATE_BUYOUT,'open_time' : room_buyout["time_from"],"presale_break_on_time" : room_buyout['time_to'],'member_id' : room_buyout["member_id"]}):
+            the_room =  self.read(cr,uid,room_id,["id","name","open_time","presale_break_on_time","member_id","state","current_room_operate_id"])
+            return the_room
+        else:
+            raise osv.except_osv(_("错误"), _('保存开房信息失败.'))
+
+
 
 
 

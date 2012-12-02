@@ -57,23 +57,22 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			if (options) {
 				_.extend(this.dialog_options, options);
 			}
-			if (this.dialog_options.show) {
-				this.open();
-			} else {
-				this.$element.find(".modal").modal(this.dialog_options);
-			}
+			if (this.dialog_options.show) this.open();
+
 		},
 		open: function(options) {
 			var self = this;
 			this.appendTo($('body'));
-			this.$element.find(".modal").modal(this.dialog_options).css({
+			this.$element.find(".modal").modal(self.dialog_options).on('hidden', _.bind(self.stop, self)).modal('show').css({
 				width: self.dialog_options.width,
 				'margin-left': function() {
 					return - ($(this).width() / 2);
 				}
-			}).on('hidden', _.bind(this.stop, this)).modal('show');
+			}).on("shown",_.bind(this.post_open,this));
 			return this;
 		},
+        //打开后的处理,用于焦点设置等等
+        post_open : function() {},
 		close: function() {
 			this.$element.find(".modal").modal('hide');
 		},
@@ -97,18 +96,37 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			//预定事件
 			this.$element.find(".action_room_scheduled").click(_.bind(this.action_room_scheduled, this));
 			this.$element.find(".action_room_opens").click(_.bind(this.action_room_opens, this));
+			this.$element.find(".action_room_buyout").click(_.bind(this.action_room_buyout, this));
 		},
 		//包厢预定
 		action_room_scheduled: function() {
-			new widget.RoomScheduledWidget(null, {
+			var win = new widget.RoomScheduledWidget(null, {
 				room: this.model,
-				width: 450
+			});
+			$('#operate_area').html(win.$element);
+			win.render_element();
+			win.start();
+		},
+		//开房
+		action_room_opens: function() {
+			var r = new widget.RoomOpensWidget(null, {
+				room: this.model
+			});
+			$('#operate_area').html(r.$element);
+			r.render_element();
+			r.start();
+		},
+		//买断
+		action_room_buyout: function() {
+			var r = new widget.RoomBuyoutWidget(null, {
+				room: this.model
+			});
+			r.ready.then(function() {
+				$('#operate_area').html(r.$element);
+				r.render_element();
+				r.start();
 			});
 		},
-        //开房
-        action_room_opens : function(){
-            new widget.RoomOpensWidget(null,{room : this.model});
-        },
 		//当前包厢点击事件
 		on_click: function() {
 			erp_instance.ktv_sale.ktv_room_point.set({
@@ -317,7 +335,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 	});
 
 	//预定widget
-	widget.RoomScheduledWidget = widget.BootstrapModal.extend({
+	widget.RoomScheduledWidget = erp_instance.web.OldWidget.extend({
 		template_fct: qweb_template('room-scheduled-form-template'),
 		init: function(parent, options) {
 			this.room = options.room;
@@ -327,6 +345,13 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			this._super(parent, options);
 		},
 		start: function() {
+			//隐藏其他元素
+			$('#room_status').hide();
+			$('#room_filter').hide();
+			$('#room_list').hide();
+
+			this.$element.find('.btn-close-room-scheduled').click(_.bind(this.close, this));
+
 			this.$form = $(this.$element).find("#room_scheduled_form");
 			this.$form.find('#scheduled_time').datetimepicker();
 			this.$form.find('#scheduled_time').val(this.model.get('scheculed_time'));
@@ -338,6 +363,13 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			this.$element.find(".btn-save").click(_.bind(this.save, this));
 			return this;
 		},
+        close: function() {
+			$('#room_status').show();
+			$('#room_filter').show();
+			$('#room_list').show();
+			this.stop();
+		},
+
 		render_element: function() {
 			this.$element.html(this.template_fct({
 				rooms: erp_instance.ktv_sale.ktv_room_point.get_rooms_by_state('free').toJSON(),
@@ -380,26 +412,68 @@ openerp.ktv_sale.widget = function(erp_instance) {
 	});
 
 	//RoomOpensWidget 开房widget
-	widget.RoomOpensWidget = widget.BootstrapModal.extend({
+	widget.RoomOpensWidget = erp_instance.web.OldWidget.extend({
 		template_fct: qweb_template("room-opens-template"),
 		init: function(parent, options) {
 			//当前包厢
 			this.room = options.room;
 			this.model = new model.RoomOpens();
+			this.member = new model.Member();
+			this.member.bind("change", this.render_member_card_no, this);
 			this._super(parent, options);
 		},
 		start: function() {
+			//隐藏其他元素
+			$('#room_status').hide();
+			$('#room_filter').hide();
+			$('#room_list').hide();
+			this.$element.find('.btn-close-room-opens').click(_.bind(this.close, this));
+			//会员卡扫描
+			this.$element.find('.btn-member-card-read').click(_.bind(this.open_member_card_read_win, this));
+			this.$element.find('.btn-member-card-clear').click(_.bind(this.clear_member_card, this));
 			//绑定相关事件
-            this.$form = this.$element.find("#room_opens_form");
-            this.$form.find("#room_id").change(_.bind(this.on_change_room,this));
-            this.$form.find("#room_id").val(this.room.get("id"));
-            this.$element.find(".btn-save-room-opens").click(_.bind(this.save,this));
+			this.$form = this.$element.find("#room_opens_form");
+			this.$form.find("#room_id").change(_.bind(this.on_change_room, this));
+			this.$form.find("#room_id").val(this.room.get("id"));
+			this.$element.find(".btn-save-room-opens").click(_.bind(this.save, this));
 		},
+		close: function() {
+			$('#room_status').show();
+			$('#room_filter').show();
+			$('#room_list').show();
+			this.stop();
+		},
+		//打开会员卡读取窗口
+		open_member_card_read_win: function() {
+			var m_win = new widget.MemberCardReadWidget(null, {
+				show: false,
+				model: this.member
+			});
+			m_win.open();
+		},
+		//清楚会员信息
+		clear_member_card: function() {
+			this.member.clear();
+		},
+		//重新显示会员信息
+		render_member_card_no: function() {
+			if (this.member.get("id")) {
+				var member_card_no = this.member.get("member_card_no");
+				var member_class = this.member.get("member_class_id");
+				var member_name = this.member.get("name");
+				var info = member_card_no + "[" + member_class[1] + "]" + "[" + member_name + "]" ;
+				this.$element.find("#member_card_no").html(info);
+			}
+            else
+				this.$element.find("#member_card_no").html(null);
+		},
+
 		render_element: function() {
 			this.$element.html(this.template_fct({
 				rooms: erp_instance.ktv_sale.ktv_room_point.get_rooms_by_state('free').toJSON(),
 				model: this.model.toJSON()
 			}));
+			this.render_member_card_no();
 			return this;
 		},
 		validate: function() {
@@ -414,18 +488,138 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			});
 
 		},
-        save : function(){
-            var self = this;
-            //保存数据
-            if(!this.validate())
-                return false;
+		save: function() {
+			var self = this;
+			//保存数据
+			if (!this.validate()) return false;
 			this.model.set(this.$form.form2json());
-            this.model.push().then(function(result){
+			this.model.push().then(function(result) {
 				//更新包厢状态
-				self.room.set(result);
-				self.close();
-            });
-        }
+			});
+		}
+	});
+	//包厢买断界面
+	widget.RoomBuyoutWidget = erp_instance.web.OldWidget.extend({
+		template_fct: qweb_template("room-buyout-template"),
+		init: function(parent, options) {
+			var self = this;
+			this.room = options.room;
+			this.model = new model.RoomBuyout();
+			//会员信息
+			this.member = new model.Member();
+			//获取包厢费用信息
+			this.room_fee_info = this.room.get_room_fee_info();
+			this.ready = this.room_fee_info.ready;
+            this.member.bind("change",this.render_member_card_no,this);
+			this._super(parent, options);
+		},
+		render_element: function() {
+			var self = this;
+			this.$element.html(self.template_fct({
+				"model": self.model.toJSON(),
+				"room": self.room.toJSON(),
+				"room_fee_info": self.room_fee_info.export_as_json(),
+				"rooms": erp_instance.ktv_sale.ktv_room_point.get_rooms_by_state('free').toJSON()
+			}));
+			return this;
+		},
+        //重新显示会员信息
+		render_member_card_no: function() {
+			if (this.member.get("id")) {
+				var member_card_no = this.member.get("member_card_no");
+				var member_class = this.member.get("member_class_id");
+				var member_name = this.member.get("name");
+				var info = member_card_no + "[" + member_class[1] + "]" + "[" + member_name + "]" ;
+				this.$element.find("#member_card_no").html(info);
+			}
+            else
+				this.$element.find("#member_card_no").html(null);
+		},
+
+		start: function() {
+			//隐藏其他元素
+			$('#room_status').hide();
+			$('#room_filter').hide();
+			$('#room_list').hide();
+            //设置当前选中的包厢
+            this.$element.find("#room_id").val(this.room.id);
+			//会员刷卡绑定
+			this.$element.find('.btn-member-card-read').click(_.bind(this.read_member_card, this));
+			this.$element.find('.btn-member-card-clear').click(_.bind(this.member_card_clear, this));
+			this.$element.find('.btn-close-room-buyout').click(_.bind(this.close, this));
+			//如果当前无可用买断,则确定按钮不可用
+			if (this.room_fee_info.get_active_buyout_config_lines().length == 0) this.$element.find(".btn-confirm-room-buyout").addClass("disabled");
+		},
+		close: function() {
+			$('#room_status').show();
+			$('#room_filter').show();
+			$('#room_list').show();
+			this.stop();
+		},
+		//读取会员卡
+		read_member_card: function() {
+			var w = new widget.MemberCardReadWidget(null, {
+				model: this.member
+			});
+		},
+		member_card_clear: function() {
+			this.$element.find('#member_card_no').attr("disabled", true);
+			this.member.clear();
+		}
+	});
+
+	//会员查询界面
+	widget.MemberCardReadWidget = widget.BootstrapModal.extend({
+		template_fct: qweb_template("member-card-read-template"),
+		init: function(parent, options) {
+			//传入界面的会员对象
+			this.model = options.model;
+			//当前查询到的会员信息
+			this.searched_member = new model.Member();
+            this.searched_member.bind("change",this._ok_close,this);
+			this._super(parent, options);
+		},
+        post_open : function(){
+            this.$element.find('#input_member_code').focus();
+        },
+
+		render_element: function() {
+			this.$element.html(this.template_fct({"searched_member" : this.searched_member.toJSON()}));
+			return this;
+		},
+		start: function() {
+            this.$element.find('#btn_member_search').click(_.bind(this._search,this));
+            this.$element.find('#btn_ok').click(_.bind(this._ok_close,this));
+		},
+        //确认关闭
+        _ok_close : function(){
+            if(this.searched_member.get("id"))
+            {
+                this.model.set(this.searched_member.attributes);
+                this.close();
+            }
+        },
+		//根据member_code查找member
+		_search: function() {
+			var self = this;
+			var input_member_card_no = this.$element.find('#input_member_code').val();
+			if (input_member_card_no != "") {
+				model.fetch_by_osv_name('ktv.member', {
+					"domain": [["member_card_no", '=', input_member_card_no]]
+				}).pipe(function(result) {
+					//未查到卡信息
+					if (result.length == 0){
+                        self.searched_member.clear();
+                        self.$element.find(".alert").removeClass('hide');
+                    }
+					else{
+                        self.$element.find(".alert").addClass('hide');
+                        self.searched_member.set(result[0]);
+                    }
+				})
+			}
+            this.$element.find("#input_member_code").focus().select();
+		}
 
 	});
 	//openerp的入口组件,用于定义系统的初始入口处理

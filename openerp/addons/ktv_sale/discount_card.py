@@ -11,8 +11,10 @@ class discount_card(osv.osv):
     _columns ={
             "card_no" : fields.char("card_no",size = 30,readonly = True,select = True,help="卡号",required = True),
             "discount_card_type_id" : fields.many2one("ktv.discount_card_type","discount_card_type_id",required = True,select = True,help="打折卡类别"),
-            "make_fee" : fields.float("make_fee",digits =  (10,2),help = "制卡费用,默认取会员等级中的制卡费用"),
+            "card_fee" : fields.float("card_fee",digits =  (10,2),help = "制卡费用,默认取打折卡类别中的制卡费用"),
             "valid_date" : fields.date("valid_date",help="卡有效期"),
             "active" : fields.boolean("active"),
             }
+
+    _defaults = {"card_fee" : 0 }
 

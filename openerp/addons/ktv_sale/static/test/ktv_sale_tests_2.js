@@ -32,10 +32,27 @@ $(document).ready(function() {
             var room = ktv_room_point.get("all_rooms").at(0);
             var room_fee_info = new openerp.ktv_sale.model.RoomFeeInfo({"room" : room});
             setTimeout(function(){
-                test = room_fee_info.get("all_hourly_fee_discount_lines").length > 0;
+                test = room_fee_info.get("all_hourly_fee_discount_lines").length;
                 ok(test > 0);
                 start();
             },150);
+        });
+        module("widget 测试",{
+            setup: function(){},
+            teardown: function(){}
+        });
+        asyncTest("应能够正确显示RoomBuyoutWidget",function(){
+            var room = ktv_room_point.get("all_rooms").at(0);
+            var room_buyout_widget = new openerp.ktv_sale.widget.RoomBuyoutWidget(null,{"room" : room });
+            setTimeout(function(){
+                ok(room_buyout_widget.$element);
+                start();
+            },150);
+        });
+        test("应能够正常显示MemberCardReadWidget",function(){
+            var member = new openerp.ktv_sale.model.Member();
+            var member_card_read_widget = new openerp.ktv_sale.widget.MemberCardReadWidget(null,{"model" : member,show : false});
+            ok(member_card_read_widget.open());
         });
 	});
 });

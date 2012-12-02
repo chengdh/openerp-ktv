@@ -31,6 +31,7 @@ class member(osv.osv):
             "active" : fields.boolean("active"),
             }
     _defaults = {
+            "active" : True,
             "make_fee" : 0,
             "overdraft_fee" : 0,
             'member_no': lambda obj, cr, uid, context: obj.pool.get('ir.sequence').get(cr, uid, 'ktv.member'),

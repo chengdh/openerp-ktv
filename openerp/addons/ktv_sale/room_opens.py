@@ -7,7 +7,6 @@ class room_opens(osv.osv):
     '''
     包厢开房对象,包括预定转开房和空置转开房
     '''
-
     _name = "ktv.room_opens"
 
     _description = "开房信息"
