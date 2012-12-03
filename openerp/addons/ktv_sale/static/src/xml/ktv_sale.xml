@@ -142,7 +142,7 @@
 
     <!--包厢预定-->
     <t t-name="room-scheduled-form-template">
-        <div class="well window">
+        <div class="well well-small">
             <div class="modal-header">
                 <button type="button" class="close btn-close-room-scheduled">&#x00D7;</button>
                 <span>预定</span>
@@ -200,7 +200,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary btn-save"><i class="icon-hdd icon-white"></i>保存预定信息</button>
+                <button class="btn btn-primary btn-save"><i class="icon-check icon-white"></i>保存预定信息</button>
                 <button class="btn btn-close-room-scheduled">取消</button>
             </div>
         </div>
@@ -247,7 +247,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </fieldset>
                     <fieldset>
                         <div class="row">
@@ -274,7 +273,16 @@
                         </div>
                     </fieldset>
 
+                    <div class="row">
+                        <div class="control-group pull-left">
+                            <label class="control-label" for="prepay_fee">预收款:</label>
+                            <div class="controls">
+                                <input type="text" id="prepay_fee" name="prepay_fee" class="number" t-att-value="model.prepay_fee" />
+                            </div>
+                        </div>
+                    </div>
                     <fieldset>
+                        <legend>请扫描会员卡</legend>
                         <div class="row">
                             <div class="control-group pull-left">
                                 <label class="control-label" for="member_card_no">会员卡号:</label>
@@ -291,14 +299,6 @@
                             </div>
                         </div>
                     </fieldset>
-                    <div class="row">
-                        <div class="control-group pull-left">
-                            <label class="control-label" for="prepay_fee">预收款:</label>
-                            <div class="controls">
-                                <input type="text" id="prepay_fee" name="prepay_fee" class="number" t-att-value="model.prepay_fee" />
-                            </div>
-                        </div>
-                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -307,9 +307,9 @@
             </div>
         </div>
     </t>
-    <!--包厢买断-->
+<!--包厢买断-->
     <t t-name="room-buyout-template">
-        <div class='well window'>
+        <div class='well well-small'>
             <div class="modal-header">
                 <button type="button" class="close btn-close-room-buyout">&#x00D7;</button>
                 <span>预售-买断</span>
@@ -426,7 +426,6 @@
             </div>
             <div class="modal-body">
                 <form id="member_read_form" class="form-search">
-
                     <div class="alert hide">
                         <strong>!</strong> 未找到会员信息.
                     </div>
@@ -436,9 +435,6 @@
                         <div class="btn-group">
                             <button id="btn_member_search" class="btn"><i class='icon-search'></i></button>
                         </div>
-                    </div>
-                    <div class="btn-group">
-                        <button id="btn_ok" class="btn">确定</button>
                     </div>
                 </form>
             </div>

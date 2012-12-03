@@ -584,12 +584,11 @@ openerp.ktv_sale.widget = function(erp_instance) {
         },
 
 		render_element: function() {
-			this.$element.html(this.template_fct({"searched_member" : this.searched_member.toJSON()}));
+			this.$element.html(this.template_fct());
 			return this;
 		},
 		start: function() {
             this.$element.find('#btn_member_search').click(_.bind(this._search,this));
-            this.$element.find('#btn_ok').click(_.bind(this._ok_close,this));
 		},
         //确认关闭
         _ok_close : function(){
