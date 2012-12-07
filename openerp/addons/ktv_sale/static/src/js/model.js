@@ -405,7 +405,10 @@ openerp.ktv_sale.model = function(erp_instance) {
 			var active_buyout_config_lines = [];
 			_.each(this.get_active_buyout_config_lines(), function(l) {
 				active_buyout_config_lines.push({
+                    id: l.get("id"),
 					name: l.get("name"),
+                    time_from: l.get("time_from"),
+                    time_to: l.get("time_to"),
 					time_range: l.get("time_from") + "~" + l.get("time_to"),
 					is_member: l.get("is_member"),
 					break_on_active: l.get("break_on_active"),

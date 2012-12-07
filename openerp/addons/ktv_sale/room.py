@@ -95,6 +95,10 @@ class room(osv.osv):
         return {"value" : val}
     #获取或创建当前包厢的room_operate对象
     def find_or_create_room_operate(self,cr,uid,room_id):
+        '''
+        查找或创建当前包厢的room_operate
+        返回room_operate_id
+        '''
         room = self.browse(cr,uid,room_id)
         op_obj = room.current_room_operate_id
         if not op_obj:

@@ -6,7 +6,6 @@ $(document).ready(function() {
 	openerp = window.openerp.init(), window.openerp.web.core(openerp), window.openerp.web.chrome(openerp), window.openerp.web.data(openerp), window.openerp.ktv_sale(openerp), openerp.connection.bind(), openerp.connection.session_authenticate("ktv_development", "admin", "1", false)).then(function() {
 		openerp.ktv_sale.ktv_room_point = new openerp.ktv_sale.model.KtvRoomPoint();
 		ktv_room_point = openerp.ktv_sale.ktv_room_point;
-		return ktv_room_point;
 	}).then(function() {
 		module("ktv_sale model 测试", {
 			setup: function() {},

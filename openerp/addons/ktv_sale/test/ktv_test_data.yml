@@ -81,8 +81,8 @@
     name: 迷你包下午场买断
     room_type_id: ktv_room_type1
     is_member: False
-    time_from: '15:30'
-    time_to: '17:30'
+    time_from: '00:00'
+    time_to: '23:00'
 -
   应能够成功保存买断特殊日设置
 -

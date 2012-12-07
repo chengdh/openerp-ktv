@@ -53,17 +53,9 @@
     romm_checkout = self.build_room_checkout(cr,uid,room_id)
     #assert room_checkout
 -
-  应可正常创建room_buyout对象
+  应能够正确获取给定的买断信息
 -
-  !python {model: ktv.room}: |
-    room_id = ref("ktv_room_1")
-    buyout_config_id=ref("buyout_config_1")
-    vals = {
-    "room_id" : room_id,
-    "buyout_config_id" : buyout_config_id,
-    "time_to" : "2012-11-22 22:30",
-    "buyout_minutes" : 300
-    }
-    ret = self.build_room_buyout(cr,uid,room_id)
+  !python {model : ktv.buyout_config}: |
+    buyout_config_id = ref('buyout_config_1')
+    ret = self.get_active_buyout_fee(cr,uid,buyout_config_id)
     assert ret
-    #assert self.browse(cr,uid,ref('ktv_room_1')).state == "buyout"

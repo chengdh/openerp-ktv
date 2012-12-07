@@ -25,6 +25,9 @@ class room_buyout(osv.osv):
             "persons_count" : 2,
             "time_from" : fields.datetime.now
             }
-    #buyout_config_id发生变化
-    def _on_change_buyout_config_id(cr,uid,buyout_config_id):
-        pass
+    #根据buyout信息创建买断结账单
+    #FIXME 注意:此处是build 而不是 create
+    def build_room_checkout(cr,uid,vals):
+        room = self.pool.get("ktv.room").browse(cr,uid,vals["room_id"])
+        buyout_config = self.pool.get('ktv.buyout_config').browse(cr,uid,vals["buyout_config_id"])
+        member_id = vals["member_id"]

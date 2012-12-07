@@ -39,8 +39,6 @@ class room_checkout(osv.osv):
             "minimum_drinks_fee" : fields.float("minimum_drinks_fee",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="计入低消酒水费"),
             "guest_damage_fee" : fields.float("guest_damage_fee",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="客损费用"),
 
-
-
             #会员卡折扣
             "member_id" : fields.many2one("ktv.member","member_id",help="会员信息"),
             "member_room_fee_discount_rate" : fields.float("minimum_room_fee_discount_rate",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="会员-房费折扣"),
