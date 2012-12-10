@@ -29,17 +29,22 @@ class room_checkout_buyout(osv.osv):
             }
 
 
-    #buyout_config_id member_id fee_typeid 发生变化时
-    def onchange_buyout_config_id(self,cr,uid,buyout_config_id,context):
+    def re_calculate_fee(self,cr,uid,context):
         '''
-        buyout_config_id 重新结算费用
+        重新计算费用信息
+        :param context['buyout_config_id'] 当前买断id,不可为空
+        :param context['room_id'] 当前包厢id,不可为空
+        :param context['member_id'] 会员id,可能为空
+        :param context['discount_card_id'] 打折卡id,可能为空
+        :param context['discounter_id'] 员工id,可能为空
         '''
-        active_buyout_config = self.pool.get('ktv.buyout_config').get_active_buyout_fee(cr,uid,buyout_config_id)
+        active_buyout_config = self.pool.get('ktv.buyout_config').get_active_buyout_fee(cr,uid,context['buyout_config_id'])
         the_room = self.pool.get('ktv.room').browse(cr,uid,context["room_id"])
 
         hourly_fee = active_buyout_config['buyout_fee']
 
         ret ={
+                'buyout_config_id' : context['buyout_config_id'],
                 'open_time': active_buyout_config['time_from'].strftime("%Y-%m-%d %H:%M"),
                 'close_time': active_buyout_config['time_to'].strftime("%Y-%m-%d %H:%M"),
                 'consume_minutes' : active_buyout_config['buyout_time'],
@@ -56,7 +61,6 @@ class room_checkout_buyout(osv.osv):
                 'sum_should_fee' : hourly_fee,
                 'discount_fee' : 0,
                 'discount_rate' : 0,
-                'after_discount_fee' : hourly_fee
                 }
 
         #同时只能有一种打折方式可用
@@ -64,7 +68,7 @@ class room_checkout_buyout(osv.osv):
         if 'member_id' in context and context['member_id']:
             the_member = self.pool.get('ktv.member').browse(cr,uid,context['member_id'])
             member_room_fee_discount_rate = the_member.member_class_id.room_fee_discount
-            member_room_fee_discount_fee = hourly_fee*member_room_fee_discount_rate
+            member_room_fee_discount_fee = hourly_fee*member_room_fee_discount_rate/100
             ret['discount_rate'] = member_room_fee_discount_rate
             ret['discount_fee'] = member_room_fee_discount_fee
 
@@ -73,11 +77,14 @@ class room_checkout_buyout(osv.osv):
         if 'discount_card_id' in context and context['discount_card_id']:
             discount_card = self.pool.get('ktv.discount_card').browse(cr,uid,context['discount_card_id'])
             discount_card_room_fee_discount_rate = discount_card.room_fee_discount
-            discount_card_room_fee_discount_fee = hourly_fee*discount_card_room_fee_discount_rate
+            discount_card_room_fee_discount_fee = hourly_fee*discount_card_room_fee_discount_rate/100
             ret['discount_rate'] = discount_card_room_fee_discount_rate
             ret['discount_fee'] = discount_card_room_fee_discount_fee
 
         #员工打折
         #TODO
         #if 'discounter_id' in context and context['discounter_id']:
+
+        ret['after_discount_fee'] = hourly_fee - ret['discount_fee']
+        ret['cash_fee'] = ret['after_discount_fee']
         return ret

@@ -311,8 +311,8 @@
     <t t-name="room-buyout-template">
         <div class='well well-small'>
             <div class="modal-header">
-                <button type="button" class="close btn-close-room-buyout">&#x00D7;</button>
-                <h4>预售-买断</h4>
+                <button type="button" class="close btn-cancel">&#x00D7;</button>
+                <h5>预售-买断</h5>
             </div>
             <div class='well well-small'>
                 <form class="form-horizontal" id="room_buyout_form">
@@ -409,79 +409,79 @@
                             <th>折后金额:</th>
                             <td colspan='11'><span class='after_discount_fee'></span></td>
                         </tr>
-                        <tr class='hide'>
+                        <tr class='hide member-card-wrapper'>
                             <td colspan='12'>
                                 <div class="input-prepend input-append">
                                     <span class='add-on'>会员卡:</span>
-                                    <span id="member_card_no" class="input-xxlarge uneditable-input"></span>
+                                    <span id="member-card-no" class="input-xxlarge uneditable-input"></span>
                                     <div class="btn-group">
                                         <button class="btn btn-member-card-clear" type="button"><i class='icon-remove'></i>清除</button>
                                     </div>
                                 </div>
                             </td>
                         </tr>
-                        <tr class='hide'>
+                        <tr class='hide discount-card-wrapper'>
                             <td colspan='12'>
                                 <div class="input-prepend input-append">
                                     <span class='add-on'>打折卡:</span>
-                                    <span id="member_card_no" class="input-xxlarge uneditable-input"></span>
+                                    <span id="discount-card-no" class="input-xxlarge uneditable-input"></span>
                                     <div class="btn-group">
-                                        <button class="btn btn-member-card-clear" type="button"><i class='icon-remove'></i>清除</button>
+                                        <button class="btn btn-discount-card-clear" type="button"><i class='icon-remove'></i>清除</button>
                                     </div>
                                 </div>
                             </td>
                         </tr>
-                        <tr class='hide'>
+                        <tr class='hide discounter-name-wrapper'>
                             <td colspan='12'>
                                 <div class="input-prepend input-append">
                                     <span class='add-on'>打折:</span>
-                                    <span id="member_card_no" class="input-xxlarge uneditable-input"></span>
+                                    <span id="discounter-name" class="input-xxlarge uneditable-input"></span>
                                     <div class="btn-group">
-                                        <button class="btn btn-member-card-clear" type="button"><i class='icon-remove'></i>清除</button>
+                                        <button class="btn btn-discounter-clear" type="button"><i class='icon-remove'></i>清除</button>
                                     </div>
                                 </div>
                             </td>
                         </tr>
-                        <tr class='hide'>
+                        <tr class='hide store-value-card-wrapper'>
                             <td colspan='12'>
                                 <div class="input-prepend input-append">
                                     <span class='add-on'>储值卡:</span>
-                                    <span id="member_card_no" class="input-xxlarge uneditable-input"></span>
+                                    <span id="store-value-card-no" class="input-xxlarge uneditable-input"></span>
                                     <div class="btn-group">
-                                        <button class="btn btn-member-card-clear" type="button"><i class='icon-remove'></i>清除</button>
+                                        <button class="btn btn-store-value-card-clear" type="button"><i class='icon-remove'></i>清除</button>
                                     </div>
                                 </div>
                             </td>
                         </tr>
-                        <tr class='hide'>
+                        <tr class='hide points-card-wrapper'>
                             <td colspan='12'>
                                 <div class="input-prepend input-append">
                                     <span class='add-on'>积分卡:</span>
-                                    <span id="member_card_no" class="input-xxlarge uneditable-input"></span>
+                                    <span id="points-card-no" class="input-xxlarge uneditable-input"></span>
                                     <div class="btn-group">
-                                        <button class="btn btn-member-card-clear" type="button"><i class='icon-remove'></i>清除</button>
+                                        <button class="btn btn-points-card-clear" type="button"><i class='icon-remove'></i>清除</button>
                                     </div>
                                 </div>
                             </td>
                         </tr>
-                        <tr class='hide'>
+                        <tr class='hide credit-card-wrapper'>
                             <td colspan='12'>
                                 <div class="input-prepend input-append">
                                     <span class='add-on'>信用卡:</span>
-                                    <span id="member_card_no" class="input-xxlarge uneditable-input"></span>
+                                    <span id="credit-card-no" class="input-xxlarge uneditable-input"></span>
                                     <div class="btn-group">
-                                        <button class="btn btn-member-card-clear" type="button"><i class='icon-remove'></i>清除</button>
+                                        <button class="btn btn-credit-card-clear" type="button"><i class='icon-remove'></i>清除</button>
                                     </div>
                                 </div>
                             </td>
                         </tr>
-                        <tr class='hide'>
+                        <tr class='hide sales-voucher-wrapper'>
                             <td colspan='12'>
                                 <div class="input-prepend input-append">
                                     <span class='add-on'>抵用券:</span>
-                                    <span id="member_card_no" class="input-xxlarge uneditable-input"></span>
+                                    <span id="sales-voucher-no" class="input-xxlarge uneditable-input"></span>
                                     <div class="btn-group">
-                                        <button class="btn btn-member-card-clear" type="button"><i class='icon-remove'></i>清除</button>
+                                        <button class="btn btn-sales-voucher-clear" type="button"><i class='icon-remove'></i>清除</button>
                                     </div>
                                 </div>
                             </td>
@@ -541,7 +541,7 @@
                                 <div class="input-append">
                                     <input type='text' class='input-mini' disabled='true'/>
                                     <div class='btn-group'>
-                                        <button class="btn btn-confirm-room-buyout"><i class='icon-check'></i>授权</button>
+                                        <button class="btn btn-confirm-room-buyout"><i class='icon-eye-open'></i>授权</button>
                                     </div>
                                 </div>
                             </td>
@@ -554,7 +554,7 @@
                                 <div class="input-append">
                                     <input type='text' class='input-mini' disabled='true'/>
                                     <div class='btn-group'>
-                                        <button class="btn btn-confirm-room-buyout"><i class='icon-check'></i>授权</button>
+                                        <button class="btn btn-confirm-room-buyout"><i class='icon-eye-open'></i>授权</button>
                                     </div>
                                 </div>
                             </td>
@@ -563,13 +563,13 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary btn-confirm-room-buyout"><i class='icon-check icon-white'></i>打单</button>
-                <button class="btn btn-primary btn-confirm-room-buyout"><i class='icon-user icon-white'></i>会员卡</button>
-                <button class="btn btn-primary btn-confirm-room-buyout"><i class='icon-check icon-white'></i>打折卡</button>
-                <button class="btn btn-primary btn-confirm-room-buyout"><i class='icon-check icon-white'></i>打折</button>
-                <button class="btn btn-primary btn-confirm-room-buyout"><i class='icon-check icon-white'></i>积分卡</button>
-                <button class="btn btn-primary btn-confirm-room-buyout"><i class='icon-check icon-white'></i>结账</button>
-                <button class="btn btn-close-room-buyout">取消</button>
+                <button class="btn btn-print"><i class='icon-print'></i> 打单</button>
+                <button class="btn btn-member-card-read"><i class='icon-user'></i> 会员卡</button>
+                <button class="btn btn-discount-card-read"><i class='icon-arrow-down'></i> 打折卡</button>
+                <button class="btn btn-discounter-authorize"><i class='icon-eye-open'></i> 打折授权</button>
+                <button class="btn btn-point-card-read"><i class='icon-gift'></i> 积分卡</button>
+                <button class="btn btn-checkout"><i class='icon-check'></i> 结账</button>
+                <button class="btn btn-cancel"><i class='icon-arrow-right'></i> 取消</button>
             </div>
         </div>
     </t>

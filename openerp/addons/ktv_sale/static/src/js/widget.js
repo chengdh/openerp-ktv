@@ -506,13 +506,15 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			this.room = options.room;
 			this.model = new model.RoomCheckoutBuyout();
             //model发生变化时,重新显示计费信息
-            this.model.bind('change',this.refresh_fee_table,this);
+            this.model.bind('change',this._refresh_fee_table,this);
 			//会员信息
 			this.member = new model.Member();
 			//获取包厢费用信息
 			this.room_fee_info = this.room.get_room_fee_info();
 			this.ready = this.room_fee_info.ready;
             this.member.bind("change",this.render_member_card_no,this);
+            //会员信息发生变化时重新计算费用
+            this.member.bind("change",this._re_calculate_fee,this);
 			this._super(parent, options);
 		},
 		render_element: function() {
@@ -527,19 +529,30 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		},
         //买断设置发生变化
         _onchange_buyout_config_id : function(){
-            var self = this;
+            this._re_calculate_fee();
+        },
+        //获取当前上下文环境
+        _get_context : function(){
             var buyout_config_id = this.$element.find('#buyout_config_id').val();
-            if(buyout_config_id){
-                //FIXME 此处注意,buyout_config_id应转换为int型
-                var context = {room_id : this.room.id};
-                new erp_instance.web.Model('ktv.room_checkout_buyout').get_func('onchange_buyout_config_id')(parseInt(buyout_config_id),context).pipe(function(ret){
-                    self.model.set(ret);
-                    self.refresh_fee_table();
-                })
-            }
+            var context = {
+                room_id : this.room.get("id"),
+                buyout_config_id : parseInt(buyout_config_id)
+            };
+            if(this.member.get("id"))
+                context.member_id = this.member.get("id");
+            return context;
+        },
+        //重新计算费用
+        _re_calculate_fee : function(){
+            var self = this;
+            var context = this._get_context();
+            new erp_instance.web.Model('ktv.room_checkout_buyout').get_func('re_calculate_fee')(context).pipe(function(ret){
+                self.model.set(ret);
+            });
+
         },
         //重新显示费用列表
-        refresh_fee_table : function(){
+        _refresh_fee_table : function(){
             this.$element.find('.room_fee').html(this.model.get('room_fee'));
             this.$element.find('.service_fee_rate').html(this.model.get('service_fee_rate'));
             this.$element.find('.service_fee').html(this.model.get('service_fee'));
@@ -557,15 +570,20 @@ openerp.ktv_sale.widget = function(erp_instance) {
         //重新显示会员信息
 		render_member_card_no: function() {
 			if (this.member.get("id")) {
+                //显示member-card-wrapper
 				var member_card_no = this.member.get("member_card_no");
 				var member_class = this.member.get("member_class_id");
 				var member_name = this.member.get("name");
 				var info = member_card_no + "[" + member_class[1] + "]" + "[" + member_name + "]" ;
-				this.$element.find("#member_card_no").html(info);
+				this.$element.find("#member-card-no").html(info);
+                this.$element.find('.member-card-wrapper').removeClass('hide');
 			}
-            else
-				this.$element.find("#member_card_no").html(null);
-		},
+            else{
+                //隐藏member-card-wrapper
+                this.$element.find("#member-card-no").html(null);
+                this.$element.find('.member-card-wrapper').addClass('hide');
+            }
+        },
 
 		start: function() {
 			//隐藏其他元素
@@ -577,7 +595,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			//会员刷卡绑定
 			this.$element.find('.btn-member-card-read').click(_.bind(this.read_member_card, this));
 			this.$element.find('.btn-member-card-clear').click(_.bind(this.member_card_clear, this));
-			this.$element.find('.btn-close-room-buyout').click(_.bind(this.close, this));
+			this.$element.find('.btn-cancel').click(_.bind(this.close, this));
 			//如果当前无可用买断,则确定按钮不可用
 			if (this.room_fee_info.get_active_buyout_config_lines().length == 0) this.$element.find(".btn-confirm-room-buyout").addClass("disabled");
             //买断变化事件
