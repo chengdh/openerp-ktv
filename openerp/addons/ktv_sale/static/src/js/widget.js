@@ -118,7 +118,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		},
 		//买断
 		action_room_buyout: function() {
-			var r = new widget.RoomBuyoutWidget(null, {
+			var r = new widget.RoomCheckoutBuyoutWidget(null, {
 				room: this.model
 			});
 			r.ready.then(function() {
@@ -499,12 +499,14 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		}
 	});
 	//包厢买断界面
-	widget.RoomBuyoutWidget = erp_instance.web.OldWidget.extend({
+	widget.RoomCheckoutBuyoutWidget = erp_instance.web.OldWidget.extend({
 		template_fct: qweb_template("room-buyout-template"),
 		init: function(parent, options) {
 			var self = this;
 			this.room = options.room;
-			this.model = new model.RoomBuyout();
+			this.model = new model.RoomCheckoutBuyout();
+            //model发生变化时,重新显示计费信息
+            this.model.bind('change',this.refresh_fee_table,this);
 			//会员信息
 			this.member = new model.Member();
 			//获取包厢费用信息
@@ -523,6 +525,35 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			}));
 			return this;
 		},
+        //买断设置发生变化
+        _onchange_buyout_config_id : function(){
+            var self = this;
+            var buyout_config_id = this.$element.find('#buyout_config_id').val();
+            if(buyout_config_id){
+                //FIXME 此处注意,buyout_config_id应转换为int型
+                var context = {room_id : this.room.id};
+                new erp_instance.web.Model('ktv.room_checkout_buyout').get_func('onchange_buyout_config_id')(parseInt(buyout_config_id),context).pipe(function(ret){
+                    self.model.set(ret);
+                    self.refresh_fee_table();
+                })
+            }
+        },
+        //重新显示费用列表
+        refresh_fee_table : function(){
+            this.$element.find('.room_fee').html(this.model.get('room_fee'));
+            this.$element.find('.service_fee_rate').html(this.model.get('service_fee_rate'));
+            this.$element.find('.service_fee').html(this.model.get('service_fee'));
+            this.$element.find('.hourly_fee').html(this.model.get('hourly_fee'));
+            this.$element.find('.minimum_fee').html(this.model.get('minimum_fee'));
+            this.$element.find('.minimum_fee_diff').html(this.model.get('minimum_fee_diff'));
+            this.$element.find('.changed_room_hourly_fee').html(this.model.get('changed_room_hourly_fee'));
+            this.$element.find('.changed_room_minutes').html(this.model.get('changed_room_minutes'));
+            this.$element.find('.merged_room_hourly_fee').html(this.model.get('merged_room_hourly_fee'));
+            this.$element.find('.sum_should_fee').html(this.model.get('sum_should_fee'));
+            this.$element.find('.discount_fee').html(this.model.get('discount_fee'));
+            this.$element.find('.discount_rate').html(this.model.get('discount_rate'));
+            this.$element.find('.after_discount_fee').html(this.model.get('after_discount_fee'));
+        },
         //重新显示会员信息
 		render_member_card_no: function() {
 			if (this.member.get("id")) {
@@ -549,6 +580,9 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			this.$element.find('.btn-close-room-buyout').click(_.bind(this.close, this));
 			//如果当前无可用买断,则确定按钮不可用
 			if (this.room_fee_info.get_active_buyout_config_lines().length == 0) this.$element.find(".btn-confirm-room-buyout").addClass("disabled");
+            //买断变化事件
+            this.$element.find('#buyout_config_id').change(_.bind(this._onchange_buyout_config_id,this));
+            this._onchange_buyout_config_id();
 		},
 		close: function() {
 			$('#room_status').show();

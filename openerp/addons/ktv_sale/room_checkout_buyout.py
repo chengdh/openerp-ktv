@@ -40,11 +40,23 @@ class room_checkout_buyout(osv.osv):
         hourly_fee = active_buyout_config['buyout_fee']
 
         ret ={
-                'open_time': active_buyout_config['time_from'],
-                'close_time': active_buyout_config['time_to'],
+                'open_time': active_buyout_config['time_from'].strftime("%Y-%m-%d %H:%M"),
+                'close_time': active_buyout_config['time_to'].strftime("%Y-%m-%d %H:%M"),
                 'consume_minutes' : active_buyout_config['buyout_time'],
                 #买断时,不收取其他费用,仅仅收取钟点费
                 'hourly_fee' : hourly_fee,
+                'room_fee' : 0,
+                'service_fee_rate' : 0,
+                'service_fee' : 0,
+                'minimum_fee' : 0,
+                'minimum_fee_diff' : 0,
+                'changed_room_hourly_fee' : 0,
+                'changed_room_minutes' : 0,
+                'merged_room_hourly_fee' : 0,
+                'sum_should_fee' : hourly_fee,
+                'discount_fee' : 0,
+                'discount_rate' : 0,
+                'after_discount_fee' : hourly_fee
                 }
 
         #同时只能有一种打折方式可用
@@ -53,8 +65,8 @@ class room_checkout_buyout(osv.osv):
             the_member = self.pool.get('ktv.member').browse(cr,uid,context['member_id'])
             member_room_fee_discount_rate = the_member.member_class_id.room_fee_discount
             member_room_fee_discount_fee = hourly_fee*member_room_fee_discount_rate
-            ret['member_room_fee_discount_rate'] = member_room_fee_discount_rate
-            ret['member_room_fee_discount_fee'] = member_room_fee_discount_fee
+            ret['discount_rate'] = member_room_fee_discount_rate
+            ret['discount_fee'] = member_room_fee_discount_fee
 
 
         #打折卡打折
@@ -62,8 +74,8 @@ class room_checkout_buyout(osv.osv):
             discount_card = self.pool.get('ktv.discount_card').browse(cr,uid,context['discount_card_id'])
             discount_card_room_fee_discount_rate = discount_card.room_fee_discount
             discount_card_room_fee_discount_fee = hourly_fee*discount_card_room_fee_discount_rate
-            ret['discount_card_room_fee_discount_rate'] = discount_card_room_fee_discount_rate
-            ret['discount_card_room_fee_discount_fee'] = discount_card_room_fee_discount_fee
+            ret['discount_rate'] = discount_card_room_fee_discount_rate
+            ret['discount_fee'] = discount_card_room_fee_discount_fee
 
         #员工打折
         #TODO

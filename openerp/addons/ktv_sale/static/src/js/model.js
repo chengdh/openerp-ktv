@@ -405,7 +405,7 @@ openerp.ktv_sale.model = function(erp_instance) {
 			var active_buyout_config_lines = [];
 			_.each(this.get_active_buyout_config_lines(), function(l) {
 				active_buyout_config_lines.push({
-                    id: l.get("id"),
+                    id: l.id,
 					name: l.get("name"),
                     time_from: l.get("time_from"),
                     time_to: l.get("time_to"),
@@ -584,6 +584,7 @@ openerp.ktv_sale.model = function(erp_instance) {
 						//判断当日是周几
 						var today_week_day = erp_instance.ktv_sale.helper.today_week_day();
 						var today_config = {
+                            id: c["id"],
 							time_from: c.time_from,
 							time_to: c.time_to,
 							room_fee: c[today_week_day + "_room_fee"],
@@ -676,6 +677,7 @@ openerp.ktv_sale.model = function(erp_instance) {
 						var today_week_day = erp_instance.ktv_sale.helper.today_week_day();
 						var today_config;
 						if (c[today_week_day + "_buyout_enable"]) today_config = {
+                            id: c["id"],
 							name: c["name"],
 							is_member: c["is_member"],
 							time_from: c.time_from,
@@ -719,6 +721,7 @@ openerp.ktv_sale.model = function(erp_instance) {
 						var today_week_day = erp_instance.ktv_sale.helper.today_week_day();
 						var today_config;
 						if (c[today_week_day + "_buyout_enable"]) today_config = {
+                            id: c["id"],
 							name: c["name"],
 							is_member: c["is_member"],
 							time_from: c.time_from,
@@ -754,6 +757,7 @@ openerp.ktv_sale.model = function(erp_instance) {
 					var today_config;
 					//首先,假定所有优惠设置都生效
 					today_config = {
+                        id: c["id"],
 						name: c["name"],
 						is_member: c["is_member"],
 						buy_minutes: c.buy_minutes,
@@ -804,7 +808,7 @@ openerp.ktv_sale.model = function(erp_instance) {
     });
 
     //预售-买断对象
-    model.RoomBuyout = Backbone.Model.extend({
+    model.RoomCheckoutBuyout = Backbone.Model.extend({
         defaults : {
             "persons_count" : 4,
             "time_from" : Date.today().setTimeToNow()
