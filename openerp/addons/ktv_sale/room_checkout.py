@@ -11,15 +11,15 @@ class room_checkout(osv.osv):
     _name="ktv.room_checkout"
 
     _columns = {
-            "room_operate_id" : fields.may2one("room_operate","room_operate_id",required = True,help="结账单所对应的room_operate对象")
+            "room_operate_id" : fields.many2one("ktv.room_operate","room_operate_id",required = True,help="结账单所对应的room_operate对象"),
             "bill_datetime" : fields.datetime("bill_datetime",required = True,readonly = True,help="结账时间"),
             "open_time" : fields.datetime("open_time",required = True,help="开房时间"),
             "close_time" : fields.datetime("close_time",required = True,help="关房时间"),
             "guest_name" : fields.char("guest_name",size = 20,help="客人姓名"),
             "persons_count" : fields.integer("persons_count",help="客人人数"),
             "consume_minutes" : fields.integer("consume_minutes",required = True,help="消费时长"),
-            "presenter_id" : fields.many2one("res.user","presenter_id",help ="赠送人"),
-            "saler_id" : fields.many2one("res.user","saler_id",help ="销售经理"),
+            "presenter_id" : fields.many2one("res.users","presenter_id",help ="赠送人"),
+            "saler_id" : fields.many2one("res.users","saler_id",help ="销售经理"),
             "present_minutes" : fields.integer("present_minutes",help="赠送时长"),
             "fee_type_id" : fields.many2one("ktv.fee_type","fee_type_id",required = True,help="计费方式"),
             "room_fee" : fields.float("room_fee", digits_compute= dp.get_precision('Ktv Room Default Precision'),help="包厢费"),
@@ -54,7 +54,7 @@ class room_checkout(osv.osv):
             "discount_card_drinks_fee_discount_fee" : fields.float("discount_card_drinks_fee_discount_fee",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="打折卡-酒水费折扣"),
 
             #员工打折字段
-            "discounter_id" : fields.many2one("res.user","discounter_id",help="打折人id")
+            "discounter_id" : fields.many2one("res.users","discounter_id",help="打折人id"),
             "discounter_room_fee_discount_rate" : fields.float("discounter_room_fee_discount_rate",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="操作员-房费折扣"),
             "discounter_room_fee_discount_fee" : fields.float("discounter_room_fee_discount_fee",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="操作员-房费折扣"),
             "discounter_drinks_fee_discount_rate" : fields.float("discounter_drinks_fee_discount_rate",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="操作员-酒水费折扣"),
@@ -73,40 +73,41 @@ class room_checkout(osv.osv):
             #抵用券
             "sales_voucher_fee" : fields.float("sales_voucher_fee",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="抵用券支付金额"),
             #免单
-            "freer_id" : fields.many2one("res.user","freer_id",help="免单人"),
+            "freer_id" : fields.many2one("res.users","freer_id",help="免单人"),
             "free_fee" : fields.float("free_fee",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="免单费用"),
             #按位消费免单
-            "freer_persons_id"  : fields.many2one("res.user","freer_persons_id",help="免单人"),
+            "freer_persons_id"  : fields.many2one("res.users","freer_persons_id",help="免单人"),
             "free_persons_count" : fields.integer("free_persons_count",help="按位消费免单人数"),
             #挂账
-            "on_crediter_id" : fields.many2one("res.user","on_crediter_id",help="挂账人"),
+            "on_crediter_id" : fields.many2one("res.users","on_crediter_id",help="挂账人"),
             "on_credit_fee" : fields.float("on_credit_fee",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="免单费用"),
             #欢唱券
             "song_ticket_fee" : fields.float("song_ticket_fee",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="欢唱券抵扣费用"),
             "song_ticket_fee_diff" : fields.float("song_ticket_fee_diff",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="欢唱券抵扣费用差额"),
+            }
 
-            _defaults = {
-                    #正常开房时,关房时间是当前时间
-                    "close_time" : fields.datetime.now,
-                    "consume_minutes" : 0,
-                    "present_minutes" : 0,
-                    "room_fee" : 0,
-                    "service_fee_rate" : 0,
-                    "service_fee" : 0,
-                    "houly_fee" : 0,
-                    "sum_hourly_fee_p" : 0,
-                    "sum_buffet_fee" : 0,
-                    "changed_hourly_fee" : 0,
-                    "changed_room_minutes" : 0,
-                    "merged_room_hourly_fee" : 0,
-                    "minimum_fee" : 0,
-                    "minimum_fee_diff" : 0,
-                    "prepay_fee" : 0,
-                    "drinks_fee" : 0,
-                    "uncheckout_drinks_fee" : 0,
-                    "minimum_drinks_fee" : 0,
-                    "guest_damage_fee" : 0,
-                    }
+    _defaults = {
+            #正常开房时,关房时间是当前时间
+            "close_time" : fields.datetime.now,
+            "consume_minutes" : 0,
+            "present_minutes" : 0,
+            "room_fee" : 0,
+            "service_fee_rate" : 0,
+            "service_fee" : 0,
+            "hourly_fee" : 0,
+            "sum_hourly_fee_p" : 0,
+            "sum_buffet_fee" : 0,
+            "changed_room_hourly_fee" : 0,
+            "changed_room_minutes" : 0,
+            "merged_room_hourly_fee" : 0,
+            "minimum_fee" : 0,
+            "minimum_fee_diff" : 0,
+            "prepay_fee" : 0,
+            "drinks_fee" : 0,
+            "uncheckout_drinks_fee" : 0,
+            "minimum_drinks_fee" : 0,
+            "guest_damage_fee" : 0,
+            }
 
 
 

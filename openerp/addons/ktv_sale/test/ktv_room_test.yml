@@ -59,3 +59,12 @@
     buyout_config_id = ref('buyout_config_1')
     ret = self.get_active_buyout_fee(cr,uid,buyout_config_id)
     assert ret
+-
+  买断信息发生变化时,应能够重新计算买断费用
+-
+  !python {model: ktv.room_checkout_buyout}: |
+    context = {
+    "member_id" : ref('member_1'),
+    "room_id" : ref('ktv_room_1')
+    }
+    ret = self.onchange_buyout_config_id(cr,uid,ref('buyout_config_1'),context)

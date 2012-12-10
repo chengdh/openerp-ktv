@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from osv import fields
-from datetime import date,datetime
+from datetime import date,datetime,time
 import logging
 _logger = logging.getLogger(__name__)
 #时间段选择
@@ -57,3 +57,43 @@ def user_context_now(obj,cr,uid):
     tz = current_user_tz(obj,cr,uid)
     context_now = fields.datetime.context_timestamp(cr,uid,datetime.now(),{"tz" : tz})
     return context_now
+
+def minutes_delta(time_from,time_to):
+    '''
+    计算给定两个时间的相差分钟数
+    :param time_from string 形式是'09:30'的字符串,指的是起始时间
+    :param time_to string 形式是'09:30'的字符串,指的是结束时间时间
+    :return integer 两个时间的相差分钟数
+    '''
+    array_time_from = [int(a) for a in time_from.split(':')]
+    array_time_to = [int(a) for a in time_to.split(':')]
+    t1 = time(array_time_from[0],array_time_from[1])
+    t2 = time(array_time_to[0],array_time_to[1])
+    return (t2.hour - t1.hour)*60 + (t2.minute - t1.minute)
+
+def context_now_minutes_delta(obj,cr,uid,time_to):
+    '''
+    计算当前时间到给定时间的相差分钟数,该计算是以当期登录用户所在市区进行计算的
+    :param object obj osv对象
+    :param cursot cr 数据库游标
+    :param integer uid 当前登录用户
+    :param string time_to 当前时间
+    :return integer 两个时间的相差分钟数
+    '''
+    context_now = user_context_now(obj,cr,uid)
+    return minutes_delta(context_now.strftime("%H:%M"),time_to)
+
+def context_strptime(osv_obj,cr,uid,str_time):
+    '''
+    将给定的时间字符串转变为当日的时间，以当前登录用户的时区为标准
+    :param osv_obj osv数据库对象
+    :param cr db cursor
+    :param int uid 当前登录用户
+    :param str_time 形式为'09:30'的时间字符串
+    :return datetime 计算过后的日期对象
+    '''
+    context_now = user_context_now(osv_obj,cr,uid)
+    time_array = [int(a) for a in str_time.split(":")]
+    context_now.replace(hour=time_array[0],minute=time_array[1])
+    return context_now
+

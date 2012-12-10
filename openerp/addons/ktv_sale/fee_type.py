@@ -52,3 +52,13 @@ class fee_type(osv.osv):
             'active' : True,
             'service_fee_rate' : 0.0,
             }
+    def get_fee_type_id(self,cr,uid,fee_type_code):
+        '''
+        根据fee_type_code获取fee_type_id
+        :params string fee_type_code 计费方式编码
+        :return integer fee_type_id
+        '''
+        ids = self.search(cr,uid,[['fee_type_code','=',fee_type_code]])
+        if not ids:
+            return None
+        return ids[0]

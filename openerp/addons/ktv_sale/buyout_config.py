@@ -121,11 +121,12 @@ class buyout_config(osv.osv):
         return {
                 "room_type_id" : getattr(the_buyout_config,"room_type_id"),
                 "name" : getattr(the_buyout_config,"name"),
-                "time_from" : getattr(the_buyout_config,'time_from'),
-                "time_to" : getattr(the_buyout_config,'time_to'),
+                #起始时间是当前时间
+                "time_from" : ktv_helper.user_context_now(self,cr,uid),
+                #结束时间转换为datetime型
+                "time_to" : ktv_helper.context_strptime(self,cr,uid,getattr(the_buyout_config,'time_to')),
                 "is_member" : getattr(the_buyout_config,'is_member'),
                 "buyout_fee" : buyout_fee,
-                "buyout_time" : getattr(the_buyout_config,"buyout_time")
+                #计算实际买断分钟数量
+                "buyout_time" : ktv_helper.context_now_minutes_delta(self,cr,uid,getattr(the_buyout_config,'time_to'))
                 }
-
-
