@@ -84,6 +84,13 @@
     time_from: '00:00'
     time_to: '23:00'
 -
+  !record {model: ktv.buyout_config,id: buyout_config_2}:
+    name: vip下午场买断
+    room_type_id: ktv_room_type1
+    is_member: False
+    time_from: '00:00'
+    time_to: '23:00'
+-
   应能够成功保存买断特殊日设置
 -
   !record {model: ktv.buyout_config_special_day,id: buyout_config_special_day_1}:

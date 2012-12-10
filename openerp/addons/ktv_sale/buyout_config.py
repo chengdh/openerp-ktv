@@ -130,3 +130,4 @@ class buyout_config(osv.osv):
                 #计算实际买断分钟数量
                 "buyout_time" : ktv_helper.context_now_minutes_delta(self,cr,uid,getattr(the_buyout_config,'time_to'))
                 }
+
