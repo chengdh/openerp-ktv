@@ -49,6 +49,7 @@ class room_checkout_buyout(osv.osv):
                 'close_time': active_buyout_config['time_to'].strftime("%Y-%m-%d %H:%M"),
                 'consume_minutes' : active_buyout_config['buyout_time'],
                 #买断时,不收取其他费用,仅仅收取钟点费
+                'buyout_fee' : hourly_fee,
                 'hourly_fee' : hourly_fee,
                 'room_fee' : 0,
                 'service_fee_rate' : 0,
@@ -68,7 +69,7 @@ class room_checkout_buyout(osv.osv):
         if 'member_id' in context and context['member_id']:
             the_member = self.pool.get('ktv.member').browse(cr,uid,context['member_id'])
             member_room_fee_discount_rate = the_member.member_class_id.room_fee_discount
-            member_room_fee_discount_fee = hourly_fee*member_room_fee_discount_rate/100
+            member_room_fee_discount_fee = hourly_fee*(100 - member_room_fee_discount_rate)/100
             ret['discount_rate'] = member_room_fee_discount_rate
             ret['discount_fee'] = member_room_fee_discount_fee
 
@@ -77,7 +78,7 @@ class room_checkout_buyout(osv.osv):
         if 'discount_card_id' in context and context['discount_card_id']:
             discount_card = self.pool.get('ktv.discount_card').browse(cr,uid,context['discount_card_id'])
             discount_card_room_fee_discount_rate = discount_card.room_fee_discount
-            discount_card_room_fee_discount_fee = hourly_fee*discount_card_room_fee_discount_rate/100
+            discount_card_room_fee_discount_fee = hourly_fee*(100 - discount_card_room_fee_discount_rate)/100
             ret['discount_rate'] = discount_card_room_fee_discount_rate
             ret['discount_fee'] = discount_card_room_fee_discount_fee
 
@@ -87,4 +88,9 @@ class room_checkout_buyout(osv.osv):
 
         ret['after_discount_fee'] = hourly_fee - ret['discount_fee']
         ret['cash_fee'] = ret['after_discount_fee']
+        ret.update({
+            'member_card_fee' : 0.0,
+            'credit_card_fee' : 0.0,
+            'sales_voucher_fee' : 0.0,
+            })
         return ret

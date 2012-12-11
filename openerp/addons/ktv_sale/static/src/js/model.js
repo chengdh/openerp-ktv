@@ -158,6 +158,12 @@ openerp.ktv_sale.model = function(erp_instance) {
 			'fields': ['id', 'name', 'drinks_fee_discount', 'room_fee_discount', 'card_fee'],
 			'domain': [['active', '=', true]]
 		},
+        //打折卡
+        'ktv.discount_card' : {
+            'model_class' : 'DiscountCard',
+            'fields' : ['id','card_no','discount_card_type_id','card_fee','valid_date'],
+            'domain' : [['active','=',true]]
+        },
 
 		//song_ticket 欢唱券设置
 		'ktv.song_ticket': {

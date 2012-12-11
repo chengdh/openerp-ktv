@@ -63,13 +63,10 @@ class room_checkout(osv.osv):
             #各种付款方式
             #现金
             "cash_fee" : fields.float("cash_fee",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="现金支付金额"),
-            #会员卡
+            #会员卡/储值卡
             "member_card_fee" : fields.float("member_card_fee",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="会员卡支付金额"),
             #信用卡&储蓄卡
             "credit_card_fee" : fields.float("credit_card_fee",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="信用卡支付金额"),
-            #储值卡
-            #FIXME 此处和会员卡有重复,但是储值卡可不记名
-            "store_value_card_fee" : fields.float("store_value_card_fee",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="储值卡支付金额"),
             #抵用券
             "sales_voucher_fee" : fields.float("sales_voucher_fee",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="抵用券支付金额"),
             #免单

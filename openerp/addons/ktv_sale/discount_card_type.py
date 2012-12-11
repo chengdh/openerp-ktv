@@ -25,4 +25,5 @@ class discount_card_type(osv.osv):
             'drinks_fee_discount' : 100.00,
             'room_fee_discount' : 100.00,
             'card_fee' : 0.0,
+            'active' : True
             }

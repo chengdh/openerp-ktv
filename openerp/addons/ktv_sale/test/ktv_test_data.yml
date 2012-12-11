@@ -316,7 +316,7 @@
   应能够正确保存打折卡信息
 -
   !record {model : ktv.discount_card,id: discount_card_1}:
-    card_no: "41234455555"
+    card_no: "111111"
     discount_card_type_id: discount_card_type_1
     card_fee: 10
 

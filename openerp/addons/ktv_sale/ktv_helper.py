@@ -94,6 +94,6 @@ def context_strptime(osv_obj,cr,uid,str_time):
     '''
     context_now = user_context_now(osv_obj,cr,uid)
     time_array = [int(a) for a in str_time.split(":")]
-    context_now.replace(hour=time_array[0],minute=time_array[1])
-    return context_now
+    ret = context_now.replace(hour=time_array[0],minute=time_array[1])
+    return ret
 

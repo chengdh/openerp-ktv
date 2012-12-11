@@ -16,5 +16,8 @@ class discount_card(osv.osv):
             "active" : fields.boolean("active"),
             }
 
-    _defaults = {"card_fee" : 0 }
+    _defaults = {
+            "card_fee" : 0,
+            'active' : True
+            }
 
