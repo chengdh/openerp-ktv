@@ -69,3 +69,10 @@
     "room_id" : ref('ktv_room_1')
     }
     ret = self.re_calculate_fee(cr,uid,context)
+
+-
+  应能正确获取抵用券信息
+-
+  !python {model: ktv.sales_voucher}: |
+    ret = self.get_active_sales_voucher(cr,uid,'000001234')
+    assert ret

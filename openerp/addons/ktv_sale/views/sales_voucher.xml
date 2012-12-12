@@ -10,8 +10,8 @@
                     <field name="id_number" select = "1"/>
                     <field name="face_value"/>
                     <field name="as_money"/>
-                    <field name="datetime_from"/>
-                    <field name="datetime_to"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
                     <field name="state" select = "1"/>
                     <field name="active"/>
                 </form>
@@ -27,8 +27,8 @@
                     <field name="id_number"/>
                     <field name="face_value"/>
                     <field name="as_money"/>
-                    <field name="datetime_from"/>
-                    <field name="datetime_to"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
                     <field name="state"/>
                     <field name="active"/>
                 </tree>

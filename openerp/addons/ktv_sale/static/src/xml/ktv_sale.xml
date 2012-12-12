@@ -413,7 +413,7 @@
                 </td>
                 <td>
                     <div class='input-prepend input-append'>
-                        <span class='add-on'>会员卡/储值卡:</span>
+                        <span class='add-on'>会员卡:</span>
                         <input type='text' class='member_card_fee input-mini' disabled='true'/>
                     </div>
                 </td>
@@ -422,7 +422,7 @@
                         <span class='add-on'>信用卡:</span>
                         <input type='text' class='credit_card_fee input-mini' disabled='true'/>
                         <div class='btn-group'>
-                            <button class="btn btn-autorize"><i class='icon-eye-open'></i>刷卡</button>
+                            <button class="btn btn-credit-card-input"><i class='icon-tasks'></i> 刷卡</button>
                         </div>
                     </div>
                 </td>
@@ -431,7 +431,7 @@
                         <span class='add-on'>抵用券:</span>
                         <input type='text' class='sales_voucher_fee input-mini' disabled='true'/>
                         <div class='btn-group'>
-                            <button class="btn btn-autorize"><i class='icon-eye-open'></i>刷卡</button>
+                            <button class="btn btn-sales-voucher-input"><i class='icon-file'></i> 录入</button>
                         </div>
                     </div>
                 </td>
@@ -442,7 +442,7 @@
                         <span class='add-on'>免单:</span>
                         <input type='text' class='on_credit_fee input-mini' disabled='true'/>
                         <div class='btn-group'>
-                            <button class="btn btn-autorize"><i class='icon-eye-open'></i>授权</button>
+                            <button class="btn btn-autorize"><i class='icon-eye-open'></i> 授权</button>
                         </div>
                     </div>
                 </td>
@@ -451,7 +451,7 @@
                         <span class='add-on'>挂账:</span>
                         <input type='text' class='free_fee input-mini' disabled='true'/>
                         <div class='btn-group'>
-                            <button class="btn btn-authorize"><i class='icon-eye-open'></i>授权</button>
+                            <button class="btn btn-authorize"><i class='icon-eye-open'></i> 授权</button>
                         </div>
                     </div>
                 </td>
@@ -462,7 +462,7 @@
     <t t-name='sales-voucher-list-template'>
         <table class='table table-condensed'>
             <t t-foreach="sales_vouchers" t-as="sv">
-                <tr class='hide sales-voucher-wrapper'>
+                <tr>
                     <td colspan='10'>
                         <div class="input-prepend input-append">
                             <span class='add-on'>抵用券:</span>

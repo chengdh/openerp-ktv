@@ -277,9 +277,11 @@
   应能够正确保存抵用券信息
 -
   !record {model: ktv.sales_voucher,id: sales_voucher_1}:
-    id_number: 000001234
+    id_number: '000001234'
     face_value: 50.0
     as_money: 50
+    date_from: '2012-11-01'
+    date_to: '2014-11-01'
     description: 抵用券00001234
 -
   应能够正确保存会员升降级设置
