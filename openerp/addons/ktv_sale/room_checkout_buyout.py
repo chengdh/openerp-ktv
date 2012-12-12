@@ -77,7 +77,7 @@ class room_checkout_buyout(osv.osv):
         #打折卡打折
         if 'discount_card_id' in context and context['discount_card_id']:
             discount_card = self.pool.get('ktv.discount_card').browse(cr,uid,context['discount_card_id'])
-            discount_card_room_fee_discount_rate = discount_card.room_fee_discount
+            discount_card_room_fee_discount_rate = discount_card.discount_card_type_id.room_fee_discount
             discount_card_room_fee_discount_fee = hourly_fee*(100 - discount_card_room_fee_discount_rate)/100
             ret['discount_rate'] = discount_card_room_fee_discount_rate
             ret['discount_fee'] = discount_card_room_fee_discount_fee
