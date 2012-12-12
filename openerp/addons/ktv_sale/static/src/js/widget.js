@@ -68,11 +68,11 @@ openerp.ktv_sale.widget = function(erp_instance) {
 				'margin-left': function() {
 					return - ($(this).width() / 2);
 				}
-			}).on("shown",_.bind(this.post_open,this));
+			}).on("shown", _.bind(this.post_open, this));
 			return this;
 		},
-        //打开后的处理,用于焦点设置等等
-        post_open : function() {},
+		//打开后的处理,用于焦点设置等等
+		post_open: function() {},
 		close: function() {
 			this.$element.find(".modal").modal('hide');
 		},
@@ -363,7 +363,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			this.$element.find(".btn-save").click(_.bind(this.save, this));
 			return this;
 		},
-        close: function() {
+		close: function() {
 			$('#room_status').show();
 			$('#room_filter').show();
 			$('#room_list').show();
@@ -461,11 +461,10 @@ openerp.ktv_sale.widget = function(erp_instance) {
 				var member_card_no = this.member.get("member_card_no");
 				var member_class = this.member.get("member_class_id");
 				var member_name = this.member.get("name");
-				var info = member_card_no + "[" + member_class[1] + "]" + "[" + member_name + "]" ;
+				var info = member_card_no + "[" + member_class[1] + "]" + "[" + member_name + "]";
 				this.$element.find("#member_card_no").html(info);
 			}
-            else
-				this.$element.find("#member_card_no").html(null);
+			else this.$element.find("#member_card_no").html(null);
 		},
 
 		render_element: function() {
@@ -499,99 +498,146 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		}
 	});
 
-    //结账基础类界面
-    widget.BaseRoomCheckoutWidget = erp_instance.web.OldWidget.extend({
-        //当前model
-        model : new Backbone.Model(),
+    //抵用券列表显示界面
+    widget.SalesVoucherListWidget = erp_instance.web.OldWidget.extend({
+        template_fct : qweb_template("sales-voucher-list-template"),
         init : function(parent,options){
-            this.room = options.room;
-            //会员信息
-            this.member = new model.Member();
-            this.discount_card = new model.DiscountCard();
-            //获取结账包厢费用信息
-            this.room_fee_info = this.room.get_room_fee_info();
-            this.ready = this.room_fee_info.ready;
+            this.model = options.model;
+            this.model.bind('change',this.render_element,this);
+            this._super(parent,options)
+        },
+        render_element : function(){
+            this.$element.html(this.template_fct(
+                    {
+                        'sales_vouchers' : this.model.toJSON()
+                    }
+                    ));
+            return this;
+        },
+        start : function(){
+        },
+    });
 
-            //model发生变化时,重新显示计费信息
-            this.model.bind('change',this._refresh_fee_table,this);
+	//结账基础类界面
+	widget.BaseRoomCheckoutWidget = erp_instance.web.OldWidget.extend({
+		//当前model
+		model: new Backbone.Model(),
+		init: function(parent, options) {
+			this.room = options.room;
+			//会员信息
+			this.member = new model.Member();
+			//打折卡信息
+			this.discount_card = new model.DiscountCard();
+			//信用卡信息
+			this.credit_card = new Backbone.Model();
+            //抵用券,可以使用多张抵用券
+            this.sales_voucher_collection = new Backbone.Collection();
+            this.sales_voucher_list_view = new widget.SalesVoucherListWidget(null,{model : this.sales_voucher_collection});
+			//获取结账包厢费用信息
+			this.room_fee_info = this.room.get_room_fee_info();
+			this.ready = this.room_fee_info.ready;
 
-            //会员信息发生变化时重新计算费用
-            this.member.bind("change",this.render_member_card_no,this);
-            this.member.bind("change",this._re_calculate_fee,this);
-            //打折卡信息发生变化时,重新计算费用
-            this.discount_card.bind("change",this.render_discount_card_no,this);
-            this.discount_card.bind("change",this._re_calculate_fee,this);
+			//model发生变化时,重新显示计费信息
+			this.model.bind('change', this._refresh_fee_table, this);
 
+			//会员信息发生变化时重新计算费用
+			this.member.bind("change", this.render_member_card_no, this);
+			this.member.bind("change", this._re_calculate_fee, this);
+			//打折卡信息发生变化时,重新计算费用
+			this.discount_card.bind("change", this.render_discount_card_no, this);
+			this.discount_card.bind("change", this._re_calculate_fee, this);
+
+			//信用卡支付发生变化时,重绘界面
+			this.credit_card.bind("change", this.render_credit_card_no, this);
 			this._super(parent, options);
-        },
-        //向服务器端发起请求,子类可覆盖
-        call_server_func : function(){
-            return $.Deferred().done().promise();
-        },
+		},
+		//向服务器端发起请求,子类可覆盖
+		call_server_func: function() {
+			return $.Deferred().done().promise();
+		},
 
-        _re_calculate_fee : function(){
-            var self = this;
-            return this.call_server_func().pipe(function(ret){
-                self.model.set(ret);
-            });
-        },
-        //重新显示费用列表
-        _refresh_fee_table : function(){
-            this.$element.find('.open_time').html(this.model.get('open_time'));
-            this.$element.find('.close_time').html(this.model.get('close_time'));
-            this.$element.find('.consume_minutes').html(this.model.get('consume_minutes'));
-            this.$element.find('.room_fee').html(this.model.get('room_fee'));
-            this.$element.find('.service_fee_rate').html(this.model.get('service_fee_rate'));
-            this.$element.find('.service_fee').html(this.model.get('service_fee'));
-            this.$element.find('.hourly_fee').html(this.model.get('hourly_fee'));
-            this.$element.find('.minimum_fee').html(this.model.get('minimum_fee'));
-            this.$element.find('.minimum_fee_diff').html(this.model.get('minimum_fee_diff'));
-            this.$element.find('.changed_room_hourly_fee').html(this.model.get('changed_room_hourly_fee'));
-            this.$element.find('.changed_room_minutes').html(this.model.get('changed_room_minutes'));
-            this.$element.find('.merged_room_hourly_fee').html(this.model.get('merged_room_hourly_fee'));
-            this.$element.find('.sum_should_fee').html(this.model.get('sum_should_fee'));
-            this.$element.find('.discount_fee').html(this.model.get('discount_fee'));
-            this.$element.find('.discount_rate').html(this.model.get('discount_rate'));
-            this.$element.find('.after_discount_fee').html(this.model.get('after_discount_fee'));
-            this.$element.find('.cash_fee').val(this.model.get('cash_fee'));
-        },
-        //重新显示会员信息
+		_re_calculate_fee: function() {
+			var self = this;
+			return this.call_server_func().pipe(function(ret) {
+				self.model.set(ret);
+			});
+		},
+		//重新显示费用列表
+		_refresh_fee_table: function() {
+			this.$element.find('.open_time').html(this.model.get('open_time'));
+			this.$element.find('.close_time').html(this.model.get('close_time'));
+			this.$element.find('.consume_minutes').html(this.model.get('consume_minutes'));
+			this.$element.find('.room_fee').html(this.model.get('room_fee'));
+			this.$element.find('.service_fee_rate').html(this.model.get('service_fee_rate'));
+			this.$element.find('.service_fee').html(this.model.get('service_fee'));
+			this.$element.find('.hourly_fee').html(this.model.get('hourly_fee'));
+			this.$element.find('.minimum_fee').html(this.model.get('minimum_fee'));
+			this.$element.find('.minimum_fee_diff').html(this.model.get('minimum_fee_diff'));
+			this.$element.find('.changed_room_hourly_fee').html(this.model.get('changed_room_hourly_fee'));
+			this.$element.find('.changed_room_minutes').html(this.model.get('changed_room_minutes'));
+			this.$element.find('.merged_room_hourly_fee').html(this.model.get('merged_room_hourly_fee'));
+			this.$element.find('.sum_should_fee').html(this.model.get('sum_should_fee'));
+			this.$element.find('.discount_fee').html(this.model.get('discount_fee'));
+			this.$element.find('.discount_rate').html(this.model.get('discount_rate'));
+			this.$element.find('.after_discount_fee').html(this.model.get('after_discount_fee'));
+			this.$element.find('.cash_fee').val(this.model.get('cash_fee'));
+		},
+		//重新显示会员信息
 		render_member_card_no: function() {
 			if (this.member.get("id")) {
-                //显示member-card-wrapper
+				//显示member-card-wrapper
 				var member_card_no = this.member.get("member_card_no");
 				var member_class = this.member.get("member_class_id");
 				var member_name = this.member.get("name");
-				var info = member_card_no + "[" + member_class[1] + "]" + "[" + member_name + "]" ;
+				var info = member_card_no + "[" + member_class[1] + "]" + "[" + member_name + "]";
 				this.$element.find("#member-card-no").html(info);
-                this.$element.find('.member-card-wrapper').removeClass('hide');
-                //会员卡/储值卡支付方式可用
-                this.$element.find('.member_card_fee').attr('disabled',false);
+				this.$element.find('.member-card-wrapper').removeClass('hide');
+				//会员卡/储值卡支付方式可用
+				this.$element.find('.member_card_fee').attr('disabled', false);
 
 			}
-            else{
-                //隐藏member-card-wrapper
-                this.$element.find("#member-card-no").html(null);
-                this.$element.find('.member-card-wrapper').addClass('hide');
-            }
-        },
-        //重新显示打折卡信息
+			else {
+				//隐藏member-card-wrapper
+				this.$element.find("#member-card-no").html(null);
+				this.$element.find('.member_card_fee').attr('disabled', true);
+				this.$element.find('.member-card-wrapper').addClass('hide');
+				this.$element.find('.pay-type-member-card-check').attr('checked',false);
+			}
+		},
+		//重新显示打折卡信息
 		render_discount_card_no: function() {
 			if (this.discount_card.get("id")) {
-                //显示member-card-wrapper
+				//显示member-card-wrapper
 				var card_no = this.discount_card.get("card_no");
 				var card_type_id = this.discount_card.get("discount_card_type_id");
 				var name = card_type_id[1];
-				var info =name +  "[" +card_no + "]" ;
+				var info = name + "[" + card_no + "]";
 				this.$element.find("#discount-card-no").html(info);
-                this.$element.find('.discount-card-wrapper').removeClass('hide');
+				this.$element.find('.discount-card-wrapper').removeClass('hide');
 			}
-            else{
-                //隐藏member-card-wrapper
-                this.$element.find("#discount-card-no").html(null);
-                this.$element.find('.discount-card-wrapper').addClass('hide');
-            }
-        },
+			else {
+				//隐藏member-card-wrapper
+				this.$element.find("#discount-card-no").html(null);
+				this.$element.find('.discount-card-wrapper').addClass('hide');
+			}
+		},
+		//显示信用卡信息
+		render_credit_card_no: function() {
+			if (this.credit_card.get("card_no")) {
+				//显示member-card-wrapper
+				var card_no = this.credit_card.get("card_no");
+				this.$element.find("#credit-card-no").html(card_no);
+				this.$element.find('.credit-card-wrapper').removeClass('hide');
+				this.$element.find('.credit_card_fee').attr('disabled',false);
+
+			}
+			else {
+				this.$element.find("#credit-card-no").html(null);
+				this.$element.find('.credit_card_fee').attr('disabled', true);
+				this.$element.find('.credit-card-wrapper').addClass('hide');
+				this.$element.find('.pay-type-credit-card-check').attr('checked',false);
+			}
+		},
 
 		start: function() {
 			//隐藏其他元素
@@ -599,14 +645,24 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			$('#room_filter').hide();
 			$('#room_list').hide();
 
+            //抵扣券列表
+            this.sales_voucher_list_view.$element = this.$element.find('.sales-voucher-list');
+            this.sales_voucher_list_view.render_element();
+            this.sales_voucher_list_view.start();
+
 			//会员刷卡绑定
 			this.$element.find('.btn-member-card-read').click(_.bind(this.read_member_card, this));
 			this.$element.find('.btn-discount-card-read').click(_.bind(this.read_discount_card, this));
 			this.$element.find('.btn-member-card-clear').click(_.bind(this.member_card_clear, this));
 			this.$element.find('.btn-discount-card-clear').click(_.bind(this.discount_card_clear, this));
+			this.$element.find('.btn-credit-card-clear').click(_.bind(this.credit_card_clear, this));
 			this.$element.find('.btn-cancel').click(_.bind(this.close, this));
-            //会员卡支付方式点击事件
-            this.$element.find('.pay-type-member-card-check').click(_.bind(this._onclick_pay_type_member_card_check,this));
+			//会员卡支付方式点击事件
+			this.$element.find('.pay-type-member-card-check').click(_.bind(this._onclick_pay_type_member_card_check, this));
+			//信用卡支付方式点击
+			this.$element.find('.pay-type-credit-card-check').click(_.bind(this._onclick_pay_type_credit_card_check, this));
+            //抵用券方式点击
+			this.$element.find('.pay-type-sales-voucher-check').click(_.bind(this._onclick_pay_type_sales_voucher_check, this));
 		},
 		close: function() {
 			$('#room_status').show();
@@ -614,44 +670,68 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			$('#room_list').show();
 			this.stop();
 		},
-        //会员卡支付方式click事件
-        _onclick_pay_type_member_card_check : function(){
-            if(this.$element.find('.pay-type-member-card-check').attr('checked')){
-                if(this.member.get('id'))
-                    this.$element.find('.member_card_fee').attr('disabled',false);
-                else
-                    this.$element.find('.btn-member-card-read').trigger('click');
-            }
-        },
+		//会员卡支付方式click事件
+		_onclick_pay_type_member_card_check: function() {
+			if (this.$element.find('.pay-type-member-card-check').attr('checked')) {
+				if (this.member.get('id')) this.$element.find('.member_card_fee').attr('disabled', false);
+				else this.$element.find('.btn-member-card-read').trigger('click');
+			}
+            else
+                this.$element.find('.member_card_fee').attr('disabled',true);
+		},
+		//抵用券支付方式click事件
+		_onclick_pay_type_sales_voucher_check: function() {
+		},
+		//信用卡支付方式点击
+		_onclick_pay_type_credit_card_check: function() {
+			if (this.$element.find('.pay-type-credit-card-check').attr('checked')) {
+				if (this.credit_card.get('card_no')) this.$element.find('.credit_card_fee').attr('disabled', false);
+				else this.open_credit_card_input();
+			}
+            else
+                this.$element.find('.credit_card_fee').attr('disabled',true);
+		},
 		//读取会员卡
 		read_member_card: function() {
 			var w = new widget.MemberCardReadWidget(null, {
 				model: this.member
 			});
 		},
-        //读取打折卡
-        read_discount_card : function() {
-            var w = new widget.DiscountCardReadWidget(null, {
+		//读取打折卡
+		read_discount_card: function() {
+			var w = new widget.DiscountCardReadWidget(null, {
 				model: this.discount_card
 			});
 
-        },
-        //清除会员卡信息
+		},
+		//打开信用卡录入界面
+		open_credit_card_input: function() {
+			var w = new widget.CreditCardInputWidget(null, {
+				model: this.credit_card
+			});
+		},
+		//清除信用卡记录
+		credit_card_clear: function() {
+			this.$element.find('#credit_card_no').attr("disabled", true);
+			this.credit_card.clear();
+		},
+
+		//清除会员卡信息
 		member_card_clear: function() {
 			this.$element.find('#member_card_no').attr("disabled", true);
 			this.member.clear();
 		},
-        //清除打折卡信息
+		//清除打折卡信息
 		discount_card_clear: function() {
 			this.$element.find('#discount_card_no').attr("disabled", true);
 			this.discount_card.clear();
 		}
-    });
+	});
 
 	//包厢买断界面
 	widget.RoomCheckoutBuyoutWidget = widget.BaseRoomCheckoutWidget.extend({
 		template_fct: qweb_template("room-buyout-template"),
-        model : new model.RoomCheckoutBuyout,
+		model: new model.RoomCheckoutBuyout,
 		render_element: function() {
 			var self = this;
 			this.$element.html(self.template_fct({
@@ -662,80 +742,75 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			}));
 			return this;
 		},
-        //买断设置发生变化
-        _onchange_buyout_config_id : function(){
-            this._re_calculate_fee();
-        },
+		//买断设置发生变化
+		_onchange_buyout_config_id: function() {
+			this._re_calculate_fee();
+		},
 
-        call_server_func : function(){
-            var self = this;
-            var context = this._get_context();
-            return new erp_instance.web.Model('ktv.room_checkout_buyout').get_func('re_calculate_fee')(context);
-        },
-        //获取当前上下文环境
-        _get_context : function(){
-            var buyout_config_id = this.$element.find('#buyout_config_id').val();
-            var context = {
-                room_id : this.room.get("id"),
-                buyout_config_id : parseInt(buyout_config_id)
-            };
-            if(this.member.get("id"))
-                context.member_id = this.member.get("id");
+		call_server_func: function() {
+			var self = this;
+			var context = this._get_context();
+			return new erp_instance.web.Model('ktv.room_checkout_buyout').get_func('re_calculate_fee')(context);
+		},
+		//获取当前上下文环境
+		_get_context: function() {
+			var buyout_config_id = this.$element.find('#buyout_config_id').val();
+			var context = {
+				room_id: this.room.get("id"),
+				buyout_config_id: parseInt(buyout_config_id)
+			};
+			if (this.member.get("id")) context.member_id = this.member.get("id");
 
-            if(this.discount_card.get("id"))
-                context.discount_card_id = this.discount_card.get("id");
+			if (this.discount_card.get("id")) context.discount_card_id = this.discount_card.get("id");
 
-            return context;
-        },
+			return context;
+		},
 		start: function() {
-            this._super();
+			this._super();
 			//买断变化事件
-            this.$element.find('#buyout_config_id').change(_.bind(this._onchange_buyout_config_id,this));
-            //如果当前无可用买断,则确定按钮不可用
-			if (this.room_fee_info.get_active_buyout_config_lines().length == 0)
-            {
-                this.$element.find(".btn-print").addClass("disabled");
-                this.$element.find(".btn-member-card-read").addClass("disabled");
-                this.$element.find(".btn-discount-card-read").addClass("disabled");
-                this.$element.find(".btn-discounter-authorize").addClass("disabled");
-                this.$element.find(".btn-member-checkout").addClass("disabled");
-            }
-            else
-                this._onchange_buyout_config_id();
+			this.$element.find('#buyout_config_id').change(_.bind(this._onchange_buyout_config_id, this));
+			//如果当前无可用买断,则确定按钮不可用
+			if (this.room_fee_info.get_active_buyout_config_lines().length == 0) {
+				this.$element.find(".btn-print").addClass("disabled");
+				this.$element.find(".btn-member-card-read").addClass("disabled");
+				this.$element.find(".btn-discount-card-read").addClass("disabled");
+				this.$element.find(".btn-discounter-authorize").addClass("disabled");
+				this.$element.find(".btn-member-checkout").addClass("disabled");
+			}
+			else this._onchange_buyout_config_id();
 		}
 	});
-    //刷卡界面
-    widget.ScanCardWidget = widget.BootstrapModal.extend({
+	//刷卡界面
+	widget.ScanCardWidget = widget.BootstrapModal.extend({
 		template_fct: qweb_template("scan-card-template"),
-        osv_name : 'ktv.member',
-        search_field_name : 'member_card_no',
+		osv_name: 'ktv.member',
+		search_field_name: 'member_card_no',
 		init: function(parent, options) {
 			//传入界面的对象
 			this.model = options.model;
 			//当前查询到的对象信息
 			this.searched_model = new Backbone.Model();
-            this.searched_model.bind("change",this._ok_close,this);
+			this.searched_model.bind("change", this._ok_close, this);
 			this._super(parent, options);
 		},
-        post_open : function(){
-            this.$element.find('#input_card_no').focus();
-        },
+		post_open: function() {
+			this.$element.find('#input_card_no').focus();
+		},
 
 		render_element: function() {
 			this.$element.html(this.template_fct());
 			return this;
 		},
 		start: function() {
-            this.$element.find('#btn_search').click(_.bind(this._search,this));
+			this.$element.find('#btn_search').click(_.bind(this._search, this));
 		},
-        //确认关闭
-        _ok_close : function(){
-            if(this.searched_model.get("id"))
-            {
-                this.model.set(this.searched_model.attributes);
-                this.close();
-            }
-        },
+		//确认关闭
+		_ok_close: function() {
+			if (this.searched_model.get("id") || this.searched_model.get('card_no')) {
+				this.model.set(this.searched_model.attributes);
+				this.close();
+			}
+		},
 		//根据member_code查找member
 		_search: function() {
 			var self = this;
@@ -745,27 +820,44 @@ openerp.ktv_sale.widget = function(erp_instance) {
 					"domain": [[this.search_field_name, '=', input_card_no]]
 				}).pipe(function(result) {
 					//未查到卡信息
-					if (result.length == 0){
-                        self.searched_model.clear();
-                        self.$element.find(".alert").removeClass('hide');
-                    }
-					else{
-                        self.$element.find(".alert").addClass('hide');
-                        self.searched_model.set(result[0]);
-                    }
+					if (result.length == 0) {
+						self.searched_model.clear();
+						self.$element.find(".alert").removeClass('hide');
+					}
+					else {
+						self.$element.find(".alert").addClass('hide');
+						self.searched_model.set(result[0]);
+					}
 				})
 			}
-            this.$element.find("#input_card_no").focus().select();
+			this.$element.find("#input_card_no").focus().select();
 		}
-    });
+	});
 
 	//会员查询界面
 	widget.MemberCardReadWidget = widget.ScanCardWidget.extend();
-    //打折卡查询界面
+	//打折卡查询界面
 	widget.DiscountCardReadWidget = widget.ScanCardWidget.extend({
-        osv_name : 'ktv.discount_card',
-        search_field_name : 'card_no'
-    });
+		osv_name: 'ktv.discount_card',
+		search_field_name: 'card_no'
+	});
+	//信用卡卡号录入
+	widget.CreditCardInputWidget = widget.ScanCardWidget.extend({
+		//重写search方法
+		_search: function() {
+			var self = this;
+			var input_card_no = this.$element.find('#input_card_no').val();
+			if (input_card_no != "") {
+				self.$element.find(".alert").addClass('hide');
+				self.searched_model.set({
+					'card_no': input_card_no
+				});
+			}
+			else self.searched_model.clear();
+			this.$element.find("#input_card_no").focus().select();
+		}
+
+	});
 	//openerp的入口组件,用于定义系统的初始入口处理
 	erp_instance.web.client_actions.add('ktv_room_pos.ui', 'erp_instance.ktv_sale.widget.MainRoomPointOfSale');
 	widget.MainRoomPointOfSale = erp_instance.web.OldWidget.extend({
@@ -802,3 +894,4 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		}
 	});
 };
+

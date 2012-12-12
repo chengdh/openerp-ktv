@@ -359,32 +359,10 @@
             <tr class='hide member-card-wrapper'>
                 <td colspan='10'>
                     <div class="input-prepend input-append">
-                        <span class='add-on'>会员卡/储值卡:</span>
-                        <span id="member-card-no" class="input-xxlarge uneditable-input"></span>
+                        <span class='add-on'>会员卡:</span>
+                        <span id="member-card-no" class="input-xlarge uneditable-input"></span>
                         <div class="btn-group">
-                            <button class="btn btn-member-card-clear" type="button"><i class='icon-remove'></i>清除</button>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr class='hide discount-card-wrapper'>
-                <td colspan='10'>
-                    <div class="input-prepend input-append">
-                        <span class='add-on'>打折卡:</span>
-                        <span id="discount-card-no" class="input-xxlarge uneditable-input"></span>
-                        <div class="btn-group">
-                            <button class="btn btn-discount-card-clear" type="button"><i class='icon-remove'></i>清除</button>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr class='hide discounter-name-wrapper'>
-                <td colspan='10'>
-                    <div class="input-prepend input-append">
-                        <span class='add-on'>打折:</span>
-                        <span id="discounter-name" class="input-xxlarge uneditable-input"></span>
-                        <div class="btn-group">
-                            <button class="btn btn-discounter-clear" type="button"><i class='icon-remove'></i>清除</button>
+                            <button class="btn btn-member-card-clear btn-warning" type="button"><i class='icon-remove'></i></button>
                         </div>
                     </div>
                 </td>
@@ -393,81 +371,84 @@
                 <td colspan='10'>
                     <div class="input-prepend input-append">
                         <span class='add-on'>信用卡:</span>
-                        <span id="credit-card-no" class="input-xxlarge uneditable-input"></span>
+                        <span id="credit-card-no" class="input-xlarge uneditable-input"></span>
                         <div class="btn-group">
-                            <button class="btn btn-credit-card-clear" type="button"><i class='icon-remove'></i>清除</button>
+                            <button class="btn btn-credit-card-clear btn-warning" type="button"><i class='icon-remove'></i></button>
                         </div>
                     </div>
                 </td>
             </tr>
-            <tr class='hide sales-voucher-wrapper'>
+
+            <tr class='hide discount-card-wrapper'>
                 <td colspan='10'>
                     <div class="input-prepend input-append">
-                        <span class='add-on'>抵用券:</span>
-                        <span id="sales-voucher-no" class="input-xxlarge uneditable-input"></span>
+                        <span class='add-on'>打折卡:</span>
+                        <span id="discount-card-no" class="input-xlarge uneditable-input"></span>
                         <div class="btn-group">
-                            <button class="btn btn-sales-voucher-clear" type="button"><i class='icon-remove'></i>清除</button>
+                            <button class="btn btn-discount-card-clear btn-warning" type="button"><i class='icon-remove'></i></button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr class='hide discounter-name-wrapper'>
+                <td colspan='10'>
+                    <div class="input-prepend input-append">
+                        <span class='add-on'>打折:</span>
+                        <span id="discounter-name" class="input-xlarge uneditable-input"></span>
+                        <div class="btn-group">
+                            <button class="btn btn-discounter-clear btn-warning" type="button"><i class='icon-remove'></i></button>
                         </div>
                     </div>
                 </td>
             </tr>
         </table>
+        <div class='sales-voucher-list'></div>
         <table class='table table-condensed'>
             <tr>
                 <td>
-                    <label class="checkbox inline">
-                        <span>现金:</span>
-                    </label>
+                    <div class='input-prepend'>
+                        <span class='add-on'>现金:</span>
+                        <input type='text' class='cash_fee input-mini'/>
+                    </div>
                 </td>
                 <td>
-                    <input type='text' class='cash_fee input-mini'/>
+                    <div class='input-prepend input-append'>
+                        <span class='add-on'>会员卡/储值卡:</span>
+                        <input type='text' class='member_card_fee input-mini' disabled='true'/>
+                    </div>
                 </td>
                 <td>
-                    <label class="checkbox inline">
-                        <input type="checkbox" class='pay-type-member-card-check'/>会员卡/储值卡:
-                    </label>
+                    <div class='input-prepend input-append'>
+                        <span class='add-on'>信用卡:</span>
+                        <input type='text' class='credit_card_fee input-mini' disabled='true'/>
+                        <div class='btn-group'>
+                            <button class="btn btn-autorize"><i class='icon-eye-open'></i>刷卡</button>
+                        </div>
+                    </div>
                 </td>
                 <td>
-                    <input type='text' class='member_card_fee input-mini' disabled='true'/>
-                </td>
-                <td>
-                    <label class="checkbox inline">
-                        <input type="checkbox" class='pay-type-credit-card-check'/>信用卡:
-                    </label>
-                </td>
-                <td>
-                    <input type='text' class='credit_card_fee input-mini' disabled='true'/>
-                </td>
-                <td>
-                    <label class="checkbox inline">
-                        <input type="checkbox" class='pay-type-sales-voucher'/>抵用券:
-                    </label>
-                </td>
-                <td>
-                    <input type='text' class='sales_voucher_fee input-mini' disabled='true'/>
+                    <div class='input-append input-prepend'>
+                        <span class='add-on'>抵用券:</span>
+                        <input type='text' class='sales_voucher_fee input-mini' disabled='true'/>
+                        <div class='btn-group'>
+                            <button class="btn btn-autorize"><i class='icon-eye-open'></i>刷卡</button>
+                        </div>
+                    </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label class="checkbox inline">
-                        <input type="checkbox" class='pay-type-credit-on-check' disabled='true'/>挂账:
-                    </label>
-                </td>
-                <td>
-                    <div class="input-append">
+                    <div class="input-prepend input-append">
+                        <span class='add-on'>免单:</span>
                         <input type='text' class='on_credit_fee input-mini' disabled='true'/>
                         <div class='btn-group'>
                             <button class="btn btn-autorize"><i class='icon-eye-open'></i>授权</button>
                         </div>
                     </div>
                 </td>
-                <td>
-                    <label class="checkbox inline">
-                        <input type="checkbox" class='pay-type-free-check' disabled='true'/>免单:
-                    </label>
-                </td>
-                <td colspan='7'>
-                    <div class="input-append">
+                <td colspan='3'>
+                    <div class="input-prepend input-append">
+                        <span class='add-on'>挂账:</span>
                         <input type='text' class='free_fee input-mini' disabled='true'/>
                         <div class='btn-group'>
                             <button class="btn btn-authorize"><i class='icon-eye-open'></i>授权</button>
@@ -477,6 +458,28 @@
             </tr>
         </table>
     </t>
+    <!--抵用券列表显示-->
+    <t t-name='sales-voucher-list-template'>
+        <table class='table table-condensed'>
+            <t t-foreach="sales_vouchers" t-as="sv">
+                <tr class='hide sales-voucher-wrapper'>
+                    <td colspan='10'>
+                        <div class="input-prepend input-append">
+                            <span class='add-on'>抵用券:</span>
+                            <span class="input-xlarge uneditable-input sales-voucher-no">
+                                [<t t-esc="sv.id_number"/>]
+                                面额:<t t-esc="sv.as_money" />
+                            </span>
+                            <div class="btn-group">
+                                <button class="btn btn-sales-voucher-clear btn-warning" type="button" t-att-data-sales-voucher="sv"><i class='icon-remove'></i></button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </t>
+        </table>
+    </t>
+
     <!--结账操作按钮-->
     <t t-name='room-checkout-buttons'>
         <div class="modal-footer">

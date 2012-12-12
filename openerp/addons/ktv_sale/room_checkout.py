@@ -66,6 +66,7 @@ class room_checkout(osv.osv):
             #会员卡/储值卡
             "member_card_fee" : fields.float("member_card_fee",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="会员卡支付金额"),
             #信用卡&储蓄卡
+            "credit_card_no" : fields.char("credit_card_no",size = 64,help="信用卡号"),
             "credit_card_fee" : fields.float("credit_card_fee",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="信用卡支付金额"),
             #抵用券
             "sales_voucher_fee" : fields.float("sales_voucher_fee",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="抵用券支付金额"),
