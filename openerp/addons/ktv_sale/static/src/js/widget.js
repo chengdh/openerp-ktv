@@ -498,25 +498,57 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		}
 	});
 
-    //抵用券列表显示界面
-    widget.SalesVoucherListWidget = erp_instance.web.OldWidget.extend({
-        template_fct : qweb_template("sales-voucher-list-template"),
-        init : function(parent,options){
-            this.model = options.model;
-            this.model.bind('change',this.render_element,this);
-            this._super(parent,options)
+	//单个抵用券信息显示
+	widget.SalesVoucherWidget = erp_instance.web.OldWidget.extend({
+		tag_name: "tr",
+		template_fct: qweb_template('sales-voucher-template'),
+		init: function(parent, options) {
+			this.model = options.model;
+			//model属性发生变化时,删除该信息
+			this._super(parent, options);
+		},
+		render_element: function() {
+			this.$element.html(this.template_fct(this.model.toJSON()));
+			return this;
+		},
+		start: function() {
+			this.$element.find(".btn-sales-voucher-clear").click(_.bind(this._remove, this));
+		},
+		//删除当前数据
+		_remove: function() {
+			this.model.clear();
+			this.stop();
+		}
+	});
+	//抵用券列表显示界面
+	widget.SalesVoucherListWidget = erp_instance.web.OldWidget.extend({
+		template_fct: qweb_template("sales-voucher-list-template"),
+		init: function(parent, options) {
+			this.model = options.model;
+			this.model.bind('change', this._on_change, this);
+			this._super(parent, options)
+		},
+        _on_change : function(the_sv){
+            var a = arguments;
+            console.log(a);
+            if(!the_sv.get("id"))
+                this.model.remove(the_sv);
+            this.render_element();
+
         },
-        render_element : function(){
-            this.$element.html(this.template_fct(
-                    {
-                        'sales_vouchers' : this.model.toJSON()
-                    }
-                    ));
-            return this;
-        },
-        start : function(){
-        },
-    });
+		render_element: function() {
+			this.$element.empty();
+			this.$element.html(this.template_fct({}));
+			this.model.each(function(s) {
+					var w = new widget.SalesVoucherWidget(this, {
+						model: s
+					});
+					w.appendTo(this.$element.find('.table'));
+			},
+			this);
+			return this;
+		}
+	});
 
 	//结账基础类界面
 	widget.BaseRoomCheckoutWidget = erp_instance.web.OldWidget.extend({
@@ -530,15 +562,20 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			this.discount_card = new model.DiscountCard();
 			//信用卡信息
 			this.credit_card = new Backbone.Model();
-            //抵用券,可以使用多张抵用券
-            this.sales_voucher_collection = new Backbone.Collection();
-            this.sales_voucher_list_view = new widget.SalesVoucherListWidget(null,{model : this.sales_voucher_collection});
+			//抵用券,可以使用多张抵用券
+			this.sales_voucher_collection = new Backbone.Collection();
+			this.sales_voucher_list_view = new widget.SalesVoucherListWidget(null, {
+				model: this.sales_voucher_collection
+			});
 			//获取结账包厢费用信息
 			this.room_fee_info = this.room.get_room_fee_info();
 			this.ready = this.room_fee_info.ready;
 
 			//model发生变化时,重新显示计费信息
 			this.model.bind('change', this._refresh_fee_table, this);
+
+			//抵用券发生变化时,计算抵用券费用
+			this.sales_voucher_collection.bind('change', this._re_calculate_sales_voucher_fee, this);
 
 			//会员信息发生变化时重新计算费用
 			this.member.bind("change", this.render_member_card_no, this);
@@ -556,11 +593,20 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			return $.Deferred().done().promise();
 		},
 
+		//重新计算费用
 		_re_calculate_fee: function() {
 			var self = this;
 			return this.call_server_func().pipe(function(ret) {
 				self.model.set(ret);
 			});
+		},
+		//重新计算抵用券费用
+		_re_calculate_sales_voucher_fee: function() {
+			var sales_voucher_fee = 0;
+			this.sales_voucher_collection.each(function(s) {
+				sales_voucher_fee += s.get("as_money");
+			});
+			this.$element.find('.sales_voucher_fee').val(sales_voucher_fee);
 		},
 		//重新显示费用列表
 		_refresh_fee_table: function() {
@@ -626,7 +672,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 				var card_no = this.credit_card.get("card_no");
 				this.$element.find("#credit-card-no").html(card_no);
 				this.$element.find('.credit-card-wrapper').removeClass('hide');
-				this.$element.find('.credit_card_fee').attr('disabled',false);
+				this.$element.find('.credit_card_fee').attr('disabled', false);
 
 			}
 			else {
@@ -642,10 +688,10 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			$('#room_filter').hide();
 			$('#room_list').hide();
 
-            //抵扣券列表
-            this.sales_voucher_list_view.$element = this.$element.find('.sales-voucher-list');
-            this.sales_voucher_list_view.render_element();
-            this.sales_voucher_list_view.start();
+			//抵扣券列表
+			this.sales_voucher_list_view.$element = this.$element.find('.sales-voucher-list');
+			this.sales_voucher_list_view.render_element();
+			this.sales_voucher_list_view.start();
 
 			//会员刷卡绑定
 			this.$element.find('.btn-member-card-read').click(_.bind(this.read_member_card, this));
@@ -656,7 +702,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			this.$element.find('.btn-cancel').click(_.bind(this.close, this));
 			//信用卡支付方式点击
 			this.$element.find('.btn-credit-card-input').click(_.bind(this.open_credit_card_input, this));
-            //抵用券方式点击
+			//抵用券方式点击
 			this.$element.find('.btn-sales-voucher-input').click(_.bind(this.open_sales_voucher_input, this));
 		},
 		close: function() {
@@ -684,13 +730,13 @@ openerp.ktv_sale.widget = function(erp_instance) {
 				model: this.credit_card
 			});
 		},
-        //打开抵用券录入界面
-        open_sales_voucher_input : function() {
+		//打开抵用券录入界面
+		open_sales_voucher_input: function() {
 			var w = new widget.SalesVoucherInputWidget(null, {
 				model: this.sales_voucher_collection
 			});
 
-        },
+		},
 		//清除信用卡记录
 		credit_card_clear: function() {
 			this.$element.find('#credit_card_no').attr("disabled", true);
@@ -752,9 +798,9 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			this.$element.find('#buyout_config_id').change(_.bind(this._onchange_buyout_config_id, this));
 			//如果当前无可用买断,则确定按钮不可用
 			if (this.room_fee_info.get_active_buyout_config_lines().length == 0) {
-                this.$element.find('button').addClass("disabled");
-                this.$element.find('.btn-cancel').removeClass("disabled");
-                /*
+				this.$element.find('button').addClass("disabled");
+				this.$element.find('.btn-cancel').removeClass("disabled");
+				/*
 
 				this.$element.find(".btn-print").addClass("disabled");
 				this.$element.find(".btn-member-card-read").addClass("disabled");
@@ -843,15 +889,15 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			this.$element.find("#input_card_no").focus().select();
 		}
 	});
-    //抵用券录入
-    widget.SalesVoucherInputWidget = widget.ScanCardWidget.extend({
-        //重写search 方法
-        _search : function(){
-            var self = this;
+	//抵用券录入
+	widget.SalesVoucherInputWidget = widget.ScanCardWidget.extend({
+		//重写search 方法
+		_search: function() {
+			var self = this;
 			var input_card_no = this.$element.find('#input_card_no').val();
 			if (input_card_no != "") {
-                new erp_instance.web.Model('ktv.sales_voucher').get_func('get_active_sales_voucher')(input_card_no).pipe(function(result){
-                    //未查到卡信息
+				new erp_instance.web.Model('ktv.sales_voucher').get_func('get_active_sales_voucher')(input_card_no).pipe(function(result) {
+					//未查到卡信息
 					if (!result.id) {
 						self.searched_model.clear();
 						self.$element.find(".alert").removeClass('hide');
@@ -861,24 +907,23 @@ openerp.ktv_sale.widget = function(erp_instance) {
 						self.searched_model.set(result);
 					}
 
-                });
+				});
 			}
 			else self.searched_model.clear();
 			this.$element.find("#input_card_no").focus().select();
 
-        },
+		},
 		//确认关闭
 		_ok_close: function() {
-            var id = this.searched_model.get("id");
+			var id = this.searched_model.get("id");
 			if (id) {
-                if(!this.model.get(id))
-                    this.model.add(this.searched_model);
+				if (!this.model.get(id)) this.model.add(this.searched_model);
 
 				this.close();
 			}
 		},
 
-    });
+	});
 	//openerp的入口组件,用于定义系统的初始入口处理
 	erp_instance.web.client_actions.add('ktv_room_pos.ui', 'erp_instance.ktv_sale.widget.MainRoomPointOfSale');
 	widget.MainRoomPointOfSale = erp_instance.web.OldWidget.extend({
