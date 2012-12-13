@@ -752,11 +752,16 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			this.$element.find('#buyout_config_id').change(_.bind(this._onchange_buyout_config_id, this));
 			//如果当前无可用买断,则确定按钮不可用
 			if (this.room_fee_info.get_active_buyout_config_lines().length == 0) {
+                this.$element.find('button').addClass("disabled");
+                this.$element.find('.btn-cancel').removeClass("disabled");
+                /*
+
 				this.$element.find(".btn-print").addClass("disabled");
 				this.$element.find(".btn-member-card-read").addClass("disabled");
 				this.$element.find(".btn-discount-card-read").addClass("disabled");
 				this.$element.find(".btn-discounter-authorize").addClass("disabled");
-				this.$element.find(".btn-member-checkout").addClass("disabled");
+				this.$element.find(".btn-checkout").addClass("disabled");
+                */
 			}
 			else this._onchange_buyout_config_id();
 		}
