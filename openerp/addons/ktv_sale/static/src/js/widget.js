@@ -606,7 +606,8 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			this.sales_voucher_collection.each(function(s) {
 				sales_voucher_fee += s.get("as_money");
 			});
-			this.$element.find('.sales_voucher_fee').val(sales_voucher_fee);
+			this.$element.find('.sales_voucher_fee').val(sales_voucher_fee).change();
+            this.model.set({'sales_voucher_fee' : sales_voucher_fee});
 		},
 		//重新显示费用列表
 		_refresh_fee_table: function() {
@@ -627,6 +628,11 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			this.$element.find('.discount_rate').html(this.model.get('discount_rate'));
 			this.$element.find('.after_discount_fee').html(this.model.get('after_discount_fee'));
 			this.$element.find('.cash_fee').val(this.model.get('cash_fee'));
+			this.$element.find('.member_card_fee').val(this.model.get('member_card_fee'));
+			this.$element.find('.credit_fee').val(this.model.get('credit_card_fee'));
+			this.$element.find('.sales_voucher_fee').val(this.model.get('sales_voucher_fee'));
+			this.$element.find('.free_fee').val(this.model.get('free_fee'));
+			this.$element.find('.on_credit_fee').val(this.model.get('on_credit_fee'));
 		},
 		//重新显示会员信息
 		render_member_card_no: function() {
@@ -704,6 +710,12 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			this.$element.find('.btn-credit-card-input').click(_.bind(this.open_credit_card_input, this));
 			//抵用券方式点击
 			this.$element.find('.btn-sales-voucher-input').click(_.bind(this.open_sales_voucher_input, this));
+            //不同付款方式费用变化
+            this.$element.find('.member_card_fee').change(_.bind(this._onchange_member_card_fee,this));
+            this.$element.find('.credit_card_fee').change(_.bind(this._onchange_credit_card_fee,this));
+            //TODO 暂时注释
+            //this.$element.find('.free_fee').change(_.bind(this._onchange_member_card_fee,this));
+            //this.$element.find('.on_credit_fee').change(_.bind(this._onchange_member_card_fee,this));
 		},
 		close: function() {
 			$('#room_status').show();
@@ -711,6 +723,17 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			$('#room_list').show();
 			this.stop();
 		},
+        //会员卡款金额变化的处理
+        _onchange_member_card_fee : function(){
+            var member_card_fee = parseFloat(this.$element.find('.member_card_fee').val());
+            //TODO 判断可用金额
+            this.model.set({'member_card_fee' : member_card_fee});
+        },
+        //信用卡付款金额变化的处理
+        _onchange_credit_card_fee : function(){
+            var credit_card_fee = parseFloat(this.$element.find('.credit_card_fee').val());
+            this.model.set({'credit_card_fee' : credit_card_fee});
+        },
 		//读取会员卡
 		read_member_card: function() {
 			var w = new widget.MemberCardReadWidget(null, {
@@ -741,12 +764,14 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		credit_card_clear: function() {
 			this.$element.find('#credit_card_no').attr("disabled", true);
 			this.credit_card.clear();
+            this.model.set({'credit_card_fee' : 0});
 		},
 
 		//清除会员卡信息
 		member_card_clear: function() {
 			this.$element.find('#member_card_no').attr("disabled", true);
 			this.member.clear();
+            this.model.set({'member_card_fee' : 0});
 		},
 		//清除打折卡信息
 		discount_card_clear: function() {

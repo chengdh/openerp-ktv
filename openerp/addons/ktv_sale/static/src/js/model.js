@@ -145,12 +145,12 @@ openerp.ktv_sale.model = function(erp_instance) {
 			'fields': ['id', 'name', 'card_fee', 'drinks_fee_discount', 'room_fee_discount', 'up_card_fee', 'drinks_price_type', 'room_limit_count', 'market_limit_count', 'can_points', 'can_manual_input', 'can_store_money'],
 			'domain': [['active', '=', true]]
 		},
-        //member 会员信息设置
-        'ktv.member' : {
-            'model_class' : 'Member',
-            'fields' : ['id','member_no','name','member_class_id','member_card_no','make_fee','valid_date','phone','birthday'],
-            'domain' : [['active','=',true]]
-        },
+		//member 会员信息设置
+		'ktv.member': {
+			'model_class': 'Member',
+			'fields': ['id', 'member_no', 'name', 'member_class_id', 'member_card_no', 'make_fee', 'valid_date', 'phone', 'birthday'],
+			'domain': [['active', '=', true]]
+		},
 
 		//discount_card_type 打折卡设置
 		'ktv.discount_card_type': {
@@ -158,12 +158,12 @@ openerp.ktv_sale.model = function(erp_instance) {
 			'fields': ['id', 'name', 'drinks_fee_discount', 'room_fee_discount', 'card_fee'],
 			'domain': [['active', '=', true]]
 		},
-        //打折卡
-        'ktv.discount_card' : {
-            'model_class' : 'DiscountCard',
-            'fields' : ['id','card_no','discount_card_type_id','card_fee','valid_date'],
-            'domain' : [['active','=',true]]
-        },
+		//打折卡
+		'ktv.discount_card': {
+			'model_class': 'DiscountCard',
+			'fields': ['id', 'card_no', 'discount_card_type_id', 'card_fee', 'valid_date'],
+			'domain': [['active', '=', true]]
+		},
 
 		//song_ticket 欢唱券设置
 		'ktv.song_ticket': {
@@ -411,10 +411,10 @@ openerp.ktv_sale.model = function(erp_instance) {
 			var active_buyout_config_lines = [];
 			_.each(this.get_active_buyout_config_lines(), function(l) {
 				active_buyout_config_lines.push({
-                    id: l.id,
+					id: l.id,
 					name: l.get("name"),
-                    time_from: l.get("time_from"),
-                    time_to: l.get("time_to"),
+					time_from: l.get("time_from"),
+					time_to: l.get("time_to"),
 					time_range: l.get("time_from") + "~" + l.get("time_to"),
 					is_member: l.get("is_member"),
 					break_on_active: l.get("break_on_active"),
@@ -510,7 +510,9 @@ openerp.ktv_sale.model = function(erp_instance) {
 			var room = this.get("room");
 			var room_type_id = this.get("room_type_id");
 			//获取room_type完整信息
-			model.fetch_by_osv_name("ktv.room_type",{"domain" : [["id","=",room_type_id]]}).pipe(function(result) {
+			model.fetch_by_osv_name("ktv.room_type", {
+				"domain": [["id", "=", room_type_id]]
+			}).pipe(function(result) {
 				var room_type = new model.RoomType(result[0]);
 				self.set({
 					"room_type": room_type
@@ -590,7 +592,7 @@ openerp.ktv_sale.model = function(erp_instance) {
 						//判断当日是周几
 						var today_week_day = erp_instance.ktv_sale.helper.today_week_day();
 						var today_config = {
-                            id: c["id"],
+							id: c["id"],
 							time_from: c.time_from,
 							time_to: c.time_to,
 							room_fee: c[today_week_day + "_room_fee"],
@@ -642,9 +644,9 @@ openerp.ktv_sale.model = function(erp_instance) {
 							hourly_fee_discount: c[today_week_day + "_hourly_discount"]
 						};
 						if (c.member_class_id) {
-                            today_config.member_class_id = c.member_class_id[0];
-                            today_config.member_class_name = c.member_class_id[1];
-                        }
+							today_config.member_class_id = c.member_class_id[0];
+							today_config.member_class_name = c.member_class_id[1];
+						}
 						//如果当日是特殊日,则用特殊日设置覆盖当日设置
 						if (sd_config) {
 							today_config.hourly_fee = c["special_day_hourly_fee"];
@@ -683,7 +685,7 @@ openerp.ktv_sale.model = function(erp_instance) {
 						var today_week_day = erp_instance.ktv_sale.helper.today_week_day();
 						var today_config;
 						if (c[today_week_day + "_buyout_enable"]) today_config = {
-                            id: c["id"],
+							id: c["id"],
 							name: c["name"],
 							is_member: c["is_member"],
 							time_from: c.time_from,
@@ -727,7 +729,7 @@ openerp.ktv_sale.model = function(erp_instance) {
 						var today_week_day = erp_instance.ktv_sale.helper.today_week_day();
 						var today_config;
 						if (c[today_week_day + "_buyout_enable"]) today_config = {
-                            id: c["id"],
+							id: c["id"],
 							name: c["name"],
 							is_member: c["is_member"],
 							time_from: c.time_from,
@@ -763,7 +765,7 @@ openerp.ktv_sale.model = function(erp_instance) {
 					var today_config;
 					//首先,假定所有优惠设置都生效
 					today_config = {
-                        id: c["id"],
+						id: c["id"],
 						name: c["name"],
 						is_member: c["is_member"],
 						buy_minutes: c.buy_minutes,
@@ -797,28 +799,56 @@ openerp.ktv_sale.model = function(erp_instance) {
 	});
 	//预定对象
 	model.RoomScheduled = Backbone.Model.extend({
-        //将数据上传至服务器
-        push : function(){
-            return new erp_instance.web.Model("ktv.room").get_func("create_room_scheduled")(this.toJSON());
-        }
-    });
-    //开房对象
-    model.RoomOpens = Backbone.Model.extend({
-        defaults : {
-            "persons_count" : 4
-        },
-        //上传数据到服务器
-        push : function(){
-            return new erp_instance.web.Model("ktv.room").get_func("create_room_opens")(this.toJSON());
-        }
-    });
+		//将数据上传至服务器
+		push: function() {
+			return new erp_instance.web.Model("ktv.room").get_func("create_room_scheduled")(this.toJSON());
+		}
+	});
+	//开房对象
+	model.RoomOpens = Backbone.Model.extend({
+		defaults: {
+			"persons_count": 4
+		},
+		//上传数据到服务器
+		push: function() {
+			return new erp_instance.web.Model("ktv.room").get_func("create_room_opens")(this.toJSON());
+		}
+	});
 
-    //预售-买断对象
-    model.RoomCheckoutBuyout = Backbone.Model.extend({
-        defaults : {
-            "persons_count" : 4,
-            "time_from" : Date.today().setTimeToNow()
-        }
-    });
+	//预售-买断对象
+	model.RoomCheckoutBuyout = Backbone.Model.extend({
+		defaults: {
+			"persons_count": 4,
+			"after_discount_fee": 0.0,
+			"cash_fee": 0.0,
+			"member_card_fee": 0.0,
+			"credit_card_fee": 0.0,
+			"sales_voucher_fee": 0.0,
+			"free_fee": 0.0,
+			"on_credit_fee": 0.0,
+			"time_from": Date.today().setTimeToNow()
+		},
+		initialize: function() {
+			Backbone.Model.prototype.initialize.apply(this, arguments);
+            this.bind("change:member_card_fee",this._re_calculate_cash_fee,this);
+            this.bind("change:credit_card_fee",this._re_calculate_cash_fee,this);
+            this.bind("change:sales_voucher_fee",this._re_calculate_cash_fee,this);
+            this.bind("change:on_credit_fee",this._re_calculate_cash_fee,this);
+            this.bind("change:free_fee",this._re_calculate_cash_fee,this);
+		},
+		//重新计算应付现金
+		_re_calculate_cash_fee: function() {
+            var after_discount_fee = this.get('after_discount_fee');
+			var member_card_fee = this.get('member_card_fee');
+			var credit_card_fee = this.get('credit_card_fee');
+			var sales_voucher_fee = this.get('sales_voucher_fee');
+			var free_fee = this.get('free_fee');
+			var on_credit_fee = this.get('on_credit_fee');
+            var cash_fee = after_discount_fee - member_card_fee - credit_card_fee - sales_voucher_fee - free_fee - on_credit_fee
+            this.set({"cash_fee" : cash_fee},{silent : true});
+			//TODO 还需要
+		}
+
+	});
 };
 

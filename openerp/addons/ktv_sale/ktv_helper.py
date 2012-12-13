@@ -7,6 +7,8 @@ _logger = logging.getLogger(__name__)
 def time_for_selection(self,cr,uid,context = None):
      ret = [("%02i:00" % i,"%02i时30分" % i) for i in range(24)] + [("%02i:30" % i,"%02i时00分" % (i+1)) for i in range(24)]
      ret.sort()
+     ret.pop()
+     ret.append(("23:59","23时59分"))
      return ret
 
 #价格列表

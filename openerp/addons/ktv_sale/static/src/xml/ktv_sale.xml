@@ -408,7 +408,7 @@
                 <td>
                     <div class='input-prepend'>
                         <span class='add-on'>现金:</span>
-                        <input type='text' class='cash_fee input-mini'/>
+                        <input type='text' class='cash_fee input-mini' disabled='true'/>
                     </div>
                 </td>
                 <td>
@@ -439,7 +439,7 @@
             <tr>
                 <td>
                     <div class="input-prepend input-append">
-                        <span class='add-on'>免单:</span>
+                        <span class='add-on'>挂账:</span>
                         <input type='text' class='on_credit_fee input-mini' disabled='true'/>
                         <div class='btn-group'>
                             <button class="btn btn-autorize"><i class='icon-eye-open'></i> 授权</button>
@@ -448,7 +448,7 @@
                 </td>
                 <td colspan='3'>
                     <div class="input-prepend input-append">
-                        <span class='add-on'>挂账:</span>
+                        <span class='add-on'>免单:</span>
                         <input type='text' class='free_fee input-mini' disabled='true'/>
                         <div class='btn-group'>
                             <button class="btn btn-authorize"><i class='icon-eye-open'></i> 授权</button>
