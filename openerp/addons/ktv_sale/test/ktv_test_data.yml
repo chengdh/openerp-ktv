@@ -314,6 +314,7 @@
     qq: 542340109
     email: c@a.com
     address: "河南省郑州市"
+    balance: 10000
 -
   应能够正确保存打折卡信息
 -

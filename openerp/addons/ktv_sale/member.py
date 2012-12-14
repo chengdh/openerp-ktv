@@ -2,6 +2,7 @@
 #会员信息
 from osv import fields, osv
 import ktv_helper
+import decimal_precision as dp
 
 class member(osv.osv):
     '''会员信息设置'''
@@ -28,6 +29,7 @@ class member(osv.osv):
             "email" : fields.char("email",size = 30,help="邮件地址"),
             "company" : fields.char("company",size = 30,help="工作单位"),
             "address" : fields.char("address",size = 60,help="地址"),
+            "balance" : fields.float("balance", digits_compute= dp.get_precision('Ktv Room Default Precision'),readonly = True,help = "卡余额"),
             "active" : fields.boolean("active"),
             }
     _defaults = {
@@ -35,4 +37,5 @@ class member(osv.osv):
             "make_fee" : 0,
             "overdraft_fee" : 0,
             'member_no': lambda obj, cr, uid, context: obj.pool.get('ir.sequence').get(cr, uid, 'ktv.member'),
+            'balance' : 0,
             }

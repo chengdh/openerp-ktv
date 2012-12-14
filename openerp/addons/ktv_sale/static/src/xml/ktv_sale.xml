@@ -415,6 +415,11 @@
                     <div class='input-prepend input-append'>
                         <span class='add-on'>会员卡:</span>
                         <input type='text' class='member_card_fee input-mini' disabled='true'/>
+                        <span class='add-on'>
+                            余:<span class='member_card_balance'>0.0</span>元
+                            <span class="member-card-balance-warning label label-important hide">余额不足!</span>
+                        </span>
+
                     </div>
                 </td>
                 <td>
@@ -572,7 +577,7 @@
                         <strong>!</strong> 未找到卡信息.
                     </div>
                     <div class='input-append'>
-                        <input type="text" id="input_card_no" class="input-xlarge search-query"/>
+                        <input type="text" id="input_card_no" autocomplete='off' class="input-xlarge search-query"/>
 
                         <div class="btn-group">
                             <button id="btn_search" class="btn"><i class='icon-search'></i></button>

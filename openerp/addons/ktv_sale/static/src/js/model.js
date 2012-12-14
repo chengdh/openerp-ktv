@@ -148,7 +148,7 @@ openerp.ktv_sale.model = function(erp_instance) {
 		//member 会员信息设置
 		'ktv.member': {
 			'model_class': 'Member',
-			'fields': ['id', 'member_no', 'name', 'member_class_id', 'member_card_no', 'make_fee', 'valid_date', 'phone', 'birthday'],
+			'fields': ['id', 'member_no', 'name', 'member_class_id', 'member_card_no', 'make_fee', 'valid_date','balance','phone', 'birthday'],
 			'domain': [['active', '=', true]]
 		},
 
