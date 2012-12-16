@@ -12,6 +12,8 @@
                         <field name="room_type_id" />
                         <field name="time_from" />
                         <field name="time_to" />
+                        <field name="test_time" />
+                        <field name="test_datetime" />
                         <field name="break_on_enable" />
                         <field name="break_on" attrs="{'readonly' : [('break_on_enable','=',False)]}"/>
                         <field name="buyout_time" />

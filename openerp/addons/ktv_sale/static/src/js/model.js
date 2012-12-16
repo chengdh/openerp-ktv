@@ -826,15 +826,17 @@ openerp.ktv_sale.model = function(erp_instance) {
 			"sales_voucher_fee": 0.0,
 			"free_fee": 0.0,
 			"on_credit_fee": 0.0,
-			"time_from": Date.today().setTimeToNow()
+            "act_pay_fee" : 0.0,
+            "change_fee" : 0.0
 		},
-		initialize: function() {
+		initialize: function(attrs) {
 			Backbone.Model.prototype.initialize.apply(this, arguments);
             this.bind("change:member_card_fee",this._re_calculate_cash_fee,this);
             this.bind("change:credit_card_fee",this._re_calculate_cash_fee,this);
             this.bind("change:sales_voucher_fee",this._re_calculate_cash_fee,this);
             this.bind("change:on_credit_fee",this._re_calculate_cash_fee,this);
             this.bind("change:free_fee",this._re_calculate_cash_fee,this);
+            this.bind("change:act_pay_fee",this._calculate_change_fee,this);
 		},
 		//重新计算应付现金
 		_re_calculate_cash_fee: function() {
@@ -846,8 +848,52 @@ openerp.ktv_sale.model = function(erp_instance) {
 			var on_credit_fee = this.get('on_credit_fee');
             var cash_fee = after_discount_fee - member_card_fee - credit_card_fee - sales_voucher_fee - free_fee - on_credit_fee
             this.set({"cash_fee" : cash_fee},{silent : true});
+            this.set({"act_pay_fee" : cash_fee},{silent : true});
+            this.set({"change_fee" : 0});
 			//TODO 还需要
-		}
+		},
+        //计算找零金额
+        _calculate_change_fee : function() {
+            var act_pay_fee = this.get("act_pay_fee");
+            var change_fee = act_pay_fee - this.get('cash_fee');
+            this.set({"change_fee" : change_fee});
+        },
+        //保存数据到服务器
+        push : function(){
+            //发送数据到服务器端
+            var room_checkout_vals = this.export_as_json();
+            return new erp_instance.web.Model('ktv.room_checkout_buyout').get_func('create_from_ui')(room_checkout_vals);
+        },
+        export_as_json : function(){
+            var json = this.toJSON();
+            //删除不需要的属性,以下这些字段使用服务器端的function计算
+            delete json.sum_should_fee;
+            delete json.after_discount_fee;
+            delete json.discount_rate;
+            delete json.discount_fee;
+            delete json.change_fee;
+            var member_card = this.get('member_card');
+            if(member_card && member_card.get("id"))
+                json.member_card_id = member_card.get("id");
+            var discount_card = this.get('member_card');
+            if(discount_card && discount_card.get("id"))
+                json.discount_card_id = discount_card.get("id");
+
+            var credit_card = this.get('credit_card');
+
+            if(credit_card && credit_card.get("card_no"))
+                json.credit_card_no = credit_card.get("card_no");
+            var sales_voucher_collection = this.get('sales_voucher_collection');
+            if(sales_voucher_collection.length > 0)
+                json.sales_vouchers = sales_voucher_collection.toJSON();
+            //删除不需要的属性
+            delete json.member_card;
+            delete json.discount_card;
+            delete json.credit_card;
+            delete json.sales_voucher_collection;
+
+            return json;
+        }
 
 	});
 };

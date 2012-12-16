@@ -40,7 +40,7 @@ class room_checkout(osv.osv):
             "guest_damage_fee" : fields.float("guest_damage_fee",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="客损费用"),
 
             #会员卡折扣
-            "member_id" : fields.many2one("ktv.member","member_id",help="会员信息"),
+            "member_card_id" : fields.many2one("ktv.member","member_card_id",help="会员信息"),
             "member_room_fee_discount_rate" : fields.float("minimum_room_fee_discount_rate",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="会员-房费折扣"),
             "member_room_fee_discount_fee" : fields.float("minimum_room_fee_discount_fee",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="会员-房费折扣"),
             "member_drinks_fee_discount_rate" : fields.float("minimum_drinks_fee_discount_rate",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="会员-酒水费折扣"),
@@ -82,10 +82,14 @@ class room_checkout(osv.osv):
             #欢唱券
             "song_ticket_fee" : fields.float("song_ticket_fee",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="欢唱券抵扣费用"),
             "song_ticket_fee_diff" : fields.float("song_ticket_fee_diff",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="欢唱券抵扣费用差额"),
+
+            "act_pay_fee" : fields.float("act_pay_fee",digits_compute = dp.get_precision('Ktv Room Default Precision'),help="付款金额"),
+
             }
 
     _defaults = {
             #正常开房时,关房时间是当前时间
+            "bill_datetime" : fields.datetime.now,
             "close_time" : fields.datetime.now,
             "consume_minutes" : 0,
             "present_minutes" : 0,
@@ -107,11 +111,13 @@ class room_checkout(osv.osv):
             "guest_damage_fee" : 0,
             }
 
-
-
-
-
-
-
-
-
+    def create_from_ui(self,cr,uid,room_checkout_vals):
+        '''
+        自客户端传入的数据创建包厢结账单据
+        '''
+        room_id = room_checkout_vals.pop("room_id")
+        cur_rp_id = self.pool.get('ktv.room').find_or_create_room_operate(cr,uid,room_id)
+        room_checkout_vals.update({"room_operate_id" : cur_rp_id})
+        id = self.create(cr,uid,room_checkout_vals)
+        room_checkout_vals['id'] = id
+        return room_checkout_vals

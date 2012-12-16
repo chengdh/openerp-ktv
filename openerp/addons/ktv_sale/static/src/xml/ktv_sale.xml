@@ -4,7 +4,7 @@
 <templates id="template" xml:space="preserve">
     <t t-name="RoomPointOfSale">
         <div id="room_pos_wrapper">
-            <div id="header" class="navbar">
+            <div id="header" class="navbar navbar-fixed-top">
                 <div class="navbar-inner">
                     <div class="container-fluid">
                         <a class="brand" href="#">
@@ -14,9 +14,9 @@
                             <button class="btn btn-danger btn-close" type="button">退出</button>
                         </div>
                     </div>
+                    <div class="container-fluid alert-wrapper"></div>
                 </div>
             </div>
-
             <div class="container-fluid">
                 <div class="row-fluid">
                     <div class='span9'>
@@ -30,6 +30,13 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </t>
+    <!--错误对话框-->
+    <t t-name="alert-template">
+        <div class="alert">
+            <button type="button" class="close" data-dismiss="alert">&#x00D7;</button>
+            <strong><t t-esc='title'/>!</strong><t t-esc="info"/>
         </div>
     </t>
     <!--包厢widget-->
@@ -311,11 +318,11 @@
     <t t-name="room-checkout-partial">
         <table class='table table-striped table-condensed table-bordered'>
             <tr>
-                <th>开房时间</th>
+                <th>开房时间:</th>
                 <td><span class='open_time'></span></td>
-                <th>关房时间</th>
+                <th>关房时间:</th>
                 <td><span class='close_time'></span></td>
-                <th>消费时长</th>
+                <th>消费时长(分钟):</th>
                 <td><span class='consume_minutes'></span></td>
                 <td colspan='4'></td>
             </tr>
@@ -451,7 +458,7 @@
                         </div>
                     </div>
                 </td>
-                <td colspan='3'>
+                <td>
                     <div class="input-prepend input-append">
                         <span class='add-on'>免单:</span>
                         <input type='text' class='free_fee input-mini' disabled='true'/>
@@ -460,23 +467,35 @@
                         </div>
                     </div>
                 </td>
+                <td>
+                    <div class="input-prepend input-append">
+                        <span class='add-on'>实付:</span>
+                        <input type='text' class='act_pay_fee input-mini'/>
+                    </div>
+                </td>
+                <td colspan='2'>
+                    <div class="input-prepend input-append">
+                        <span class='add-on'>找零:</span>
+                        <span class="change_fee input-mini uneditable-input"></span>
+                    </div>
+                </td>
             </tr>
         </table>
     </t>
     <!--抵用券显示-->
     <t t-name='sales-voucher-template'>
-            <td colspan='10'>
-                <div class="input-prepend input-append">
-                    <span class='add-on'>抵用券:</span>
-                    <span class="input-xlarge uneditable-input sales-voucher-no">
-                        [<t t-esc="id_number"/>]
-                        面额:<t t-esc="as_money" />
-                    </span>
-                    <div class="btn-group">
-                        <button class="btn btn-sales-voucher-clear btn-warning" type="button"><i class='icon-remove'></i></button>
-                    </div>
+        <td colspan='10'>
+            <div class="input-prepend input-append">
+                <span class='add-on'>抵用券:</span>
+                <span class="input-xlarge uneditable-input sales-voucher-no">
+                    [<t t-esc="id_number"/>]
+                    面额:<t t-esc="as_money" />
+                </span>
+                <div class="btn-group">
+                    <button class="btn btn-sales-voucher-clear btn-warning" type="button"><i class='icon-remove'></i></button>
                 </div>
-            </td>
+            </div>
+        </td>
     </t>
     <!--抵用券列表显示-->
     <t t-name='sales-voucher-list-template'>
@@ -508,17 +527,13 @@
                             <div class="control-group pull-left">
                                 <label class="control-label" for="room_id">包厢名称:</label>
                                 <div class="controls">
-                                    <select id="room_id" name="room_id" t-att-value="room.id">
-                                        <t t-foreach="rooms" t-as="r">
-                                            <option t-att-value="r.id"><t t-esc="r.name"/></option>
-                                        </t>
-                                    </select>
+                                    <span class="input-large uneditable-input"><t t-esc="room.name"/></span>
                                 </div>
                             </div>
                             <div class="control-group pull-left">
                                 <label class="control-label" for="saler_id">销售经理:</label>
                                 <div class="controls">
-                                    <input type="text" id="saler_id" name="saler_id" />
+                                    <input type="text" id="saler_id" name="saler_id" placeholder="选择销售经理" />
                                 </div>
                             </div>
                         </div>

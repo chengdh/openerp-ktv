@@ -75,7 +75,7 @@ def minutes_delta(time_from,time_to):
 
 def context_now_minutes_delta(obj,cr,uid,time_to):
     '''
-    计算当前时间到给定时间的相差分钟数,该计算是以当期登录用户所在市区进行计算的
+    计算当前时间到给定时间的相差分钟数,该计算是以当期登录用户所在时区进行计算的
     :param object obj osv对象
     :param cursot cr 数据库游标
     :param integer uid 当前登录用户
@@ -97,5 +97,16 @@ def context_strptime(osv_obj,cr,uid,str_time):
     context_now = user_context_now(osv_obj,cr,uid)
     time_array = [int(a) for a in str_time.split(":")]
     ret = context_now.replace(hour=time_array[0],minute=time_array[1])
+    return ret
+
+def str_to_today_time(time):
+    '''
+    将给定的字符串转换为当日的datetime
+    :params time 形式如 09:30:00形式的时间字符串
+    :return 日期为当日,时间为传入参数的datetime对象
+    '''
+    now = datetime.now()
+    array_time = [int(a) for a in time.split(':')]
+    ret = now.replace(hour=array_time[0],minute = array_time[1],second = array_time[2])
     return ret
 

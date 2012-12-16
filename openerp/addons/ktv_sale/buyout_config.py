@@ -58,15 +58,17 @@ class buyout_config(osv.osv):
             "room_type_id" : fields.many2one("ktv.room_type","room_type_id",required = True,help="请选择包厢类别"),
             "is_member" : fields.boolean("is_member",help="是否是会员专用买断"),
             #买断时间限制
-            "time_from": fields.selection(ktv_helper.time_for_selection,"time_from",required = True,help="买断起始时间" ),
-            "time_to": fields.selection(ktv_helper.time_for_selection,"time_to",required = True,help="买断结束时间"),
+            "time_from": fields.time("time_from",required = True,help="买断起始时间" ),
+            "time_to": fields.time("time_to",required = True,help="买断结束时间"),
             #FIXME 截止时间,感觉多余,不使用
-            "break_on": fields.selection(ktv_helper.time_for_selection,"break_on",help="该固定时长买断每天截止时间，即使买断未到点，截止时间一到也即刻结束"),
+            "break_on": fields.time("break_on",help="该固定时长买断每天截止时间，即使买断未到点，截止时间一到也即刻结束"),
             #FIXME 多余字段,将删除 是否启用截止时间
             "break_on_enable" : fields.boolean("break_on_active"),
             #买断时长,以小时为单位
             "buyout_time" : fields.integer('buyout_time'),
             'active' : fields.boolean('active'),
+            'test_time' : fields.time('test_time'),
+            'test_datetime' : fields.datetime('test_datetime'),
             })
 
     _defaults = { field_name : 0 for field_name in _fee_fields}
@@ -102,11 +104,10 @@ class buyout_config(osv.osv):
         if is_special_day:
             buyout_fee = getattr(the_buyout_config,weekday_str + '_special_day_buyout_fee')
 
-        #由于要和本地设置的time_from和time_to比较,此处需要得到context_timestamp
-        context_time = context_now.strftime("%H:%M")
+        now_str = datetime.now().strftime("%H:%M:00")
 
         buyout_enable = getattr(the_buyout_config,weekday_str + '_buyout_enable',False)
-        in_time_range = context_time >= the_buyout_config.time_from and context_time <= the_buyout_config.time_to
+        in_time_range = now_str >= the_buyout_config.time_from and now_str <= the_buyout_config.time_to
 
         #以下情况下,引发异常
         #A 不是特殊日期设置
@@ -117,17 +118,17 @@ class buyout_config(osv.osv):
 
         buyout_fee = getattr(the_buyout_config,weekday_str + "_buyout_fee")
 
+        time_from = datetime.now()
+        time_to = ktv_helper.str_to_today_time(the_buyout_config.time_to)
 
         return {
                 "room_type_id" : getattr(the_buyout_config,"room_type_id"),
                 "name" : getattr(the_buyout_config,"name"),
                 #起始时间是当前时间
-                "time_from" : ktv_helper.user_context_now(self,cr,uid),
-                #结束时间转换为datetime型
-                "time_to" : ktv_helper.context_strptime(self,cr,uid,getattr(the_buyout_config,'time_to')),
+                "time_from" : time_from,
+                "time_to" : time_to,
                 "is_member" : getattr(the_buyout_config,'is_member'),
                 "buyout_fee" : buyout_fee,
                 #计算实际买断分钟数量
-                "buyout_time" : ktv_helper.context_now_minutes_delta(self,cr,uid,getattr(the_buyout_config,'time_to'))
+                "buyout_time" : (time_to.hour - time_from.hour)*60 + (time_to.minute - time_from.minute)
                 }
-

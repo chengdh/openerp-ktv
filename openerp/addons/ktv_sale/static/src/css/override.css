@@ -1,5 +1,6 @@
 /* room status bar display style */
 html {font-size : 14px;}
+#room_pos_wrapper {padding-top : 80px;}
 .nav {margin-bottom : 0;}
 #room_info_tab .tab-content {background : #FFF;}
 #room_info_tab .nav-tabs > li {margin-bottom: -3px;}

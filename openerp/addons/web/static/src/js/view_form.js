@@ -1731,7 +1731,115 @@ openerp.web.DateWidget = openerp.web.DateTimeWidget.extend({
     jqueryui_object: 'datepicker',
     type_of_date: "date"
 });
-
+/*SIG*/
+openerp.web.TimeWidget = openerp.web.OldWidget.extend({
+    template: "web.datetimepicker",
+    jqueryui_object: 'timepicker',
+    type_of_date: "time",
+    init: function(parent) {
+        this._super(parent);
+        this.name = parent.name;
+    },
+    start: function() {
+        var self = this;
+        this.$input = this.$element.find('input.oe_datepicker_master');
+        this.$input_picker = this.$element.find('input.oe_datepicker_container');
+        this.$input.change(this.on_change);
+        this.picker({
+            onSelect: this.on_picker_select,
+            changeMonth: true,
+            showButtonPanel: true
+        });
+        this.$element.find('img.oe_datepicker_trigger').click(function() {
+            if (!self.readonly && !self.picker('widget').is(':visible')) {
+                self.picker('setTime', self.value ? openerp.web.auto_str_to_date(self.value) : new Date());
+                self.$input_picker.show();
+                self.picker('show');
+                self.$input_picker.hide();
+            }
+        });
+        this.set_readonly(false);
+        this.value = false;
+    },
+    picker: function() {
+        return $.fn[this.jqueryui_object].apply(this.$input_picker, arguments);
+    },
+    on_picker_select: function(text, instance) {
+        console.log(text + '*' + instance)
+        var date = this.picker('getDate');
+        this.$input.val(text).change();
+    },
+    set_value: function(value) {
+        this.value = value;
+        this.$input.val(value ? this.format_client(value) : '');
+    },
+    get_value: function() {
+        return this.value;
+    },
+    set_value_from_ui: function() {
+        var value = this.$input.val() || false;
+        this.value = this.parse_client(value);
+    },
+    set_readonly: function(readonly) {
+        this.readonly = readonly;
+        this.$input.prop('readonly', this.readonly);
+        this.$element.find('img.oe_datepicker_trigger').toggleClass('oe_input_icon_disabled', readonly);
+    },
+    is_valid: function(required) {
+        var value = this.$input.val();
+        if (value === "") {
+            return !required;
+        } else {
+            try {
+                this.parse_client(value);
+                return true;
+            } catch(e) {
+                return false;
+            }
+        }
+    },
+    parse_client: function(v) {
+        return openerp.web.parse_value(v, {"widget": this.type_of_date});
+    },
+    format_client: function(v) {
+        return openerp.web.format_value(v, {"widget": this.type_of_date});
+    },
+    on_change: function() {
+        if (this.is_valid()) {
+            this.set_value_from_ui();
+        }
+    }
+});
+openerp.web.form.FieldTime = openerp.web.form.Field.extend({
+        template: "EmptyComponent",
+        build_widget: function() {
+            return new openerp.web.TimeWidget(this);
+        },
+        start: function() {
+            var self = this;
+            this._super.apply(this, arguments);
+            this.timewidget = this.build_widget();
+            this.timewidget.on_change.add_last(this.on_ui_change);
+            this.timewidget.appendTo(this.$element);
+        },
+        set_value: function(value) {
+            this._super(value);
+            this.timewidget.set_value(value);
+        },
+        get_value: function() {
+            return this.timewidget.get_value();
+        },
+        update_dom: function() {
+            this._super.apply(this, arguments);
+            this.timewidget.set_readonly(this.readonly);
+        },
+        validate: function() {
+            this.invalid = !this.timewidget.is_valid(this.required);
+        },
+        focus: function($element) {
+            this._super($element || this.timewidget.$input);
+        }
+});
 openerp.web.form.FieldDatetime = openerp.web.form.Field.extend({
     template: "EmptyComponent",
     build_widget: function() {
@@ -3690,6 +3798,7 @@ openerp.web.form.widgets = new openerp.web.Registry({
     'email' : 'openerp.web.form.FieldEmail',
     'url' : 'openerp.web.form.FieldUrl',
     'text' : 'openerp.web.form.FieldText',
+    'time' : 'openerp.web.form.FieldTime',
     'date' : 'openerp.web.form.FieldDate',
     'datetime' : 'openerp.web.form.FieldDatetime',
     'selection' : 'openerp.web.form.FieldSelection',

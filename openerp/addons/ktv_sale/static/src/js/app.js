@@ -10,12 +10,16 @@ openerp.ktv_sale = function(erp_instance){
 	erp_instance.ktv_sale.App = (function() {
 		function App($element) {
 			this.initialize($element);
-		}
+		};
 		App.prototype.initialize = function($element) {
 			this.ktv_room_point_view = new erp_instance.ktv_sale.widget.KtvRoomPointWidget();
 			this.ktv_room_point_view.$element = $element;
 			this.ktv_room_point_view.start();
 		};
+        App.prototype.alert = function(options){
+            var alert = new erp_instance.ktv_sale.widget.AlertWidget(null,options);
+            alert.appendTo($('.alert-wrapper'));
+        }
 		return App;
 	})();
 }

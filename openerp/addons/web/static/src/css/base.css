@@ -1167,6 +1167,7 @@ label.error {
 }
 /* Unedit Form */
 .openerp .field_char,
+.openerp .field_time,
 .openerp .field_date,
 .openerp .field_float,
 .openerp .field_selection,
@@ -1237,6 +1238,7 @@ label.error {
 }
 .openerp td.oe_form_field_translatable,
 .openerp td.oe_form_field_many2one,
+.openerp td.oe_form_field_time,
 .openerp td.oe_form_field_date,
 .openerp td.oe_form_field_datetime {
     white-space: nowrap;
@@ -1371,6 +1373,7 @@ label.error {
 .openerp .oe_form_readonly .field_int,
 .openerp .oe_form_readonly .field_float,
 .openerp .oe_form_readonly .field_email,
+.openerp .oe_form_readonly .field_time,
 .openerp .oe_form_readonly .field_date,
 .openerp .oe_form_readonly .field_selection,
 .openerp .oe_forms_readonly .oe_form_field_many2one {
@@ -1456,7 +1459,7 @@ label.error {
     vertical-align: top;
 }
 /* vertically recentering filter management select tag */
-.openerp select.oe_search-view-filters-management { 
+.openerp select.oe_search-view-filters-management {
     margin-top:2px;
 }
 
@@ -1973,7 +1976,7 @@ label.error {
     width: 100%;
     background-color : #FFFFFF;
     border-spacing: 0;
-    
+
 }
 .openerp .oe-treeview-table tr:hover{
     color: blue;
@@ -2121,7 +2124,7 @@ ul.oe-arrow-list li.oe-arrow-list-selected .oe-arrow-list-after {
     width:100%;
     border-collapse : collapse;
     margin-left: -12px;
-    
+
     width: 100%;
     background-color : white;
     border-spacing: 0;
@@ -2130,7 +2133,7 @@ ul.oe-arrow-list li.oe-arrow-list-selected .oe-arrow-list-after {
     text-align: center;
     white-space: nowrap;
     border: 1px solid #D8D8D8;
-    
+
     cursor: pointer;
     font-size: 90%;
 }
