@@ -644,8 +644,8 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		//重新显示费用列表
 		_refresh_fee_table: function() {
             //需要将时间转换为本地时间
-			this.$element.find('.open_time').html(erp_instance.web.str_to_datetime(this.model.get('open_time')));
-			this.$element.find('.close_time').html(erp_instance.web.str_to_datetime(this.model.get('close_time')));
+			this.$element.find('.open_time').html(erp_instance.web.str_to_datetime(this.model.get('open_time')).toString('yyyy-MM-dd HH:mm'));
+			this.$element.find('.close_time').html(erp_instance.web.str_to_datetime(this.model.get('close_time')).toString('yyyy-MM-dd HH:mm'));
 			this.$element.find('.consume_minutes').html(this.model.get('consume_minutes'));
 			this.$element.find('.room_fee').html(this.model.get('room_fee'));
 			this.$element.find('.service_fee_rate').html(this.model.get('service_fee_rate'));

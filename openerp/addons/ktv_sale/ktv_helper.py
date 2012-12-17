@@ -110,3 +110,18 @@ def str_to_today_time(time):
     ret = now.replace(hour=array_time[0],minute = array_time[1],second = array_time[2])
     return ret
 
+def utc_time_between(str_time_from,str_time_to,str_cur_time):
+    """
+    判断给定的时间字符串是否在给定的时间区间内
+    由于对时间统一采用UTC时间保存,可能存在time_to < time_from的情况
+    :params string str_time_from 形式类似 09:10的时间字符串
+    :params string str_time_to 形式类似 09:10的时间字符串
+    :params str_cur_time 要比较的时间字符串
+    :return True 在范围内 else False
+    """
+    if str_time_to > str_time_from:
+        return str_cur_time >= str_time_from and str_cur_time <= str_time_to
+    else:
+        #如果存在time_from 大于 time_to的情况,则说明时间跨天
+        return (str_cur_time >= str_time_from and str_cur_time < '23:59:59') or (str_cur_time >='00:00:00' and str_cur_time <= str_time_to)
+

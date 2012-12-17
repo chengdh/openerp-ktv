@@ -76,3 +76,34 @@
   !python {model: ktv.sales_voucher}: |
     ret = self.get_active_sales_voucher(cr,uid,'000001234')
     assert ret
+-
+  应能够正确获取当前可用的买断设置信息
+-
+  !python {model: ktv.buyout_config}: |
+    ret = self.get_active_configs(cr,uid,ref("ktv_room_type1"))
+    assert ret
+-
+  应能够正确获取时段低消设置信息
+-
+  !python {model: ktv.minimum_fee_config}: |
+    ret = self.get_active_configs(cr,uid,ref('ktv_room_type1'))
+    assert ret
+
+-
+  能够正确获取包厢时段钟点费设置
+-
+  !python {model: ktv.hourly_fee_discount}: |
+    ret = self.get_active_configs(cr,uid,ref('ktv_room_type1'))
+    assert ret
+-
+  能够正确获取自助擦设置
+-
+  !python {model: ktv.buffet_config}: |
+    ret = self.get_active_configs(cr,uid,ref('ktv_room_type1'))
+    assert ret
+-
+  应能够正确获取买钟优惠设置信息
+-
+  !python {model: ktv.hourly_fee_promotion}: |
+    ret = self.get_active_configs(cr,uid)
+    assert ret

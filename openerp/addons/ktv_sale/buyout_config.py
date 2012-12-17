@@ -80,6 +80,57 @@ class buyout_config(osv.osv):
         "active" : True,
         })
 
+    def get_active_configs(self,cr,uid,room_type_id):
+        '''
+        获取当前有效的买断设置信息
+        :params integer room_type_id 包厢类型id
+        :params integer buyout_config_id 买断设置id
+        :return array 符合条件的买断信息数组
+        '''
+        ret = []
+        #1 获取所有买断信息,并逐个进行判断
+        ids = self.search(cr,uid,[("room_type_id",'=',room_type_id)])
+        configs = self.browse(cr,uid,ids)
+        #2 判断当日买断是否启用
+        context_now = ktv_helper.user_context_now(self,cr,uid)
+        #判断是周几
+        weekday_str = ktv_helper.weekday_str(context_now.weekday())
+        now_str = datetime.now().strftime("%H:%M:00")
+        #判断特殊日设置
+        s_day_ids = self.pool.get('ktv.buyout_config_special_day').search(cr,uid,[("room_type_id",'=',room_type_id)])
+        s_days = self.pool.get('ktv.buyout_config_special_day').read(cr,uid,s_day_ids,['room_type_id','special_day'])
+        s_days_list = [s_day['special_day'] for s_day in s_days]
+
+        #买断起止时间
+        #time_from 当前时间
+        #time_to 买断结束时间
+        #如果当日是特殊日,则直接返回所有买断设置
+        in_sp_day = datetime.today() in s_days_list
+        #根据设置的星期是否有效来得到返回的设置
+        for c in configs:
+            buyout_enable = getattr(c,weekday_str + '_buyout_enable',False)
+            in_time_range = ktv_helper.utc_time_between(c.time_from,c.time_to,now_str)
+            time_from = datetime.now()
+            time_to = ktv_helper.str_to_today_time(c.time_to)
+
+            if  (in_sp_day and in_time_range) or (buyout_enable and in_time_range):
+                buyout_fee = getattr(c,weekday_str + "_buyout_fee",0.0)
+                if in_sp_day:
+                    buyout_fee = getattr(c,"special_day_buyout_fee")
+                ret.append({
+                    "id" : c.id,
+                    "room_type_id" : c.room_type_id.id,
+                    "name" : getattr(c,"name"),
+                    #起始时间是当前时间
+                    "time_from" : time_from.strftime('%Y-%m-%d %H:%M:%S'),
+                    "time_to" : time_to.strftime('%Y-%m-%d %H:%M:%S'),
+                    "is_member" : getattr(c,'is_member'),
+                    "buyout_fee" : buyout_fee,
+                    #计算实际买断分钟数量
+                    "buyout_time" : (time_to.hour - time_from.hour)*60 + (time_to.minute - time_from.minute)
+                    })
+        return ret
+
     def get_active_buyout_fee(self,cr,uid,buyout_config_id,context = None):
         '''
         获取当前有效的买断费用信息,需要判断如下情况
@@ -88,47 +139,12 @@ class buyout_config(osv.osv):
         3、另:还需判断特殊日设置
         4、另:还需判断是否会员设置
         '''
-        the_buyout_config = self.browse(cr,uid,buyout_config_id,context)
-        s_day_ids = self.pool.get('ktv.buyout_config_special_day').search(cr,uid,[["room_type_id",'=',the_buyout_config.room_type_id.id]])
-        s_days = self.pool.get('ktv.buyout_config_special_day').read(cr,uid,s_day_ids,['room_type_id','special_day'])
-        s_days_list = [s_day['special_day'] for s_day in s_days]
-        #判断日期
-        #时间和日期都是utc时间
-        context_now = ktv_helper.user_context_now(self,cr,uid)
-        #判断是周几
-        weekday_str = ktv_helper.weekday_str(context_now.weekday())
+        config = self.browse(cr,uid,buyout_config_id)
+        active_buyout_configs = self.get_active_configs(cr,uid,config.room_type_id.id)
 
-        buyout_fee = 0
-        #判断是否特殊日期
-        is_special_day = context_now.strftime("%Y-%m-%d") in s_days_list
-        if is_special_day:
-            buyout_fee = getattr(the_buyout_config,weekday_str + '_special_day_buyout_fee')
-
-        now_str = datetime.now().strftime("%H:%M:00")
-
-        buyout_enable = getattr(the_buyout_config,weekday_str + '_buyout_enable',False)
-        in_time_range = now_str >= the_buyout_config.time_from and now_str <= the_buyout_config.time_to
-
-        #以下情况下,引发异常
-        #A 不是特殊日期设置
-        #B 未启用买断设置 buyout_enable
-        #C 不在日期时间范围内
-        if (not is_special_day) and (not buyout_enable or not in_time_range):
-            raise osv.except_osv(_("错误"), _('获取买断设置信息时失败.'))
-
-        buyout_fee = getattr(the_buyout_config,weekday_str + "_buyout_fee")
-
-        time_from = datetime.now()
-        time_to = ktv_helper.str_to_today_time(the_buyout_config.time_to)
-
-        return {
-                "room_type_id" : getattr(the_buyout_config,"room_type_id"),
-                "name" : getattr(the_buyout_config,"name"),
-                #起始时间是当前时间
-                "time_from" : time_from,
-                "time_to" : time_to,
-                "is_member" : getattr(the_buyout_config,'is_member'),
-                "buyout_fee" : buyout_fee,
-                #计算实际买断分钟数量
-                "buyout_time" : (time_to.hour - time_from.hour)*60 + (time_to.minute - time_from.minute)
-                }
+        _logger.debug(buyout_config_id)
+        _logger.debug(active_buyout_configs)
+        ret = [c for c in active_buyout_configs if c['id'] == buyout_config_id]
+        if not active_buyout_configs or not ret:
+            raise osv.except_osv(_("错误"), _('当前选择的买断设置信息无效.'))
+        return ret[0]

@@ -81,15 +81,15 @@
     name: 迷你包下午场买断
     room_type_id: ktv_room_type1
     is_member: False
-    time_from: '00:00'
-    time_to: '23:59'
+    time_from: '18:00'
+    time_to: '15:59'
 -
   !record {model: ktv.buyout_config,id: buyout_config_2}:
     name: vip下午场买断
     room_type_id: ktv_room_type1
     is_member: False
-    time_from: '00:00'
-    time_to: '23:59'
+    time_from: '18:00'
+    time_to: '15:59'
 -
   应能够成功保存买断特殊日设置
 -
@@ -103,8 +103,8 @@
 -
   !record {model: ktv.minimum_fee_config,id: minimum_fee_config_1}:
     room_type_id: ktv_room_type1
-    time_from: '12:00'
-    time_to: '18:30'
+    time_from: '18:00'
+    time_to: '15:59'
     mon_minimum_fee: 20
     mon_room_fee: 50
     mon_minimum_fee_p: 10
@@ -150,8 +150,8 @@
   !record {model: ktv.hourly_fee_discount,id: hourly_fee_discount_1}:
     price_class_id: price_class_1
     room_type_id: ktv_room_type1
-    time_from: '09:30'
-    time_to: '12:30'
+    time_from: '18:00'
+    time_to: '15:59'
 -
   应能够成功保存按位钟点费打折信息
 -
@@ -217,10 +217,7 @@
     present_minutes: 120
     active_datetime_limit: True
     datetime_from: 2012-01-01 16:30:00
-    datetime_to: 2012-01-20 18:00:00
-    active_time_limit: False
-    time_from: '09:30'
-    time_to: '22:30'
+    datetime_to: 2013-01-20 18:00:00
     mon_active: True
     tue_active: True
     wed_active: True
@@ -238,8 +235,8 @@
     room_type_id: ktv_room_type1
     is_member: False
     active: True
-    time_from: '09:30'
-    time_to: '12:30'
+    time_from: '18:00'
+    time_to: '15:30'
     break_on: '13:00'
     break_on_enable: True
 

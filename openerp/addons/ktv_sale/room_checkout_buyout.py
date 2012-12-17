@@ -42,16 +42,15 @@ class room_checkout_buyout(osv.osv):
         the_room = self.pool.get('ktv.room').browse(cr,uid,context["room_id"])
 
         hourly_fee = active_buyout_config['buyout_fee']
-
-        ret ={
+        ret = {
                 'room_id' : context['room_id'],
-                'open_time': active_buyout_config['time_from'].strftime("%Y-%m-%d %H:%M:%S"),
-                'close_time': active_buyout_config['time_to'].strftime("%Y-%m-%d %H:%M:%S"),
+                'open_time': active_buyout_config['time_from'],
+                'close_time': active_buyout_config['time_to'],
                 'consume_minutes' : active_buyout_config['buyout_time'],
                 #买断时,不收取其他费用,仅仅收取钟点费
                 'buyout_config_id' : context['buyout_config_id'],
-                'buyout_time_from' : active_buyout_config['time_from'].strftime("%Y-%m-%d %H:%M:%S"),
-                'buyout_time_to' : active_buyout_config['time_to'].strftime("%Y-%m-%d %H:%M:%S"),
+                'buyout_time_from' : active_buyout_config['time_from'],
+                'buyout_time_to' : active_buyout_config['time_to'],
                 'buyout_minutes' : active_buyout_config['buyout_time'],
                 'buyout_fee' : hourly_fee,
                 'hourly_fee' : hourly_fee,
@@ -67,7 +66,6 @@ class room_checkout_buyout(osv.osv):
                 'discount_fee' : 0,
                 'discount_rate' : 0,
                 }
-
         #同时只能有一种打折方式可用
         #会员打折费用
 

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import logging
+from datetime import date,datetime,time
 from osv import fields, osv
 from decimal import Decimal
 import decimal_precision as dp
@@ -47,9 +48,9 @@ class hourly_fee_discount(osv.osv):
             #包厢类别
             "room_type_id" : fields.many2one("ktv.room_type","room_type_id",required = True),
             #打折时间限制
-            "time_from": fields.selection(ktv_helper.time_for_selection,"time_from",required = True ),
+            "time_from": fields.time("time_from",required = True ),
             #打折消费时间结束值
-            "time_to": fields.selection(ktv_helper.time_for_selection,"time_to",required = True),
+            "time_to": fields.time("time_to",required = True),
             #打折参考的基准价格,默认等于该包厢类别room_type的钟点费,用户可以修改
             "base_hourly_fee" : fields.float("base_hourly_fee", digits_compute= dp.get_precision('Ktv Room Default Precision')),
             })
@@ -101,3 +102,61 @@ class hourly_fee_discount(osv.osv):
             to_change_fieldname = field_name.replace('discount','fee')
             val[to_change_fieldname] = round(Decimal(base_hourly_fee) * Decimal(hourly_fee_or_discount_rate) / 100,precision_fee)
         return {"value" : val}
+
+    def get_active_configs(self,cr,uid,room_type_id,context=None):
+        """
+        获取当前有效的钟点费打折设置信息
+        :params room_type_id integer 包厢类别id M
+        :params context['price_class_id'] integer 价格类别id O
+        :params context['member_class_id'] integer 会员类别id O
+        :return array 有效的钟点费打折信息数组
+        """
+        ret = []
+        #1 获取所有钟点费打折信息,并逐个进行判断
+        domain = [["room_type_id","=",room_type_id]]
+        price_class_id = context and "price_class_id" in context and context['price_class_id']
+        if price_class_id:
+            domain.append(["price_class_id","=",price_class_id])
+        member_class_id = context and "member_class_id" in context and context['member_class_id']
+        if member_class_id:
+            domain.append(["member_class_id","=",member_class_id])
+
+        ids = self.search(cr,uid,domain)
+        configs = self.browse(cr,uid,ids)
+        #2 判断当日设置是否启用
+        context_now = ktv_helper.user_context_now(self,cr,uid)
+        #判断是周几
+        weekday_str = ktv_helper.weekday_str(context_now.weekday())
+        now_str = datetime.now().strftime("%H:%M:00")
+        #判断特殊日设置
+        which_fee =  context and context['which_fee'] or "hourly_fee_discount"
+        osv_name = "ktv.%s_special_day" % which_fee
+        s_day_ids = self.pool.get(osv_name).search(cr,uid,[("room_type_id",'=',room_type_id)])
+        s_days = self.pool.get(osv_name).read(cr,uid,s_day_ids,['room_type_id','special_day'])
+        s_days_list = [s_day['special_day'] for s_day in s_days]
+
+        #如果当日是特殊日,则直接返回所有买断设置
+        in_sp_day = datetime.today() in s_days_list
+        #根据设置的星期是否有效来得到返回的设置
+        for c in configs:
+            in_time_range = ktv_helper.utc_time_between(c.time_from,c.time_to,now_str)
+            if  (in_sp_day and in_time_range) or in_time_range:
+                hourly_fee = getattr(c,weekday_str + "_hourly_fee",0.0)
+                hourly_discount = getattr(c,weekday_str + "_hourly_discount",0.0)
+                if in_sp_day:
+                    hourly_fee = getattr(c,"special_day_hourly_fee")
+                    hourly_discount = getattr(c,"special_day_hourly_discount")
+
+                ret.append({
+                    "id" : c.id,
+                    "price_class_id" : c.price_class_id.id,
+                    "room_type_id" : c.room_type_id.id,
+                    #起始时间是当前时间
+                    "time_from" : c.time_from,
+                    "time_to" : c.time_to,
+                    "hourly_fee" : hourly_fee,
+                    "hourly_discount" : hourly_discount,
+                    })
+        return ret
+
+
