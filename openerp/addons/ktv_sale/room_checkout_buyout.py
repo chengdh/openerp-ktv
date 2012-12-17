@@ -18,9 +18,6 @@ class room_checkout_buyout(osv.osv):
 
     _columns = {
             "buyout_config_id" : fields.many2one("ktv.buyout_config","buyout_config_id",required = True,select = True,help="买断名称"),
-            "buyout_time_from" : fields.datetime("time_from",required = True,help="开房时间(此处指的是实际的开房时间)"),
-            "buyout_time_to" : fields.datetime("time_to",required = True,help="关房时间"),
-            "buyout_minutes" : fields.integer("buyout_minutes",help="买断时长"),
             "buyout_fee" : fields.float("buyout_fee",help="买断费用",digits_compute = dp.get_precision('Ktv Room Default Precision')),
             }
     _defaults = {
@@ -49,9 +46,6 @@ class room_checkout_buyout(osv.osv):
                 'consume_minutes' : active_buyout_config['buyout_time'],
                 #买断时,不收取其他费用,仅仅收取钟点费
                 'buyout_config_id' : context['buyout_config_id'],
-                'buyout_time_from' : active_buyout_config['time_from'],
-                'buyout_time_to' : active_buyout_config['time_to'],
-                'buyout_minutes' : active_buyout_config['buyout_time'],
                 'buyout_fee' : hourly_fee,
                 'hourly_fee' : hourly_fee,
                 'room_fee' : 0,

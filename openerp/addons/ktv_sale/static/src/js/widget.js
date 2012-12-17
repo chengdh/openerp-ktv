@@ -615,6 +615,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			//TODO 添加免单及挂账设置
 			this.on_re_calculate_fee.add_last(_.bind(this._re_calculate_sales_voucher_fee, this));
 			this.on_re_calculate_fee.add_last(_.bind(this._autoset_pay_type_member_card_fee, this));
+			this.on_re_calculate_fee.add_last(_.bind(this._set_context_datetime, this));
 		},
 		//向服务器端发起请求,子类可覆盖
 		call_server_func: function() {
@@ -631,6 +632,14 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		//re_calculate_fee callback
 		//子类可添加callback函数
 		on_re_calculate_fee: function() {},
+        //设置客户端时间显示
+        _set_context_datetime : function() {
+            if(this.model.get("open_time"))
+                this.model.set({context_open_time : erp_instance.web.str_to_datetime(this.model.get('open_time')).toString('yyyy-MM-dd HH:mm')});
+            if(this.model.get("close_time"))
+                this.model.set({context_close_time : erp_instance.web.str_to_datetime(this.model.get('close_time')).toString('yyyy-MM-dd HH:mm')});
+        },
+
 		//重新计算抵用券费用
 		_re_calculate_sales_voucher_fee: function() {
 			var sales_voucher_fee = 0;
@@ -644,8 +653,8 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		//重新显示费用列表
 		_refresh_fee_table: function() {
             //需要将时间转换为本地时间
-			this.$element.find('.open_time').html(erp_instance.web.str_to_datetime(this.model.get('open_time')).toString('yyyy-MM-dd HH:mm'));
-			this.$element.find('.close_time').html(erp_instance.web.str_to_datetime(this.model.get('close_time')).toString('yyyy-MM-dd HH:mm'));
+			this.$element.find('.open_time').html(this.model.get('context_open_time'));
+			this.$element.find('.close_time').html(this.model.get('context_close_time'));
 			this.$element.find('.consume_minutes').html(this.model.get('consume_minutes'));
 			this.$element.find('.room_fee').html(this.model.get('room_fee'));
 			this.$element.find('.service_fee_rate').html(this.model.get('service_fee_rate'));

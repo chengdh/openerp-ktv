@@ -384,7 +384,7 @@ openerp.ktv_sale.model = function(erp_instance) {
 				active_buyout_config_lines.push({
                     id: l.get("id"),
 					name: l.get("name"),
-					time_range: l.get("time_from") + "~" + l.get("time_to"),
+					time_range: erp_instance.web.str_to_datetime(l.get("time_from")).toString("HH:mm") + "~" + erp_instance.web.str_to_datetime(l.get("time_to")).toString('HH:mm'),
 					is_member: l.get("is_member"),
 					buyout_time: l.get("buyout_time"),
 					buyout_fee: l.get("buyout_fee")
@@ -687,12 +687,9 @@ openerp.ktv_sale.model = function(erp_instance) {
 			delete json.discount_card;
 			delete json.credit_card;
 			delete json.sales_voucher_collection;
-			delete json.open_time;
-			delete json.close_time;
 
 			return json;
 		}
 
 	});
 };
-
