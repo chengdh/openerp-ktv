@@ -213,15 +213,18 @@ openerp.ktv_sale.model = function(erp_instance) {
 		},
 		//获取room_fee_info对象
 		get_room_fee_info: function() {
-			var room_fee_info = new model.RoomFeeInfo({
-				"room": this
-			});
+            var room_fee_info = new model.RoomFeeInfo({
+					"room": this
+				});
 			return room_fee_info;
 		},
 		//导出到json
 		export_as_json: function() {
 			var ret = this.toJSON();
 			ret.state_description = this.get_state_desc();
+			//包厢费用信息
+            if(this.get("room_fee_info"))
+                ret.room_fee_info = this.get("room_fee_info").export_as_json();
 			return ret;
 		}
 	});
@@ -353,8 +356,8 @@ openerp.ktv_sale.model = function(erp_instance) {
 			var minimum_lines = this.get("minimum_fee_config_lines");
 			if (minimum_lines.length > 0) {
 				match_line = minimum_lines.at(0);
+                current_fee = match_line.get(which_fee);
 			}
-			current_fee = match_line.get(which_fee);
 			return current_fee;
 		},
 		current_room_fee: function() {
@@ -515,8 +518,19 @@ openerp.ktv_sale.model = function(erp_instance) {
 					minimum_persons: minimum_persons
 				});
 			}).then(function() {
-				return $.when(self._set_minimum_fee(), self._set_hourly_fee_discount(), self._set_buyout_config(), self._set_buffet_config(), self._set_hourly_fee_promotion()).then(function() {
+				return $.when(self._set_fee_type(), self._set_minimum_fee(), self._set_hourly_fee_discount(), self._set_buyout_config(), self._set_buffet_config(), self._set_hourly_fee_promotion()).then(function() {
 					self.ready.resolve();
+				});
+			});
+		},
+		//设置计费方式
+		_set_fee_type: function() {
+            var self = this;
+			var the_room = this.get("room");
+			var fee_type_id = the_room.get("fee_type_id")[0];
+			return new erp_instance.web.Model("ktv.fee_type").get_func("read")(fee_type_id, ['id', 'fee_type_code', 'name']).pipe(function(fee_type) {
+				self.set({
+					"fee_type": fee_type
 				});
 			});
 		},
@@ -601,14 +615,14 @@ openerp.ktv_sale.model = function(erp_instance) {
 	//预定对象
 	model.RoomScheduled = model.BaseRoomOperate.extend({
 		"osv_name": "ktv.room_scheduled",
-        export_as_json : function(){
-            //需要将scheduled_time转换为UTC时间
-            var context_datetime = Date.parse(this.get('context_scheduled_time'));
-            var utc_time = erp_instance.web.datetime_to_str(context_datetime);
-            var json = this.toJSON();
-            json.scheduled_time = utc_time;
-            return json;
-        }
+		export_as_json: function() {
+			//需要将scheduled_time转换为UTC时间
+			var context_datetime = Date.parse(this.get('context_scheduled_time'));
+			var utc_time = erp_instance.web.datetime_to_str(context_datetime);
+			var json = this.toJSON();
+			json.scheduled_time = utc_time;
+			return json;
+		}
 	});
 	//开房对象
 	model.RoomOpens = model.BaseRoomOperate.extend({

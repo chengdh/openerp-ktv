@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- vim:fdl=1: -->
+<!--打印相关模版-->
+<templates id="template" xml:space="preserve">
+    <!--开房条-->
+    <t t-name="room-opens-bill-print-template">
+        <div class='room-opens-bill'>
+            <h4><t t-esc="company_name"/>开房条</h4>
+            <table>
+                <tr>
+                    <td>房间名称:</td>
+                    <td colspan="2"><t t-esc="name"/></td>
+                </tr>
+                <tr>
+                    <td>房间类型:</td>
+                    <td colspan="2"><t t-esc="room_type_id"/></td>
+                </tr>
+                <tr>
+                    <td>账 单 号:</td>
+                    <td colspan="2"><t t-esc="cur_room_operate_id"/></td>
+                </tr>
+                <tr>
+                    <td>计费方式:</td>
+                    <td colspan="2"><t t-esc="fee_type_id"/></td>
+                </tr>
+                <tr class="room_fee">
+                    <td>包厢费:</td>
+                    <td colspan="2"><t t-esc="room_fee_info.room_fee"/></td>
+                </tr>
+                <tr class="minimum_fee">
+                    <td>最低消费:</td>
+                    <td colspan="2"><t t-esc="room_fee_info.minimum_fee"/></td>
+                </tr>
+                <tr class="minimum_fee_p">
+                    <td>按位低消:</td>
+                    <td colspan="2"><t t-esc="room_fee_info.minimum_fee_p"/></td>
+                </tr>
+                <tr class="hourly_fee_lines">
+                    <td>时段</td>
+                    <td>折扣</td>
+                    <td>钟点费/小时</td>
+                </tr>
+                <t t-foreach="room_fee_info.hourly_fee_lines" t-as="l">
+                    <tr class="hourly_fee_lines" t-att-data-price-class-id="l.price_class_id" t-att-data-member-class-id="l.member_class_id">
+                        <td><t t-esc="l.time_range"/></td>
+                        <td><t t-esc="l.hourly_fee_discount"/></td>
+                        <td><t t-esc="l.hourly_fee"/>[<t t-esc="l.price_class_name" />]</td>
+                    </tr>
+                </t>
+                <tr class="member_hourly_fee_lines">
+                    <th>时段</th>
+                    <th>折扣</th>
+                    <th>钟点费/小时</th>
+                </tr>
+                <t t-foreach="room_fee_info.member_hourly_fee_lines" t-as="l">
+                    <tr class="member_hourly_fee_lines" t-att-data-price-class-id="l.price_class_id" t-att-data-member-class-id="l.member_class_id">
+                        <td><t t-esc="l.member_class_name"/>-<t t-esc="l.time_range"/></td>
+                        <td><t t-esc="l.hourly_fee_discount"/></td>
+                        <td><t t-esc="l.hourly_fee"/>[<t t-esc="l.price_class_name" />]</td>
+                    </tr>
+                </t>
+                <tr class="hourly_fee_p_lines">
+                    <th>时段</th>
+                    <th>折扣</th>
+                    <th>钟点费/小时</th>
+                </tr>
+
+                <t t-foreach="room_fee_info.hourly_fee_p_lines" t-as="l">
+                    <tr class="hourly_fee_p_lines" t-att-data-price-class-id="l.price_class_id" t-att-data-member-class-id="l.member_class_id">
+                        <td><t t-esc="l.time_range"/></td>
+                        <td><t t-esc="l.hourly_fee_discount"/></td>
+                        <td><t t-esc="l.hourly_fee"/>[<t t-esc="l.price_class_name" />]</td>
+                    </tr>
+                </t>
+                <tr class="buyout_config_lines">
+                    <th>名称</th>
+                    <th>时段</th>
+                    <th>分钟/费用</th>
+                </tr>
+
+                <t t-foreach="room_fee_info.active_buyout_config_lines" t-as="l">
+                    <tr class="buyout_config_lines">
+                        <td><t t-esc="l.name"/></td>
+                        <td><t t-esc="l.time_range"/></td>
+                        <td><t t-esc="l.buyout_time"/>分钟 <t t-esc="l.buyout_fee"/>元</td>
+                    </tr>
+                </t>
+                <!--自助餐设置-->
+                <tr class="buffet_config_lines">
+                    <th>名称</th>
+                    <th>时段</th>
+                    <th>分钟/费用</th>
+                </tr>
+
+                <t t-foreach="room_fee_info.active_buffet_config_lines" t-as="l">
+                    <tr class="buffet_config_lines">
+                        <td><t t-esc="l.name"/></td>
+                        <td><t t-esc="l.time_range"/></td>
+                        <td><t t-esc="l.buyout_time"/>分钟 <t t-esc="l.buyout_fee"/>元 儿童<t t-esc="l.child_buyout_fee"/>元</td>
+                    </tr>
+                </t>
+                <!--买钟优惠设置-->
+                <tr class="hourly_fee_promotion_lines">
+                    <th colspan="3">买钟优惠设置</th>
+                </tr>
+                <tr class="hourly_fee_promotion_lines">
+                    <th>名称</th>
+                    <th>购买分钟</th>
+                    <th>赠送分钟</th>
+                </tr>
+
+                <t t-foreach="room_fee_info.hourly_fee_promotion_lines" t-as="l">
+                    <tr class="hourly_fee_promotion_lines">
+                        <td><t t-esc="l.name"/></td>
+                        <td><t t-esc="l.buy_minutes"/>分钟</td>
+                        <td><t t-esc="l.present_minutes"/>分钟</td>
+                    </tr>
+                </t>
+                <tr>
+                    <td>时段</td>
+                    <td>折扣率</td>
+                    <td>钟点费/小时</td>
+                </tr>
+                <tr>
+                    <td>开房人:</td>
+                    <td colspan="2"><t t-esc="name"/></td>
+                </tr>
+                <tr>
+                    <td>开房时间:</td>
+                    <td colspan="2"><t t-esc="room_type_id"/></td>
+                </tr>
+                <tr>
+                    <td>客人签名:</td>
+                    <td colspan="2"><t t-esc="cur_room_operate_id"/></td>
+                </tr>
+                <tr>
+                    <td colspan="3">请确认房号及所有设备完整,谢谢!</td>
+                </tr>
+            </table>
+        </div>
+    </t>
+</templates>
+

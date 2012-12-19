@@ -87,6 +87,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			this.alert_class = options.alert_class;
 			this.info = options.info;
 			this.title = options.title;
+            this.timer = $.timer(_.bind(this._auto_close,this),20000,false);
 			this._super(parent, options);
 		},
 		render_element: function() {
@@ -99,7 +100,15 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		start: function() {
 			this.$element.find(".alert").addClass(this.alert_class);
 			this.$element.find(".close").click(_.bind(this.stop, this));
-		}
+            this.timer.play();
+		},
+        //自动关闭
+        _auto_close : function() {
+            console.log("auto close alert widget");
+            this.timer.stop();
+            this.timer = null;
+            this.stop();
+        }
 	});
 
 	//roomWidget
@@ -129,6 +138,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		},
 		//开房
 		action_room_opens: function() {
+            console.log("打开开房界面");
 			var r = new widget.RoomOpensWidget(null, {
 				room: this.model
 			});
@@ -538,6 +548,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 					'info': "保存开房信息成功!"
 				});
                 self.close();
+                self.print();
 			};
 			var fail_func = function() {
 				erp_instance.ktv_sale.ktv_room_point.app.alert({
@@ -551,7 +562,16 @@ openerp.ktv_sale.widget = function(erp_instance) {
 				self.room.set(result["room"]);
 				self.close();
 			}).then(success_func,fail_func);
-		}
+		},
+        //打印开房条
+        print : function(){
+            var self = this;
+            var room_fee_info = this.room.get_room_fee_info();
+            room_fee_info.ready.then(function(){
+                var template_var = {"room" : self.room.export_as_json(),'room_fee_info' : room_fee_info.export_as_json()};
+                $(qweb_template("room-opens-bill-print-template")(template_var)).printElement();
+            });
+        }
 	});
 
 	//单个抵用券信息显示

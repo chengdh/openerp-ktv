@@ -85,6 +85,8 @@
     'js': [
             'static/lib/backbone/backbone-0.5.3.js',
             'static/lib/bootstrap/js/bootstrap.js',
+            'static/lib/jQuery.printElement/jquery.printElement.js',
+            'static/lib/jquery-timer/jquery.timer.js',
             'static/src/js/form2json.js',
             'static/src/js/app.js',
             'static/src/js/model.js',
@@ -97,6 +99,7 @@
             ],
     'qweb': [
             'static/src/xml/ktv_sale.xml',
+            'static/src/xml/ktv_print.xml',
             ],
 
 }
