@@ -14,9 +14,9 @@
                             <button class="btn btn-danger btn-close" type="button">退出</button>
                         </div>
                     </div>
-                    <div class="container-fluid alert-wrapper"></div>
                 </div>
             </div>
+            <div class="container-fluid alert-wrapper"></div>
             <div class="container-fluid">
                 <div class="row-fluid">
                     <div class='span9'>
@@ -36,7 +36,8 @@
     <t t-name="alert-template">
         <div class="alert">
             <button type="button" class="close" data-dismiss="alert">&#x00D7;</button>
-            <strong><t t-esc='title'/>!</strong><t t-esc="info"/>
+            <strong><t t-esc='title'/></strong>
+            <p><t t-esc="info"/></p>
         </div>
     </t>
     <!--包厢widget-->
@@ -152,7 +153,7 @@
         <div class="well well-small">
             <div class="modal-header">
                 <button type="button" class="close btn-close-room-scheduled">&#x00D7;</button>
-                <span>预定</span>
+                <h4>预定</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" id="room_scheduled_form">
@@ -207,8 +208,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary btn-save"><i class="icon-check icon-white"></i>保存预定信息</button>
-                <button class="btn btn-close-room-scheduled">取消</button>
+                <button class="btn btn-save"><i class="icon-check"></i> 保存预定信息</button>
+                <button class="btn btn-close-room-scheduled"><i class='icon-arrow-right'></i> 取消</button>
             </div>
         </div>
     </t>
@@ -217,7 +218,7 @@
         <div class="well well-small">
             <div class="modal-header">
                 <button type="button" class="close btn-close-room-opens" data-dismiss="modal" aria-hidden="true">&#x00D7;</button>
-                <span>开房</span>
+                <h4>开房</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" id="room_opens_form">
@@ -289,17 +290,16 @@
                         </div>
                     </div>
                     <fieldset>
-                        <legend>请扫描会员卡</legend>
                         <div class="row">
                             <div class="control-group pull-left">
-                                <label class="control-label" for="member_card_no">会员卡号:</label>
                                 <div class="controls">
-                                    <div class="input-append">
-                                        <input type="hidden" id="member_id" name="member_id"/>
-                                        <span id="member_card_no" class="input-xlarge uneditable-input">请扫描会员卡</span>
-                                        <div class="btn-group">
-                                            <button class="btn btn-member-card-read" type="button"><i class='icon-user'></i>刷卡</button>
-                                            <button class="btn btn-member-card-clear" type="button"><i class='icon-remove'></i>清除</button>
+                                    <div class='hide member-card-wrapper'>
+                                        <div class="input-prepend input-append">
+                                            <span class='add-on'>会员卡</span>
+                                            <span id="member-card-no" class="input-xlarge uneditable-input"></span>
+                                            <div class="btn-group">
+                                                <button class="btn btn-member-card-clear btn-warning" type="button"><i class='icon-remove'></i></button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -309,8 +309,9 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary btn-save-room-opens"><i class='icon-check icon-white'></i>开房</button>
-                <button class="btn btn-close-room-opens" data-dismiss="modal" aria-hidden="true">取消</button>
+                <button class="btn btn-member-card-read"><i class='icon-user'></i> 会员卡</button>
+                <button class="btn btn-save-room-opens"><i class='icon-check'></i> 开房</button>
+                <button class="btn btn-close-room-opens" data-dismiss="modal" aria-hidden="true"><i class='icon-arrow-right'></i> 取消</button>
             </div>
         </div>
     </t>
