@@ -111,7 +111,7 @@ class room_checkout(osv.osv):
             "guest_damage_fee" : 0,
             }
 
-    def create_from_ui(self,cr,uid,room_checkout_vals):
+    def process_operate(self,cr,uid,room_checkout_vals):
         '''
         自客户端传入的数据创建包厢结账单据
         '''

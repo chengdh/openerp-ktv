@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import logging
+from room import room
 from osv import fields, osv
 import decimal_precision as dp
 import ktv_helper
@@ -95,3 +96,15 @@ class room_checkout_buyout(osv.osv):
             'sales_voucher_fee' : 0.0,
             })
         return ret
+
+    def process_operate(self,cr,uid,buyout_vals):
+        """
+        处理买断结账信息
+        """
+        room_id = buyout_vals.pop("room_id")
+        cur_rp_id = self.pool.get('ktv.room').find_or_create_room_operate(cr,uid,room_id)
+        buyout_vals.update({"room_operate_id" : cur_rp_id})
+        room_buyout_id = self.create(cr,uid,buyout_vals)
+        fields = self.fields_get(cr,uid).keys()
+        room_buyout = self.read(cr,uid,room_buyout_id,fields)
+        return (room_buyout,room.STATE_BUYOUT,None)

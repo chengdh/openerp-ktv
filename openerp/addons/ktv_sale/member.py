@@ -9,6 +9,7 @@ class member(osv.osv):
     _name = "ktv.member"
     _descripton = "会员等级设置"
 
+    _rec_name = "member_no"
     _columns ={
             "member_no" : fields.char("member_no",size = 30,readonly = True,select = True,help="会员编号,由系统自动生成",required = True),
             "name" : fields.char("name",size = 20,required = True,help = "会员名称"),

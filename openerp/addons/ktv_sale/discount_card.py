@@ -8,6 +8,8 @@ class discount_card(osv.osv):
     _name = "ktv.discount_card"
     _descripton = "打折卡"
 
+    _rec_name = "card_no"
+
     _columns ={
             "card_no" : fields.char("card_no",size = 30,readonly = True,select = True,help="卡号",required = True),
             "discount_card_type_id" : fields.many2one("ktv.discount_card_type","discount_card_type_id",required = True,select = True,help="打折卡类别"),

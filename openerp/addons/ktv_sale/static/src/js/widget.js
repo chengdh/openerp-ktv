@@ -484,7 +484,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			});
 			m_win.open();
 		},
-		//清楚会员信息
+		//清除会员信息
 		clear_member_card: function() {
 			this.member.clear();
 		},
@@ -495,9 +495,14 @@ openerp.ktv_sale.widget = function(erp_instance) {
 				var member_class = this.member.get("member_class_id");
 				var member_name = this.member.get("name");
 				var info = member_card_no + "[" + member_class[1] + "]" + "[" + member_name + "]";
-				this.$element.find("#member_card_no").html(info);
+				this.$element.find("#member-card-no").html(info);
+                this.$element.find('.member-card-wrapper').removeClass('hide');
 			}
-			else this.$element.find("#member_card_no").html(null);
+			else
+            {
+                this.$element.find("#member-card-no").empty();
+                this.$element.find('.member-card-wrapper').addClass('hide');
+            }
 		},
 
 		render_element: function() {
@@ -525,6 +530,8 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			//保存数据
 			if (!this.validate()) return false;
 			this.model.set(this.$form.form2json());
+            if(this.member.get("id"))
+                this.model.set({"member_id" : this.member.get("id")});
             var success_func = function() {
 				erp_instance.ktv_sale.ktv_room_point.app.alert({
 					'alert_class': "alert-success",
@@ -865,7 +872,11 @@ openerp.ktv_sale.widget = function(erp_instance) {
 				});
 
 			};
-			this.model.push().then(success_func, fail_func);
+			this.model.push().pipe(function(result){
+                self.room.set(result['room']);
+                self.model.set(result['room_operate']);
+
+            }).then(success_func, fail_func);
 		},
 		//会员卡款金额变化的处理
 		_onchange_member_card_fee: function() {
@@ -1157,7 +1168,6 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			$('.oe_footer').show();
 			erp_instance.ktv_sale.ktv_room_point = undefined;
 			this._super();
-
 		}
 	});
 };
