@@ -133,7 +133,7 @@ openerp.web.date_to_str = function(obj) {
 };
 
 /**
- * 自服务器端上传数据时,格式化为UTC时间
+ * 向服务器端上传数据时,格式化为UTC时间
  * Converts a Date javascript object to a string using OpenERP's
  * time string format (exemple: '15:12:35').
  *

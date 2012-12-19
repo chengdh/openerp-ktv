@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
+
 from osv import osv,fields
+from room import room
 import decimal_precision as dp
 import ktv_helper
 
@@ -30,4 +32,14 @@ class room_opens(osv.osv):
             "open_time" : fields.datetime.now()
             }
 
-
+    def process_operate(self,cr,uid,opens_vals):
+        """
+        处理开房操作
+        """
+        room_id = opens_vals.pop("room_id")
+        cur_rp_id = self.pool.get('ktv.room').find_or_create_room_operate(cr,uid,room_id)
+        opens_vals.update({"room_operate_id" : cur_rp_id})
+        room_opens_id = self.create(cr,uid,opens_vals)
+        fields = self.fields_get(cr,uid).keys()
+        room_opens = self.read(cr,uid,room_opens_id,fields)
+        return (room_opens,room.STATE_IN_USE,None)

@@ -351,10 +351,9 @@ openerp.ktv_sale.model = function(erp_instance) {
 		_get_current_fee: function(which_fee) {
 			var current_fee = this.get(which_fee);
 			var minimum_lines = this.get("minimum_fee_config_lines");
-            if(minimum_lines.length > 0)
-            {
-                match_line = minimum_lines.at(0);
-            }
+			if (minimum_lines.length > 0) {
+				match_line = minimum_lines.at(0);
+			}
 			current_fee = match_line.get(which_fee);
 			return current_fee;
 		},
@@ -382,7 +381,7 @@ openerp.ktv_sale.model = function(erp_instance) {
 			var active_buyout_config_lines = [];
 			this.get("buyout_config_lines").each(function(l) {
 				active_buyout_config_lines.push({
-                    id: l.get("id"),
+					id: l.get("id"),
 					name: l.get("name"),
 					time_range: erp_instance.web.str_to_datetime(l.get("time_from")).toString("HH:mm") + "~" + erp_instance.web.str_to_datetime(l.get("time_to")).toString('HH:mm'),
 					is_member: l.get("is_member"),
@@ -395,7 +394,7 @@ openerp.ktv_sale.model = function(erp_instance) {
 			var active_buffet_config_lines = [];
 			this.get("buffet_config_lines").each(function(l) {
 				active_buffet_config_lines.push({
-                    id: l.get("id"),
+					id: l.get("id"),
 					name: l.get("name"),
 					time_range: l.get("time_from") + "~" + l.get("time_to"),
 					is_member: l.get("is_member"),
@@ -410,7 +409,7 @@ openerp.ktv_sale.model = function(erp_instance) {
 			var hourly_fee_promotion_lines = [];
 			this.get("hourly_fee_promotion_lines").each(function(l) {
 				hourly_fee_promotion_lines.push({
-                    id: l.get("id"),
+					id: l.get("id"),
 					name: l.get("name"),
 					time_range: l.get("time_from") + "~" + l.get("time_to"),
 					is_member: l.get("is_member"),
@@ -426,7 +425,7 @@ openerp.ktv_sale.model = function(erp_instance) {
 		_export_hourly_fee_lines: function(which_fee) {
 			var hourly_fee_lines = [];
 			if (this.get(which_fee + "_lines").length == 0) hourly_fee_lines.push({
-                id : -1,
+				id: - 1,
 				member_class_id: - 1,
 				price_class_id: - 1,
 				base_hourly_fee: this.get(which_fee),
@@ -437,7 +436,7 @@ openerp.ktv_sale.model = function(erp_instance) {
 			else {
 				this.get(which_fee + "_lines").each(function(l) {
 					hourly_fee_lines.push({
-                        id : l.get("id"),
+						id: l.get("id"),
 						member_class_id: l.get("member_class_id"),
 						member_class_name: l.get("member_class_name"),
 						price_class_id: l.get("price_class_id"),
@@ -583,26 +582,45 @@ openerp.ktv_sale.model = function(erp_instance) {
 			});
 		}
 	});
-	//预定对象
-	model.RoomScheduled = Backbone.Model.extend({
+	//包厢操作对象-基类
+	model.BaseRoomOperate = Backbone.Model.extend({
+		//服务器端的OSV_NAME
+		"osv_name": "",
 		//将数据上传至服务器
-		push: function() {
-			return new erp_instance.web.Model("ktv.room").get_func("create_room_scheduled")(this.toJSON());
+		push: function(json_obj) {
+			var json_obj = this.export_as_json();
+			json_obj.osv_name = this.osv_name;
+			return new erp_instance.web.Model('ktv.room_operate').get_func('process_operate')(json_obj);
+		},
+		//导出当前model为json
+		export_as_json: function() {
+			var json = this.toJSON();
+			return json;
 		}
 	});
+	//预定对象
+	model.RoomScheduled = model.BaseRoomOperate.extend({
+		"osv_name": "ktv.room_scheduled",
+        export_as_json : function(){
+            //需要将scheduled_time转换为UTC时间
+            var context_datetime = Date.parse(this.get('context_scheduled_time'));
+            var utc_time = erp_instance.web.datetime_to_str(context_datetime);
+            var json = this.toJSON();
+            json.scheduled_time = utc_time;
+            return json;
+        }
+	});
 	//开房对象
-	model.RoomOpens = Backbone.Model.extend({
+	model.RoomOpens = model.BaseRoomOperate.extend({
+		"osv_name": "ktv.room_opens",
 		defaults: {
 			"persons_count": 4
-		},
-		//上传数据到服务器
-		push: function() {
-			return new erp_instance.web.Model("ktv.room").get_func("create_room_opens")(this.toJSON());
 		}
 	});
 
 	//预售-买断对象
-	model.RoomCheckoutBuyout = Backbone.Model.extend({
+	model.RoomCheckoutBuyout = model.BaseRoomOperate.extend({
+		"osv_name": "ktv.room_checkout_buyout",
 		defaults: {
 			"persons_count": 4,
 			"after_discount_fee": 0.0,
@@ -658,20 +676,9 @@ openerp.ktv_sale.model = function(erp_instance) {
 				"change_fee": change_fee
 			});
 		},
-		//保存数据到服务器
-		push: function() {
-			//发送数据到服务器端
-			var room_checkout_vals = this.export_as_json();
-			return new erp_instance.web.Model('ktv.room_checkout_buyout').get_func('create_from_ui')(room_checkout_vals);
-		},
 		export_as_json: function() {
 			var json = this.toJSON();
 			//删除不需要的属性,以下这些字段使用服务器端的function计算
-			delete json.sum_should_fee;
-			delete json.after_discount_fee;
-			delete json.discount_rate;
-			delete json.discount_fee;
-			delete json.change_fee;
 			var member_card = this.get('member_card');
 			if (member_card && member_card.get("id")) json.member_card_id = member_card.get("id");
 			var discount_card = this.get('member_card');
@@ -683,13 +690,8 @@ openerp.ktv_sale.model = function(erp_instance) {
 			var sales_voucher_collection = this.get('sales_voucher_collection');
 			if (sales_voucher_collection.length > 0) json.sales_vouchers = sales_voucher_collection.toJSON();
 			//删除不需要的属性
-			delete json.member_card;
-			delete json.discount_card;
-			delete json.credit_card;
-			delete json.sales_voucher_collection;
-
 			return json;
 		}
-
 	});
 };
+

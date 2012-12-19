@@ -170,7 +170,7 @@
                         <div class="control-group pull-left">
                             <label class="control-label" for="saler_id">销售经理:</label>
                             <div class="controls">
-                                <input type="text" class="required" id="saler_id" name="saler_id" />
+                                <input type="text" id="saler_id" name="saler_id" />
                             </div>
                         </div>
 

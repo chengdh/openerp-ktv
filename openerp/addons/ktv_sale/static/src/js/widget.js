@@ -419,15 +419,28 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			this.model.set(this.$form.form2json());
 			var scheduled_time = this.$form.find("#scheduled_time").val();
 
-			//var f_scheduled_time =  erp_instance.web.format_value(scheduled_time, {"widget": "datetime"});
 			this.model.set({
-				"scheduled_time": scheduled_time
+				"context_scheduled_time": scheduled_time
 			});
+			var success_func = function() {
+				erp_instance.ktv_sale.ktv_room_point.app.alert({
+					'alert_class': "alert-success",
+					'info': "保存预定信息成功!"
+				});
+                self.close();
+			};
+			var fail_func = function() {
+				erp_instance.ktv_sale.ktv_room_point.app.alert({
+					'alert_class': "alert-error",
+					'info': "保存预定信息失败!"
+				});
+
+			};
 			this.model.push().pipe(function(result) {
 				//更新包厢状态
-				self.room.set(result);
+				self.room.set(result["room"]);
 				self.close();
-			});
+			}).then(success_func,fail_func);
 		}
 	});
 
@@ -512,9 +525,25 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			//保存数据
 			if (!this.validate()) return false;
 			this.model.set(this.$form.form2json());
-			this.model.push().then(function(result) {
+            var success_func = function() {
+				erp_instance.ktv_sale.ktv_room_point.app.alert({
+					'alert_class': "alert-success",
+					'info': "保存开房信息成功!"
+				});
+                self.close();
+			};
+			var fail_func = function() {
+				erp_instance.ktv_sale.ktv_room_point.app.alert({
+					'alert_class': "alert-error",
+					'info': "保存开房信息失败!"
+				});
+
+			};
+			this.model.push().pipe(function(result) {
 				//更新包厢状态
-			});
+				self.room.set(result["room"]);
+				self.close();
+			}).then(success_func,fail_func);
 		}
 	});
 

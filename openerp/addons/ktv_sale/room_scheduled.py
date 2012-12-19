@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from room import room
 from osv import osv,fields
 
 class room_scheduled(osv.osv):
@@ -27,3 +28,17 @@ class room_scheduled(osv.osv):
             "persons_count" : 2,
             "state" : STATE_SCHEDULED,
             }
+
+    def process_operate(self,cr,uid,vals,context = None):
+        """
+        处理包厢预定操作
+        :params vals dict 预定信息
+        :return tuple room_scheduled 保存成功的包厢预定对象 room_state 应修改的包厢状态 cron 定时执行的任务操作
+        """
+        room_id = vals.pop("room_id")
+        cur_rp_id = self.pool.get('ktv.room').find_or_create_room_operate(cr,uid,room_id)
+        vals.update({"room_operate_id" : cur_rp_id})
+        room_scheduled_id = self.create(cr,uid,vals)
+        fields = self.fields_get(cr,uid).keys()
+        room_scheduled = self.read(cr,uid,room_scheduled_id,fields)
+        return (room_scheduled,room.STATE_SCHEDULED,None)

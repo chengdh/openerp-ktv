@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from osv import osv,fields
+from room import room
 
 class room_operate(osv.osv):
     '''
@@ -34,3 +35,30 @@ class room_operate(osv.osv):
             'operate_date' : fields.datetime.now,
             'bill_no': lambda obj, cr, uid, context: obj.pool.get('ir.sequence').get(cr, uid, 'ktv.room_operate'),
             }
+
+    def process_operate(self,cr,uid,operate_values):
+        """
+        包厢操作统一入口,调用不同业务类的操作
+        这样设计的好处是隔离了变化,如果需要修改服务端的逻辑,客户端的调用逻辑不用做任何修改
+        在客户端新增了业务实体调用,只用增加新的实体即可,其他不用做修改
+        在js端也需要封装同样的调用接口来隔离变化
+        :params room_id integer 包厢编码
+        :operate_values 前端传入的业务操作数据
+        :operate[osv_name] 要调用的实体业务对象名称,比如ktv.room_checkout
+        调用示例:
+        开房操作,返回三个参数 1 操作成功的实体对象 2 包厢应修改的状态 3 cron对象,用于处理对包厢的定时操作：
+        (operate_obj,room_state,cron) = self.pool.get(operate_values['osv_name']).process_operate(cr,uid,opeate_values)
+        更新当前包厢状态,添加cron对象,返回处理结果
+        """
+        room_id = operate_values['room_id']
+        (operate_obj,room_state,cron) = self.pool.get(operate_values['osv_name']).process_operate(cr,uid,operate_values)
+        #更新包厢状态
+        self.pool.get('ktv.room').write(cr,uid,room_id,{'state' : room_state})
+        #TODO 添加cron对象
+
+
+        room_fields = self.pool.get('ktv.room').fields_get(cr,uid).keys()
+        room = self.pool.get('ktv.room').read(cr,uid,room_id,room_fields)
+        #返回两个对象room和room_operate
+        return {'room' : room,'room_operate' : operate_obj}
+

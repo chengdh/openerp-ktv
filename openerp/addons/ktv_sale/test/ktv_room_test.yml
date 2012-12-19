@@ -17,41 +17,20 @@
   !python {model: ktv.room }: |
     rp = self.find_or_create_room_operate(cr,uid,ref("ktv_room_1"))
     assert rp,'创建room_operate失败'
-
--
-  应可正常创建room_scheduled对象
--
-  !python {model: ktv.room}: |
-    scheduled_vals = {
-        "room_id" : ref("ktv_room_1"),
-        "persons_count" : 5,
-        "guest_name" : "程东辉",
-        "guest_phone" : "13676997527"
-    }
-    rs = self.create_room_scheduled(cr,uid,scheduled_vals)
-    assert rs,"创建room_scheduled失败"
-    assert self.browse(cr,uid,ref('ktv_room_1')).state == "scheduled"
 -
   应可正常创建room_opens对象
 -
-  !python {model: ktv.room}: |
+  !python {model: ktv.room_operate}: |
     room_opens_vals = {
+    "osv_name" : "ktv.room_opens",
     "room_id" : ref("ktv_room_1"),
     'guest_name' : '程东辉',
     'persons_count' : 5,
     'fee_type_id' : ref('fee_type1'),
     'price_class_id' : ref('price_class_1')
     }
-    rs = self.create_room_opens(cr,uid,room_opens_vals)
-    assert rs
-    assert self.browse(cr,uid,ref('ktv_room_1')).state == "in_use"
--
-  应可正常创建room_checkout对象
--
-  !python {model: ktv.room}: |
-    room_id = ref("ktv_room_1")
-    romm_checkout = self.build_room_checkout(cr,uid,room_id)
-    #assert room_checkout
+    rs = self.process_operate(cr,uid,room_opens_vals)
+    assert rs['room']['state'] == 'in_use'
 -
   应能够正确获取给定的买断信息
 -
@@ -107,3 +86,17 @@
   !python {model: ktv.hourly_fee_promotion}: |
     ret = self.get_active_configs(cr,uid)
     assert ret
+-
+  应能够正确处理包厢预定信息
+-
+  !python {model: ktv.room_operate}: |
+    vals = {
+        "osv_name" : 'ktv.room_scheduled',
+        "room_id" : ref('ktv_room_1'),
+        "scheduled_time" : '2012-12-13 12:30:00',
+        "guest_name" : "程东辉",
+        "persons_count" : 4,
+        "guest_phone" : 13676997865
+    }
+    ret = self.process_operate(cr,uid,vals)
+    assert ret['room']['state'] == 'scheduled'
