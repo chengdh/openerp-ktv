@@ -59,7 +59,7 @@
                             <li><a class="action_room_change" href="#">换房</a></li>
                             <li><a class="action_room_merge" href="#">并房</a></li>
                             <li class="divider"></li>
-                            <li><a class="action_room_buy_time" href="#">买钟</a></li>
+                            <li><a class="action_room_buytime" href="#">买钟</a></li>
                             <li><a class="action_room_buyout" href="#">买断</a></li>
                             <li><a class="action_room_buy_time_continue" href="#">续钟</a></li>
                             <li><a class="action_room_buy_time_back" href="#">退钟</a></li>
@@ -579,6 +579,122 @@
             <t t-call='room-checkout-buttons'/>
         </div>
     </t>
+    <!--买钟-->
+    <t t-name="room-buytime-template">
+        <div class='well well-small'>
+            <div class="modal-header">
+                <button type="button" class="close btn-cancel">&#x00D7;</button>
+                <h5>预售-买钟</h5>
+            </div>
+            <div class='well well-small'>
+                <form class="form-horizontal" id="room_buytime_form">
+                    <fieldset>
+                        <div class="row">
+                            <div class="control-group pull-left">
+                                <label class="control-label" for="room_id">包厢名称:</label>
+                                <div class="controls">
+                                    <span class="input-large uneditable-input"><t t-esc="room.name"/></span>
+                                </div>
+                            </div>
+                            <div class="control-group pull-left">
+                                <label class="control-label" for="saler_id">销售经理:</label>
+                                <div class="controls">
+                                    <input type="text" id="saler_id" name="saler_id" placeholder="选择销售经理" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="control-group info pull-left">
+                                <label class="control-label" for="guest_name">客人姓名:</label>
+                                <div class="controls">
+                                    <input type="text" id="guest_name" name="guest_name" />
+                                </div>
+                            </div>
+                            <div class="control-group info pull-left">
+                                <label class="control-label" for="persons_count">客人人数:</label>
+                                <div class="controls">
+                                    <input type="text" id="persons_count" name="persons_count" class="number" t-att-value="model.persons_count" />
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <div class="row">
+                            <div class="control-group info pull-left">
+                                <label class="control-label" for="fee_type_id">计费方式:</label>
+                                <div class="controls">
+                                    <select id="fee_type_id" name="fee_type_id">
+                                        <t t-foreach="fee_types" t-as="f">
+                                            <option t-att-value="f.id"><t t-esc="f.name"/></option>
+                                        </t>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group info pull-left">
+                                <label class="control-label" for="price_class_id">价格类型:</label>
+                                <div class="controls">
+                                    <select id="price_class_id" name="price_class_id">
+                                        <t t-foreach="price_classes" t-as="p">
+                                            <option t-att-value="p.id"><t t-esc="p.name"/></option>
+                                        </t>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <div class="row">
+                            <div class="control-group info pull-left">
+                                <label class="control-label" for="buytime">买钟时间:</label>
+                                <div class="controls">
+                                    <select id="buytime" name="buytime">
+                                        <option value="30">30分钟</option>
+                                        <option value="60">60分钟</option>
+                                        <option value="90">90分钟</option>
+                                        <option value="120">120分钟</option>
+                                        <option value="150">150分钟</option>
+                                        <option value="180">180分钟</option>
+                                        <option value="210">210分钟</option>
+                                        <option value="240">240分钟</option>
+                                        <option value="270">270分钟</option>
+                                        <option value="300">300分钟</option>
+                                        <option value="330">330分钟</option>
+                                        <option value="360">360分钟</option>
+                                        <option value="390">390分钟</option>
+                                        <option value="420">420分钟</option>
+                                        <option value="450">450分钟</option>
+                                        <option value="480">480分钟</option>
+                                        <option value="510">510分钟</option>
+                                        <option value="540">540分钟</option>
+                                        <option value="570">570分钟</option>
+                                        <option value="600">600分钟</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group pull-left">
+                                <label class="control-label" for="present_minutes">赠送时长:</label>
+                                <div class="controls">
+                                    <input name="present_minutes" id="close_time" type='text' disabled = "true" />&#x00A0;<span>分钟</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="control-group info pull-left">
+                                <label class="control-label" for="close_time">到钟时间:</label>
+                                <div class="controls">
+                                    <input name="close_time" id="close_time" type='text' disabled = "true" />
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <t t-call='room-checkout-partial'/>
+            </div>
+            <t t-call='room-checkout-buttons'/>
+        </div>
+    </t>
+
 
     <!--读取会员卡界面-->
     <t t-name="scan-card-template">

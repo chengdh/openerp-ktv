@@ -727,5 +727,10 @@ openerp.ktv_sale.model = function(erp_instance) {
 			return json;
 		}
 	});
+
+    //买钟对象
+	model.RoomCheckoutBuytime = model.BaseRoomOperate.extend({
+        "osv_name" : "ktv.room_checkout_buytime"
+    });
 };
 

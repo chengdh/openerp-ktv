@@ -127,6 +127,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			this.$element.find(".action_room_scheduled").click(_.bind(this.action_room_scheduled, this));
 			this.$element.find(".action_room_opens").click(_.bind(this.action_room_opens, this));
 			this.$element.find(".action_room_buyout").click(_.bind(this.action_room_buyout, this));
+			this.$element.find(".action_room_buytime").click(_.bind(this.action_room_buytime, this));
 		},
 		//包厢预定
 		action_room_scheduled: function() {
@@ -150,6 +151,17 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		//买断
 		action_room_buyout: function() {
 			var r = new widget.RoomCheckoutBuyoutWidget(null, {
+				room: this.model
+			});
+			r.ready.then(function() {
+				$('#operate_area').html(r.$element);
+				r.render_element();
+				r.start();
+			});
+		},
+        //买钟
+		action_room_buytime: function() {
+			var r = new widget.RoomCheckoutBuytimeWidget(null, {
 				room: this.model
 			});
 			r.ready.then(function() {
@@ -1050,6 +1062,47 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			else this._onchange_buyout_config_id();
 		}
 	});
+	//预售-买钟界面
+	widget.RoomCheckoutBuytimeWidget = widget.BaseRoomCheckoutWidget.extend({
+		template_fct: qweb_template("room-buytime-template"),
+		model: new model.RoomCheckoutBuytime,
+		render_element: function() {
+			var self = this;
+			this.$element.html(self.template_fct({
+				"model": self.model.toJSON(),
+				"room": self.room.toJSON(),
+				"room_fee_info": self.room_fee_info.export_as_json()
+			}));
+			return this;
+		},
+		//买断设置发生变化
+		_onchange_buyout_config_id: function() {
+			this._re_calculate_fee();
+		},
+
+		call_server_func: function() {
+			var self = this;
+			var context = this._get_context();
+			return new erp_instance.web.Model('ktv.room_checkout_buytime').get_func('re_calculate_fee')(context);
+		},
+		//获取当前上下文环境
+		_get_context: function() {
+			var buyout_config_id = this.$element.find('#buyout_config_id').val();
+			var context = {
+				room_id: this.room.get("id"),
+				buyout_config_id: parseInt(buyout_config_id)
+			};
+			if (this.member.get("id")) context.member_id = this.member.get("id");
+
+			if (this.discount_card.get("id")) context.discount_card_id = this.discount_card.get("id");
+
+			return context;
+		},
+		start: function() {
+			this._super();
+		}
+	});
+
 	//刷卡界面
 	widget.ScanCardWidget = widget.BootstrapModal.extend({
 		template_fct: qweb_template("scan-card-template"),

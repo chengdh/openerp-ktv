@@ -17,6 +17,7 @@ class room(osv.osv):
     STATE_LOCK = "locked"
     STATE_CHECKOUT = "checkout"
     STATE_BUYOUT = "buyout"
+    STATE_BUYTIME = "buytime"
     STATE_MALFUNCTION = "malfunction"
     STATE_VISIT = "visit"
     STATE_CLEAN = "clean"

@@ -90,6 +90,7 @@ class room_checkout(osv.osv):
     _defaults = {
             #正常开房时,关房时间是当前时间
             "bill_datetime" : fields.datetime.now,
+            "open_time" : fields.datetime.now,
             "close_time" : fields.datetime.now,
             "consume_minutes" : 0,
             "present_minutes" : 0,

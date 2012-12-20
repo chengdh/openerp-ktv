@@ -100,3 +100,18 @@
     }
     ret = self.process_operate(cr,uid,vals)
     assert ret['room']['state'] == 'scheduled'
+
+-
+  应能够正确处理买钟信息
+-
+  !python {model: ktv.room_operate}: |
+    vals = {
+    "osv_name" : 'ktv.room_checkout_buytime',
+    "room_id" : ref('ktv_room_1'),
+    "buytime" : 60,
+    "fee_type_id" : ref("fee_type_2"),
+    "guest_name" : "程东辉",
+    "persons_count" : 8,
+    }
+    ret = self.process_operate(cr,uid,vals)
+    assert ret['room']['state'] == 'buytime'

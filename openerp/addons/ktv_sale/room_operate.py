@@ -66,6 +66,7 @@ class room_operate(osv.osv):
     def _create_operate_cron(self,cr,uid,cron_vals):
         """
         创建cron定时执行任务,在需要定时执行关房任务时,需要执行
+        :params dict cron_vals 定时任务相关属性
         """
-        self.pool.get('ir.cron').create(cr,uid,cron_vals);
+        return self.pool.get('ir.cron').create(cr,uid,cron_vals)
 

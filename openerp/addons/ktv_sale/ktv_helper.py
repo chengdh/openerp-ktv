@@ -18,7 +18,7 @@ def price_list_for_selection(self,cr,uid,context = None):
 
 #房态定义
 def room_states_for_selection(self,cr,uid,context = None):
-    ret =[("free","空闲"),("in_use","使用"),("scheduled","预定"),("locked","锁定"),("checkout","已结账"),("buyout","买断"),("malfunction","故障"),("clean","清洁"),("debug","调试"),("visit","带客")]
+    ret =[("free","空闲"),("in_use","使用"),("scheduled","预定"),("locked","锁定"),("checkout","已结账"),("buyout","买断"),("buytime","买钟"),("malfunction","故障"),("clean","清洁"),("debug","调试"),("visit","带客")]
     return ret
 #男女
 def sexes_for_select(self,cr,uid,context = None):
