@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-
+import logging
 from osv import osv,fields
 from room import room
 import decimal_precision as dp
 import ktv_helper
 
+_logger = logging.getLogger(__name__)
 class room_opens(osv.osv):
     '''
     包厢开房对象,包括预定转开房和空置转开房
@@ -42,4 +43,5 @@ class room_opens(osv.osv):
         room_opens_id = self.create(cr,uid,opens_vals)
         fields = self.fields_get(cr,uid).keys()
         room_opens = self.read(cr,uid,room_opens_id,fields)
+        _logger.debug("room opens open_time = %s" % room_opens['open_time'])
         return (room_opens,room.STATE_IN_USE,None)

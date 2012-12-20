@@ -11,6 +11,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			return QWeb.render(template, _.extend({},
 			ctx, {
 				//以下定义需要在界面上显示的数据
+				'company': erp_instance.ktv_sale.ktv_room_point.get('company').toJSON(),
 				'all_rooms': erp_instance.ktv_sale.ktv_room_point.get('all_rooms').toJSON(),
 				'display_rooms': erp_instance.ktv_sale.ktv_room_point.get('display_rooms').toJSON(),
 				'room_types': erp_instance.ktv_sale.ktv_room_point.get('room_types').toJSON(),
@@ -87,7 +88,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			this.alert_class = options.alert_class;
 			this.info = options.info;
 			this.title = options.title;
-            this.timer = $.timer(_.bind(this._auto_close,this),20000,false);
+			this.timer = $.timer(_.bind(this._auto_close, this), 10000, false);
 			this._super(parent, options);
 		},
 		render_element: function() {
@@ -100,15 +101,15 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		start: function() {
 			this.$element.find(".alert").addClass(this.alert_class);
 			this.$element.find(".close").click(_.bind(this.stop, this));
-            this.timer.play();
+			this.timer.play();
 		},
-        //自动关闭
-        _auto_close : function() {
-            console.log("auto close alert widget");
-            this.timer.stop();
-            this.timer = null;
-            this.stop();
-        }
+		//自动关闭
+		_auto_close: function() {
+			console.log("auto close alert widget");
+			this.timer.stop();
+			this.timer = null;
+			this.stop();
+		}
 	});
 
 	//roomWidget
@@ -138,7 +139,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		},
 		//开房
 		action_room_opens: function() {
-            console.log("打开开房界面");
+			console.log("打开开房界面");
 			var r = new widget.RoomOpensWidget(null, {
 				room: this.model
 			});
@@ -437,7 +438,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 					'alert_class': "alert-success",
 					'info': "保存预定信息成功!"
 				});
-                self.close();
+				self.close();
 			};
 			var fail_func = function() {
 				erp_instance.ktv_sale.ktv_room_point.app.alert({
@@ -450,7 +451,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 				//更新包厢状态
 				self.room.set(result["room"]);
 				self.close();
-			}).then(success_func,fail_func);
+			}).then(success_func, fail_func);
 		}
 	});
 
@@ -506,13 +507,12 @@ openerp.ktv_sale.widget = function(erp_instance) {
 				var member_name = this.member.get("name");
 				var info = member_card_no + "[" + member_class[1] + "]" + "[" + member_name + "]";
 				this.$element.find("#member-card-no").html(info);
-                this.$element.find('.member-card-wrapper').removeClass('hide');
+				this.$element.find('.member-card-wrapper').removeClass('hide');
 			}
-			else
-            {
-                this.$element.find("#member-card-no").empty();
-                this.$element.find('.member-card-wrapper').addClass('hide');
-            }
+			else {
+				this.$element.find("#member-card-no").empty();
+				this.$element.find('.member-card-wrapper').addClass('hide');
+			}
 		},
 
 		render_element: function() {
@@ -540,15 +540,16 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			//保存数据
 			if (!this.validate()) return false;
 			this.model.set(this.$form.form2json());
-            if(this.member.get("id"))
-                this.model.set({"member_id" : this.member.get("id")});
-            var success_func = function() {
+			if (this.member.get("id")) this.model.set({
+				"member_id": this.member.get("id")
+			});
+			var success_func = function() {
 				erp_instance.ktv_sale.ktv_room_point.app.alert({
 					'alert_class': "alert-success",
-					'info': "保存开房信息成功!"
+					'info': "保存开房信息成功,请打印开房条!"
 				});
-                self.close();
-                self.print();
+				self.close();
+				self.print();
 			};
 			var fail_func = function() {
 				erp_instance.ktv_sale.ktv_room_point.app.alert({
@@ -560,18 +561,26 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			this.model.push().pipe(function(result) {
 				//更新包厢状态
 				self.room.set(result["room"]);
+				//更新操作结果
+				self.model.set(result['room_operate']);
 				self.close();
-			}).then(success_func,fail_func);
+			}).then(success_func, fail_func);
 		},
-        //打印开房条
-        print : function(){
-            var self = this;
-            var room_fee_info = this.room.get_room_fee_info();
-            room_fee_info.ready.then(function(){
-                var template_var = {"room" : self.room.export_as_json(),'room_fee_info' : room_fee_info.export_as_json()};
-                $(qweb_template("room-opens-bill-print-template")(template_var)).printElement();
-            });
-        }
+		//打印开房条
+		print: function() {
+			var self = this;
+			var room_fee_info = this.room.get_room_fee_info();
+			room_fee_info.ready.then(function() {
+				var template_var = {
+					"room": self.room.export_as_json(),
+					'room_fee_info': room_fee_info.export_as_json(),
+                    'room_opens' : self.model.toJSON()
+				};
+				var print_doc = $(qweb_template("room-opens-bill-print-template")(template_var));
+				//处理可见元素
+				var print_doc = print_doc.jqprint();
+			});
+		}
 	});
 
 	//单个抵用券信息显示
@@ -688,13 +697,15 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		//re_calculate_fee callback
 		//子类可添加callback函数
 		on_re_calculate_fee: function() {},
-        //设置客户端时间显示
-        _set_context_datetime : function() {
-            if(this.model.get("open_time"))
-                this.model.set({context_open_time : erp_instance.web.str_to_datetime(this.model.get('open_time')).toString('yyyy-MM-dd HH:mm')});
-            if(this.model.get("close_time"))
-                this.model.set({context_close_time : erp_instance.web.str_to_datetime(this.model.get('close_time')).toString('yyyy-MM-dd HH:mm')});
-        },
+		//设置客户端时间显示
+		_set_context_datetime: function() {
+			if (this.model.get("open_time")) this.model.set({
+				context_open_time: erp_instance.web.str_to_datetime(this.model.get('open_time')).toString('yyyy-MM-dd HH:mm')
+			});
+			if (this.model.get("close_time")) this.model.set({
+				context_close_time: erp_instance.web.str_to_datetime(this.model.get('close_time')).toString('yyyy-MM-dd HH:mm')
+			});
+		},
 
 		//重新计算抵用券费用
 		_re_calculate_sales_voucher_fee: function() {
@@ -708,7 +719,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		},
 		//重新显示费用列表
 		_refresh_fee_table: function() {
-            //需要将时间转换为本地时间
+			//需要将时间转换为本地时间
 			this.$element.find('.open_time').html(this.model.get('context_open_time'));
 			this.$element.find('.close_time').html(this.model.get('context_close_time'));
 			this.$element.find('.consume_minutes').html(this.model.get('consume_minutes'));
@@ -866,7 +877,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		},
 		//结账操作
 		_checkout: function() {
-            var self = this;
+			var self = this;
 			//设置相关属性到model中去,不触发change事件
 			this.model.set({
 				'member_card': this.member_card,
@@ -883,7 +894,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 					'title': '结账成功',
 					'info': ",请打印结账单!"
 				});
-                self.close();
+				self.close();
 			}
 			var fail_func = function() {
 				erp_instance.ktv_sale.ktv_room_point.app.alert({
@@ -892,11 +903,11 @@ openerp.ktv_sale.widget = function(erp_instance) {
 				});
 
 			};
-			this.model.push().pipe(function(result){
-                self.room.set(result['room']);
-                self.model.set(result['room_operate']);
+			this.model.push().pipe(function(result) {
+				self.room.set(result['room']);
+				self.model.set(result['room_operate']);
 
-            }).then(success_func, fail_func);
+			}).then(success_func, fail_func);
 		},
 		//会员卡款金额变化的处理
 		_onchange_member_card_fee: function() {

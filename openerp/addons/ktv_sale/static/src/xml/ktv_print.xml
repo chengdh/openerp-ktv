@@ -5,23 +5,23 @@
     <!--开房条-->
     <t t-name="room-opens-bill-print-template">
         <div class='room-opens-bill'>
-            <h4><t t-esc="company_name"/>开房条</h4>
+            <h4><t t-esc="company.name"/>开房条</h4>
             <table>
                 <tr>
                     <td>房间名称:</td>
-                    <td colspan="2"><t t-esc="name"/></td>
+                    <td colspan="2"><t t-esc="room.name"/></td>
                 </tr>
                 <tr>
                     <td>房间类型:</td>
-                    <td colspan="2"><t t-esc="room_type_id"/></td>
+                    <td colspan="2"><t t-esc="room.room_type_id[1]"/></td>
                 </tr>
                 <tr>
                     <td>账 单 号:</td>
-                    <td colspan="2"><t t-esc="cur_room_operate_id"/></td>
+                    <td colspan="2"><t t-esc="room.current_room_operate_id[1]"/></td>
                 </tr>
                 <tr>
                     <td>计费方式:</td>
-                    <td colspan="2"><t t-esc="fee_type_id"/></td>
+                    <td colspan="2"><t t-esc="room.fee_type_id[1]"/></td>
                 </tr>
                 <tr class="room_fee">
                     <td>包厢费:</td>
@@ -127,7 +127,7 @@
                 </tr>
                 <tr>
                     <td>开房时间:</td>
-                    <td colspan="2"><t t-esc="room_type_id"/></td>
+                    <td colspan="2"><t t-esc="room_opens.context_open_time_str"/></td>
                 </tr>
                 <tr>
                     <td>客人签名:</td>
