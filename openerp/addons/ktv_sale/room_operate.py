@@ -55,10 +55,17 @@ class room_operate(osv.osv):
         #更新包厢状态
         self.pool.get('ktv.room').write(cr,uid,room_id,{'state' : room_state})
         #TODO 添加cron对象
-
+        if cron:
+            self._create_operate_cron(cr,uid,cron)
 
         room_fields = self.pool.get('ktv.room').fields_get(cr,uid).keys()
         room = self.pool.get('ktv.room').read(cr,uid,room_id,room_fields)
         #返回两个对象room和room_operate
         return {'room' : room,'room_operate' : operate_obj}
+
+    def _create_operate_cron(self,cr,uid,cron_vals):
+        """
+        创建cron定时执行任务,在需要定时执行关房任务时,需要执行
+        """
+        self.pool.get('ir.cron').create(cr,uid,cron_vals);
 

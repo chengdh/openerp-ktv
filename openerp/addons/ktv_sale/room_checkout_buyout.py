@@ -2,6 +2,7 @@
 import logging
 from room import room
 from osv import fields, osv
+from datetime import date,datetime
 import decimal_precision as dp
 import ktv_helper
 from fee_type import fee_type
@@ -107,4 +108,19 @@ class room_checkout_buyout(osv.osv):
         room_buyout_id = self.create(cr,uid,buyout_vals)
         fields = self.fields_get(cr,uid).keys()
         room_buyout = self.read(cr,uid,room_buyout_id,fields)
-        return (room_buyout,room.STATE_BUYOUT,None)
+        return (room_buyout,room.STATE_BUYOUT,self._build_cron(room_id,room_buyout))
+
+    def _build_cron(self,room_id,room_buyout_vals):
+        """
+        生成cron对象的值
+        """
+        cron_vals = {
+                "name" : room_buyout_vals["room_operate_id"][1],
+                "nextcall" : datetime.strptime(room_buyout_vals['close_time'],"%Y-%m-%d %H:%M:%S"),
+                "model" : "ktv.room",
+                "function" : "write",
+                #需要定时修改包厢状态,并清空包厢当前operate_id
+                "args" : "(%s,{'state' : '%s','current_room_operate_id' : None})" % (room_id ,room.STATE_FREE)
+                }
+        return cron_vals
+

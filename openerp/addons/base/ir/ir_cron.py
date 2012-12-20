@@ -207,7 +207,7 @@ class ir_cron(osv.osv):
         db_name = db.dbname
         try:
             jobs = {} # mapping job ids to jobs for all jobs being processed.
-            now = datetime.now() 
+            now = datetime.now()
             # Careful to compare timestamps with 'UTC' - everything is UTC as of v6.1.
             cr.execute("""SELECT * FROM ir_cron
                           WHERE numbercall != 0
@@ -251,7 +251,7 @@ class ir_cron(osv.osv):
 
             # Find next earliest job ignoring currently processed jobs (by this and other cron threads)
             find_next_time_query = """SELECT min(nextcall) AS min_next_call
-                                      FROM ir_cron WHERE numbercall != 0 AND active""" 
+                                      FROM ir_cron WHERE numbercall != 0 AND active"""
             if jobs:
                 cr.execute(find_next_time_query + " AND id NOT IN %s", (tuple(jobs.keys()),))
             else:
@@ -282,7 +282,7 @@ class ir_cron(osv.osv):
         :param job: job to be run (as a dictionary).
         """
         try:
-            now = datetime.now() 
+            now = datetime.now()
             nextcall = datetime.strptime(job['nextcall'], DEFAULT_SERVER_DATETIME_FORMAT)
             numbercall = job['numbercall']
 
