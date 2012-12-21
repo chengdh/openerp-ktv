@@ -12,4 +12,3 @@ class member_hourly_fee_discount(osv.osv):
     _columns ={
             'member_class_id' : fields.many2one('ktv.member_class',"member_class_id",required = True),
             }
-

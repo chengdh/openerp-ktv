@@ -100,7 +100,13 @@
     }
     ret = self.process_operate(cr,uid,vals)
     assert ret['room']['state'] == 'scheduled'
-
+-
+  应能正常获取包厢费用信息
+-
+  !python {model : ktv.room}: |
+    room_id = ref('ktv_room_1')
+    ret = self.get_current_fee(cr,uid,room_id)
+    assert ret
 -
   应能够正确处理买钟信息
 -
@@ -108,10 +114,17 @@
     vals = {
     "osv_name" : 'ktv.room_checkout_buytime',
     "room_id" : ref('ktv_room_1'),
-    "buytime" : 60,
+    "buy_minutes" : 60,
     "fee_type_id" : ref("fee_type_2"),
+    "price_class_id" : ref('price_class_1'),
     "guest_name" : "程东辉",
     "persons_count" : 8,
     }
-    ret = self.process_operate(cr,uid,vals)
+    ret = self.pool.get('ktv.room_checkout_buytime').re_calculate_fee(cr,uid,vals)
+    assert ret
+    ret.update(vals)
+    ret['room_id'] = ref('ktv_room_1')
+    ret = self.process_operate(cr,uid,ret)
     assert ret['room']['state'] == 'buytime'
+
+

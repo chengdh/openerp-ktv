@@ -125,3 +125,19 @@ def utc_time_between(str_time_from,str_time_to,str_cur_time):
         #如果存在time_from 大于 time_to的情况,则说明时间跨天
         return (str_cur_time >= str_time_from and str_cur_time < '23:59:59') or (str_cur_time >='00:00:00' and str_cur_time <= str_time_to)
 
+def calculate_present_minutes(buy_minutes,promotion_buy_minutes = 0,promotion_present_minutes = 0):
+    """
+    根据给定的参数计算赠送时长
+    买钟时间(分钟数) / 设定买钟时长(分钟数) * 赠送时长
+    :params buy_minutes integer 买钟时间
+    :params promotion_buy_minutes integer 买钟优惠设置中设定的买钟时长
+    :params promotion_present_minutes integer 买钟优惠设置中设定的赠送时长
+    :return integer 赠送时长
+    """
+    #如果未设置优惠信息,则不赠送,直接返回买钟时间
+    if not promotion_buy_minutes:
+        return buy_minutes
+
+    present_minutes = buy_minutes / promotion_buy_minutes * promotion_present_minutes
+
+    return present_minutes

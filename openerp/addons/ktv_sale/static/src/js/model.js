@@ -327,10 +327,16 @@ openerp.ktv_sale.model = function(erp_instance) {
 				"minimum_fee_config_lines": new Backbone.Collection(),
 				//设置包厢时段钟点费
 				"hourly_fee_discount_lines": new Backbone.Collection(),
+				//当日全部时段钟点费
+				"all_hourly_fee_discount_lines": new Backbone.Collection(),
 				//设置会员时段钟点费
 				"member_hourly_fee_discount_lines": new Backbone.Collection(),
+				//当日全部会员钟点费优惠设置
+				"all_member_hourly_fee_discount_lines": new Backbone.Collection(),
 				//设置按位时段钟点费
 				"hourly_fee_p_discount_lines": new Backbone.Collection(),
+				//当日全部按位钟点费
+				"all_hourly_fee_p_discount_lines": new Backbone.Collection(),
 				//买断设置
 				"buyout_config_lines": new Backbone.Collection(),
 				//自助餐设置
@@ -383,12 +389,17 @@ openerp.ktv_sale.model = function(erp_instance) {
 				room_fee: this.current_room_fee(),
 				minimum_fee: this.current_minimum_fee(),
 				minimum_fee_p: this.current_minimum_fee_p(),
-                fee_type: this.get("fee_type")
+				fee_type: this.get("fee_type")
 			};
 			//时段钟点费
 			ret.hourly_fee_lines = this._export_hourly_fee_lines("hourly_fee_discount");
 			ret.hourly_fee_p_lines = this._export_hourly_fee_lines("hourly_fee_p_discount");
 			ret.member_hourly_fee_lines = this._export_hourly_fee_lines("member_hourly_fee_discount");
+			//全天设置
+			ret.all_hourly_fee_lines = this._export_hourly_fee_lines("all_hourly_fee_discount");
+			ret.all_hourly_fee_p_lines = this._export_hourly_fee_lines("all_hourly_fee_p_discount");
+			ret.all_member_hourly_fee_lines = this._export_hourly_fee_lines("all_member_hourly_fee_discount");
+
 			//买断设置
 			var active_buyout_config_lines = [];
 			this.get("buyout_config_lines").each(function(l) {
@@ -566,18 +577,42 @@ openerp.ktv_sale.model = function(erp_instance) {
 			}).pipe(function(result) {
 				self.get('hourly_fee_discount_lines').add(result);
 			}),
+			//当日全部时段钟点费
+			new erp_instance.web.Model('ktv.hourly_fee_discount').get_func('get_active_configs')(the_room_type.get('id'), {
+				which_fee: 'hourly_fee_discount',
+				ignore_time_range: true
+			}).pipe(function(result) {
+				self.get('all_hourly_fee_discount_lines').add(result);
+			}),
+
 			//会员时段钟点费设置
 			new erp_instance.web.Model('ktv.member_hourly_fee_discount').get_func('get_active_configs')(the_room_type.get('id'), {
 				which_fee: 'member_hourly_fee_discount'
 			}).pipe(function(result) {
 				self.get('member_hourly_fee_discount_lines').add(result);
 			}),
+			//当日全部会员时段钟点费
+			new erp_instance.web.Model('ktv.member_hourly_fee_discount').get_func('get_active_configs')(the_room_type.get('id'), {
+				which_fee: 'member_hourly_fee_discount',
+				ignore_time_range: true
+			}).pipe(function(result) {
+				self.get('all_member_hourly_fee_discount_lines').add(result);
+			}),
+
 			//按位时段钟点费设置
 			new erp_instance.web.Model('ktv.hourly_fee_p_discount').get_func('get_active_configs')(the_room_type.get('id'), {
 				which_fee: 'hourly_fee_p_discount'
 			}).pipe(function(result) {
 				self.get('hourly_fee_p_discount_lines').add(result);
+			}),
+			//当日全部按位时段钟点费
+			new erp_instance.web.Model('ktv.hourly_fee_p_discount').get_func('get_active_configs')(the_room_type.get('id'), {
+				which_fee: 'hourly_fee_p_discount',
+				ignore_time_range: true
+			}).pipe(function(result) {
+				self.get('all_hourly_fee_p_discount_lines').add(result);
 			}));
+
 		},
 		//设置买断信息
 		_set_buyout_config: function() {
@@ -641,14 +676,16 @@ openerp.ktv_sale.model = function(erp_instance) {
 		},
 		initialize: function(attrs) {
 			Backbone.Model.prototype.initialize.apply(this, arguments);
-            this.bind('change:open_time',this._convert_open_time,this);
-        },
-        //将服务器端时间转换为本地浏览器时区时间
-        _convert_open_time : function(){
-            var utc_open_time_str = this.get('open_time');
-            var context_open_time_str = erp_instance.web.str_to_datetime(utc_open_time_str).toString('yyyy-MM-dd HH:mm:ss');
-            this.set({'context_open_time_str' : context_open_time_str});
-        }
+			this.bind('change:open_time', this._convert_open_time, this);
+		},
+		//将服务器端时间转换为本地浏览器时区时间
+		_convert_open_time: function() {
+			var utc_open_time_str = this.get('open_time');
+			var context_open_time_str = erp_instance.web.str_to_datetime(utc_open_time_str).toString('yyyy-MM-dd HH:mm:ss');
+			this.set({
+				'context_open_time_str': context_open_time_str
+			});
+		}
 
 	});
 
@@ -728,9 +765,36 @@ openerp.ktv_sale.model = function(erp_instance) {
 		}
 	});
 
-    //买钟对象
+	//买钟对象
 	model.RoomCheckoutBuytime = model.BaseRoomOperate.extend({
-        "osv_name" : "ktv.room_checkout_buytime"
-    });
+		"osv_name": "ktv.room_checkout_buytime",
+		defults: {
+			'persons_count': 2
+		},
+		initialize: function(attrs) {
+			Backbone.Model.prototype.initialize.apply(this, arguments);
+			this.bind('change:open_time', this._convert_time, this);
+			this.bind('change:close_time', this._convert_time, this);
+		},
+		//将服务器端时间转换为本地浏览器时区时间
+		_convert_time: function() {
+			var utc_open_time_str = this.get('open_time');
+			if (utc_open_time_str) {
+				var context_open_time_str = erp_instance.web.str_to_datetime(utc_open_time_str).toString('yyyy-MM-dd HH:mm:ss');
+				this.set({
+					'context_open_time_str': context_open_time_str
+				});
+			}
+			var utc_close_time_str = this.get('close_time');
+			if (utc_close_time_str) {
+				var context_close_time_str = erp_instance.web.str_to_datetime(utc_close_time_str).toString('yyyy-MM-dd HH:mm:ss');
+				this.set({
+					'context_close_time_str': context_close_time_str
+				});
+			}
+
+		}
+
+	});
 };
 

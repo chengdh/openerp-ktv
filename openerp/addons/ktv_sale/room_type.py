@@ -28,7 +28,7 @@ class room_type(osv.osv):
             'minimum_fee' : fields.float('minimum_fee',digits_compute = dp.get_precision('Ktv Fee')),
             #按位低消
             'minimum_fee_p' : fields.float('minimum_fee_p',digits_compute = dp.get_precision('Ktv Fee')),
-            'service_fee' : fields.float('service_fee',digits_compute = dp.get_precision('Ktv Fee')),
+            'service_fee_rate' : fields.float('service_fee_rate',digits_compute = dp.get_precision('Ktv Fee'),help="服务费费率%"),
             #赠送比例
             'present_rate' : fields.float('present_rate',digits_compute = dp.get_precision('Ktv Fee')),
             'active' : fields.boolean('active'),
@@ -39,7 +39,7 @@ class room_type(osv.osv):
             'hourly_fee_p' : 0,
             'minimum_fee' : 0,
             'minimum_fee_p' : 0,
-            'service_fee' : 0,
+            'service_fee_rate' : 0,
             'present_rate' : 0,
             'active' : True,
             }

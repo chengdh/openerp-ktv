@@ -17,7 +17,7 @@
                     <field name="minimum_fee"/>
                     <field name="hourly_fee_p"/>
                     <field name="minimum_fee_p"/>
-                    <field name="service_fee"/>
+                    <field name="service_fee_rate"/>
                     <field name="present_rate"/>
 
                     <field name="active"/>

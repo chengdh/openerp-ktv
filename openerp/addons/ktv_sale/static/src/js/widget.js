@@ -903,8 +903,7 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			var success_func = function() {
 				erp_instance.ktv_sale.ktv_room_point.app.alert({
 					'alert_class': "alert-success",
-					'title': '结账成功',
-					'info': ",请打印结账单!"
+					'info': "结账成功,请打印结账单!"
 				});
 				self.close();
 			}
@@ -1066,6 +1065,18 @@ openerp.ktv_sale.widget = function(erp_instance) {
 	widget.RoomCheckoutBuytimeWidget = widget.BaseRoomCheckoutWidget.extend({
 		template_fct: qweb_template("room-buytime-template"),
 		model: new model.RoomCheckoutBuytime,
+        init : function(parent,options){
+            this._super(parent,options);
+			this.on_re_calculate_fee.add_last(_.bind(this._refresh, this));
+        },
+
+        //重绘制界面
+        _refresh : function(){
+            //更新赠送时长,到钟时间
+            this.$element.find("#present_minutes").val(this.model.get("present_minutes"))
+            this.$element.find("#close_time").val(this.model.get("context_close_time_str"))
+        },
+
 		render_element: function() {
 			var self = this;
 			this.$element.html(self.template_fct({
@@ -1075,8 +1086,8 @@ openerp.ktv_sale.widget = function(erp_instance) {
 			}));
 			return this;
 		},
-		//买断设置发生变化
-		_onchange_buyout_config_id: function() {
+		//相关字段发生变化
+		_onchange_fields: function() {
 			this._re_calculate_fee();
 		},
 
@@ -1087,10 +1098,16 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		},
 		//获取当前上下文环境
 		_get_context: function() {
-			var buyout_config_id = this.$element.find('#buyout_config_id').val();
+			var persons_count = parseInt(this.$element.find('#persons_count').val());
+            var fee_type_id = parseInt(this.$element.find("#fee_type_id").val());
+            var price_class_id = parseInt(this.$element.find("#price_class_id").val());
+            var buy_minutes = parseInt(this.$element.find("#buy_minutes").val());
 			var context = {
-				room_id: this.room.get("id"),
-				buyout_config_id: parseInt(buyout_config_id)
+				"room_id": this.room.get("id"),
+                "fee_type_id": fee_type_id,
+                "price_class_id" : price_class_id,
+                "buy_minutes" : buy_minutes,
+                'persons_count' : persons_count
 			};
 			if (this.member.get("id")) context.member_id = this.member.get("id");
 
@@ -1100,6 +1117,10 @@ openerp.ktv_sale.widget = function(erp_instance) {
 		},
 		start: function() {
 			this._super();
+            //设置计费方式为当前包厢默认计费方式
+            this.$element.find("#fee_type_id").val(this.room.get("fee_type_id")[0])
+            this.$element.find("#fee_type_id,#price_class_id,#buy_minutes,#persons_count").change(_.bind(this._re_calculate_fee,this));
+            this._onchange_fields();
 		}
 	});
 

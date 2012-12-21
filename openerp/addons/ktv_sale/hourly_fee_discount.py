@@ -129,7 +129,7 @@ class hourly_fee_discount(osv.osv):
         weekday_str = ktv_helper.weekday_str(context_now.weekday())
         now_str = datetime.now().strftime("%H:%M:00")
         #判断特殊日设置
-        which_fee =  context and context['which_fee'] or "hourly_fee_discount"
+        which_fee =  context and 'which_fee' in context and context['which_fee'] or "hourly_fee_discount"
         osv_name = "ktv.%s_special_day" % which_fee
         s_day_ids = self.pool.get(osv_name).search(cr,uid,[("room_type_id",'=',room_type_id)])
         s_days = self.pool.get(osv_name).read(cr,uid,s_day_ids,['room_type_id','special_day'])
@@ -140,6 +140,10 @@ class hourly_fee_discount(osv.osv):
         #根据设置的星期是否有效来得到返回的设置
         for c in configs:
             in_time_range = ktv_helper.utc_time_between(c.time_from,c.time_to,now_str)
+            #是否忽略时间段判断,用于显示全天的钟点费打折信息
+            ignore_time_range = context and 'ignore_time_range' in context and context['ignore_time_range']
+            if ignore_time_range:
+                in_time_range = True
             if  (in_sp_day and in_time_range) or in_time_range:
                 hourly_fee = getattr(c,weekday_str + "_hourly_fee",0.0)
                 hourly_discount = getattr(c,weekday_str + "_hourly_discount",0.0)
@@ -151,7 +155,6 @@ class hourly_fee_discount(osv.osv):
                     "id" : c.id,
                     "price_class_id" : c.price_class_id.id,
                     "room_type_id" : c.room_type_id.id,
-                    #起始时间是当前时间
                     "time_from" : c.time_from,
                     "time_to" : c.time_to,
                     "hourly_fee" : hourly_fee,

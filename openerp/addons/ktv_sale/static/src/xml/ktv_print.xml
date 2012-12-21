@@ -40,7 +40,7 @@
                     <td>折扣</td>
                     <td>钟点费/小时</td>
                 </tr>
-                <t t-foreach="room_fee_info.hourly_fee_lines" t-as="l">
+                <t t-foreach="room_fee_info.all_hourly_fee_lines" t-as="l">
                     <tr class="hourly_fee_lines" t-att-data-price-class-id="l.price_class_id" t-att-data-member-class-id="l.member_class_id">
                         <td><t t-esc="l.time_range"/></td>
                         <td><t t-esc="l.hourly_fee_discount"/></td>
@@ -52,7 +52,7 @@
                     <th>折扣</th>
                     <th>钟点费/小时</th>
                 </tr>
-                <t t-foreach="room_fee_info.member_hourly_fee_lines" t-as="l">
+                <t t-foreach="room_fee_info.all_member_hourly_fee_lines" t-as="l">
                     <tr class="member_hourly_fee_lines" t-att-data-price-class-id="l.price_class_id" t-att-data-member-class-id="l.member_class_id">
                         <td><t t-esc="l.member_class_name"/>-<t t-esc="l.time_range"/></td>
                         <td><t t-esc="l.hourly_fee_discount"/></td>
@@ -65,7 +65,7 @@
                     <th>钟点费/小时</th>
                 </tr>
 
-                <t t-foreach="room_fee_info.hourly_fee_p_lines" t-as="l">
+                <t t-foreach="room_fee_info.all_hourly_fee_p_lines" t-as="l">
                     <tr class="hourly_fee_p_lines" t-att-data-price-class-id="l.price_class_id" t-att-data-member-class-id="l.member_class_id">
                         <td><t t-esc="l.time_range"/></td>
                         <td><t t-esc="l.hourly_fee_discount"/></td>
