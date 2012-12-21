@@ -257,7 +257,13 @@ openerp.ktv_sale.model = function(erp_instance) {
 			this.get('display_rooms').bind('change', this._update_room_status, this);
 			this.get('display_rooms').bind('reset', this._update_room_status, this);
 			this.ready = $.Deferred();
-			var self = this;
+            this._refresh_app_data();
+            this.timer = $.timer(_.bind(this._refresh_app_data,this),60000,true);
+		},
+		//刷新app-data
+		_refresh_app_data: function() {
+            var self = this;
+            console.debug("refresh_app_data at:" + Date.today());
 			$.when(this._get_company(), model.Room.fetch().pipe(function(result) {
 				self.get("all_rooms").reset(result);
 				self.get("display_rooms").reset(result);
@@ -281,6 +287,7 @@ openerp.ktv_sale.model = function(erp_instance) {
 			})).then(function() {
 				self.ready.resolve();
 			});
+
 		},
 		//获取公司信息
 		_get_company: function() {
